@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trackball Benchmark - Browser Tests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        h1 { color: #4ec9b0; border-bottom: 2px solid #4ec9b0; padding-bottom: 10px; }
+        h2 { color: #569cd6; margin-top: 25px; }
+        .test { background: #252526; padding: 15px; margin: 15px 0; border-radius: 5px; border-left: 4px solid #4ec9b0; }
+        .test-link {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px 10px 10px 0;
+            background: #0e639c;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .test-link:hover { background: #1177bb; }
+        .note { background: #3c3c3c; padding: 12px; margin: 10px 0; border-left: 3px solid #ce9178; }
+        .record { color: #ce9178; font-size: 0.95em; margin-top: 8px; }
+        .working { color: #4ec9b0; }
+       .removed { color: #f48771; }
+    </style>
+</head>
+<body>
+    <h1>Trackball Benchmark - Browser Tests (CLEANED)</h1>
+
+    <div class="note">
+        <strong>WORKING TESTS ONLY</strong><br>
+        Broken tests removed. All tests below verified working.
+    </div>
+
+    <div class="test">
+        <h2>R3 - Browser Polling Rate</h2>
+        <a href="https://www.testufo.com/mouserate" class="test-link" target="_blank">TestUFO Mouse Rate</a>
+        <div class="record">
+            <strong>Run:</strong> Move trackball fast for 10s<br>
+            <strong>Record:</strong> Typical Hz shown (expect ~115-125 Hz)<br>
+            <span class="working">✅ Working - Shows real-time Hz</span>
+        </div>
+    </div>
+
+    <div class="test">
+        <h2>A1 - Target Acquisition Speed</h2>
+        <a href="https://humanbenchmark.com/tests/aim" class="test-link" target="_blank">Human Benchmark Aim Trainer</a>
+        <div class="record">
+            <strong>Run:</strong> 3 times (30 targets each)<br>
+            <strong>Record:</strong> Average ms/target for each run<br>
+            Example: 950ms, 932ms, 1263ms<br>
+            <span class="working">✅ Working - Gives numeric results</span>
+        </div>
+    </div>
+
+    <div class="test">
+        <h2>A2 - Tiny Target Accuracy (BEST TEST)</h2>
+        <a href="https://mouseaccuracy.com/" class="test-link" target="_blank">MouseAccuracy.com</a>
+        <div class="record">
+            <strong>Settings:</strong> 30 seconds, smallest targets<br>
+            <strong>Run:</strong> 3 times<br>
+            <strong>Record:</strong> Score for each run<br>
+            Example: 100, 125, 112<br>
+            <span class="working">✅ Working - Full-screen, objective scoring, user loved this one</span>
+        </div>
+    </div>
+
+    <div class="test">
+        <h2>P1 - Precision (Objective Alternatives)</h2>
+        <a href="https://www.humanbenchmark.com/tests/sequence" class="test-link" target="_blank">Sequence Memory</a>
+        <a href="https://www.humanbenchmark.com/tests/chimp" class="test-link" target="_blank">Chimp Test</a>
+        <div class="record">
+            <strong>Choose ONE:</strong><br>
+            - Sequence: Click expanding pattern, run 3 times, record highest level<br>
+            - Chimp: Click numbers in order, run 3 times, record level reached<br>
+            <span class="working">✅ Objective numeric scores, no self-evaluation</span>
+        </div>
+    </div>
+
+    <div class="test">
+        <h2>S1 - Scroll Granularity</h2>
+        <a href="https://en.wikipedia.org/wiki/Computer_mouse" class="test-link" target="_blank">Wikipedia Long Article</a>
+        <div class="record">
+            <strong>Run:</strong> 10 tiny scrolls, 10 medium, 10 fast<br>
+            <strong>Record:</strong> Overscroll count, controllability yes/no<br>
+            <span class="working">✅ Working - Any long page works</span>
+        </div>
+    </div>
+
+    <hr style="margin: 40px 0; border-color: #4ec9b0;">
+
+    <h2>Removed / Status</h2>
+    <div class="note">
+        <span class="removed"><strong>❌ REMOVED - These don't work:</strong></span><br>
+        - Online Stopwatch Mouse Accuracy<br>
+        - SpeedTest.pl Mouse Test<br>
+        - XBitLabs path tests (archived)<br>
+        <br>
+        <span class="working"><strong>✅ MouseTester.exe</strong> works for R1 and R2</span><br>
+        <span class="removed"><strong>❌ MLMP.exe</strong> was never successfully downloaded (ignore it)</span>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trackball Benchmark V2 - Tests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        h1 { color: #4ec9b0; border-bottom: 2px solid #4ec9b0; padding-bottom: 10px; }
+        h2 { color: #569cd6; margin-top: 25px; }
+        .test { background: #252526; padding: 20px; margin: 20px 0; border-radius: 5px; border-left: 4px solid #4ec9b0; }
+        .mandatory { border-left: 4px solid #f48771; }
+        .test-link {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px 0;
+            background: #0e639c;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .test-link:hover { background: #1177bb; }
+        .weight { color: #ce9178; font-weight: bold; }
+        .critical { color: #f48771; font-weight: bold; }
+        .settings { background: #3c3c3c; padding: 12px; margin: 10px 0; border-left: 3px solid #ce9178; }
+        .what { color: #9cdcfe; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Trackball Benchmark V2 - Test Links</h1>
+
+    <div class="test">
+        <h2>R1 - TestUFO Mouse Poll Rate <span class="weight">(10%)</span></h2>
+        <a href="https://testufo.com/mouserate" class="test-link" target="_blank">OPEN TEST</a>
+        <div class="what">
+            <strong>Measures:</strong> Report rate / wireless stability<br>
+            <strong>Runs:</strong> 3 (fast circles, 10s each)<br>
+            <strong>Record:</strong> Peak Hz for each run<br>
+            <strong>Expected:</strong> 110-125 Hz for 125_SW polling
+        </div>
+    </div>
+
+    <div class="test">
+        <h2>A1 - Aim Trainer <span class="weight">(15%)</span></h2>
+        <a href="https://humanbenchmark.com/tests/aim" class="test-link" target="_blank">OPEN TEST</a>
+        <div class="what">
+            <strong>Measures:</strong> Target acquisition speed<br>
+            <strong>Runs:</strong> 3 (30 targets each)<br>
+            <strong>Record:</strong> Average ms/target<br>
+            <strong>Lower is better</strong> (but can be slightly slower if precision improves)
+        </div>
+    </div>
+
+    <div class="test mandatory">
+        <h2>A2 - MouseAccuracy Classic <span class="critical">(30% - MOST CRITICAL)</span></h2>
+        <a href="https://mouseaccuracy.com/classic/" class="test-link" target="_blank">OPEN TEST</a>
+        <div class="settings">
+            <strong>SETTINGS:</strong><br>
+            - Target Size: <strong>TINY</strong><br>
+            - Spawn Speed: Normal<br>
+            - Duration: 30s
+        </div>
+        <div class="what">
+            <strong>Measures:</strong> Tiny-target precision and overshoot control<br>
+            <strong>Runs:</strong> 5<br>
+            <strong>Record:</strong> Score, Targets Clicked, Misclicks<br>
+            <strong>This directly tests your "overshooting" problem</strong>
+        </div>
+    </div>
+
+    <div class="test">
+        <h2>P1 - Mouse Precision Movement <span class="weight">(25%)</span></h2>
+        <a href="https://mousetest.online/precision-movement/" class="test-link" target="_blank">OPEN TEST</a>
+        <div class="what">
+            <strong>Measures:</strong> Straight-line path cleanliness, jitter<br>
+            <strong>Runs:</strong> 5<br>
+            <strong>Record:</strong> Precision Score %, Avg Jitter px, Max Jitter px, Points<br>
+            <strong>Trace left-to-right smoothly, don't stop/correct</strong>
+        </div>
+    </div>
+
+    <div class="test mandatory">
+        <h2>P2 - XbitLabs Mouse Accuracy <span class="weight">(20% - MANDATORY)</span></h2>
+        <a href="https://www.xbitlabs.com/mouse-accuracy-test/" class="test-link" target="_blank">OPEN TEST</a>
+        <div class="settings">
+            <strong>SETTINGS:</strong><br>
+            - Difficulty: <strong>MEDIUM</strong> for all modes<br>
+            - Same path type every time
+        </div>
+        <div class="what">
+            <strong>Measures:</strong> Curved paths, shapes, steady hand control<br>
+            <strong>4 Modes × 3 runs each = 12 total:</strong><br>
+            - Path Follow × 3<br>
+            - Shape Trace × 3<br>
+            - Steady Hand × 3<br>
+            - Precision × 3<br>
+            <strong>Record:</strong> Accuracy %, Deviation px, Failures<br>
+            <strong>Why mandatory:</strong> Catches problems that don't show in straight-line tests (P1)
+        </div>
+    </div>
+
+    <hr style="margin: 40px 0; border-color: #4ec9b0;">
+
+    <h2>Total Testing Time</h2>
+    <div class="settings">
+        <strong>~75 minutes per profile:</strong><br>
+        - 3 min warmup<br>
+        - R1: 5 min (3 runs)<br>
+        - A1: 10 min (3 runs)<br>
+        - A2: 15 min (5 runs)<br>
+        - P1: 15 min (5 runs)<br>
+        - P2: 30 min (12 runs total)<br>
+    </div>
+
+    <h2>How to Use</h2>
+    <div class="what">
+        1. Run PowerShell script: <code>.\run_benchmark.ps1 -ProfileName "P0-current-3mon"</code><br>
+        2. Script will guide you through each test<br>
+        3. Open test links from this page<br>
+        4. Enter results when prompted<br>
+        5. Everything saves to benchmark_results.txt<br>
+        6. Paste file to AI for analysis
+    </div>
+
+</body>
+</html>

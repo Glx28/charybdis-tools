@@ -1,0 +1,6 @@
+runtime/charybdis_state.json
+runtime/shortcut_usage.jsonl
+runtime/charybdis_events.jsonl
+runtime/charybdis_beacon.log
+runtime/coach_beacon_stderr.log
+trackball_benchmarks/results/

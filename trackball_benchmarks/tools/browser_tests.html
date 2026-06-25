@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charybdis Trackball Benchmark - Browser Tests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 2px solid #4ec9b0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #569cd6;
+            margin-top: 30px;
+        }
+        .test-category {
+            background: #252526;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #4ec9b0;
+        }
+        .test-link {
+            display: block;
+            padding: 10px 15px;
+            margin: 10px 0;
+            background: #0e639c;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+        .test-link:hover {
+            background: #1177bb;
+        }
+        .description {
+            color: #9cdcfe;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .note {
+            background: #3c3c3c;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid #ce9178;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Charybdis Trackball Benchmark - Browser Tests</h1>
+
+    <div class="note">
+        <strong>Note:</strong> Browser-based tests require an active internet connection.
+        Open these in your preferred browser on the primary monitor.
+    </div>
+
+    <div class="test-category">
+        <h2>R3 鈥?Browser Polling Sanity</h2>
+        <a href="https://www.testufo.com/mouserate" class="test-link" target="_blank">
+            TestUFO Mouse Rate Test
+        </a>
+        <div class="description">
+            Test browser mouse event polling rate. Run for 10s fast circles and 10s horizontal sweeps.
+        </div>
+    </div>
+
+    <div class="test-category">
+        <h2>A1 鈥?Small-Target Aim</h2>
+        <a href="https://humanbenchmark.com/tests/aim" class="test-link" target="_blank">
+            Human Benchmark Aim Trainer
+        </a>
+        <div class="description">
+            30-target aim test. Run 3 times and record average ms/target for each run.
+        </div>
+    </div>
+
+    <div class="test-category">
+        <h2>A2 鈥?Tiny-Target Accuracy (Alternatives)</h2>
+        <a href="https://mouseaccuracy.com/" class="test-link" target="_blank">
+            MouseAccuracy.com
+        </a>
+        <div class="description">
+            Set to 30s duration, smallest targets, normal speed. Run 3 times.
+        </div>
+
+        <a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_onmousedown" class="test-link" target="_blank">
+            Custom Tiny Target Test (backup)
+        </a>
+        <div class="description">
+            Backup option if MouseAccuracy.com is unavailable.
+        </div>
+    </div>
+
+    <div class="test-category">
+        <h2>P1 鈥?Path/Drag Precision (Alternatives)</h2>
+        <a href="https://www.online-stopwatch.com/mouse-accuracy-game/" class="test-link" target="_blank">
+            Online Stopwatch Mouse Accuracy
+        </a>
+        <div class="description">
+            Tests clicking precision and path following.
+        </div>
+
+        <a href="https://www.speedtest.pl/mouse-accuracy-test/" class="test-link" target="_blank">
+            SpeedTest.pl Mouse Accuracy
+        </a>
+        <div class="description">
+            Alternative for path following and precision tests.
+        </div>
+    </div>
+
+    <div class="test-category">
+        <h2>S1 鈥?Scroll Granularity</h2>
+        <a href="about:blank" class="test-link" target="_blank">
+            Create Long Document (instructions below)
+        </a>
+        <div class="description">
+            Open this README.md file or create a long text document.
+            Test tiny, medium, and fast thumb scrolls (10 each).
+        </div>
+    </div>
+
+    <hr style="margin: 40px 0; border-color: #4ec9b0;">
+
+    <h2>Download-Required Tools</h2>
+    <div class="note">
+        <strong>Tools downloaded to tools directory:</strong>
+        <ul>
+            <li><strong>MouseTester.exe</strong> - Motion consistency plots (R2 test)</li>
+            <li><strong>MLMP.exe</strong> - Raw input rate checking (R1 test)</li>
+        </ul>
+    </div>
+
+</body>
+</html>
