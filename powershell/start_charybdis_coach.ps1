@@ -22,14 +22,16 @@ param(
 $ErrorActionPreference = "Stop"
 
 if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
-    $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..\")).Path
+    $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 }
 
-$helperConfigPath = Join-Path $RepoRoot "config\charybdis_helper.json"
-$coachIndexPath = Join-Path $RepoRoot "apps\charybdis-coach\index.html"
+$parentDir = (Resolve-Path (Join-Path $RepoRoot "..")).Path
+$coachDir = Join-Path $parentDir "charybdis-coach"
+$helperConfigPath = Join-Path $parentDir "charybdis-zmk-config\config\charybdis_helper.json"
+$coachIndexPath = Join-Path $coachDir "index.html"
 $runtimeDir = Join-Path $RepoRoot "runtime"
 $pidPath = Join-Path $runtimeDir "charybdis_coach_server.pid"
-$ahkScript = Join-Path $RepoRoot "scripts\windows\coach_beacon_only.ahk"
+$ahkScript = Join-Path $RepoRoot "ahk\coach_beacon_only.ahk"
 $ahkPidPath = Join-Path $runtimeDir "coach_beacon_only.pid"
 
 if (-not (Test-Path -LiteralPath $helperConfigPath)) {
@@ -290,7 +292,7 @@ if (-not $serverReady) {
         $arguments = @("-m", "http.server", "$Port", "--bind", "127.0.0.1")
     }
 
-    $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $RepoRoot -WindowStyle Hidden -PassThru
+    $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $coachDir -WindowStyle Hidden -PassThru
     Set-Content -LiteralPath $pidPath -Value $server.Id -Encoding ASCII
 
     $deadline = (Get-Date).AddSeconds(8)
@@ -308,7 +310,7 @@ if (-not $serverReady) {
     Write-Host "Coach server started on http://127.0.0.1:$Port (PID $($server.Id))." -ForegroundColor Green
 }
 
-$url = "http://127.0.0.1:$Port/apps/charybdis-coach/"
+$url = "http://127.0.0.1:$Port/"
 if (-not $NoBrowser -and ($helperConfig.coach_open_browser_on_start -ne $false)) {
     if (-not (Test-CoachHttp -Port $Port)) {
         throw "Coach data is not reachable at $url"
