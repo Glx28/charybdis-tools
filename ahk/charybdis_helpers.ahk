@@ -17,6 +17,33 @@ global ShortcutLogPath := RuntimeDir "\shortcut_usage.jsonl"
 global LastShortcutKeys := ""
 global LastShortcutTime := 0
 
+; ── Usage logger globals ──
+global EventBuffer := []
+global FLUSH_INTERVAL := 5000
+global MAX_LOG_SIZE := 50 * 1024 * 1024
+global LOG_RETENTION_DAYS := 7
+global LastMouseButton := ""
+global LastMouseTime := 0
+global LastMouseCount := 0
+global LastMouseModifier := ""
+global LastScrollDir := ""
+global LastScrollTime := 0
+global LastScrollTicks := 0
+global LastRepeatKey := ""
+global LastRepeatTime := 0
+global RepeatCount := 0
+global FunctionalKeyDownTime := Map()
+global ModifierDownTime := Map()
+global ModifierComboFired := false
+global LastFocusApp := ""
+global LastFocusTime := 0
+global LayerSessionStart := 0
+global LayerSessionKeys := []
+global LayerSessionLayer := ""
+global SpaceCount := 0
+global BackspaceCount := 0
+global EnterCount := 0
+
 global DebugMode := false
 global CoachVisible := false
 global CoachFullscreen := false
@@ -65,6 +92,14 @@ if HelperConfig["show_coach_on_start"] {
 }
 
 SetTimer(UpdateCoachContext, 1000)
+SetTimer(FlushEventBuffer, FLUSH_INTERVAL)
+SetTimer(FlushPendingRepeat, 2500)
+RotateLogIfNeeded()
+RegisterAllHooks()
+BufferEvent(Map("type", "startup", "keys", "logger_init", "app", "charybdis_helpers", "layer", "0"))
+LastFocusApp := ""
+try LastFocusApp := WinGetProcessName("A")
+LastFocusTime := A_TickCount
 
 LoadEverything() {
     global HelperConfig, AppEntries, LayoutRows, DebugMode
@@ -82,7 +117,8 @@ EnsureRuntime() {
 }
 
 ResolveRepoRoot() {
-    return RegExReplace(A_ScriptDir, "\\scripts\\windows$")
+    ; Script lives in <repo>\ahk\, so go up one level
+    return RegExReplace(A_ScriptDir, "\\ahk$", "")
 }
 
 BuildTrayMenu() {
@@ -167,7 +203,7 @@ RunSafe(name, target) {
 
 LoadHelperConfig() {
     global HelperConfigPath
-    cfg := Map("show_coach_on_start", true, "monitor_mode", "secondary", "opacity", 255, "compact", false, "start_fullscreen", false)
+    cfg := Map("show_coach_on_start", true, "monitor_mode", "secondary", "opacity", 255, "compact", false, "start_fullscreen", false, "debug_on_start", false)
     if !FileExist(HelperConfigPath) {
         return cfg
     }
@@ -336,12 +372,11 @@ WriteCoachState(logEvent := false) {
 }
 
 LogShortcutUsage(shortcutKeys, name := "") {
-    global ShortcutLogPath, LastShortcutKeys, LastShortcutTime, CurrentCoachLayer
+    global LastShortcutKeys, LastShortcutTime, ModifierComboFired
     try {
     if (shortcutKeys = "")
         return
-    ; Privacy: only log combos with Ctrl, Alt, or Win (not bare Shift+letter = typing)
-    ; Also log bare F1-F24 keys
+    ModifierComboFired := true
     hasCtrl := InStr(shortcutKeys, "Ctrl") || InStr(shortcutKeys, "^")
     hasAlt := InStr(shortcutKeys, "Alt") || InStr(shortcutKeys, "!")
     hasWin := InStr(shortcutKeys, "Win") || InStr(shortcutKeys, "#")
@@ -349,36 +384,577 @@ LogShortcutUsage(shortcutKeys, name := "") {
     if (!hasCtrl && !hasAlt && !hasWin && !isFKey)
         return
 
-    timestamp := FormatTime(A_NowUTC, "yyyy-MM-ddTHH:mm:ss") "Z"
     activeApp := ""
     try activeApp := WinGetProcessName("A")
     activeLayer := "0"
     try activeLayer := CoachActiveLayer()
 
-    ; Sequence tracking
-    prevField := ""
-    gapField := ""
+    evt := Map("type", "shortcut", "keys", shortcutKeys, "app", activeApp, "layer", activeLayer)
+    if name
+        evt["name"] := name
+
     now := A_TickCount
     if (LastShortcutKeys != "" && (now - LastShortcutTime) < 5000) {
-        gap := now - LastShortcutTime
-        prevField := ',"prev":' JsonStringValue(LastShortcutKeys) ',"gap_ms":' gap
+        evt["prev"] := LastShortcutKeys
+        evt["gap_ms"] := now - LastShortcutTime
     }
     LastShortcutKeys := shortcutKeys
     LastShortcutTime := now
 
-    json := "{" .
-        '"ts":' JsonStringValue(timestamp) "," .
-        '"keys":' JsonStringValue(shortcutKeys) "," .
-        '"name":' JsonStringValue(name) "," .
-        '"app":' JsonStringValue(activeApp) "," .
-        '"layer":' JsonStringValue(activeLayer) .
-        prevField .
-        "}"
-
-    try FileAppend(json "`r`n", ShortcutLogPath, "UTF-8")
-    } catch as err {
-        ; Silently ignore to not disrupt user flow
+    BufferEvent(evt)
+    } catch {
     }
+}
+
+; ── Batch write infrastructure ──
+
+BufferEvent(eventMap) {
+    global EventBuffer
+    eventMap["ts"] := FormatTime(A_NowUTC, "yyyy-MM-ddTHH:mm:ss") "Z"
+    EventBuffer.Push(eventMap)
+}
+
+FlushEventBuffer() {
+    global EventBuffer, ShortcutLogPath, RuntimeDir
+    FlushTypingCounters()
+    if !EventBuffer.Length
+        return
+    try {
+        RotateLogIfNeeded()
+        text := ""
+        for evt in EventBuffer {
+            text .= MapToJson(evt) "`r`n"
+        }
+        FileAppend(text, ShortcutLogPath, "UTF-8")
+        EventBuffer := []
+    } catch as e {
+        try FileAppend("FlushEventBuffer error: " e.Message "`n", RuntimeDir "\hook_debug.log", "UTF-8")
+    }
+}
+
+RotateLogIfNeeded() {
+    global ShortcutLogPath, MAX_LOG_SIZE, LOG_RETENTION_DAYS, RuntimeDir
+    if !FileExist(ShortcutLogPath)
+        return
+    try {
+        size := FileGetSize(ShortcutLogPath)
+        if size < MAX_LOG_SIZE
+            return
+        dateSuffix := FormatTime(A_NowUTC, "yyyyMMdd_HHmmss")
+        rotated := RuntimeDir "\shortcut_usage_" dateSuffix ".jsonl"
+        FileMove(ShortcutLogPath, rotated)
+    } catch {
+    }
+    try {
+        cutoff := DateAdd(A_NowUTC, -LOG_RETENTION_DAYS, "Days")
+        loop files RuntimeDir "\shortcut_usage_*.jsonl" {
+            if A_LoopFileTimeModified < cutoff
+                FileDelete(A_LoopFilePath)
+        }
+    } catch {
+    }
+}
+
+MapToJson(m) {
+    text := "{"
+    first := true
+    for k, v in m {
+        if !first
+            text .= ","
+        first := false
+        if v is Array {
+            text .= JsonStringValue(k) ":" JsonArrayValue(v)
+        } else if v is Integer || v is Float {
+            text .= JsonStringValue(k) ":" v
+        } else {
+            text .= JsonStringValue(k) ":" JsonStringValue(String(v))
+        }
+    }
+    return text "}"
+}
+
+; ── Generic hotkey registration ──
+
+RegisterAllHooks() {
+    errors := ""
+    registered := 0
+    ; Modifier + letter/number hooks (replace hardcoded hotkeys)
+    letters := "abcdefghijklmnopqrstuvwxyz"
+    Loop Parse, letters {
+        for prefix in ["~^", "~^+", "~!", "~!+", "~#", "~#+", "~^!", "~^!+"] {
+            try {
+                Hotkey prefix A_LoopField, LogHotkeyCallback
+                registered++
+            } catch as e {
+                errors .= prefix A_LoopField ": " e.Message "`n"
+            }
+        }
+    }
+    numbers := "0123456789"
+    Loop Parse, numbers {
+        for prefix in ["~^", "~^+", "~!", "~#"] {
+            try {
+                Hotkey prefix A_LoopField, LogHotkeyCallback
+                registered++
+            } catch as e {
+                errors .= prefix A_LoopField ": " e.Message "`n"
+            }
+        }
+    }
+    ; Modifier + punctuation/special keys
+    for key in ["/", "\", "[", "]", "``", "-", "=", ",", ".", ";", "'"] {
+        for prefix in ["~^", "~^+", "~!"] {
+            try {
+                Hotkey prefix key, LogHotkeyCallback
+                registered++
+            } catch as e {
+                errors .= prefix key ": " e.Message "`n"
+            }
+        }
+    }
+    ; Modifier + navigation/editing keys
+    for key in ["Left", "Right", "Up", "Down", "Home", "End", "PgUp", "PgDn", "Delete", "Insert", "Tab", "Enter", "Space", "Backspace"] {
+        for prefix in ["~^", "~^+", "~!", "~!+", "~#", "~#+", "~+"] {
+            try {
+                Hotkey prefix key, LogHotkeyCallback
+                registered++
+            } catch as e {
+                errors .= prefix key ": " e.Message "`n"
+            }
+        }
+    }
+    ; F1-F12 with modifiers (skip F13-F24 to avoid beacon conflicts)
+    Loop 12 {
+        fkey := "F" A_Index
+        for prefix in ["~", "~^", "~!", "~+", "~^+", "~!+"] {
+            try {
+                Hotkey prefix fkey, LogHotkeyCallback
+                registered++
+            } catch as e {
+                errors .= prefix fkey ": " e.Message "`n"
+            }
+        }
+    }
+    ; Bare functional keys (no modifier) — Space/Backspace/Enter aggregated via typing counters
+    for key in ["Escape", "Enter", "Tab", "Backspace", "Delete", "Home", "End", "PgUp", "PgDn", "Insert", "PrintScreen", "Space"] {
+        try {
+            Hotkey "~" key, LogFunctionalCallback
+            registered++
+        } catch as e {
+            errors .= "~" key ": " e.Message "`n"
+        }
+    }
+    ; Shift+functional keys (not typing)
+    for key in ["Escape", "Enter", "Tab", "Backspace", "Delete", "Home", "End", "PgUp", "PgDn", "Insert", "Space", "Left", "Right", "Up", "Down"] {
+        try {
+            Hotkey "~+" key, LogShiftFunctionalCallback
+            registered++
+        } catch as e {
+            errors .= "~+" key ": " e.Message "`n"
+        }
+    }
+    ; Bare arrow keys
+    for key in ["Up", "Down", "Left", "Right"] {
+        try {
+            Hotkey "~" key, LogFunctionalCallback
+            registered++
+        } catch as e {
+            errors .= "~" key ": " e.Message "`n"
+        }
+    }
+    ; Key-up hooks for hold duration detection on functional keys
+    for key in ["Escape", "Enter", "Tab", "Backspace", "Delete", "Home", "End", "PgUp", "PgDn", "Up", "Down", "Left", "Right"] {
+        try {
+            Hotkey "~" key " Up", FunctionalKeyUpCallback
+            registered++
+        } catch as e {
+            errors .= "~" key " Up: " e.Message "`n"
+        }
+    }
+    ; Mouse buttons
+    for key in ["LButton", "RButton", "MButton", "XButton1", "XButton2"] {
+        try {
+            Hotkey "~" key, LogMouseCallback
+            registered++
+        } catch as e {
+            errors .= "~" key ": " e.Message "`n"
+        }
+    }
+    ; Scroll
+    for key in ["WheelUp", "WheelDown", "WheelLeft", "WheelRight"] {
+        try {
+            Hotkey "~" key, LogScrollCallback
+            registered++
+        } catch as e {
+            errors .= "~" key ": " e.Message "`n"
+        }
+    }
+    ; System shortcuts
+    for key in ["~!Tab", "~#Tab", "~^+Escape", "~#;", "~#."] {
+        try {
+            Hotkey key, LogHotkeyCallback
+            registered++
+        } catch as e {
+            errors .= key ": " e.Message "`n"
+        }
+    }
+    ; Modifier up events for modifier-tap detection
+    for key in ["~Alt Up", "~Ctrl Up", "~LWin Up"] {
+        try {
+            Hotkey key, ModifierUpCallback
+            registered++
+        } catch as e {
+            errors .= key ": " e.Message "`n"
+        }
+    }
+    ; Modifier down events
+    for key in ["~Alt", "~Ctrl", "~LWin"] {
+        try {
+            Hotkey key, ModifierDownCallback
+            registered++
+        } catch as e {
+            errors .= key ": " e.Message "`n"
+        }
+    }
+    ; Log registration results
+    try FileAppend("Registered " registered " hooks`n" (errors ? "Errors:`n" errors : "No errors") "`n", RuntimeDir "\hook_debug.log", "UTF-8")
+}
+
+ParseHotkeyName(hk) {
+    name := hk
+    name := StrReplace(name, "~", "")
+    parts := []
+    i := 1
+    while i <= StrLen(name) {
+        ch := SubStr(name, i, 1)
+        if ch = "^" {
+            parts.Push("Ctrl")
+            i++
+        } else if ch = "!" {
+            parts.Push("Alt")
+            i++
+        } else if ch = "#" {
+            parts.Push("Win")
+            i++
+        } else if ch = "+" {
+            parts.Push("Shift")
+            i++
+        } else {
+            break
+        }
+    }
+    rest := SubStr(name, i)
+    if StrLen(rest) = 1
+        rest := StrUpper(rest)
+    parts.Push(rest)
+    return JoinList(parts, "+")
+}
+
+LogHotkeyCallback(hotkeyName) {
+    global ModifierComboFired
+    try {
+        ModifierComboFired := true
+        keys := ParseHotkeyName(hotkeyName)
+        layer := "0"
+        try layer := CoachActiveLayer()
+        evtType := layer != "0" ? "layer_key" : "shortcut"
+        LogEventWithRepeatAndSequence(evtType, keys, layer)
+    } catch as e {
+        try FileAppend("LogHotkeyCallback error: " hotkeyName " - " e.Message "`n", RuntimeDir "\hook_debug.log", "UTF-8")
+    }
+}
+
+LogFunctionalCallback(hotkeyName) {
+    global ModifierComboFired, FunctionalKeyDownTime, SpaceCount, BackspaceCount, EnterCount
+    try {
+        keys := ParseHotkeyName(hotkeyName)
+        layer := "0"
+        try layer := CoachActiveLayer()
+        if layer != "0" {
+            ModifierComboFired := true
+            LogEventWithRepeatAndSequence("layer_key", keys, layer)
+            return
+        }
+        ; Aggregate high-frequency typing keys — flush as batch counts
+        if keys = "Space" {
+            SpaceCount++
+            return
+        }
+        if keys = "Backspace" {
+            BackspaceCount++
+            return
+        }
+        if keys = "Enter" {
+            EnterCount++
+            return
+        }
+        FunctionalKeyDownTime[keys] := A_TickCount
+        LogEventWithRepeatAndSequence("functional", keys, layer)
+    } catch as e {
+        try FileAppend("LogFunctionalCallback error: " hotkeyName " - " e.Message "`n", RuntimeDir "\hook_debug.log", "UTF-8")
+    }
+}
+
+FlushTypingCounters() {
+    global SpaceCount, BackspaceCount, EnterCount
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    if SpaceCount > 0 {
+        BufferEvent(Map("type", "typing_counter", "keys", "Space", "count", SpaceCount, "app", activeApp, "layer", "0"))
+        SpaceCount := 0
+    }
+    if BackspaceCount > 0 {
+        BufferEvent(Map("type", "typing_counter", "keys", "Backspace", "count", BackspaceCount, "app", activeApp, "layer", "0"))
+        BackspaceCount := 0
+    }
+    if EnterCount > 0 {
+        BufferEvent(Map("type", "typing_counter", "keys", "Enter", "count", EnterCount, "app", activeApp, "layer", "0"))
+        EnterCount := 0
+    }
+}
+
+LogShiftFunctionalCallback(hotkeyName) {
+    global ModifierComboFired
+    ModifierComboFired := true
+    keys := ParseHotkeyName(hotkeyName)
+    layer := "0"
+    try layer := CoachActiveLayer()
+    evtType := layer != "0" ? "layer_key" : "shortcut"
+    LogEventWithRepeatAndSequence(evtType, keys, layer)
+}
+
+FunctionalKeyUpCallback(hotkeyName) {
+    global FunctionalKeyDownTime
+    rawName := StrReplace(hotkeyName, "~", "")
+    rawName := StrReplace(rawName, " Up", "")
+    if !FunctionalKeyDownTime.Has(rawName)
+        return
+    elapsed := A_TickCount - FunctionalKeyDownTime[rawName]
+    FunctionalKeyDownTime.Delete(rawName)
+    if elapsed >= 500 {
+        activeApp := ""
+        try activeApp := WinGetProcessName("A")
+        layer := "0"
+        try layer := CoachActiveLayer()
+        evt := Map("type", "functional", "keys", rawName, "app", activeApp, "layer", layer, "held_ms", elapsed)
+        BufferEvent(evt)
+    }
+}
+
+LogEventWithRepeatAndSequence(evtType, keys, layer) {
+    global LastRepeatKey, LastRepeatTime, RepeatCount, LastShortcutKeys, LastShortcutTime, LayerSessionKeys
+    now := A_TickCount
+
+    ; Track keys pressed during layer session
+    if layer != "0" && LayerSessionKeys is Array {
+        LayerSessionKeys.Push(keys)
+    }
+
+    ; Repeat aggregation (only for shortcuts, not bare functional keys)
+    if evtType = "shortcut" || evtType = "layer_key" {
+        if keys = LastRepeatKey && (now - LastRepeatTime) < 2000 {
+            RepeatCount++
+            LastRepeatTime := now
+            return
+        }
+        if RepeatCount > 1 {
+            FlushRepeatEvent()
+        }
+        LastRepeatKey := keys
+        LastRepeatTime := now
+        RepeatCount := 1
+    }
+
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    evt := Map("type", evtType, "keys", keys, "app", activeApp, "layer", layer)
+
+    ; Sequence tracking
+    if LastShortcutKeys != "" && (now - LastShortcutTime) < 5000 {
+        evt["prev"] := LastShortcutKeys
+        evt["gap_ms"] := now - LastShortcutTime
+    }
+    LastShortcutKeys := keys
+    LastShortcutTime := now
+
+    BufferEvent(evt)
+}
+
+FlushRepeatEvent() {
+    global LastRepeatKey, RepeatCount, LastShortcutKeys, LastShortcutTime
+    if RepeatCount <= 1 || LastRepeatKey = ""
+        return
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    layer := "0"
+    try layer := CoachActiveLayer()
+    evt := Map("type", "shortcut", "keys", LastRepeatKey, "app", activeApp, "layer", layer, "repeat_count", RepeatCount)
+    BufferEvent(evt)
+    RepeatCount := 0
+}
+
+FlushPendingRepeat() {
+    global RepeatCount
+    if RepeatCount > 1
+        FlushRepeatEvent()
+}
+
+; ── Mouse callbacks ──
+
+LogMouseCallback(hotkeyName) {
+    global LastMouseButton, LastMouseTime, LastMouseCount, LastMouseModifier, ModifierComboFired
+    ModifierComboFired := true
+    buttonMap := Map("LButton", "MB1", "RButton", "MB2", "MButton", "MB3", "XButton1", "MB4", "XButton2", "MB5")
+    rawName := StrReplace(hotkeyName, "~", "")
+    button := buttonMap.Has(rawName) ? buttonMap[rawName] : rawName
+    modifier := ""
+    if GetKeyState("Ctrl", "P")
+        modifier .= "Ctrl"
+    if GetKeyState("Shift", "P")
+        modifier .= (modifier ? "+" : "") "Shift"
+    if GetKeyState("Alt", "P")
+        modifier .= (modifier ? "+" : "") "Alt"
+    now := A_TickCount
+    if button = LastMouseButton && (now - LastMouseTime) < 500 && modifier = LastMouseModifier {
+        LastMouseCount++
+        LastMouseTime := now
+    } else {
+        FlushPendingMouse()
+        LastMouseButton := button
+        LastMouseTime := now
+        LastMouseCount := 1
+        LastMouseModifier := modifier
+    }
+    SetTimer(FlushPendingMouse, -600)
+}
+
+FlushPendingMouse() {
+    global LastMouseButton, LastMouseCount, LastMouseModifier, LayerSessionKeys
+    if LastMouseButton = ""
+        return
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    layer := "0"
+    try layer := CoachActiveLayer()
+    evt := Map("type", "mouse", "button", LastMouseButton, "app", activeApp, "layer", layer, "count", LastMouseCount)
+    if LastMouseModifier
+        evt["modifier"] := LastMouseModifier
+    if layer != "0" && LayerSessionKeys is Array
+        LayerSessionKeys.Push(LastMouseButton)
+    BufferEvent(evt)
+    LastMouseButton := ""
+    LastMouseCount := 0
+    LastMouseModifier := ""
+}
+
+; ── Scroll callbacks ──
+
+LogScrollCallback(hotkeyName) {
+    global LastScrollDir, LastScrollTime, LastScrollTicks, ModifierComboFired
+    ModifierComboFired := true
+    rawName := StrReplace(hotkeyName, "~", "")
+    dirMap := Map("WheelUp", "up", "WheelDown", "down", "WheelLeft", "left", "WheelRight", "right")
+    dir := dirMap.Has(rawName) ? dirMap[rawName] : rawName
+    now := A_TickCount
+    if dir = LastScrollDir && (now - LastScrollTime) < 300 {
+        LastScrollTicks++
+        LastScrollTime := now
+    } else {
+        FlushPendingScroll()
+        LastScrollDir := dir
+        LastScrollTime := now
+        LastScrollTicks := 1
+    }
+    SetTimer(FlushPendingScroll, -400)
+}
+
+FlushPendingScroll() {
+    global LastScrollDir, LastScrollTicks
+    if LastScrollDir = ""
+        return
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    layer := "0"
+    try layer := CoachActiveLayer()
+    modifier := ""
+    if GetKeyState("Ctrl", "P")
+        modifier := "Ctrl"
+    evt := Map("type", "scroll", "direction", LastScrollDir, "ticks", LastScrollTicks, "app", activeApp, "layer", layer)
+    if modifier
+        evt["modifier"] := modifier
+    BufferEvent(evt)
+    LastScrollDir := ""
+    LastScrollTicks := 0
+}
+
+; ── Modifier tap detection ──
+
+ModifierDownCallback(hotkeyName) {
+    global ModifierDownTime, ModifierComboFired
+    rawName := StrReplace(hotkeyName, "~", "")
+    ModifierDownTime[rawName] := A_TickCount
+    ModifierComboFired := false
+}
+
+ModifierUpCallback(hotkeyName) {
+    global ModifierDownTime, ModifierComboFired
+    rawName := StrReplace(hotkeyName, "~", "")
+    rawName := StrReplace(rawName, " Up", "")
+    if !ModifierDownTime.Has(rawName)
+        return
+    elapsed := A_TickCount - ModifierDownTime[rawName]
+    ModifierDownTime.Delete(rawName)
+    if elapsed < 500 && !ModifierComboFired {
+        activeApp := ""
+        try activeApp := WinGetProcessName("A")
+        layer := "0"
+        try layer := CoachActiveLayer()
+        evt := Map("type", "modifier_tap", "key", rawName, "app", activeApp, "layer", layer)
+        BufferEvent(evt)
+    }
+}
+
+; ── App focus tracking ──
+
+TrackAppFocus() {
+    global LastFocusApp, LastFocusTime
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    if activeApp = "" || activeApp = LastFocusApp
+        return
+    now := A_TickCount
+    if LastFocusApp != "" && LastFocusTime > 0 {
+        duration := now - LastFocusTime
+        evt := Map("type", "app_focus", "app", activeApp, "prev_app", LastFocusApp, "prev_duration_ms", duration)
+        BufferEvent(evt)
+    }
+    LastFocusApp := activeApp
+    LastFocusTime := now
+}
+
+; ── Layer session tracking ──
+
+StartLayerSession(layer) {
+    global LayerSessionStart, LayerSessionKeys, LayerSessionLayer
+    LayerSessionStart := A_TickCount
+    LayerSessionKeys := []
+    LayerSessionLayer := layer
+}
+
+EndLayerSession() {
+    global LayerSessionStart, LayerSessionKeys, LayerSessionLayer
+    if LayerSessionStart = 0 || LayerSessionLayer = ""
+        return
+    duration := A_TickCount - LayerSessionStart
+    if duration < 50
+        return
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    evt := Map("type", "layer_session", "layer", LayerSessionLayer, "duration_ms", duration, "keys_pressed", LayerSessionKeys, "app", activeApp)
+    BufferEvent(evt)
+    LayerSessionStart := 0
+    LayerSessionKeys := []
+    LayerSessionLayer := ""
 }
 
 AtomicWriteText(path, text) {
@@ -496,14 +1072,17 @@ CoachBeacon(kind, layer, direction, label := "") {
                     LastKey := Map("layer", "", "x", "", "y", "", "label", "")
                 }
                 CurrentCoachLayer := layer
+                StartLayerSession(layer)
                 TouchAction("BLE layer " layer " held")
             } else {
+                EndLayerSession()
                 RemoveLayer(HeldLayers, layer)
                 CurrentCoachLayer := CoachActiveLayer()
                 TouchAction("BLE layer " layer " released")
             }
         case "lock":
             if layer = "0" || direction = "exit" {
+                EndLayerSession()
                 exiting := LockedLayer != "" ? LockedLayer : CoachActiveLayer()
                 LockedLayer := ""
                 HeldLayers := []
@@ -521,10 +1100,12 @@ CoachBeacon(kind, layer, direction, label := "") {
                 hint := LayerKeyHint("lock", layer)
                 LastKey := hint.Count ? hint : Map("layer", "", "x", "", "y", "", "label", "")
                 CurrentCoachLayer := layer
+                StartLayerSession(layer)
                 TouchAction("BLE layer " layer " locked")
             }
         case "toggle":
             if direction = "off" || HasArrayValue(ToggledLayers, layer) {
+                EndLayerSession()
                 RemoveLayer(ToggledLayers, layer)
                 CurrentCoachLayer := CoachActiveLayer()
                 if direction = "off" {
@@ -537,6 +1118,7 @@ CoachBeacon(kind, layer, direction, label := "") {
             } else {
                 AddUniqueLayer(ToggledLayers, layer)
                 CurrentCoachLayer := layer
+                StartLayerSession(layer)
                 TouchAction("BLE layer " layer " toggled on")
             }
         case "key":
@@ -714,6 +1296,7 @@ SetCoachLayer(layer) {
 
 UpdateCoachContext() {
     global CoachContext, LastAction
+    TrackAppFocus()
     if !IsObject(CoachContext) {
         WriteCoachState(false)
         return
@@ -1240,70 +1823,4 @@ F22::SendSafe("Generic snipping tool", "#+s")
 F23::SendSafe("Generic PowerToys Run", "#!{Space}")
 F24::SendSafe("Generic refresh", "{F5}")
 
-; =========
-; Passive shortcut observer — logs direct keyboard shortcuts without intercepting them.
-; The ~ prefix means the hotkey passes through to the app unchanged.
-; This fills the logging gap: SendSafe only captures AHK-remapped keys,
-; but the user also presses Ctrl+C, Ctrl+T, etc. directly.
-; =========
-#HotIf
-~^a::LogShortcutUsage("Ctrl+A", "Select all")
-~^b::LogShortcutUsage("Ctrl+B", "Bold / Toggle sidebar")
-~^c::LogShortcutUsage("Ctrl+C", "Copy")
-~^d::LogShortcutUsage("Ctrl+D", "Select next occurrence / Bookmark")
-~^f::LogShortcutUsage("Ctrl+F", "Find")
-~^g::LogShortcutUsage("Ctrl+G", "Go to line")
-~^h::LogShortcutUsage("Ctrl+H", "Find and replace")
-~^j::LogShortcutUsage("Ctrl+J", "Toggle panel / Downloads")
-~^k::LogShortcutUsage("Ctrl+K", "Quick switcher / Insert link")
-~^l::LogShortcutUsage("Ctrl+L", "Address bar / Select line")
-~^n::LogShortcutUsage("Ctrl+N", "New")
-~^o::LogShortcutUsage("Ctrl+O", "Open")
-~^p::LogShortcutUsage("Ctrl+P", "Quick open / Print")
-~^r::LogShortcutUsage("Ctrl+R", "Refresh / Reply")
-~^s::LogShortcutUsage("Ctrl+S", "Save")
-~^t::LogShortcutUsage("Ctrl+T", "New tab")
-~^v::LogShortcutUsage("Ctrl+V", "Paste")
-~^w::LogShortcutUsage("Ctrl+W", "Close tab/editor")
-~^x::LogShortcutUsage("Ctrl+X", "Cut")
-~^y::LogShortcutUsage("Ctrl+Y", "Redo")
-~^z::LogShortcutUsage("Ctrl+Z", "Undo")
-~^+c::LogShortcutUsage("Ctrl+Shift+C", "Inspect element / Copy path")
-~^+d::LogShortcutUsage("Ctrl+Shift+D", "Debug panel")
-~^+e::LogShortcutUsage("Ctrl+Shift+E", "Explorer panel / Check in")
-~^+f::LogShortcutUsage("Ctrl+Shift+F", "Search across files / Format")
-~^+g::LogShortcutUsage("Ctrl+Shift+G", "Source control")
-~^+k::LogShortcutUsage("Ctrl+Shift+K", "Delete line / Raise hand")
-~^+l::LogShortcutUsage("Ctrl+Shift+L", "Select all occurrences / Autofill")
-~^+m::LogShortcutUsage("Ctrl+Shift+M", "Problems panel / Toggle mute")
-~^+n::LogShortcutUsage("Ctrl+Shift+N", "New window (incognito)")
-~^+o::LogShortcutUsage("Ctrl+Shift+O", "Go to symbol / Favorites")
-~^+p::LogShortcutUsage("Ctrl+Shift+P", "Command palette")
-~^+s::LogShortcutUsage("Ctrl+Shift+S", "Save as / Save all")
-~^+t::LogShortcutUsage("Ctrl+Shift+T", "Reopen closed tab / New terminal")
-~^+v::LogShortcutUsage("Ctrl+Shift+V", "Paste without formatting")
-~^+z::LogShortcutUsage("Ctrl+Shift+Z", "Redo")
-~^Tab::LogShortcutUsage("Ctrl+Tab", "Next tab")
-~^+Tab::LogShortcutUsage("Ctrl+Shift+Tab", "Previous tab")
-~^Enter::LogShortcutUsage("Ctrl+Enter", "Send / Insert line below")
-~!Left::LogShortcutUsage("Alt+Left", "Back / Navigate back")
-~!Right::LogShortcutUsage("Alt+Right", "Forward / Navigate forward")
-~!Up::LogShortcutUsage("Alt+Up", "Move line up / Previous channel")
-~!Down::LogShortcutUsage("Alt+Down", "Move line down / Next channel")
-~!Enter::LogShortcutUsage("Alt+Enter", "Properties / Metadata")
-~!F4::LogShortcutUsage("Alt+F4", "Close window")
-~#Left::LogShortcutUsage("Win+Left", "Snap window left")
-~#Right::LogShortcutUsage("Win+Right", "Snap window right")
-~#Up::LogShortcutUsage("Win+Up", "Maximize")
-~#Down::LogShortcutUsage("Win+Down", "Minimize / Restore")
-~#d::LogShortcutUsage("Win+D", "Show desktop")
-~#e::LogShortcutUsage("Win+E", "File Explorer")
-~#s::LogShortcutUsage("Win+S", "Search")
-~#l::LogShortcutUsage("Win+L", "Lock")
-~#v::LogShortcutUsage("Win+V", "Clipboard history")
-~#1::LogShortcutUsage("Win+1", "Taskbar app 1")
-~#2::LogShortcutUsage("Win+2", "Taskbar app 2")
-~#3::LogShortcutUsage("Win+3", "Taskbar app 3")
-~#4::LogShortcutUsage("Win+4", "Taskbar app 4")
-~#5::LogShortcutUsage("Win+5", "Taskbar app 5")
-~^/::LogShortcutUsage("Ctrl+/", "Toggle comment")
+; Passive shortcut observer replaced by RegisterAllHooks() dynamic registration.
