@@ -159,7 +159,7 @@ class CoachState:
         tmp = STATE_FILE.with_suffix(STATE_FILE.suffix + ".tmp")
         for attempt in range(8):
             try:
-                tmp.write_text(text, encoding="utf-8-sig")
+                tmp.write_text(text, encoding="utf-8")
                 os.replace(tmp, STATE_FILE)
                 break
             except OSError:
@@ -175,32 +175,66 @@ class CoachState:
 def register_beacons(state: CoachState) -> None:
     import keyboard
 
-    def bind(hotkey: str, fn) -> None:
-        def wrapped() -> None:
+    MOD_SCANCODES: dict[str, int] = {29: "ctrl", 42: "shift", 56: "alt"}
+    WIN_SCANCODES: set[int] = set()
+    for sc in keyboard.key_to_scan_codes("left windows", False):
+        WIN_SCANCODES.add(sc)
+    for sc in keyboard.key_to_scan_codes("right windows", False):
+        WIN_SCANCODES.add(sc)
+
+    # F13=100 .. F24=111
+    CTRL_ALT_SHIFT: dict[int, object] = {
+        100: lambda: state.on_hold("1", "down"),
+        101: lambda: state.on_hold("1", "up"),
+        102: lambda: state.on_hold("2", "down"),
+        103: lambda: state.on_hold("2", "up"),
+        104: lambda: state.on_hold("3", "down"),
+        105: lambda: state.on_hold("3", "up"),
+        106: lambda: state.on_hold("4", "down"),
+        107: lambda: state.on_hold("4", "up"),
+        108: lambda: state.on_lock("2", "enter"),
+        109: lambda: state.on_lock("0", "exit"),
+        110: lambda: state.on_lock("7", "enter"),
+        111: lambda: state.on_lock("0", "exit"),
+    }
+    CTRL_ALT_WIN: dict[int, object] = {
+        100: lambda: state.on_toggle("8", "toggle"),
+        101: lambda: state.on_toggle("8", "off"),
+        102: lambda: state.on_lock("0", "exit"),
+        103: lambda: state.on_hold("8", "down"),
+        104: lambda: state.on_hold("8", "up"),
+        105: lambda: state.on_toggle("6", "toggle"),
+        106: lambda: state.on_toggle("6", "off"),
+    }
+
+    mods: dict[str, bool] = {"ctrl": False, "shift": False, "alt": False, "win": False}
+
+    def on_event(event: keyboard.KeyboardEvent) -> None:
+        sc = event.scan_code
+        down = event.event_type == keyboard.KEY_DOWN
+
+        mod = MOD_SCANCODES.get(sc)
+        if mod:
+            mods[mod] = down
+            return
+        if sc in WIN_SCANCODES:
+            mods["win"] = down
+            return
+
+        if not down or sc < 100 or sc > 111:
+            return
+
+        fn = None
+        if mods["ctrl"] and mods["alt"] and mods["shift"] and not mods["win"]:
+            fn = CTRL_ALT_SHIFT.get(sc)
+        elif mods["ctrl"] and mods["alt"] and mods["win"] and not mods["shift"]:
+            fn = CTRL_ALT_WIN.get(sc)
+
+        if fn:
             fn()
             state.write(True)
 
-        keyboard.add_hotkey(hotkey, wrapped, suppress=True)
-
-    bind("ctrl+alt+shift+f13", lambda: state.on_hold("1", "down"))
-    bind("ctrl+alt+shift+f14", lambda: state.on_hold("1", "up"))
-    bind("ctrl+alt+shift+f15", lambda: state.on_hold("2", "down"))
-    bind("ctrl+alt+shift+f16", lambda: state.on_hold("2", "up"))
-    bind("ctrl+alt+shift+f17", lambda: state.on_hold("3", "down"))
-    bind("ctrl+alt+shift+f18", lambda: state.on_hold("3", "up"))
-    bind("ctrl+alt+shift+f19", lambda: state.on_hold("4", "down"))
-    bind("ctrl+alt+shift+f20", lambda: state.on_hold("4", "up"))
-    bind("ctrl+alt+shift+f21", lambda: state.on_lock("2", "enter"))
-    bind("ctrl+alt+shift+f22", lambda: state.on_lock("0", "exit"))
-    bind("ctrl+alt+shift+f23", lambda: state.on_lock("7", "enter"))
-    bind("ctrl+alt+shift+f24", lambda: state.on_lock("0", "exit"))
-    bind("ctrl+alt+windows+f13", lambda: state.on_toggle("8", "toggle"))
-    bind("ctrl+alt+windows+f14", lambda: state.on_toggle("8", "off"))
-    bind("ctrl+alt+windows+f15", lambda: state.on_lock("0", "exit"))
-    bind("ctrl+alt+windows+f16", lambda: state.on_hold("8", "down"))
-    bind("ctrl+alt+windows+f17", lambda: state.on_hold("8", "up"))
-    bind("ctrl+alt+windows+f18", lambda: state.on_toggle("6", "toggle"))
-    bind("ctrl+alt+windows+f19", lambda: state.on_toggle("6", "off"))
+    keyboard.hook(on_event)
 
 
 def main() -> int:

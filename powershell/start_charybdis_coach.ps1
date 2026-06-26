@@ -72,7 +72,7 @@ function Test-CoachHttp {
         [int]$TimeoutSec = 3
     )
     try {
-        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/layout/keybindings_explained.csv" -UseBasicParsing -TimeoutSec $TimeoutSec
+        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/charybdis-coach/layout/keybindings_explained.csv" -UseBasicParsing -TimeoutSec $TimeoutSec
         return $response.StatusCode -eq 200
     } catch {
         return $false
@@ -120,7 +120,7 @@ function Stop-CoachBeaconListener {
 }
 
 # Layer beacon listener — Python first (stable), AHK beacon-only as fallback.
-$beaconScript = Join-Path $RepoRoot "scripts\windows\coach_beacon_listener.py"
+$beaconScript = Join-Path $RepoRoot "python\coach_beacon_listener.py"
 $beaconPidPath = Join-Path $runtimeDir "coach_beacon_listener.pid"
 $beaconRunning = $false
 $ahkRunning = $false
@@ -292,7 +292,7 @@ if (-not $serverReady) {
         $arguments = @("-m", "http.server", "$Port", "--bind", "127.0.0.1")
     }
 
-    $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $coachDir -WindowStyle Hidden -PassThru
+    $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $parentDir -WindowStyle Hidden -PassThru
     Set-Content -LiteralPath $pidPath -Value $server.Id -Encoding ASCII
 
     $deadline = (Get-Date).AddSeconds(8)
@@ -310,7 +310,8 @@ if (-not $serverReady) {
     Write-Host "Coach server started on http://127.0.0.1:$Port (PID $($server.Id))." -ForegroundColor Green
 }
 
-$url = "http://127.0.0.1:$Port/"
+$coachDirName = Split-Path -Leaf $coachDir
+$url = "http://127.0.0.1:$Port/$coachDirName/"
 if (-not $NoBrowser -and ($helperConfig.coach_open_browser_on_start -ne $false)) {
     if (-not (Test-CoachHttp -Port $Port)) {
         throw "Coach data is not reachable at $url"
