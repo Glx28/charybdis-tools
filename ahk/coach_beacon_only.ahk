@@ -2,12 +2,13 @@
 #SingleInstance Force
 ; Minimal layer-beacon listener for the web coach. No GUI, no launcher — stays resident.
 
-global RepoRoot := RegExReplace(A_ScriptDir, "\\[^\\]+$")
-global RuntimeDir := RepoRoot "\runtime"
+global ToolsRoot := RegExReplace(A_ScriptDir, "\\[^\\]+$")
+global ZmkConfigRoot := ToolsRoot "\..\charybdis-zmk-config"
+global RuntimeDir := ToolsRoot "\runtime"
 global StatePath := RuntimeDir "\charybdis_state.json"
 global EventLogPath := RuntimeDir "\charybdis_events.jsonl"
 global BeaconLogPath := RuntimeDir "\charybdis_beacon.log"
-global HelperConfigPath := RepoRoot "\config\charybdis_helper.json"
+global HelperConfigPath := ZmkConfigRoot "\config\charybdis_helper.json"
 
 global CurrentCoachLayer := "0"
 global LastAction := "Beacon listener ready"
@@ -16,6 +17,7 @@ global HeldLayers := []
 global LockedLayer := ""
 global ToggledLayers := []
 global Transport := "usb"
+global LastUserAppLabel := ""
 
 if !DirExist(RuntimeDir) {
     DirCreate(RuntimeDir)
@@ -47,11 +49,36 @@ LoadTransport() {
 }
 
 ActiveAppLabel() {
+    global LastUserAppLabel
     try {
-        return WinGetProcessName("A") " - " WinGetTitle("A")
+        title := WinGetTitle("A")
+        exe := WinGetProcessName("A")
+        if IsIgnoredActiveApp(exe, title) {
+            return LastUserAppLabel
+        }
+        LastUserAppLabel := exe " - " title
+        return LastUserAppLabel
     } catch {
-        return ""
+        return LastUserAppLabel
     }
+}
+
+IsIgnoredActiveApp(exe, title) {
+    exeLower := StrLower(String(exe))
+    titleLower := StrLower(String(title))
+    if exeLower = "" {
+        return true
+    }
+    if InStr(exeLower, "autohotkey") || InStr(titleLower, "charybdis launcher") || InStr(titleLower, "charybdis helpers") {
+        return true
+    }
+    if InStr(titleLower, "charybdis beacon") || InStr(titleLower, "beacon listener") {
+        return true
+    }
+    if InStr(titleLower, "charybdis coach") {
+        return true
+    }
+    return false
 }
 
 JsonEscape(value) {
@@ -180,6 +207,7 @@ WriteCoachState(logEvent := false) {
         CurrentCoachLayer := activeLayer
     }
     timestamp := FormatTime(A_NowUTC, "yyyy-MM-ddTHH:mm:ss") "Z"
+    pid := ProcessExist()
     json := "{" .
         '"activeLayer":' JsonStringValue(activeLayer) "," .
         '"displayedLayer":' JsonStringValue(CurrentCoachLayer) "," .
@@ -193,7 +221,7 @@ WriteCoachState(logEvent := false) {
         '"transport":' JsonStringValue(Transport) "," .
         '"beaconAlive":true,' .
         '"beaconSource":"ahk-beacon",' .
-        '"beaconPid":' A_PID "," .
+        '"beaconPid":' pid "," .
         '"beaconHeartbeatAt":' JsonStringValue(timestamp) "," .
         '"updatedAt":' JsonStringValue(timestamp) .
         "}"

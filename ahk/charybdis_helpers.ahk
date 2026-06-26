@@ -6,11 +6,12 @@
 ; This helper therefore infers the active context from known hotkeys, active
 ; windows, and F13-F24 helper keys.
 
-global RepoRoot := ResolveRepoRoot()
-global LayoutCsvPath := RepoRoot "\layout\keybindings_explained.csv"
-global AppsConfigPath := RepoRoot "\config\charybdis_apps.json"
-global HelperConfigPath := RepoRoot "\config\charybdis_helper.json"
-global RuntimeDir := RepoRoot "\runtime"
+global ToolsRoot := ResolveToolsRoot()
+global ZmkConfigRoot := ResolveToolsRoot() "\..\charybdis-zmk-config"
+global LayoutCsvPath := ZmkConfigRoot "\layout\keybindings_explained.csv"
+global AppsConfigPath := ZmkConfigRoot "\config\charybdis_apps.json"
+global HelperConfigPath := ZmkConfigRoot "\config\charybdis_helper.json"
+global RuntimeDir := ToolsRoot "\runtime"
 global StatePath := RuntimeDir "\charybdis_state.json"
 global EventLogPath := RuntimeDir "\charybdis_events.jsonl"
 global ShortcutLogPath := RuntimeDir "\shortcut_usage.jsonl"
@@ -37,6 +38,7 @@ global ModifierDownTime := Map()
 global ModifierComboFired := false
 global LastFocusApp := ""
 global LastFocusTime := 0
+global LastUserAppLabel := ""
 global LayerSessionStart := 0
 global LayerSessionKeys := []
 global LayerSessionLayer := ""
@@ -98,7 +100,7 @@ RotateLogIfNeeded()
 RegisterAllHooks()
 BufferEvent(Map("type", "startup", "keys", "logger_init", "app", "charybdis_helpers", "layer", "0"))
 LastFocusApp := ""
-try LastFocusApp := WinGetProcessName("A")
+try LastFocusApp := ActiveAppProcessName()
 LastFocusTime := A_TickCount
 
 LoadEverything() {
@@ -116,8 +118,8 @@ EnsureRuntime() {
     }
 }
 
-ResolveRepoRoot() {
-    ; Script lives in <repo>\ahk\, so go up one level
+ResolveToolsRoot() {
+    ; Script lives in charybdis-tools\ahk\, so go up one level
     return RegExReplace(A_ScriptDir, "\\ahk$", "")
 }
 
@@ -919,7 +921,7 @@ ModifierUpCallback(hotkeyName) {
 TrackAppFocus() {
     global LastFocusApp, LastFocusTime
     activeApp := ""
-    try activeApp := WinGetProcessName("A")
+    try activeApp := ActiveAppProcessName()
     if activeApp = "" || activeApp = LastFocusApp
         return
     now := A_TickCount
@@ -1430,13 +1432,47 @@ PadCell(text, width) {
 }
 
 ActiveAppLabel() {
+    global LastUserAppLabel
     try {
         title := WinGetTitle("A")
         exe := WinGetProcessName("A")
-        return exe " - " SubStr(title, 1, 70)
+        if IsIgnoredActiveApp(exe, title) {
+            return LastUserAppLabel != "" ? LastUserAppLabel : "Unknown"
+        }
+        LastUserAppLabel := exe " - " SubStr(title, 1, 70)
+        return LastUserAppLabel
     } catch {
-        return "Unknown"
+        return LastUserAppLabel != "" ? LastUserAppLabel : "Unknown"
     }
+}
+
+ActiveAppProcessName() {
+    try {
+        title := WinGetTitle("A")
+        exe := WinGetProcessName("A")
+        return IsIgnoredActiveApp(exe, title) ? "" : exe
+    } catch {
+        return ""
+    }
+}
+
+IsIgnoredActiveApp(exe, title) {
+    exeLower := StrLower(String(exe))
+    titleLower := StrLower(String(title))
+    if exeLower = "" {
+        return true
+    }
+    if InStr(exeLower, "autohotkey") || InStr(titleLower, "charybdis launcher") || InStr(titleLower, "charybdis helpers") {
+        return true
+    }
+    if InStr(titleLower, "charybdis beacon") || InStr(titleLower, "beacon listener") {
+        return true
+    }
+    ; The coach browser is an observer, not the target app being practiced.
+    if InStr(titleLower, "charybdis coach") {
+        return true
+    }
+    return false
 }
 
 CreateLauncherGui() {

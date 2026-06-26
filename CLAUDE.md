@@ -32,6 +32,12 @@ Windows pointer speed must be 1:1 (`MouseSensitivity=10`), acceleration OFF. Use
 
 The AHK helper logs Ctrl/Alt/Win combos + F-keys to `runtime/shortcut_usage.jsonl` (never bare letters). Sequence tracking records previous shortcut + gap within 5s. The optimizer's `aggregate_usage.js` reads this file.
 
+## Optimizer Rules — MANDATORY
+
+1. **NEVER freeze or protect layer access key positions.** Layer keys (coach_*, Toggle Layer, Momentary Layer) must be movable by the optimizer. The algorithm must learn to place them correctly through fitness scoring, not through freezing.
+2. **Fix the algorithm, not the data.** When the optimizer produces bad output (wrong layer targets, missing keys, broken access), fix the fitness function, validation, or export code — NEVER manually patch the CSV or apply script.
+3. **The verify JSON from ZMK Studio is the source of truth** for what the keyboard actually has. When updating the coach or CSV, diff against the verify JSON, not assumptions.
+
 ## Sibling Repos
 
 All repos live in the same parent directory.
