@@ -119,7 +119,7 @@ function Stop-CoachBeaconListener {
     Remove-Item -LiteralPath $PidPath -Force -ErrorAction SilentlyContinue
 }
 
-# Layer beacon listener — Python first (stable), AHK beacon-only as fallback.
+# Layer beacon listener - Python first (stable), AHK beacon-only as fallback.
 $beaconScript = Join-Path $RepoRoot "python\coach_beacon_listener.py"
 $beaconPidPath = Join-Path $runtimeDir "coach_beacon_listener.pid"
 $beaconRunning = $false
@@ -191,7 +191,7 @@ function Start-PythonBeaconListener {
     }
 
     if (Get-Process -Id $proc.Id -ErrorAction SilentlyContinue) {
-        # Process alive but heartbeat missing — still usable; warn once.
+        # Process alive but heartbeat missing - still usable; warn once.
         Write-Warning "Beacon listener PID $($proc.Id) is running but heartbeat not confirmed yet."
         return $proc
     }
@@ -335,10 +335,10 @@ if ($beaconRunning -and -not $ahkRunning) {
 } elseif ($ahkRunning) {
     Write-Host "Layer sync: AHK beacon listener (tray icon)" -ForegroundColor Yellow
 } else {
-    Write-Warning "No beacon listener running — layer thumb keys will not sync live."
+    Write-Warning "No beacon listener running - layer thumb keys will not sync live."
 }
 Write-Host "Beacon log: $beaconLogPath" -ForegroundColor DarkGray
 Write-Host "Event log:  $(Join-Path $runtimeDir 'charybdis_events.jsonl')" -ForegroundColor DarkGray
-Write-Host "Hold L0 x3 y4 (Nav) to test — coach should highlight that key and show Layer 1 live." -ForegroundColor Yellow
+Write-Host "Hold L0 x3 y4 (Nav) to test - coach should highlight that key and show Layer 1 live." -ForegroundColor Yellow
 Write-Host "10s debug capture: scripts\windows\capture_layer_beacons.ps1 -Seconds 10" -ForegroundColor DarkGray
 Write-Host "Speed is TOGGLE (tap on/off): hold Window, tap L3 x11 y2 Speed, release thumb for trackball. Or mouse-lock then L2 x11 y3 Speed." -ForegroundColor DarkGray
