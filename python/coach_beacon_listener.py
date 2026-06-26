@@ -15,10 +15,10 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-STATE_FILE = REPO_ROOT / "runtime" / "charybdis_state.json"
-EVENT_LOG = REPO_ROOT / "runtime" / "charybdis_events.jsonl"
-BEACON_LOG = REPO_ROOT / "runtime" / "charybdis_beacon.log"
+TOOLS_ROOT = Path(__file__).resolve().parent.parent
+STATE_FILE = TOOLS_ROOT / "runtime" / "charybdis_state.json"
+EVENT_LOG = TOOLS_ROOT / "runtime" / "charybdis_events.jsonl"
+BEACON_LOG = TOOLS_ROOT / "runtime" / "charybdis_beacon.log"
 
 # Maps beacon events to the physical key that triggers them (for coach highlight).
 LAYER_KEY_HINTS: dict[tuple[str, str], dict[str, str]] = {

@@ -2,7 +2,7 @@
 #SingleInstance Force
 ; Minimal layer-beacon listener for the web coach. No GUI, no launcher — stays resident.
 
-global RepoRoot := RegExReplace(A_ScriptDir, "\\scripts\\windows$")
+global RepoRoot := RegExReplace(A_ScriptDir, "\\[^\\]+$")
 global RuntimeDir := RepoRoot "\runtime"
 global StatePath := RuntimeDir "\charybdis_state.json"
 global EventLogPath := RuntimeDir "\charybdis_events.jsonl"
