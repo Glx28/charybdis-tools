@@ -4,3 +4,5 @@ runtime/charybdis_events.jsonl
 runtime/charybdis_beacon.log
 runtime/coach_beacon_stderr.log
 trackball_benchmarks/results/
+AGENTS.md
+.claude/
