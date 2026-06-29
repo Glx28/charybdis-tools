@@ -1,15 +1,27 @@
 <#
-Start the USB-first Charybdis web coach with live layer monitoring.
+.SYNOPSIS
+    Start the Charybdis web coach with live layer monitoring.
 
-Run from the repo root:
-  powershell -ExecutionPolicy Bypass -File .\scripts\windows\start_charybdis_coach.ps1
+.DESCRIPTION
+    Starts a local HTTP server serving the coach web UI, and optionally
+    starts a layer beacon listener. On a fresh machine, the coach UI
+    works immediately; layer beacons require the charybdis-zmk-config
+    sibling repo for full config.
 
-This script:
-- Starts the USB state monitor (reads keyboard state over serial).
-- Starts a local static web server on 127.0.0.1.
-- Opens the modern coach app with live layer switching.
+.PARAMETER RepoRoot
+    Path to the charybdis-tools repo. Defaults to the script's parent directory.
 
-Note: Bluetooth beacon version is WIP. USB is the primary implementation.
+.PARAMETER Port
+    HTTP server port. Defaults to 8765 (or reads from charybdis_helper.json if present).
+
+.PARAMETER NoBrowser
+    Skip opening the browser.
+
+.EXAMPLE
+    powershell -ExecutionPolicy Bypass -File .\powershell\start_charybdis_coach.ps1
+
+.EXAMPLE
+    .\powershell\start_charybdis_coach.ps1 -Port 8080 -NoBrowser
 #>
 
 [CmdletBinding()]
@@ -34,21 +46,62 @@ $pidPath = Join-Path $runtimeDir "charybdis_coach_server.pid"
 $ahkScript = Join-Path $RepoRoot "ahk\coach_beacon_only.ahk"
 $ahkPidPath = Join-Path $runtimeDir "coach_beacon_only.pid"
 
-if (-not (Test-Path -LiteralPath $helperConfigPath)) {
-    throw "Missing helper config: $helperConfigPath"
-}
-if (-not (Test-Path -LiteralPath $coachIndexPath)) {
-    throw "Missing coach app: $coachIndexPath"
-}
 if (-not (Test-Path -LiteralPath $runtimeDir)) {
     New-Item -ItemType Directory -Path $runtimeDir | Out-Null
 }
 
-$helperConfig = Get-Content -Raw -Encoding UTF8 -LiteralPath $helperConfigPath | ConvertFrom-Json
-if ($Port -le 0) {
-    $Port = if ($helperConfig.coach_server_port) { [int]$helperConfig.coach_server_port } else { 8765 }
+# ── Config: optional, with graceful defaults ──
+$helperConfig = @{
+    coach_server_port = 8765
+    coach_open_browser_on_start = $true
+    coach_beacons_enabled = $true
 }
 
+if (Test-Path -LiteralPath $helperConfigPath) {
+    try {
+        $json = Get-Content -Raw -Encoding UTF8 -LiteralPath $helperConfigPath | ConvertFrom-Json
+        if ($json.coach_server_port) { $helperConfig.coach_server_port = [int]$json.coach_server_port }
+        if ($null -ne $json.coach_open_browser_on_start) { $helperConfig.coach_open_browser_on_start = [bool]$json.coach_open_browser_on_start }
+        if ($null -ne $json.coach_beacons_enabled) { $helperConfig.coach_beacons_enabled = [bool]$json.coach_beacons_enabled }
+    } catch {
+        Write-Warning "Could not parse $helperConfigPath — using defaults."
+    }
+} else {
+    Write-Warning "Missing sibling repo: charybdis-zmk-config"
+    Write-Warning "  The coach UI will still work, but custom config (port, opacity, etc.) is not loaded."
+    Write-Warning "  To get full config, clone: https://github.com/Glx28/zmk-config-charybdis-beacons"
+}
+
+if ($Port -le 0) {
+    $Port = $helperConfig.coach_server_port
+}
+
+# ── Coach app: required, but with helpful error if missing ──
+if (-not (Test-Path -LiteralPath $coachIndexPath)) {
+    Write-Error @"
+
+MISSING COACH APP
+=================
+The coach web UI was not found at:
+  $coachIndexPath
+
+This repo (charybdis-tools) needs its sibling repo charybdis-coach
+in the same parent directory:
+
+  C:\Users\<user>\
+  ├── charybdis-tools\       <-- you are here
+  └── charybdis-coach\      <-- missing
+
+Fix: run this in the parent directory:
+  cd "$parentDir"
+  git clone https://github.com/Glx28/charybdis-coach.git
+
+Then re-run this script.
+"@
+    exit 1
+}
+
+# ── Helper functions ──
 function Test-LocalPort {
     param([int]$Port)
     try {
@@ -67,10 +120,7 @@ function Test-LocalPort {
 }
 
 function Test-CoachHttp {
-    param(
-        [int]$Port,
-        [int]$TimeoutSec = 3
-    )
+    param([int]$Port, [int]$TimeoutSec = 3)
     try {
         $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/charybdis-coach/index.html" -UseBasicParsing -TimeoutSec $TimeoutSec
         return $response.StatusCode -eq 200
@@ -80,10 +130,7 @@ function Test-CoachHttp {
 }
 
 function Stop-CoachServer {
-    param(
-        [string]$PidPath,
-        [int]$Port
-    )
+    param([string]$PidPath, [int]$Port)
     if (Test-Path -LiteralPath $PidPath) {
         $procId = Get-Content -LiteralPath $PidPath -ErrorAction SilentlyContinue
         if ($procId) {
@@ -100,31 +147,18 @@ function Stop-CoachServer {
 function Find-Python {
     foreach ($name in @("python", "python3", "py")) {
         $cmd = Get-Command $name -ErrorAction SilentlyContinue
-        if ($cmd) {
-            return $cmd.Source
-        }
+        if ($cmd) { return $cmd.Source }
     }
     return $null
 }
 
 function Stop-CoachBeaconListener {
     param([string]$PidPath)
-    if (-not (Test-Path -LiteralPath $PidPath)) {
-        return
-    }
+    if (-not (Test-Path -LiteralPath $PidPath)) { return }
     $procId = Get-Content -LiteralPath $PidPath -ErrorAction SilentlyContinue
-    if ($procId) {
-        Stop-Process -Id $procId -Force -ErrorAction SilentlyContinue
-    }
+    if ($procId) { Stop-Process -Id $procId -Force -ErrorAction SilentlyContinue }
     Remove-Item -LiteralPath $PidPath -Force -ErrorAction SilentlyContinue
 }
-
-# Layer beacon listener - Python first (stable), AHK beacon-only as fallback.
-$beaconScript = Join-Path $RepoRoot "python\coach_beacon_listener.py"
-$beaconPidPath = Join-Path $runtimeDir "coach_beacon_listener.pid"
-$beaconRunning = $false
-$ahkRunning = $false
-$python = Find-Python
 
 function Get-BeaconListenerProcess {
     Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
@@ -138,64 +172,41 @@ function Stop-AllBeaconListeners {
 }
 
 function Test-BeaconHeartbeat {
-    param(
-        [string]$StateFile,
-        [datetime]$NotBeforeUtc
-    )
+    param([string]$StateFile, [datetime]$NotBeforeUtc)
     if (-not (Test-Path -LiteralPath $StateFile)) { return $false }
     try {
         $state = Get-Content -Raw -LiteralPath $StateFile | ConvertFrom-Json
         if (-not $state.updatedAt) { return $false }
         $updated = [datetime]::Parse($state.updatedAt).ToUniversalTime()
         return $updated -ge $NotBeforeUtc
-    } catch {
-        return $false
-    }
+    } catch { return $false }
 }
 
 function Start-PythonBeaconListener {
-    param(
-        [string]$PythonExe,
-        [string]$ScriptPath,
-        [string]$PidPath,
-        [string]$WorkingDir
-    )
+    param([string]$PythonExe, [string]$ScriptPath, [string]$PidPath, [string]$WorkingDir)
     $stderrLog = Join-Path $WorkingDir "runtime\coach_beacon_stderr.log"
     try {
         & $PythonExe -m pip install --quiet keyboard 2>&1 | Out-Null
     } catch {
-        Write-Warning "Could not install keyboard package. Beacon listener may fail."
+        Write-Warning "Could not install 'keyboard' package. Beacon listener may fail."
+        Write-Warning "  Fix: run 'python -m pip install keyboard' in an elevated PowerShell."
     }
-
     Stop-AllBeaconListeners
     $startedAtUtc = (Get-Date).ToUniversalTime()
     $scriptArg = (Resolve-Path -LiteralPath $ScriptPath).Path
-    # Detached process; stderr captured for crash diagnosis.
-    $proc = Start-Process `
-        -FilePath $PythonExe `
-        -ArgumentList @($scriptArg) `
-        -WorkingDirectory $WorkingDir `
-        -WindowStyle Hidden `
-        -RedirectStandardError $stderrLog `
-        -PassThru
+    $proc = Start-Process -FilePath $PythonExe -ArgumentList @($scriptArg) -WorkingDirectory $WorkingDir -WindowStyle Hidden -RedirectStandardError $stderrLog -PassThru
     Set-Content -LiteralPath $PidPath -Value $proc.Id -Encoding ASCII
-
     $deadline = (Get-Date).AddSeconds(8)
     while ((Get-Date) -lt $deadline) {
         Start-Sleep -Milliseconds 500
         $alive = Get-Process -Id $proc.Id -ErrorAction SilentlyContinue
         if (-not $alive) { break }
-        if (Test-BeaconHeartbeat -StateFile (Join-Path $WorkingDir "runtime\charybdis_state.json") -NotBeforeUtc $startedAtUtc) {
-            return $proc
-        }
+        if (Test-BeaconHeartbeat -StateFile (Join-Path $WorkingDir "runtime\charybdis_state.json") -NotBeforeUtc $startedAtUtc) { return $proc }
     }
-
     if (Get-Process -Id $proc.Id -ErrorAction SilentlyContinue) {
-        # Process alive but heartbeat missing - still usable; warn once.
         Write-Warning "Beacon listener PID $($proc.Id) is running but heartbeat not confirmed yet."
         return $proc
     }
-
     if (Test-Path -LiteralPath $stderrLog) {
         Write-Warning "Beacon listener exited. See $stderrLog"
         Get-Content -LiteralPath $stderrLog -Tail 8 -ErrorAction SilentlyContinue | ForEach-Object { Write-Warning $_ }
@@ -205,11 +216,7 @@ function Start-PythonBeaconListener {
 }
 
 function Start-AhkBeaconListener {
-    param(
-        [string]$ScriptPath,
-        [string]$PidPath,
-        [string]$WorkingDir
-    )
+    param([string]$ScriptPath, [string]$PidPath, [string]$WorkingDir)
     $ahkCmd = Get-Command "AutoHotkey64.exe" -ErrorAction SilentlyContinue
     $ahkFromPath = if ($ahkCmd) { $ahkCmd.Source } else { $null }
     if (-not $ahkFromPath) {
@@ -231,28 +238,30 @@ function Start-AhkBeaconListener {
         "${env:ProgramFiles}\AutoHotkey\UX\AutoHotkeyUX.exe"
     ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
     $ahkExe = $ahkCandidates | Select-Object -First 1
-    if (-not $ahkExe) {
-        return $null
-    }
+    if (-not $ahkExe) { return $null }
     $proc = Start-Process -FilePath $ahkExe -ArgumentList @("`"$ScriptPath`"") -WorkingDirectory $WorkingDir -WindowStyle Minimized -PassThru
     Set-Content -LiteralPath $PidPath -Value $proc.Id -Encoding ASCII
     Start-Sleep -Milliseconds 900
-    if (Get-Process -Id $proc.Id -ErrorAction SilentlyContinue) {
-        return $proc
-    }
+    if (Get-Process -Id $proc.Id -ErrorAction SilentlyContinue) { return $proc }
     Remove-Item -LiteralPath $PidPath -Force -ErrorAction SilentlyContinue
     return $null
 }
 
+# ── Clean up old listeners ──
 Stop-CoachBeaconListener -PidPath $beaconPidPath
 Stop-AllBeaconListeners
 if (Test-Path $ahkPidPath) {
     $oldAhkPid = Get-Content $ahkPidPath -ErrorAction SilentlyContinue
-    if ($oldAhkPid) {
-        Stop-Process -Id $oldAhkPid -Force -ErrorAction SilentlyContinue
-    }
+    if ($oldAhkPid) { Stop-Process -Id $oldAhkPid -Force -ErrorAction SilentlyContinue }
     Remove-Item -LiteralPath $ahkPidPath -Force -ErrorAction SilentlyContinue
 }
+
+# ── Start beacon listener ──
+$beaconScript = Join-Path $RepoRoot "python\coach_beacon_listener.py"
+$beaconPidPath = Join-Path $runtimeDir "coach_beacon_listener.pid"
+$beaconRunning = $false
+$ahkRunning = $false
+$python = Find-Python
 
 if ($python -and (Test-Path -LiteralPath $beaconScript)) {
     $beaconProc = Start-PythonBeaconListener -PythonExe $python -ScriptPath $beaconScript -PidPath $beaconPidPath -WorkingDir $RepoRoot
@@ -261,7 +270,6 @@ if ($python -and (Test-Path -LiteralPath $beaconScript)) {
         Write-Host "Python beacon listener started (PID $($beaconProc.Id))" -ForegroundColor Green
     }
 }
-
 if (-not $beaconRunning -and (Test-Path -LiteralPath $ahkScript)) {
     $ahkProc = Start-AhkBeaconListener -ScriptPath $ahkScript -PidPath $ahkPidPath -WorkingDir $RepoRoot
     if ($ahkProc) {
@@ -270,11 +278,11 @@ if (-not $beaconRunning -and (Test-Path -LiteralPath $ahkScript)) {
         Write-Host "AHK beacon listener started (PID $($ahkProc.Id))" -ForegroundColor Green
     }
 }
-
 if (-not $beaconRunning) {
     Write-Warning "No layer beacon listener is running. Thumb keys will not sync until you re-run this script."
 }
 
+# ── Start or confirm HTTP server ──
 $serverReady = $false
 if (Test-LocalPort -Port $Port) {
     if (Test-CoachHttp -Port $Port) {
@@ -291,38 +299,28 @@ if (-not $serverReady) {
     if (-not $python) {
         throw "Python was not found. Install Python or start a static server from the repo root on port $Port."
     }
-
     $name = Split-Path -Leaf $python
     if ($name -ieq "py.exe" -or $name -ieq "py") {
         $arguments = @("-3", "-m", "http.server", "$Port", "--bind", "127.0.0.1")
     } else {
         $arguments = @("-m", "http.server", "$Port", "--bind", "127.0.0.1")
     }
-
     $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $parentDir -WindowStyle Hidden -PassThru
     Set-Content -LiteralPath $pidPath -Value $server.Id -Encoding ASCII
-
     $deadline = (Get-Date).AddSeconds(8)
     while ((Get-Date) -lt $deadline) {
         Start-Sleep -Milliseconds 300
-        if (Test-CoachHttp -Port $Port) {
-            $serverReady = $true
-            break
-        }
+        if (Test-CoachHttp -Port $Port) { $serverReady = $true; break }
     }
-
-    if (-not $serverReady) {
-        throw "Coach server did not start on http://127.0.0.1:$Port"
-    }
+    if (-not $serverReady) { throw "Coach server did not start on http://127.0.0.1:$Port" }
     Write-Host "Coach server started on http://127.0.0.1:$Port (PID $($server.Id))." -ForegroundColor Green
 }
 
+# ── Open browser ──
 $coachDirName = Split-Path -Leaf $coachDir
 $url = "http://127.0.0.1:$Port/$coachDirName/"
-if (-not $NoBrowser -and ($helperConfig.coach_open_browser_on_start -ne $false)) {
-    if (-not (Test-CoachHttp -Port $Port)) {
-        throw "Coach data is not reachable at $url"
-    }
+if (-not $NoBrowser -and $helperConfig.coach_open_browser_on_start) {
+    if (-not (Test-CoachHttp -Port $Port)) { throw "Coach data is not reachable at $url" }
     Start-Process $url
 }
 
@@ -331,21 +329,12 @@ Write-Host "Charybdis Coach Started!" -ForegroundColor Cyan
 Write-Host "========================" -ForegroundColor Cyan
 Write-Host "Web UI: $url" -ForegroundColor Green
 Write-Host ""
-Write-Host "The coach will:" -ForegroundColor Yellow
-Write-Host "  - Auto-switch layers when you hold layer keys" -ForegroundColor White
-Write-Host "  - Highlight active keys in real-time" -ForegroundColor White
-Write-Host "  - Show app-specific shortcuts" -ForegroundColor White
-Write-Host ""
-$beaconLogPath = Join-Path $runtimeDir "charybdis_beacon.log"
 if ($beaconRunning -and -not $ahkRunning) {
     Write-Host "Layer sync: Python beacon listener" -ForegroundColor Yellow
 } elseif ($ahkRunning) {
     Write-Host "Layer sync: AHK beacon listener (tray icon)" -ForegroundColor Yellow
 } else {
-    Write-Warning "No beacon listener running - layer thumb keys will not sync live."
+    Write-Warning "No beacon listener running — layer thumb keys will not sync live."
 }
-Write-Host "Beacon log: $beaconLogPath" -ForegroundColor DarkGray
+Write-Host "Beacon log: $(Join-Path $runtimeDir 'beacon_debug.log')" -ForegroundColor DarkGray
 Write-Host "Event log:  $(Join-Path $runtimeDir 'charybdis_events.jsonl')" -ForegroundColor DarkGray
-Write-Host "Hold L0 x3 y4 (Nav) to test - coach should highlight that key and show Layer 1 live." -ForegroundColor Yellow
-Write-Host "10s debug capture: scripts\windows\capture_layer_beacons.ps1 -Seconds 10" -ForegroundColor DarkGray
-Write-Host "Speed is TOGGLE (tap on/off): hold Window, tap L3 x11 y2 Speed, release thumb for trackball. Or mouse-lock then L2 x11 y3 Speed." -ForegroundColor DarkGray
