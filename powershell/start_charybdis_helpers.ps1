@@ -2,10 +2,10 @@
 Start and validate the Charybdis AutoHotkey v2 helper.
 
 Run from the repo root:
-  powershell -ExecutionPolicy Bypass -File .\scripts\windows\start_charybdis_helpers.ps1
+  powershell -ExecutionPolicy Bypass -File .\powershell\start_charybdis_helpers.ps1
 
 This script:
-- Finds AutoHotkey v2 even when it is not in PATH.
+- Finds AutoHotkey v2 even when it is not in PATH (supports classic and UX variants).
 - Validates charybdis_helpers.ahk with AutoHotkey's /Validate mode.
 - Creates/refreshes the Windows Startup shortcut.
 - Starts the helper. The AHK file uses #SingleInstance Force, so this reloads
@@ -20,30 +20,23 @@ param(
 $ErrorActionPreference = "Stop"
 
 if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
-    $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..\")).Path
+    $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 }
 
-$helperPath = Join-Path $RepoRoot "scripts\windows\charybdis_helpers.ahk"
+$helperPath = Join-Path $RepoRoot "ahk\charybdis_helpers.ahk"
 if (-not (Test-Path -LiteralPath $helperPath)) {
     throw "Helper script not found: $helperPath"
 }
 
-$appsConfigPath = Join-Path $RepoRoot "config\charybdis_apps.json"
-$helperConfigPath = Join-Path $RepoRoot "config\charybdis_helper.json"
-foreach ($path in @($appsConfigPath, $helperConfigPath)) {
-    if (-not (Test-Path -LiteralPath $path)) {
-        throw "Config file not found: $path"
-    }
-    Get-Content -Raw -Encoding UTF8 -LiteralPath $path | ConvertFrom-Json | Out-Null
-}
-Write-Host "Helper JSON config validation passed." -ForegroundColor Green
-
 $candidateAhk = @(
     (Join-Path $env:LOCALAPPDATA "Programs\AutoHotkey\v2\AutoHotkey64.exe"),
     (Join-Path $env:LOCALAPPDATA "Programs\AutoHotkey\v2\AutoHotkey.exe"),
+    (Join-Path $env:LOCALAPPDATA "Programs\AutoHotkey\UX\AutoHotkeyUX.exe"),
+    (Join-Path $env:LOCALAPPDATA "Programs\AutoHotkey\AutoHotkeyUX.exe"),
     "C:\Program Files\AutoHotkey\v2\AutoHotkey64.exe",
     "C:\Program Files\AutoHotkey\v2\AutoHotkey.exe",
-    "C:\Program Files\AutoHotkey\AutoHotkey.exe"
+    "C:\Program Files\AutoHotkey\AutoHotkey.exe",
+    "C:\Program Files\AutoHotkey\UX\AutoHotkeyUX.exe"
 ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
 
 if (-not $candidateAhk) {

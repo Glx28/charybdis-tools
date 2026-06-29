@@ -16,9 +16,10 @@ If you are an AI agent reading this repo, here is everything you need to know in
 
 ### Prerequisites (must be installed first)
 1. [Git for Windows](https://git-scm.com/download/win)
-2. [Node.js LTS](https://nodejs.org/)
-3. [Python 3.10+](https://www.python.org/downloads/)
-4. [AutoHotkey v2](https://www.autohotkey.com/)
+2. [Python 3.10+](https://www.python.org/downloads/) — for the optimizer and coach server
+3. [AutoHotkey v2](https://www.autohotkey.com/) — the AHK helper is the primary beacon + logging layer
+
+> **Note:** The Python beacon listener (optional, AHK is preferred) requires the `keyboard` package, which needs **administrator privileges** to install. If you see a warning, run `python -m pip install keyboard` in an elevated PowerShell. The AHK beacon listener does not need this.
 
 ### Directory Layout (all repos share the same parent)
 ```
@@ -67,26 +68,20 @@ foreach ($r in $repos) {
     }
 }
 
-# 2. Install Node.js dependencies for optimizer
-Write-Host "[DEPS] Installing Node.js packages..." -ForegroundColor Cyan
-Set-Location "$parent\charybdis-optimizer"
-npm install 2>$null
-if ($LASTEXITCODE -ne 0) { npm install --legacy-peer-deps }
-
-# 3. Install Python dependencies for optimizer v1
+# 2. Install Python dependencies for optimizer v1
 Write-Host "[DEPS] Installing Python packages..." -ForegroundColor Cyan
 python -m pip install numpy pandas scipy deap 2>$null | Out-Null
 
-# 4. Apply mouse settings (1:1 pointer speed, no accel)
+# 3. Apply mouse settings (1:1 pointer speed, no accel)
 Write-Host "[CONFIG] Applying mouse settings..." -ForegroundColor Cyan
 Set-Location "$parent\charybdis-tools"
 .\powershell\apply_mouse_settings.ps1
 
-# 5. Start AHK helper (with Startup shortcut so it survives reboots)
+# 4. Start AHK helper (with Startup shortcut so it survives reboots)
 Write-Host "[START] AHK helper..." -ForegroundColor Cyan
 .\powershell\start_charybdis_helpers.ps1
 
-# 6. Start Coach server + open browser
+# 5. Start Coach server + open browser
 Write-Host "[START] Coach server..." -ForegroundColor Cyan
 .\powershell\start_charybdis_coach.ps1
 
@@ -94,6 +89,11 @@ Write-Host ""
 Write-Host "=== DONE ===" -ForegroundColor Green
 Write-Host "AHK helper is running. Coach is at http://127.0.0.1:8765/charybdis-coach/"
 Write-Host "All repos are in $parent"
+Write-Host ""
+Write-Host "NOTE: The Python beacon listener requires the 'keyboard' package." -ForegroundColor Yellow
+Write-Host "If you see a warning about it, run this in an elevated PowerShell:"
+Write-Host "  python -m pip install keyboard" -ForegroundColor White
+Write-Host "The AHK beacon listener (recommended) does not need this package."
 ```
 
 ---

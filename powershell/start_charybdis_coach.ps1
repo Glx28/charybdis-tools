@@ -72,7 +72,7 @@ function Test-CoachHttp {
         [int]$TimeoutSec = 3
     )
     try {
-        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/charybdis-coach/layout/keybindings_explained.csv" -UseBasicParsing -TimeoutSec $TimeoutSec
+        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/charybdis-coach/index.html" -UseBasicParsing -TimeoutSec $TimeoutSec
         return $response.StatusCode -eq 200
     } catch {
         return $false
@@ -216,12 +216,19 @@ function Start-AhkBeaconListener {
         $ahkCmd = Get-Command "AutoHotkey.exe" -ErrorAction SilentlyContinue
         $ahkFromPath = if ($ahkCmd) { $ahkCmd.Source } else { $null }
     }
+    if (-not $ahkFromPath) {
+        $ahkCmd = Get-Command "AutoHotkeyUX.exe" -ErrorAction SilentlyContinue
+        $ahkFromPath = if ($ahkCmd) { $ahkCmd.Source } else { $null }
+    }
     $ahkCandidates = @(
         $ahkFromPath,
         "$env:LocalAppData\Programs\AutoHotkey\v2\AutoHotkey64.exe",
         "$env:LocalAppData\Programs\AutoHotkey\v2\AutoHotkey.exe",
+        "$env:LocalAppData\Programs\AutoHotkey\UX\AutoHotkeyUX.exe",
+        "$env:LocalAppData\Programs\AutoHotkey\AutoHotkeyUX.exe",
         "${env:ProgramFiles}\AutoHotkey\v2\AutoHotkey64.exe",
-        "${env:ProgramFiles}\AutoHotkey\v2\AutoHotkey.exe"
+        "${env:ProgramFiles}\AutoHotkey\v2\AutoHotkey.exe",
+        "${env:ProgramFiles}\AutoHotkey\UX\AutoHotkeyUX.exe"
     ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
     $ahkExe = $ahkCandidates | Select-Object -First 1
     if (-not $ahkExe) {
