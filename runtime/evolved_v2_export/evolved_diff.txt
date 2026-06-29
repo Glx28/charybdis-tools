@@ -1,0 +1,259 @@
+Charybdis V2 Evolved Layout Diff
+Source: v2_checkpoint_gen7500.json
+Generation: 7500
+Fitness: effort=71.35 adjacency=-29.65 violations=14.56
+============================================================
+
+--- Layer 0 (Base typing and thumb access) ---
+  (5,4) [left] Alt -> Ctrl+Shift+C  [L Ctrl + L Shift]  effort=0.8
+  (4,5) [left] Down -> Page Down  effort=1.0
+  (5,5) [left] Mouse -> r  effort=1.0
+
+--- Layer 1 (Navigation, function keys, programming/editing helpers) ---
+  (0,0) [left] Win+B -> Ctrl+5  [L Ctrl]  effort=1.5
+  (1,0) [left] transparent -> F9  effort=1.5
+  (2,0) [left] F -> Ctrl+Shift+\  [L Ctrl + L Shift]  effort=1.5
+  (3,0) [left] Ctrl+1 -> Alt+F  [L Alt]  effort=1.5
+  (4,0) [left] Win+I -> Ctrl+J  [L Ctrl]  effort=1.5
+  (5,0) [left] Ctrl+Shift+G -> Win+S  [L GUI]  effort=1.5
+  (7,0) [right] transparent -> Ctrl+Z  [L Ctrl]  effort=1.5
+  (8,0) [right] Ctrl+O -> Ctrl+H  [L Ctrl]  effort=1.5
+  (9,0) [right] transparent -> Ctrl+Up  [L Ctrl]  effort=1.5
+  (10,0) [right] transparent -> Tab  effort=1.5
+  (11,0) [right] transparent -> Win+P  [L GUI]  effort=1.5
+  (12,0) [right] transparent -> Alt+Shift+D  [L Alt + L Shift]  effort=1.5
+  (0,1) [left] Code -> Win+Up  [L GUI]  effort=1.2
+  (1,1) [left] Alt+F12 -> Win+Shift+Left  [L GUI + L Shift]  effort=1.2
+  (2,1) [left] Win+Tab -> Win+Home  [L GUI]  effort=1.2
+  (3,1) [left] Ctrl+Shift+W -> Ctrl+Shift+F  [L Ctrl + L Shift]  effort=1.2
+  (4,1) [left] Shift+Alt+Right -> Enter  effort=1.2
+  (5,1) [left] V -> Ctrl+Left  [L Ctrl]  effort=1.2
+  (7,1) [right] Ctrl+Shift+E -> Ctrl+Shift+>  [L Ctrl + L Shift]  effort=1.2
+  (8,1) [right] Ctrl+Shift+H -> Win+Shift+S  [L GUI + L Shift]  effort=1.2
+  (9,1) [right] Win+R -> Win+A  [L GUI]  effort=1.2
+  (10,1) [right] Ctrl+Shift+C -> Ctrl+Shift+2  [L Ctrl + L Shift]  effort=1.2
+  (11,1) [right] Ctrl+Up -> Ctrl+,  [L Ctrl]  effort=1.2
+  (12,1) [right] transparent -> F4  effort=1.2
+  (0,2) [left] Ctrl+G -> Ctrl+Shift+J  [L Ctrl + L Shift]  effort=1.0
+  (1,2) [left] leftarrow_combo -> Ctrl+D  [L Ctrl]  effort=1.0
+  (2,2) [left] Ctrl+Shift+U -> yy  effort=1.0
+  (3,2) [left] Scroll -> Ctrl+Shift+Left  [L Ctrl + L Shift]  effort=1.0
+  (4,2) [left] Speed -> Win+H  [L GUI]  effort=1.0
+  (5,2) [left] f2 -> Win+Shift+Right  [L GUI + L Shift]  effort=1.0
+  (7,2) [right] Search -> Win+Left  [L GUI]  effort=1.0
+  (9,2) [right] ↑ -> Ctrl+Shift+Enter  [L Ctrl + L Shift]  effort=1.0
+  (10,2) [right] → -> Alt+Down  [L Alt]  effort=1.0
+  (11,2) [right] Ctrl+End -> F11  effort=1.0
+  (12,2) [right] Win+Up -> Ctrl+L  [L Ctrl]  effort=1.0
+  (0,3) [left] transparent -> Ctrl+O  [L Ctrl]  effort=2.0
+  (1,3) [left] transparent -> Ctrl+Shift+V  [L Ctrl + L Shift]  effort=2.0
+  (2,3) [left] f5 -> Ctrl+Shift+!  [L Ctrl + L Shift]  effort=2.0
+  (3,3) [left] transparent -> Shift+Alt+A  [L Shift + L Alt]  effort=2.0
+  (4,3) [left] Up -> Ctrl+Shift+6  [L Ctrl + L Shift]  effort=2.0
+  (5,3) [left] Ctrl+Shift+A -> Ctrl+Shift+U  [L Ctrl + L Shift]  effort=2.0
+  (7,3) [right] C -> F8  effort=2.0
+  (8,3) [right] Ctrl+K -> Shift+Tab  [L Shift]  effort=2.0
+  (9,3) [right] coach_game_lock -> Ctrl+Shift+L  [L Ctrl + L Shift]  effort=2.0
+  (10,3) [right] transparent -> Ctrl+Shift+A  [L Ctrl + L Shift]  effort=2.0
+  (11,3) [right] Shift+Alt+Down -> H  effort=2.0
+  (12,3) [right] transparent -> x  effort=2.0
+  (3,4) [left] Win+N -> Ctrl+Shift+W  [L Ctrl + L Shift]  effort=0.8
+  (4,4) [left] Ctrl+2 -> Ctrl+Home  [L Ctrl]  effort=0.8
+  (5,4) [left] transparent -> Ctrl+K  [L Ctrl]  effort=0.8
+  (7,4) [right] comma_combo -> Ctrl+S  [L Ctrl]  effort=0.8
+  (8,4) [right] Ctrl+P -> Ctrl+Shift+M  [L Ctrl + L Shift]  effort=0.8
+  (4,5) [left] Ctrl+Down -> Ctrl+\  [L Ctrl]  effort=1.0
+  (7,5) [right] left gui -> Ctrl+Shift+Right  [L Ctrl + L Shift]  effort=1.0
+
+--- Layer 2 (Mouse lock and button layer) ---
+  (0,0) [left] Snip -> Ctrl+Shift+Q  [L Ctrl + L Shift]  effort=1.5
+  (1,0) [left] f9 -> Alt+=  [L Alt]  effort=1.5
+  (2,0) [left] Desktop -> Win+C  [L GUI]  effort=1.5
+  (3,0) [left] f10 -> Ctrl+Shift+Tab  [L Ctrl + L Shift]  effort=1.5
+  (4,0) [left] Ctrl+Shift+G -> =  effort=1.5
+  (5,0) [left] Scroll -> Alt+Enter  [L Alt]  effort=1.5
+  (7,0) [right] transparent -> Alt+Shift+Up  [L Alt + L Shift]  effort=1.5
+  (8,0) [right] Ctrl+2 -> Win+1  [L GUI]  effort=1.5
+  (9,0) [right] transparent -> Win+B  [L GUI]  effort=1.5
+  (10,0) [right] Ctrl+F -> Win+Ctrl+D  [L GUI + L Ctrl]  effort=1.5
+  (11,0) [right] transparent -> Ctrl+3  [L Ctrl]  effort=1.5
+  (12,0) [right] transparent -> Ctrl+Shift+G  [L Ctrl + L Shift]  effort=1.5
+  (0,1) [left] Win+E -> Ctrl+B  [L Ctrl]  effort=1.2
+  (1,1) [left] Ctrl+Shift+K -> t  effort=1.2
+  (2,1) [left] Close -> Alt+Shift+-  [L Alt + L Shift]  effort=1.2
+  (3,1) [left] Enter -> Ctrl+Down  [L Ctrl]  effort=1.2
+  (4,1) [left] F5 -> Shift+Alt+Left  [L Shift + L Alt]  effort=1.2
+  (5,1) [left] Zoom In -> /  effort=1.2
+  (7,1) [right] Win -> W  effort=1.2
+  (8,1) [right] Enter -> X  effort=1.2
+  (9,1) [right] Ctrl+S -> Win+E  [L GUI]  effort=1.2
+  (10,1) [right] minus -> Shift+F8  [L Shift]  effort=1.2
+  (11,1) [right] f6 -> Ctrl+Shift+~  [L Ctrl + L Shift]  effort=1.2
+  (12,1) [right] Cut -> Alt+Shift  [L Alt]  effort=1.2
+  (0,2) [left] MB4 -> o  effort=1.0
+  (1,2) [left] Ctrl+H -> B  effort=1.0
+  (2,2) [left] MB2 -> Alt+Shift++  [L Alt + L Shift]  effort=1.0
+  (3,2) [left] MB3 -> Ctrl+I  [L Ctrl]  effort=1.0
+  (4,2) [left] Ctrl+I -> Ctrl+]  [L Ctrl]  effort=1.0
+  (5,2) [left] Ctrl+6 -> Shift+Alt+Down  [L Shift + L Alt]  effort=1.0
+  (7,2) [right] Ctrl+C -> Ctrl+N  [L Ctrl]  effort=1.0
+  (8,2) [right] f4 -> Ctrl+Shift+Z  [L Ctrl + L Shift]  effort=1.0
+  (9,2) [right] coach_travel_toggle -> Win+R  [L GUI]  effort=1.0
+  (10,2) [right] coach_base -> Shift+Delete  [L Shift]  effort=1.0
+  (11,2) [right] f5 -> Alt+Up  [L Alt]  effort=1.0
+  (12,2) [right] Scroll -> Ctrl+F5  [L Ctrl]  effort=1.0
+  (0,3) [left] transparent -> Win+V  [L GUI]  effort=2.0
+  (1,3) [left] transparent -> Win+;  [L GUI]  effort=2.0
+  (2,3) [left] Shift+Alt+A -> Win+Ctrl+F4  [L GUI + L Ctrl]  effort=2.0
+  (3,3) [left] Ctrl+G -> Ctrl+/  [L Ctrl]  effort=2.0
+  (4,3) [left] Ctrl+Shift+E -> Ctrl+K Ctrl+F  [L Ctrl]  effort=2.0
+  (5,3) [left] Paste -> Ctrl+End  [L Ctrl]  effort=2.0
+  (7,3) [right] Shift+Alt+Down -> Ctrl+K Ctrl+S  [L Ctrl]  effort=2.0
+  (8,3) [right] pageup -> Ctrl+Alt+Up  [L Ctrl + L Alt]  effort=2.0
+  (9,3) [right] transparent -> Ctrl+X  [L Ctrl]  effort=2.0
+  (10,3) [right] Undo -> Ctrl+Shift+F6  [L Ctrl + L Shift]  effort=2.0
+  (11,3) [right] Speed -> Alt+F4  [L Alt]  effort=2.0
+  (12,3) [right] Ctrl+Shift+Enter -> Shift+F3  [L Shift]  effort=2.0
+  (3,4) [left] Ctrl+Page Up -> Down  effort=0.8
+  (4,4) [left] transparent -> Win+Ctrl+Left  [L GUI + L Ctrl]  effort=0.8
+  (5,4) [left] transparent -> Ctrl+Click  [L Ctrl]  effort=0.8
+  (7,4) [right] forwardslash_combo -> Ctrl+[  [L Ctrl]  effort=0.8
+  (8,4) [right] left brace_combo -> Ctrl+Shift+T  [L Ctrl + L Shift]  effort=0.8
+  (4,5) [left] Ctrl+[ -> Backspace  effort=1.0
+  (5,5) [left] transparent -> Ctrl+T  [L Ctrl]  effort=1.0
+  (7,5) [right] right brace_combo -> Ctrl+Shift+S  [L Ctrl + L Shift]  effort=1.0
+
+--- Layer 3 (Window, app, language, mouse/game/travel control) ---
+  (0,0) [left] transparent -> Ctrl+Shift+$  [L Ctrl + L Shift]  effort=1.5
+  (1,0) [left] transparent -> gg  effort=1.5
+  (2,0) [left] equal -> Shift+F11  [L Shift]  effort=1.5
+  (3,0) [left] Emoji -> F7  effort=1.5
+  (4,0) [left] QSett -> gi  effort=1.5
+  (5,0) [left] Notif -> Win+2  [L GUI]  effort=1.5
+  (7,0) [right] TskCy -> Ctrl+Shift+Down  [L Ctrl + L Shift]  effort=1.5
+  (8,0) [right] transparent -> Alt+Tab  [L Alt]  effort=1.5
+  (9,0) [right] Ctrl+P -> Win+M  [L GUI]  effort=1.5
+  (10,0) [right] BT? -> Ctrl+9  [L Ctrl]  effort=1.5
+  (11,0) [right] left bracket_combo -> Ctrl+Shift++  [L Ctrl + L Shift]  effort=1.5
+  (0,1) [left] BT1 -> Ctrl+Alt+Down  [L Ctrl + L Alt]  effort=1.2
+  (1,1) [left] f17 -> Ctrl++  [L Ctrl]  effort=1.2
+  (2,1) [left] transparent -> Ctrl+F  [L Ctrl]  effort=1.2
+  (3,1) [left] → -> Ctrl+.  [L Ctrl]  effort=1.2
+  (4,1) [left] Win+M -> Ctrl+M  [L Ctrl]  effort=1.2
+  (5,1) [left] Lang -> Ctrl+A  [L Ctrl]  effort=1.2
+  (7,1) [right] TskMg -> Ctrl+-  [L Ctrl]  effort=1.2
+  (8,1) [right] Ctrl+Shift+V -> Win+D  [L GUI]  effort=1.2
+  (9,1) [right] transparent -> Ctrl+Space  [L Ctrl]  effort=1.2
+  (10,1) [right] f16 -> F5  effort=1.2
+  (11,1) [right] Ctrl+Shift+K -> N  effort=1.2
+  (12,1) [right] Shift+F8 -> Ctrl+Shift+F5  [L Ctrl + L Shift]  effort=1.2
+  (0,2) [left] Ctrl+U -> Ctrl+Tab  [L Ctrl]  effort=1.0
+  (1,2) [left] transparent -> Win+I  [L GUI]  effort=1.0
+  (2,2) [left] Ctrl+G -> Up  effort=1.0
+  (3,2) [left] 1 -> Ctrl+4  [L Ctrl]  effort=1.0
+  (4,2) [left] 4 -> Win+.  [L GUI]  effort=1.0
+  (5,2) [left] 5 -> X  effort=1.0
+  (7,2) [right] Search -> Escape  effort=1.0
+  (8,2) [right] transparent -> u  effort=1.0
+  (9,2) [right] Ctrl+/ -> Ctrl+Shift+Esc  [L Ctrl + L Shift]  effort=1.0
+  (10,2) [right] ; -> Win+T  [L GUI]  effort=1.0
+  (11,2) [right] Ctrl+Shift+H -> F  effort=1.0
+  (12,2) [right] Ctrl+Shift+E -> Ctrl+6  [L Ctrl]  effort=1.0
+  (0,3) [left] Ctrl+O -> n  effort=2.0
+  (1,3) [left] transparent -> Ctrl+Shift+;  [L Ctrl + L Shift]  effort=2.0
+  (2,3) [left] transparent -> F10  effort=2.0
+  (3,3) [left] Voice -> Win+Down  [L GUI]  effort=2.0
+  (4,3) [left] S -> Win+K  [L GUI]  effort=2.0
+  (5,3) [left] transparent -> Ctrl+Shift+%  [L Ctrl + L Shift]  effort=2.0
+  (7,3) [right] Tab -> Ctrl+W  [L Ctrl]  effort=2.0
+  (8,3) [right] Ctrl+Y -> Ctrl+K Ctrl+W  [L Ctrl]  effort=2.0
+  (9,3) [right] BT3 -> Ctrl+Shift+I  [L Ctrl + L Shift]  effort=2.0
+  (10,3) [right] Ctrl+R -> G  effort=2.0
+  (11,3) [right] Ctrl+Tab -> Ctrl+Shift+P  [L Ctrl + L Shift]  effort=2.0
+  (3,4) [left] keypad 3 -> Ctrl+Enter  [L Ctrl]  effort=0.8
+  (4,4) [left] SysTray -> Ctrl+Shift+`  [L Ctrl + L Shift]  effort=0.8
+  (5,4) [left] transparent -> Ctrl+Shift+X  [L Ctrl + L Shift]  effort=0.8
+  (7,4) [right] transparent -> Ctrl+Shift+K  [L Ctrl + L Shift]  effort=0.8
+  (8,4) [right] transparent -> Ctrl+Page Up  [L Ctrl]  effort=0.8
+  (4,5) [left] Win+Left -> Ctrl+G  [L Ctrl]  effort=1.0
+  (5,5) [left] transparent -> Alt+P  [L Alt]  effort=1.0
+  (7,5) [right] transparent -> Ctrl+Q  [L Ctrl]  effort=1.0
+
+--- Layer 4 (Bluetooth, output, Studio/system, F13-F24 macro layer) ---
+  (0,0) [left] BT0 -> Ctrl+7  [L Ctrl]  effort=1.5
+  (1,0) [left] BT1 -> Alt+D  [L Alt]  effort=1.5
+  (2,0) [left] BT2 -> d  effort=1.5
+  (3,0) [left] BT3 -> L  effort=1.5
+  (4,0) [left] BT4 -> Delete  effort=1.5
+  (5,0) [left] transparent -> Ctrl+Shift+Del  [L Ctrl + L Shift]  effort=1.5
+  (7,0) [right] Ctrl+Shift+X -> Page Up  effort=1.5
+  (8,0) [right] f6 -> Ctrl+Shift+1  [L Ctrl + L Shift]  effort=1.5
+  (9,0) [right] transparent -> Alt+F12  [L Alt]  effort=1.5
+  (10,0) [right] Studio Unlock -> Ctrl+Shift+End  [L Ctrl + L Shift]  effort=1.5
+  (11,0) [right] Ctrl+Enter -> Ctrl+2  [L Ctrl]  effort=1.5
+  (12,0) [right] Bootloader -> P  effort=1.5
+  (0,1) [left] Ctrl+G -> Ctrl+E  [L Ctrl]  effort=1.2
+  (1,1) [left] Ctrl+O -> Ctrl+K S  [L Ctrl]  effort=1.2
+  (2,1) [left] F15 -> Ctrl+C  [L Ctrl]  effort=1.2
+  (3,1) [left] F16 -> Ctrl+;  [L Ctrl]  effort=1.2
+  (4,1) [left] F14 -> ?  effort=1.2
+  (5,1) [left] return enter -> Win+L  [L GUI]  effort=1.2
+  (7,1) [right] Ctrl+S -> Ctrl+Shift+R  [L Ctrl + L Shift]  effort=1.2
+  (8,1) [right] end -> Alt+Shift+Down  [L Alt + L Shift]  effort=1.2
+  (10,1) [right] Ctrl+L -> Shift+Alt+Up  [L Shift + L Alt]  effort=1.2
+  (11,1) [right] delete -> Win+Right  [L GUI]  effort=1.2
+  (12,1) [right] Ctrl+U -> Alt+Click  [L Alt]  effort=1.2
+  (0,2) [left] Backspace -> Ctrl+Shift+B  [L Ctrl + L Shift]  effort=1.0
+  (1,2) [left] F19 -> Win+Space  [L GUI]  effort=1.0
+  (2,2) [left] F20 -> Shift+Space  [L Shift]  effort=1.0
+  (3,2) [left] F21 -> F12  effort=1.0
+  (4,2) [left] Ctrl+I -> F1  effort=1.0
+  (5,2) [left] right bracket -> Win+X  [L GUI]  effort=1.0
+  (7,2) [right] transparent -> Ctrl+F6  [L Ctrl]  effort=1.0
+  (8,2) [right] leftshift -> Ctrl+Shift+H  [L Ctrl + L Shift]  effort=1.0
+  (9,2) [right] left bracket -> Ctrl+Right  [L Ctrl]  effort=1.0
+  (10,2) [right] f12 -> Ctrl+8  [L Ctrl]  effort=1.0
+  (11,2) [right] f5 -> Ctrl+Shift+E  [L Ctrl + L Shift]  effort=1.0
+  (12,2) [right] Share -> Win+N  [L GUI]  effort=1.0
+  (0,3) [left] Excel -> Ctrl+R  [L Ctrl]  effort=2.0
+  (1,3) [left] Shift+Alt+Up -> Win+3  [L GUI]  effort=2.0
+  (2,3) [left] DMS -> Shift+F5  [L Shift]  effort=2.0
+  (3,3) [left] Ctrl+D -> Ctrl+Shift+Up  [L Ctrl + L Shift]  effort=2.0
+  (4,3) [left] Tab -> J  effort=2.0
+  (5,3) [left] F22 -> j  effort=2.0
+  (7,3) [right] Ctrl+Shift+V -> Win+Ctrl+Right  [L GUI + L Ctrl]  effort=2.0
+  (8,3) [right] home -> Ctrl+U  [L Ctrl]  effort=2.0
+  (9,3) [right] f11 -> Ctrl+Page Down  [L Ctrl]  effort=2.0
+  (10,3) [right] f7 -> Shift+Enter  [L Shift]  effort=2.0
+  (11,3) [right] Hangup -> Win+Pause  [L GUI]  effort=2.0
+  (12,3) [right] Accept -> Space  effort=2.0
+  (3,4) [left] Ctrl+Tab -> Ctrl+Shift+O  [L Ctrl + L Shift]  effort=0.8
+  (4,4) [left] Ctrl+T -> Ctrl+`  [L Ctrl]  effort=0.8
+  (5,4) [left] transparent -> Win+5  [L GUI]  effort=0.8
+  (7,4) [right] Win+Ctrl+D -> Alt+Home  [L Alt]  effort=0.8
+  (8,4) [right] f9 -> Ctrl+Shift+<  [L Ctrl + L Shift]  effort=0.8
+  (4,5) [left] Ctrl+/ -> Ctrl+Shift+Home  [L Ctrl + L Shift]  effort=1.0
+  (5,5) [left] forwardslash_combo -> Ctrl+Shift+9  [L Ctrl + L Shift]  effort=1.0
+  (7,5) [right] transparent -> Ctrl+V  [L Ctrl]  effort=1.0
+
+--- Layer 5 (Code/IDE layer (VS Code shortcuts)) ---
+  (0,0) [left] transparent -> f  effort=1.5
+  (1,0) [left] transparent -> Win+Tab  [L GUI]  effort=1.5
+  (2,0) [left] Stop -> Alt+Left  [L Alt]  effort=1.5
+  (3,0) [left] transparent -> Ctrl+P  [L Ctrl]  effort=1.5
+  (4,0) [left] GoSym -> Ctrl+Y  [L Ctrl]  effort=1.5
+  (5,0) [left] transparent -> F2  effort=1.5
+  (9,0) [right] Win+Ctrl+D -> Shift+Alt+Right  [L Shift + L Alt]  effort=1.5
+  (11,2) [right] coach_travel_toggle -> Shift+Click  [L Shift]  effort=1.0
+
+--- Layer 8 (Pointer travel overlay) ---
+  (3,3) [left] Ctrl+Shift+B -> Escape  effort=2.0
+
+--- Layer 9 (M-Files/DMS document management) ---
+  (5,1) [left] List -> Ctrl+1  [L Ctrl]  effort=1.2
+
+--- Layer 10 (Excel spreadsheet layer) ---
+  (1,0) [left] SelAll -> K  effort=1.5
+  (12,0) [right] Win+C -> Escape  effort=1.5
+  (5,3) [left] Ctrl+Page Down -> Alt+Right  [L Alt]  effort=2.0
+

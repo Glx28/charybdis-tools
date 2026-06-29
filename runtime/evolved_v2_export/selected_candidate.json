@@ -1,0 +1,34 @@
+{
+  "mode": "feasible",
+  "source": "v2_checkpoint_gen7500.json -> best_exact",
+  "fitness": {
+    "effort": 71.34777069091797,
+    "adjacency": -29.650876998901367,
+    "violations": 14.556041717529297
+  },
+  "change_count": 235,
+  "genome_summary": [
+    20,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    65,
+    150,
+    -1,
+    235,
+    -1,
+    130,
+    128,
+    -1,
+    107
+  ],
+  "checkpoint_generation": 7500,
+  "timestamp": "2026-06-28T23:22:55.566859Z"
+}
