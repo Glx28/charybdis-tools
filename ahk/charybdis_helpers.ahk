@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
+#MaxHotkeysPerInterval 500
 ; Charybdis desktop coach, launcher, and contextual helper keys.
 ;
 ; Windows only sees emitted HID keys, not the raw ZMK layer/coordinate state.
