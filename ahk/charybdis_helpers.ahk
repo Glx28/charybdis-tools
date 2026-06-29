@@ -45,6 +45,29 @@ global LayerSessionLayer := ""
 global SpaceCount := 0
 global BackspaceCount := 0
 global EnterCount := 0
+; ── New optimizer-v2 logger globals ──
+global MouseSessionStart := 0
+global MouseSessionShortcuts := []
+global MouseSessionLastButton := ""
+global LastMouseEventTime := 0
+global KeyboardAfterMouseTime := 0
+global KeyboardAfterMouseButton := ""
+global LastLoggedShortcutKeys := ""
+global LastLoggedShortcutTime := 0
+global PreviousLayer := "0"
+global LayerTransitionHistory := []
+global LayerTransitionStart := 0
+global LayerTransitionMethod := ""
+global LayerTransitionKeysCount := 0
+global CurrentAppContext := "general"
+global AppContextAtTime := 0
+global FirstSeenMap := Map()
+global FirstSeenPath := RuntimeDir "\shortcut_first_seen.json"
+global ShortcutVelocityWindow := []  ; ring buffer for gap_ms samples
+global ModifierErrorCandidate := Map("modifier", "", "time", 0)
+global LastShortcutLayer := "0"
+global LastShortcutOnLayerKeys := ""
+global LastShortcutOnLayerTime := 0
 
 global DebugMode := false
 global CoachVisible := false
@@ -80,6 +103,7 @@ global LauncherHint := ""
 
 EnsureRuntime()
 LoadEverything()
+LoadFirstSeen()
 BuildTrayMenu()
 CreateCoachGui()
 CreateLauncherGui()
@@ -374,7 +398,7 @@ WriteCoachState(logEvent := false) {
 }
 
 LogShortcutUsage(shortcutKeys, name := "") {
-    global LastShortcutKeys, LastShortcutTime, ModifierComboFired
+    global LastShortcutKeys, LastShortcutTime, ModifierComboFired, LastMouseEventTime, LastKey, CurrentAppContext, AppContextAtTime, LastLoggedShortcutKeys, LastLoggedShortcutTime, MouseSessionStart, MouseSessionShortcuts
     try {
     if (shortcutKeys = "")
         return
@@ -402,6 +426,48 @@ LogShortcutUsage(shortcutKeys, name := "") {
     }
     LastShortcutKeys := shortcutKeys
     LastShortcutTime := now
+
+    ; Mouse proximity hint: keyboard shortcut within 2 seconds of mouse click
+    if LastMouseEventTime != 0 && (now - LastMouseEventTime) < 2000 {
+        evt["mouse_context"] := "MB1"
+        evt["ms_since_mouse"] := now - LastMouseEventTime
+    }
+
+    ; Hand detection from beacon lastKey.x
+    if LastKey.Has("x") && LastKey["x"] != "" {
+        hand := HandFromX(LastKey["x"])
+        if hand != ""
+            evt["hand"] := hand
+    }
+
+    ; App context detection
+    context := InferAppContext(shortcutKeys, activeApp)
+    if context != CurrentAppContext {
+        CurrentAppContext := context
+        AppContextAtTime := now
+        if context != "general" {
+            ctxEvt := Map("type", "app_context", "app", activeApp, "context", context, "inferred_from", shortcutKeys)
+            BufferEvent(ctxEvt)
+        }
+    }
+
+    ; First-seen tracking
+    RecordFirstSeen(shortcutKeys)
+    firstSeen := GetFirstSeen(shortcutKeys)
+    if firstSeen != ""
+        evt["first_seen"] := firstSeen
+
+    ; Shortcut retry / no-op detection
+    CheckShortcutRetry(shortcutKeys, activeApp)
+    CheckShortcutNoopHint(shortcutKeys, activeApp)
+    LastLoggedShortcutKeys := shortcutKeys
+    LastLoggedShortcutTime := now
+
+    ; Track keyboard shortcuts used during mouse session
+    if MouseSessionStart != 0 && (now - LastMouseEventTime) < 5000 {
+        if !HasArrayValue(MouseSessionShortcuts, shortcutKeys)
+            MouseSessionShortcuts.Push(shortcutKeys)
+    }
 
     BufferEvent(evt)
     } catch {
@@ -473,6 +539,226 @@ MapToJson(m) {
         }
     }
     return text "}"
+}
+
+; ── Optimizer v2 helper functions ──
+
+LoadFirstSeen() {
+    global FirstSeenPath, FirstSeenMap
+    if !FileExist(FirstSeenPath)
+        return
+    try {
+        text := FileRead(FirstSeenPath, "UTF-8")
+        lines := StrSplit(text, "`n", "`r")
+        for line in lines {
+            line := Trim(line)
+            if line = "" || SubStr(line, 1, 1) = "#"
+                continue
+            parts := StrSplit(line, "`t", " ")
+            if parts.Length >= 2 {
+                FirstSeenMap[parts[1]] := parts[2]
+            }
+        }
+    } catch {
+    }
+}
+
+SaveFirstSeen() {
+    global FirstSeenPath, FirstSeenMap
+    try {
+        text := "#shortcut`tfirst_seen_ts`n"
+        for k, v in FirstSeenMap {
+            text .= k "`t" v "`n"
+        }
+        AtomicWriteText(FirstSeenPath, text)
+    } catch {
+    }
+}
+
+GetFirstSeen(keys) {
+    global FirstSeenMap
+    if FirstSeenMap.Has(keys)
+        return FirstSeenMap[keys]
+    return ""
+}
+
+RecordFirstSeen(keys) {
+    global FirstSeenMap
+    if !FirstSeenMap.Has(keys) {
+        FirstSeenMap[keys] := FormatTime(A_NowUTC, "yyyy-MM-ddTHH:mm:ss") "Z"
+        SaveFirstSeen()
+    }
+}
+
+HandFromX(x) {
+    ; Left half x=0..5, right half x=7..12
+    nx := Integer(x)
+    if nx <= 5
+        return "left"
+    if nx >= 7
+        return "right"
+    return ""
+}
+
+InferAppContext(keys, app) {
+    if !app || !keys
+        return "general"
+    appLower := StrLower(String(app))
+    ; VS Code
+    if InStr(appLower, "code.exe") {
+        if keys = "Ctrl+Shift+P" || keys = "Ctrl+P" || keys = "Ctrl+Shift+O" || keys = "Ctrl+K" {
+            return "command_palette"
+        }
+        if keys = "Ctrl+Shift+F5" || keys = "Ctrl+F5" || keys = "F5" || keys = "Shift+F5" || keys = "Ctrl+Shift+F9" || keys = "Ctrl+Shift+F10" {
+            return "debugging"
+        }
+        if keys = "Ctrl+``" || keys = "Ctrl+J" || keys = "Ctrl+Shift+``" {
+            return "terminal"
+        }
+        if keys = "Ctrl+Shift+M" || keys = "Ctrl+Shift+D" || keys = "Ctrl+Shift+U" || keys = "Ctrl+Shift+Y" {
+            return "panel"
+        }
+        if keys = "Ctrl+Shift+F" || keys = "Ctrl+H" || keys = "Ctrl+Shift+H" {
+            return "search_replace"
+        }
+    }
+    ; Browser (Edge/Chrome)
+    if InStr(appLower, "msedge.exe") || InStr(appLower, "chrome.exe") {
+        if keys = "Ctrl+L" || keys = "Ctrl+K" || keys = "Alt+D" {
+            return "address_bar"
+        }
+        if keys = "Ctrl+T" || keys = "Ctrl+Shift+T" || keys = "Ctrl+W" || keys = "Ctrl+Shift+A" {
+            return "tab_management"
+        }
+        if keys = "Ctrl+J" || keys = "Ctrl+Shift+J" || keys = "Ctrl+U" || keys = "Ctrl+Shift+I" || keys = "F12" {
+            return "developer_tools"
+        }
+        if keys = "Ctrl+D" || keys = "Ctrl+Shift+D" || keys = "Ctrl+Shift+B" || keys = "Ctrl+H" {
+            return "bookmarks_history"
+        }
+    }
+    ; Excel
+    if InStr(appLower, "excel.exe") {
+        if keys = "Ctrl+Shift+L" || keys = "Ctrl+T" || keys = "Alt+A" || keys = "Ctrl+Shift+Plus" {
+            return "data_manipulation"
+        }
+        if keys = "F2" || keys = "F4" || keys = "Alt+=" || keys = "Ctrl+Shift+U" || keys = "Ctrl+R" || keys = "Ctrl+D" {
+            return "cell_editing"
+        }
+        if keys = "Ctrl+Shift+P" || keys = "Ctrl+PgUp" || keys = "Ctrl+PgDn" {
+            return "sheet_navigation"
+        }
+    }
+    ; Outlook
+    if InStr(appLower, "outlook.exe") || InStr(appLower, "olk.exe") {
+        if keys = "Ctrl+N" || keys = "Ctrl+Shift+M" || keys = "Ctrl+R" || keys = "Ctrl+Shift+R" || keys = "Ctrl+F" {
+            return "email_composition"
+        }
+        if keys = "Ctrl+E" || keys = "Ctrl+Shift+F" || keys = "F3" || keys = "Ctrl+K" {
+            return "search"
+        }
+        if keys = "Ctrl+1" || keys = "Ctrl+2" || keys = "Ctrl+3" || keys = "Ctrl+4" || keys = "Ctrl+5" || keys = "Ctrl+6" || keys = "Ctrl+7" || keys = "Ctrl+8" {
+            return "view_navigation"
+        }
+    }
+    ; Teams
+    if InStr(appLower, "ms-teams.exe") || InStr(appLower, "teams.exe") {
+        if keys = "Ctrl+E" || keys = "Ctrl+Shift+E" || keys = "Ctrl+Shift+O" || keys = "Ctrl+Shift+M" || keys = "Ctrl+Shift+K" {
+            return "meeting_controls"
+        }
+        if keys = "Ctrl+Shift+A" || keys = "Ctrl+Shift+S" || keys = "Ctrl+Shift+U" || keys = "Ctrl+Shift+G" || keys = "Ctrl+N" {
+            return "chat_composition"
+        }
+    }
+    ; Windows Terminal / PowerShell
+    if InStr(appLower, "windowsterminal.exe") || InStr(appLower, "powershell.exe") || InStr(appLower, "pwsh.exe") {
+        if keys = "Ctrl+Shift+W" || keys = "Ctrl+Shift+T" || keys = "Ctrl+Shift+D" || keys = "Ctrl+Shift+N" || keys = "Ctrl+Tab" || keys = "Ctrl+Shift+Tab" {
+            return "tab_pane_management"
+        }
+        if keys = "Ctrl+Shift+C" || keys = "Ctrl+Shift+V" || keys = "Ctrl+Shift+Space" || keys = "Ctrl+Shift+Up" || keys = "Ctrl+Shift+Down" || keys = "Ctrl+Shift+P" || keys = "Ctrl+Shift+F" || keys = "Ctrl+F" {
+            return "terminal_interaction"
+        }
+    }
+    return "general"
+}
+
+FlushMouseSession() {
+    global MouseSessionStart, MouseSessionShortcuts, MouseSessionLastButton, LastMouseEventTime
+    if MouseSessionStart = 0 || MouseSessionLastButton = ""
+        return
+    duration := A_TickCount - MouseSessionStart
+    if duration < 100 || MouseSessionShortcuts.Length = 0
+        return
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    layer := "0"
+    try layer := CoachActiveLayer()
+    evt := Map("type", "mouse_session", "started_with", MouseSessionLastButton, "keyboard_shortcuts", MouseSessionShortcuts, "duration_ms", duration, "app", activeApp, "layer", layer)
+    BufferEvent(evt)
+    MouseSessionStart := 0
+    MouseSessionShortcuts := []
+    MouseSessionLastButton := ""
+}
+
+CheckShortcutRetry(keys, app) {
+    global LastLoggedShortcutKeys, LastLoggedShortcutTime
+    if LastLoggedShortcutKeys = "" || LastLoggedShortcutKeys != keys
+        return
+    gap := A_TickCount - LastLoggedShortcutTime
+    if gap > 0 && gap < 1000 {
+        evt := Map("type", "shortcut_retry", "keys", keys, "gap_ms", gap, "app", app)
+        BufferEvent(evt)
+    }
+}
+
+CheckShortcutNoopHint(keys, app) {
+    global LastLoggedShortcutKeys, LastLoggedShortcutTime
+    if LastLoggedShortcutKeys = "" || LastLoggedShortcutKeys = keys
+        return
+    gap := A_TickCount - LastLoggedShortcutTime
+    if gap > 0 && gap < 500 {
+        evt := Map("type", "shortcut_noop_hint", "attempted", LastLoggedShortcutKeys, "followed_by", keys, "gap_ms", gap, "app", app)
+        BufferEvent(evt)
+    }
+}
+
+CheckCorrection(keys, app) {
+    ; Detected at the functional-key level in LogFunctionalCallback
+    ; This is a no-op placeholder for the main detection logic
+}
+
+EmitLayerTransition(fromLayer, toLayer, method, durationMs, keysOnTarget) {
+    activeApp := ""
+    try activeApp := WinGetProcessName("A")
+    evt := Map("type", "layer_transition", "from", String(fromLayer), "to", String(toLayer), "method", method, "duration_ms", durationMs, "keys_on_target", keysOnTarget, "app", activeApp)
+    BufferEvent(evt)
+}
+
+CheckLayerBounce() {
+    global LayerTransitionHistory
+    if LayerTransitionHistory.Length < 2
+        return
+    ; Check last two transitions: A -> B -> A within 1 second total
+    t1 := LayerTransitionHistory[LayerTransitionHistory.Length - 1]
+    t2 := LayerTransitionHistory[LayerTransitionHistory.Length]
+    if t1["to"] = t2["from"] && t1["from"] = t2["to"] {
+        totalMs := t2["ts_ms"] - t1["ts_ms"]
+        if totalMs > 0 && totalMs < 1000 {
+            activeApp := ""
+            try activeApp := WinGetProcessName("A")
+            evt := Map("type", "layer_bounce", "layers", [t1["from"], t1["to"], t2["to"]], "total_ms", totalMs, "app", activeApp)
+            BufferEvent(evt)
+        }
+    }
+}
+
+CheckLayerSticky(layer, durationMs, keysPressed) {
+    if durationMs >= 10000 && keysPressed >= 10 {
+        activeApp := ""
+        try activeApp := WinGetProcessName("A")
+        evt := Map("type", "layer_sticky", "layer", String(layer), "duration_ms", durationMs, "keys_pressed", keysPressed, "app", activeApp)
+        BufferEvent(evt)
+    }
 }
 
 ; ── Generic hotkey registration ──
@@ -667,7 +953,7 @@ LogHotkeyCallback(hotkeyName) {
 }
 
 LogFunctionalCallback(hotkeyName) {
-    global ModifierComboFired, FunctionalKeyDownTime, SpaceCount, BackspaceCount, EnterCount
+    global ModifierComboFired, FunctionalKeyDownTime, SpaceCount, BackspaceCount, EnterCount, LastLoggedShortcutKeys, LastLoggedShortcutTime, ModifierErrorCandidate
     try {
         keys := ParseHotkeyName(hotkeyName)
         layer := "0"
@@ -676,6 +962,23 @@ LogFunctionalCallback(hotkeyName) {
             ModifierComboFired := true
             LogEventWithRepeatAndSequence("layer_key", keys, layer)
             return
+        }
+        ; Correction detection: Backspace/Delete/Escape within 2s of a logged shortcut
+        if keys = "Backspace" || keys = "Delete" || keys = "Escape" {
+            if LastLoggedShortcutKeys != "" && (A_TickCount - LastLoggedShortcutTime) < 2000 {
+                activeApp := ""
+                try activeApp := WinGetProcessName("A")
+                corrEvt := Map("type", "correction", "attempted", LastLoggedShortcutKeys, "corrected_with", keys, "gap_ms", A_TickCount - LastLoggedShortcutTime, "app", activeApp)
+                BufferEvent(corrEvt)
+            }
+            ; Modifier error detection: Backspace/Delete/Escape within 500ms of a modifier held without combo
+            if ModifierErrorCandidate.Has("modifier") && ModifierErrorCandidate["modifier"] != "" && (A_TickCount - ModifierErrorCandidate["time"]) < 500 {
+                activeApp := ""
+                try activeApp := WinGetProcessName("A")
+                modErrEvt := Map("type", "modifier_error", "modifier", ModifierErrorCandidate["modifier"], "followed_by", keys, "duration_ms", ModifierErrorCandidate["duration_ms"], "app", activeApp)
+                BufferEvent(modErrEvt)
+                ModifierErrorCandidate := Map("modifier", "", "time", 0)
+            }
         }
         ; Aggregate high-frequency typing keys — flush as batch counts
         if keys = "Space" {
@@ -744,12 +1047,18 @@ FunctionalKeyUpCallback(hotkeyName) {
 }
 
 LogEventWithRepeatAndSequence(evtType, keys, layer) {
-    global LastRepeatKey, LastRepeatTime, RepeatCount, LastShortcutKeys, LastShortcutTime, LayerSessionKeys
+    global LastRepeatKey, LastRepeatTime, RepeatCount, LastShortcutKeys, LastShortcutTime, LayerSessionKeys, MouseSessionStart, MouseSessionShortcuts, LastMouseEventTime, LastKey, CurrentAppContext, AppContextAtTime, LastLoggedShortcutKeys, LastLoggedShortcutTime, ShortcutVelocityWindow
     now := A_TickCount
 
     ; Track keys pressed during layer session
     if layer != "0" && LayerSessionKeys is Array {
         LayerSessionKeys.Push(keys)
+    }
+
+    ; Track keyboard shortcuts used during mouse session
+    if (evtType = "shortcut" || evtType = "layer_key") && MouseSessionStart != 0 && (now - LastMouseEventTime) < 5000 {
+        if !HasArrayValue(MouseSessionShortcuts, keys)
+            MouseSessionShortcuts.Push(keys)
     }
 
     ; Repeat aggregation (only for shortcuts, not bare functional keys)
@@ -779,6 +1088,48 @@ LogEventWithRepeatAndSequence(evtType, keys, layer) {
     LastShortcutKeys := keys
     LastShortcutTime := now
 
+    ; Mouse proximity hint: keyboard shortcut within 2 seconds of mouse click
+    if (evtType = "shortcut" || evtType = "layer_key") && LastMouseEventTime != 0 && (now - LastMouseEventTime) < 2000 {
+        evt["mouse_context"] := "MB1"
+        evt["ms_since_mouse"] := now - LastMouseEventTime
+    }
+
+    ; Hand detection from beacon lastKey.x (left half x=0..5, right half x=7..12)
+    if LastKey.Has("x") && LastKey["x"] != "" {
+        hand := HandFromX(LastKey["x"])
+        if hand != ""
+            evt["hand"] := hand
+    }
+
+    ; App context detection (heuristic based on known indicator shortcuts)
+    if evtType = "shortcut" || evtType = "layer_key" {
+        context := InferAppContext(keys, activeApp)
+        if context != CurrentAppContext {
+            CurrentAppContext := context
+            AppContextAtTime := now
+            if context != "general" {
+                ctxEvt := Map("type", "app_context", "app", activeApp, "context", context, "inferred_from", keys)
+                BufferEvent(ctxEvt)
+            }
+        }
+    }
+
+    ; First-seen tracking for shortcut learning-curve data
+    if evtType = "shortcut" || evtType = "layer_key" {
+        RecordFirstSeen(keys)
+        firstSeen := GetFirstSeen(keys)
+        if firstSeen != ""
+            evt["first_seen"] := firstSeen
+    }
+
+    ; Shortcut retry / no-op detection (only for shortcut/layer_key types)
+    if evtType = "shortcut" || evtType = "layer_key" {
+        CheckShortcutRetry(keys, activeApp)
+        CheckShortcutNoopHint(keys, activeApp)
+        LastLoggedShortcutKeys := keys
+        LastLoggedShortcutTime := now
+    }
+
     BufferEvent(evt)
 }
 
@@ -804,7 +1155,7 @@ FlushPendingRepeat() {
 ; ── Mouse callbacks ──
 
 LogMouseCallback(hotkeyName) {
-    global LastMouseButton, LastMouseTime, LastMouseCount, LastMouseModifier, ModifierComboFired
+    global LastMouseButton, LastMouseTime, LastMouseCount, LastMouseModifier, ModifierComboFired, MouseSessionStart, MouseSessionLastButton, LastMouseEventTime
     ModifierComboFired := true
     buttonMap := Map("LButton", "MB1", "RButton", "MB2", "MButton", "MB3", "XButton1", "MB4", "XButton2", "MB5")
     rawName := StrReplace(hotkeyName, "~", "")
@@ -827,11 +1178,20 @@ LogMouseCallback(hotkeyName) {
         LastMouseCount := 1
         LastMouseModifier := modifier
     }
+    ; Mouse session tracking: start or extend session
+    if MouseSessionStart = 0 || (now - LastMouseEventTime) > 5000 {
+        FlushMouseSession()
+        MouseSessionStart := now
+        MouseSessionLastButton := button
+        MouseSessionShortcuts := []
+    }
+    LastMouseEventTime := now
     SetTimer(FlushPendingMouse, -600)
+    SetTimer(FlushMouseSession, -5000)
 }
 
 FlushPendingMouse() {
-    global LastMouseButton, LastMouseCount, LastMouseModifier, LayerSessionKeys
+    global LastMouseButton, LastMouseCount, LastMouseModifier, LayerSessionKeys, LastMouseEventTime
     if LastMouseButton = ""
         return
     activeApp := ""
@@ -847,6 +1207,7 @@ FlushPendingMouse() {
     LastMouseButton := ""
     LastMouseCount := 0
     LastMouseModifier := ""
+    LastMouseEventTime := A_TickCount
 }
 
 ; ── Scroll callbacks ──
@@ -899,7 +1260,7 @@ ModifierDownCallback(hotkeyName) {
 }
 
 ModifierUpCallback(hotkeyName) {
-    global ModifierDownTime, ModifierComboFired
+    global ModifierDownTime, ModifierComboFired, ModifierErrorCandidate
     rawName := StrReplace(hotkeyName, "~", "")
     rawName := StrReplace(rawName, " Up", "")
     if !ModifierDownTime.Has(rawName)
@@ -913,6 +1274,10 @@ ModifierUpCallback(hotkeyName) {
         try layer := CoachActiveLayer()
         evt := Map("type", "modifier_tap", "key", rawName, "app", activeApp, "layer", layer)
         BufferEvent(evt)
+    }
+    ; Modifier error candidate: held >= 500ms with no combo fired
+    if elapsed >= 500 && !ModifierComboFired {
+        ModifierErrorCandidate := Map("modifier", rawName, "time", A_TickCount, "duration_ms", elapsed)
     }
 }
 
@@ -944,7 +1309,7 @@ StartLayerSession(layer) {
 }
 
 EndLayerSession() {
-    global LayerSessionStart, LayerSessionKeys, LayerSessionLayer
+    global LayerSessionStart, LayerSessionKeys, LayerSessionLayer, PreviousLayer, LayerTransitionHistory
     if LayerSessionStart = 0 || LayerSessionLayer = ""
         return
     duration := A_TickCount - LayerSessionStart
@@ -954,6 +1319,15 @@ EndLayerSession() {
     try activeApp := WinGetProcessName("A")
     evt := Map("type", "layer_session", "layer", LayerSessionLayer, "duration_ms", duration, "keys_pressed", LayerSessionKeys, "app", activeApp)
     BufferEvent(evt)
+    ; Check for sticky layer (>10s and >=10 keys)
+    CheckLayerSticky(LayerSessionLayer, duration, LayerSessionKeys.Length)
+    ; Update the most recent layer_transition with actual duration and key count
+    if LayerTransitionHistory.Length > 0 {
+        lastTrans := LayerTransitionHistory[LayerTransitionHistory.Length]
+        if lastTrans["to"] = LayerSessionLayer {
+            EmitLayerTransition(lastTrans["from"], LayerSessionLayer, "summary", duration, LayerSessionKeys.Length)
+        }
+    }
     LayerSessionStart := 0
     LayerSessionKeys := []
     LayerSessionLayer := ""
@@ -1030,9 +1404,9 @@ LayerKeyHint(kind, layer) {
     if kind = "hold" {
         switch layer {
             case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Nav")
-            case "2": return Map("layer", "0", "x", "5", "y", "5", "label", "Mouse")
-            case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Window")
-            case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "System")
+            case "2": return Map("layer", "0", "x", "4", "y", "5", "label", "Mouse")
+            case "3": return Map("layer", "0", "x", "7", "y", "4", "label", "Window")
+            case "4": return Map("layer", "0", "x", "8", "y", "4", "label", "System")
             case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
         }
     } else if kind = "lock" {
@@ -1057,7 +1431,7 @@ LayerKeyHint(kind, layer) {
 }
 
 CoachBeacon(kind, layer, direction, label := "") {
-    global CurrentCoachLayer, HeldLayers, LockedLayer, ToggledLayers, LastKey, HelperConfig
+    global CurrentCoachLayer, HeldLayers, LockedLayer, ToggledLayers, LastKey, HelperConfig, PreviousLayer, LayerTransitionHistory, LayerTransitionStart, LayerTransitionMethod, LayerTransitionKeysCount
     if HelperConfig.Has("coach_beacons_enabled") && !HelperConfig["coach_beacons_enabled"] {
         return
     }
@@ -1066,6 +1440,15 @@ CoachBeacon(kind, layer, direction, label := "") {
     switch kind {
         case "hold":
             if direction = "down" {
+                ; Record transition before changing layer
+                if PreviousLayer != layer {
+                    EmitLayerTransition(PreviousLayer, layer, "momentary", 0, 0)
+                    LayerTransitionHistory.Push(Map("from", PreviousLayer, "to", layer, "ts_ms", A_TickCount))
+                    if LayerTransitionHistory.Length > 10
+                        LayerTransitionHistory.RemoveAt(1)
+                    CheckLayerBounce()
+                    PreviousLayer := layer
+                }
                 AddUniqueLayer(HeldLayers, layer)
                 hint := LayerKeyHint("hold", layer)
                 if hint.Count {
@@ -1080,12 +1463,29 @@ CoachBeacon(kind, layer, direction, label := "") {
                 EndLayerSession()
                 RemoveLayer(HeldLayers, layer)
                 CurrentCoachLayer := CoachActiveLayer()
+                ; Record return transition
+                if PreviousLayer != CurrentCoachLayer {
+                    EmitLayerTransition(PreviousLayer, CurrentCoachLayer, "return", 0, 0)
+                    LayerTransitionHistory.Push(Map("from", PreviousLayer, "to", CurrentCoachLayer, "ts_ms", A_TickCount))
+                    if LayerTransitionHistory.Length > 10
+                        LayerTransitionHistory.RemoveAt(1)
+                    CheckLayerBounce()
+                    PreviousLayer := CurrentCoachLayer
+                }
                 TouchAction("BLE layer " layer " released")
             }
         case "lock":
             if layer = "0" || direction = "exit" {
                 EndLayerSession()
                 exiting := LockedLayer != "" ? LockedLayer : CoachActiveLayer()
+                ; Record return transition before clearing state
+                if PreviousLayer != "0" {
+                    EmitLayerTransition(PreviousLayer, "0", "return", 0, 0)
+                    LayerTransitionHistory.Push(Map("from", PreviousLayer, "to", "0", "ts_ms", A_TickCount))
+                    if LayerTransitionHistory.Length > 10
+                        LayerTransitionHistory.RemoveAt(1)
+                    CheckLayerBounce()
+                }
                 LockedLayer := ""
                 HeldLayers := []
                 ToggledLayers := []
@@ -1095,8 +1495,18 @@ CoachBeacon(kind, layer, direction, label := "") {
                 }
                 LastKey := hint.Count ? hint : Map("layer", "", "x", "", "y", "", "label", "")
                 CurrentCoachLayer := "0"
+                PreviousLayer := "0"
                 TouchAction("BLE base layer")
             } else {
+                ; Record lock transition before changing layer
+                if PreviousLayer != layer {
+                    EmitLayerTransition(PreviousLayer, layer, "lock", 0, 0)
+                    LayerTransitionHistory.Push(Map("from", PreviousLayer, "to", layer, "ts_ms", A_TickCount))
+                    if LayerTransitionHistory.Length > 10
+                        LayerTransitionHistory.RemoveAt(1)
+                    CheckLayerBounce()
+                    PreviousLayer := layer
+                }
                 HeldLayers := []
                 LockedLayer := layer
                 hint := LayerKeyHint("lock", layer)
@@ -1110,6 +1520,15 @@ CoachBeacon(kind, layer, direction, label := "") {
                 EndLayerSession()
                 RemoveLayer(ToggledLayers, layer)
                 CurrentCoachLayer := CoachActiveLayer()
+                ; Record toggle-off transition
+                if PreviousLayer != CurrentCoachLayer {
+                    EmitLayerTransition(PreviousLayer, CurrentCoachLayer, "return", 0, 0)
+                    LayerTransitionHistory.Push(Map("from", PreviousLayer, "to", CurrentCoachLayer, "ts_ms", A_TickCount))
+                    if LayerTransitionHistory.Length > 10
+                        LayerTransitionHistory.RemoveAt(1)
+                    CheckLayerBounce()
+                    PreviousLayer := CurrentCoachLayer
+                }
                 if direction = "off" {
                     hint := LayerKeyHint("exit", layer)
                     if hint.Count {
@@ -1118,6 +1537,15 @@ CoachBeacon(kind, layer, direction, label := "") {
                 }
                 TouchAction("BLE layer " layer " toggled off")
             } else {
+                ; Record toggle-on transition
+                if PreviousLayer != layer {
+                    EmitLayerTransition(PreviousLayer, layer, "toggle", 0, 0)
+                    LayerTransitionHistory.Push(Map("from", PreviousLayer, "to", layer, "ts_ms", A_TickCount))
+                    if LayerTransitionHistory.Length > 10
+                        LayerTransitionHistory.RemoveAt(1)
+                    CheckLayerBounce()
+                    PreviousLayer := layer
+                }
                 AddUniqueLayer(ToggledLayers, layer)
                 CurrentCoachLayer := layer
                 StartLayerSession(layer)
@@ -1316,7 +1744,7 @@ UpdateCoachGrid() {
     role := LayerRole(CurrentCoachLayer)
     CoachTitle.Text := "Charybdis Coach - Layer " CurrentCoachLayer " - " role
     CoachGrid.Text := RenderLayerGrid(CurrentCoachLayer)
-    CoachLegend.Text := "Thumb anchors: L1/Nav x3 y4 | Space x4 y4 | Mouse x5 y5 | L4/System x7 y4 | L3/Window x8 y4 | Enter x7 y5`n" .
+    CoachLegend.Text := "Thumb anchors: L1/Nav x3 y4 | Space x4 y4 | Mouse x4 y5 | L3/Window x7 y4 | L4/System x8 y4 | Enter x7 y5`n" .
         "Launcher: Ctrl+Alt+Space.  Force new app: Shift+Enter or !prefix.  PowerToys: Win+Alt+Space (default)."
     UpdateCoachContext()
 }
