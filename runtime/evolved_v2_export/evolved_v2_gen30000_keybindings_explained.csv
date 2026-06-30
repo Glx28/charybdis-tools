@@ -1,0 +1,617 @@
+layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
+0,0,0,Esc,Key Press,Escape,,Base typing key for the main work layout.,Sends Escape.,canonical (base key)
+0,1,0,1,Key Press,1 and Bang,,Base typing key for the main work layout.,Sends 1 and Bang.,canonical (base key)
+0,2,0,2,Key Press,2 and At,,Base typing key for the main work layout.,Sends 2 and At.,canonical (base key)
+0,3,0,3,Key Press,3 and Hash,,Base typing key for the main work layout.,Sends 3 and Hash.,canonical (base key)
+0,4,0,4,Key Press,4 and Dollar,,Base typing key for the main work layout.,Sends 4 and Dollar.,canonical (base key)
+0,5,0,5,Key Press,5 and Percent,,Base typing key for the main work layout.,Sends 5 and Percent.,canonical (base key)
+0,7,0,6,Key Press,6 and Caret,,Base typing key for the main work layout.,Sends 6 and Caret.,canonical (base key)
+0,8,0,7,Key Press,7 and Ampersand,,Base typing key for the main work layout.,Sends 7 and Ampersand.,canonical (base key)
+0,9,0,8,Key Press,8 and Star,,Base typing key for the main work layout.,Sends 8 and Star.,canonical (base key)
+0,10,0,9,Key Press,9 and Left Bracket,,Base typing key for the main work layout.,Sends 9 and Left Bracket.,canonical (base key)
+0,11,0,0,Key Press,0 and Right Bracket,,Base typing key for the main work layout.,Sends 0 and Right Bracket.,canonical (base key)
+0,12,0,BkSp,Key Press,Delete,,Base typing key for the main work layout.,Sends Delete.,canonical (base key)
+0,0,1,Tab,Key Press,Tab,,Base typing key for the main work layout.,Sends Tab.,canonical (base key)
+0,1,1,Q,Key Press,Q,,Base typing key for the main work layout.,Sends Q.,canonical (base key)
+0,2,1,W,Key Press,W,,Base typing key for the main work layout.,Sends W.,canonical (base key)
+0,3,1,E,Key Press,E,,Base typing key for the main work layout.,Sends E.,canonical (base key)
+0,4,1,R,Key Press,R,,Base typing key for the main work layout.,Sends R.,canonical (base key)
+0,5,1,T,Key Press,T,,Base typing key for the main work layout.,Sends T.,canonical (base key)
+0,7,1,Y,Key Press,Y,,Base typing key for the main work layout.,Sends Y.,canonical (base key)
+0,8,1,U,Key Press,U,,Base typing key for the main work layout.,Sends U.,canonical (base key)
+0,9,1,I,Key Press,I,,Base typing key for the main work layout.,Sends I.,canonical (base key)
+0,10,1,O,Key Press,O,,Base typing key for the main work layout.,Sends O.,canonical (base key)
+0,11,1,P,Key Press,P,,Base typing key for the main work layout.,Sends P.,canonical (base key)
+0,12,1,å,Key Press,Left Brace,,"Norwegian å. Sends the [ scancode (ZMK Studio name 'Left Brace', same key as Layer 1 x9 y3) = å on Norwegian Windows. Label is for the coach only.",Sends the [ scancode = å on Norwegian Windows layout (= [ on US).,canonical (base key)
+0,0,2,Shft,Key Press,LeftShift,,Base typing key for the main work layout.,Sends LeftShift.,canonical (base key)
+0,1,2,A,Key Press,A,,Base typing key for the main work layout.,Sends A.,canonical (base key)
+0,2,2,S,Key Press,S,,Base typing key for the main work layout.,Sends S.,canonical (base key)
+0,3,2,D,Key Press,D,,Base typing key for the main work layout.,Sends D.,canonical (base key)
+0,4,2,F,Key Press,F,,Base typing key for the main work layout.,Sends F.,canonical (base key)
+0,5,2,G,Key Press,G,,Base typing key for the main work layout.,Sends G.,canonical (base key)
+0,7,2,H,Key Press,H,,Base typing key for the main work layout.,Sends H.,canonical (base key)
+0,8,2,J,Key Press,J,,Base typing key for the main work layout.,Sends J.,canonical (base key)
+0,9,2,K,Key Press,K,,Base typing key for the main work layout.,Sends K.,canonical (base key)
+0,10,2,L,Key Press,L,,Base typing key for the main work layout.,Sends L.,canonical (base key)
+0,11,2,ø,Key Press,SemiColon and Colon,,Norwegian ø. Keycode is unchanged (SemiColon scancode); Windows Norwegian layout renders it as ø. Label is for the coach only.,Sends SemiColon scancode = ø on Norwegian Windows layout (= ; on US).,canonical (base key)
+0,12,2,æ,Key Press,Left Apos and Double,,Norwegian æ. Keycode is unchanged (Apostrophe/Quote scancode); Windows Norwegian layout renders it as æ. Label is for the coach only.,Sends Apostrophe scancode = æ on Norwegian Windows layout (= ' on US).,canonical (base key)
+0,0,3,Ctrl,Key Press,LeftControl,,Base typing key for the main work layout.,Sends LeftControl.,canonical (base key)
+0,1,3,Z,Key Press,Z,,Base typing key for the main work layout.,Sends Z.,canonical (base key)
+0,2,3,X,Key Press,X,,Base typing key for the main work layout.,Sends X.,canonical (base key)
+0,3,3,C,Key Press,C,,Base typing key for the main work layout.,Sends C.,canonical (base key)
+0,4,3,V,Key Press,V,,Base typing key for the main work layout.,Sends V.,canonical (base key)
+0,5,3,B,Key Press,B,,Base typing key for the main work layout.,Sends B.,canonical (base key)
+0,7,3,N,Key Press,N,,Base typing key for the main work layout.,Sends N.,canonical (base key)
+0,8,3,M,Key Press,M,,Base typing key for the main work layout.,Sends M.,canonical (base key)
+0,9,3,",",Key Press,Comma and LessThan,,Base typing key for the main work layout.,Sends Comma and LessThan.,canonical (base key)
+0,10,3,.,Key Press,Period and GreaterThan,,CRITICAL v1.9: Period must be on base layer for typing flow. Moves [ to Layer 1.,Sends Period.,canonical (base key)
+0,11,3,/,Key Press,ForwardSlash and QuestionMark,,Base typing key for the main work layout.,Sends ForwardSlash and QuestionMark.,canonical (base key)
+0,12,3,\,Key Press,Backslash and Pipe,,"International backslash/pipe (US HID). On Norwegian Windows this key is layout-dependent (often |); not English apostrophe — use Win+Space to US English for ' in contractions, or type ø/æ on their base positions.",Sends Backslash and Pipe scancode.,canonical (base key)
+0,3,4,Nav,coach_l1_hold,,,Hold Nav for layer 1 navigation/editing.,Coach beacon: momentary layer 1 + BLE hold signal (Ctrl+Alt+Shift+F13/F14).,canonical (frozen/critical)
+0,4,4,␣,Key Press,Spacebar,,"Thumb/control key for typing, layer access, mouse access, or Enter.",Sends Spacebar.,canonical (frozen/critical)
+0,5,4,Ctrl+1,Key Press,1 and Bang,L Ctrl,Activity,"App: Microsoft Teams, importance=6.0",evolved
+0,7,4,System,coach_l4_hold,,,Hold System for layer 4 Bluetooth/output/helpers.,Coach beacon: momentary layer 4 + BLE hold signal (Ctrl+Alt+Shift+F19/F20).,canonical (frozen/critical)
+0,8,4,Window,coach_l3_hold,,,Hold Window for layer 3 window/app/desktop control.,Coach beacon: momentary layer 3 + BLE hold signal (Ctrl+Alt+Shift+F17/F18).,canonical (frozen/critical)
+0,4,5,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+0,5,5,Mouse,coach_l2_hold,,,Hold Mouse for layer 2 mouse lock/buttons.,Coach beacon: momentary layer 2 + BLE hold signal (Ctrl+Alt+Shift+F15/F16).,canonical
+0,7,5,Ret,Key Press,Return Enter,,"Thumb/control key for typing, layer access, mouse access, or Enter.",Sends Return Enter.,canonical (frozen/critical)
+1,0,0,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
+1,1,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,2,0,Ctrl+H,Key Press,H,L Ctrl,History,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,3,0,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,4,0,Win+I,Key Press,I,L GUI,Evolved (evo_best_gen150): Sends L GUI+I.,Sends L GUI+I.,canonical
+1,5,0,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+G.,Sends L Ctrl+L Shift+G.,canonical
+1,7,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,8,0,Ctrl+O,Key Press,O,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+O.,Sends L Ctrl+O.,canonical (base key)
+1,9,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,10,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,11,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,12,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,0,1,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+1,1,1,Alt+Down,Key Press,DownArrow,L Alt,Move line down,"App: Visual Studio Code, importance=5.4",evolved
+1,2,1,Alt+Up,Key Press,UpArrow,L Alt,Move line up,"App: Visual Studio Code, importance=5.4",evolved
+1,3,1,Up,Key Press,UpArrow,,Edit last sent message,"App: Microsoft Teams, importance=6.0",evolved
+1,4,1,=,Key Press,=,,Start formula,"App: Microsoft Excel, importance=5.0",evolved
+1,5,1,Ctrl+Shift++,Key Press,Shift,L Ctrl,Insert cells/rows/columns,"App: Microsoft Excel, importance=3.0",evolved
+1,7,1,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+E.,Sends L Ctrl+L Shift+E.,canonical
+1,8,1,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+1,9,1,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+1,10,1,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+1,11,1,Ctrl+Up,Key Press,UpArrow,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+UpArrow.,Sends L Ctrl+UpArrow.,canonical (base key)
+1,12,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+1,0,2,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+1,1,2,leftarrow_combo,Key Press,LeftArrow,,Evolved (evo_best_gen150): Sends LeftArrow.,Sends LeftArrow.,canonical
+1,2,2,Shift+Alt+Down,Key Press,DownArrow,L Shift+L Alt,Copy line down,"App: Visual Studio Code, importance=5.4",evolved
+1,3,2,Alt+Left,Key Press,LeftArrow,L Alt,Go back,"App: Microsoft Teams, importance=6.0",evolved
+1,4,2,Ctrl+Right,Key Press,RightArrow,L Ctrl,Jump to right edge of data,"App: Microsoft Excel, importance=5.0",evolved
+1,5,2,f2,Key Press,F2,,Evolved (evo_best_gen150): Sends F2.,Sends F2.,canonical (base key)
+1,7,2,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+1,8,2,UpArrow,Key Press,UpArrow,,Up arrow,"App: Mouse, importance=8.0",evolved
+1,9,2,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+1,10,2,Ctrl+R,Key Press,R,L Ctrl,Reply,"App: Microsoft Outlook, importance=7.0",evolved
+1,11,2,Down,Key Press,DownArrow,,Next command,"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
+1,12,2,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
+1,0,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,1,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,2,3,f5,Key Press,F5,,Evolved (evo_best_gen150): Sends F5.,Sends F5.,canonical
+1,3,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,4,3,Ctrl+Shift+I,Key Press,I,L Ctrl+L Shift,Open DevTools (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,5,3,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+A.,Sends L Ctrl+L Shift+A.,canonical
+1,7,3,Win+Shift+Right,Key Press,RightArrow,L GUI+L Shift,Move to right monitor,"App: Windows 11, importance=6.0",evolved
+1,8,3,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
+1,9,3,LeftArrow,Key Press,LeftArrow,,Left arrow,"App: Mouse, importance=8.0",evolved
+1,10,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,11,3,Shift+Alt+Down,Key Press,DownArrow,L Alt+L Shift,Evolved (evo_best_gen150): Sends L Shift+L Alt+DownArrow.,Sends L Shift+L Alt+DownArrow.,canonical
+1,12,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,3,4,Win+N,Key Press,N,L GUI,Evolved (evo_best_gen150): Sends L GUI+N.,Sends L GUI+N.,canonical
+1,4,4,Ctrl+2,Key Press,2 and At,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+2.,Sends L Ctrl+2.,canonical
+1,5,4,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+1,7,4,Win+V,Key Press,V,L GUI,Clipboard history,"App: Windows 11, importance=6.0",evolved
+1,8,4,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
+1,4,5,gi,Key Press,gi,,Focus first input field,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,5,5,Ctrl+-,Key Press,Dash and Underscore,L Ctrl,Zoom out.,Sends L Ctrl+Dash.,canonical
+1,7,5,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,0,0,Snip,Key Press,PrintScreen,L GUI+L Shift,v2.5: Mouse QoL — Win+Shift+S screenshot snip tool for capturing while browsing.,Sends L GUI+L Shift+Print Screen.,canonical
+2,1,0,f9,Key Press,F9,,Evolved (evo_best_gen150): Sends F9.,Sends F9.,canonical (base key)
+2,2,0,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
+2,3,0,f10,Key Press,F10,,Evolved (evo_best_gen150): Sends F10.,Sends F10.,canonical
+2,4,0,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+G.,Sends L Ctrl+L Shift+G.,canonical
+2,5,0,Scroll,Momentary Layer,Layer::6,,v2.0: Left-hand mouse QoL — hold for scroll overlay.,"Hold to scroll, release to return.",canonical
+2,7,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+2,8,0,Ctrl+2,Key Press,2 and At,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+2.,Sends L Ctrl+2.,canonical (base key)
+2,9,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+2,10,0,Ctrl+F,Key Press,F,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+F.,Sends L Ctrl+F.,canonical
+2,11,0,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+2,12,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+2,0,1,DownArrow,Key Press,DownArrow,,Down arrow,"App: Mouse, importance=8.0",evolved
+2,1,1,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+K.,Sends L Ctrl+L Shift+K.,canonical
+2,2,1,Ctrl+Shift+B,Key Press,B,L Ctrl+L Shift,Toggle background blur,"App: Microsoft Teams, importance=3.0",evolved
+2,3,1,Alt+F12,Key Press,F12,L Alt,Peek definition,"App: Visual Studio Code, importance=5.4",evolved
+2,4,1,Ctrl+B,Key Press,B,L Ctrl,Bold,"App: Microsoft Teams, importance=6.0",evolved
+2,5,1,Zoom In,Key Press,Equals and Plus,L Ctrl,v2.5: Mouse QoL — Ctrl+= zoom in for detailed viewing while pointing.,Sends L Ctrl+Equal.,canonical
+2,7,1,Win,Key Press,Left GUI,,v2.0: Right-hand mouse QoL — Win key to show auto-hide taskbar / Start menu.,Sends Left GUI (Windows key).,canonical
+2,8,1,Enter,Key Press,Return Enter,,v2.0: Right-hand mouse QoL — Enter to confirm dialogs/actions while navigating.,Sends Return Enter.,canonical
+2,9,1,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+2,10,1,minus,Key Press,Dash and Underscore,,Evolved (evo_best_gen150): Sends _.,Sends _.,canonical
+2,11,1,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
+2,12,1,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+2,0,2,Ctrl+[,Key Press,[,L Ctrl,Outdent line,"App: Visual Studio Code, importance=2.7",evolved
+2,1,2,Ctrl+`,Key Press,`,L Ctrl,Toggle terminal,"App: Visual Studio Code, importance=9.0",evolved
+2,2,2,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,Toggle chat in meeting,"App: Microsoft Teams, importance=3.0",evolved
+2,3,2,Ctrl+Shift+M,Key Press,M,L Ctrl+L Shift,Toggle mute,"App: Microsoft Teams, importance=10.0",evolved
+2,4,2,Ctrl+Left,Key Press,LeftArrow,L Ctrl,Jump to left edge of data,"App: Microsoft Excel, importance=5.0",evolved
+2,5,2,Ctrl+Page Down,Key Press,DownArrow,L Ctrl+Page,Next sheet,"App: Microsoft Excel, importance=3.0",evolved
+2,7,2,Ctrl+C,Key Press,C,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+C.,Sends L Ctrl+C.,canonical
+2,8,2,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
+2,9,2,MB5,Mouse Key Press,MB5,,Forward button,"App: Mouse, importance=7.0",evolved
+2,10,2,coach_base,coach_base,,,Evolved (evo_best_gen150): coach_base,,canonical
+2,11,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+2,12,2,F2,Key Press,F2,,Rename,"App: Windows 11, importance=6.0",evolved
+2,0,3,Shift+F5,Key Press,F5,L Shift,Stop debugging,"App: Visual Studio Code, importance=2.7",evolved
+2,1,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+2,2,3,Shift+Alt+Up,Key Press,UpArrow,L Shift+L Alt,Copy line up,"App: Visual Studio Code, importance=2.7",evolved
+2,3,3,"Ctrl+,",Key Press,Comma and LessThan,L Ctrl,Open settings,"App: Visual Studio Code, importance=2.7",evolved
+2,4,3,Ctrl+;,Key Press,SemiColon and Colon,L Ctrl,Insert current date,"App: Microsoft Excel, importance=1.5",evolved
+2,5,3,Paste,Key Press,V,L Ctrl,v2.0: Left-hand mouse QoL — Ctrl+V paste.,Sends L Ctrl+V.,canonical
+2,7,3,Shift+Alt+Down,Key Press,DownArrow,L Alt+L Shift,Evolved (evo_best_gen150): Sends L Shift+L Alt+DownArrow.,Sends L Shift+L Alt+DownArrow.,canonical
+2,8,3,Win+2,Key Press,2 and At,L GUI,Open/switch pinned app 2,"App: Windows 11, importance=6.0",evolved
+2,9,3,ScrollUp,Key Press,ScrollUp,,Scroll up,"App: Mouse, importance=7.0",evolved
+2,10,3,Undo,Key Press,Z,L Ctrl,v2.0: Right-hand mouse QoL — Ctrl+Z undo after accidental edit.,Sends L Ctrl+Z.,canonical (base key)
+2,11,3,Speed,Momentary Layer,Layer::8,,Hold for pointer travel overlay (L8).,Momentary Layer 8.,canonical
+2,12,3,Ctrl+Shift+Enter,Key Press,Return Enter,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+Enter.,Sends L Ctrl+L Shift+Enter.,canonical (base key)
+2,3,4,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,4,4,Ctrl+Tab,Key Press,Tab,L Ctrl,Next tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+2,5,4,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+2,7,4,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+2,8,4,Win+X,Key Press,X,L GUI,Power User menu,"App: Windows 11, importance=3.0",evolved
+2,4,5,Ctrl+-,Key Press,-,L Ctrl,Zoom out,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+2,5,5,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+2,7,5,right brace_combo,Key Press,Right Brace,,Evolved (evo_best_gen150): Sends }.,Sends }.,canonical
+3,0,0,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+3,1,0,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+3,2,0,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+3,3,0,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
+3,4,0,QSett,Key Press,A,L GUI,v2.2: Win+A — Quick Settings. Fills empty L3 y0.,Sends L GUI+A.,canonical
+3,5,0,RightArrow,Key Press,RightArrow,,Right arrow,"App: Mouse, importance=8.0",evolved
+3,7,0,TskCy,Key Press,T,L GUI,v2.2: Win+T — Cycle taskbar. Fills empty L3 y0.,Sends L GUI+T.,canonical (base key)
+3,8,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+3,9,0,Ctrl+P,Key Press,P,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+P.,Sends L Ctrl+P.,canonical
+3,10,0,BT?,Bluetooth,BT_SEL ?,,Bluetooth selection.,Bluetooth.,canonical
+3,11,0,left bracket_combo,Key Press,9 and Left Bracket,,Evolved (evo_best_gen150): Sends 9.,Sends 9.,canonical
+3,12,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+3,0,1,DownArrow,Key Press,DownArrow,,Down arrow,"App: Mouse, importance=8.0",evolved
+3,1,1,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+3,2,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+3,3,1,Ctrl+A,Key Press,A,L Ctrl,Select all,"App: Microsoft Teams, importance=3.0",evolved
+3,4,1,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
+3,5,1,Lang,Key Press,Spacebar,L GUI,Win+Space — Switch input language. Replaces dupe emoji picker.,Sends L GUI+Spacebar.,canonical
+3,7,1,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+3,8,1,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+V.,Sends L Ctrl+L Shift+V.,canonical
+3,9,1,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+3,10,1,f16,Key Press,F16,,Evolved (evo_best_gen150): Sends F16.,Sends F16.,canonical
+3,11,1,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
+3,12,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+3,0,2,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
+3,1,2,Shift+F3,Key Press,F3,L Shift,Find previous,"App: Visual Studio Code, importance=2.7",evolved
+3,2,2,Shift+Alt+Left,Key Press,LeftArrow,L Shift+L Alt,Shrink selection,"App: Visual Studio Code, importance=2.7",evolved
+3,3,2,Ctrl+E,Key Press,E,L Ctrl,Search / command bar,"App: Microsoft Teams, importance=10.0",evolved
+3,4,2,Ctrl+5,Key Press,5 and Percent,L Ctrl,Calls,"App: Microsoft Teams, importance=3.0",evolved
+3,5,2,Ctrl+Shift+Right,Key Press,RightArrow,L Ctrl+L Shift,Select to right edge,"App: Microsoft Excel, importance=3.0",evolved
+3,7,2,Search,Key Press,S,L GUI,Windows Search (Win+S) on home row.,Sends L GUI+S.,canonical
+3,8,2,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
+3,9,2,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+3,10,2,ScrollDown,Key Press,ScrollDown,,Scroll down,"App: Mouse, importance=7.0",evolved
+3,11,2,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+3,12,2,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
+3,0,3,Ctrl+O,Key Press,O,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+O.,Sends L Ctrl+O.,canonical (base key)
+3,1,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+3,2,3,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
+3,3,3,Page Down,Key Press,DownArrow,Page,Next slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+3,4,3,S,Key Press,S,L GUI+L Shift,"Window, app, language, or desktop workflow shortcut.",Sends L Shift+L GUI+S.,canonical
+3,5,3,yy,Key Press,yy,,Copy current URL,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,7,3,Win+3,Key Press,3 and Hash,L GUI,Open/switch pinned app 3,"App: Windows 11, importance=6.0",evolved
+3,8,3,Win+Shift+Left,Key Press,LeftArrow,L GUI+L Shift,Move to left monitor,"App: Windows 11, importance=6.0",evolved
+3,9,3,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
+3,10,3,Ctrl+R,Key Press,R,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+R.,Sends L Ctrl+R.,canonical
+3,11,3,Alt+Shift++,Key Press,Shift,L Alt,Split pane vertical,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
+3,12,3,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+N.,Sends L Ctrl+L Shift+N.,canonical
+3,3,4,Ctrl+F5,Key Press,F5,L Ctrl,Hard refresh (bypass cache),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,4,4,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+3,5,4,F1,Key Press,F1,,Help,"App: Browser (Chrome/Edge), importance=0.19",evolved
+3,7,4,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+3,8,4,Win+H,Key Press,H,L GUI,Voice typing,"App: Windows 11, importance=6.0",evolved
+3,4,5,Ctrl++,Key Press,LeftControl,,Zoom in,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,5,5,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
+3,7,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+4,0,0,BT0,Bluetooth,BT_SEL 0,,Bluetooth profile management.,Selects BT profile 0 (Desktop).,canonical
+4,1,0,BT1,Bluetooth,BT_SEL 1,,Bluetooth profile management.,Selects BT profile 1 (Windows laptop).,canonical
+4,2,0,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+4,3,0,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+4,4,0,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
+4,5,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+4,7,0,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+X.,Sends L Ctrl+L Shift+X.,canonical
+4,8,0,f6,Key Press,F6,,Evolved (evo_best_gen150): Sends F6.,Sends F6.,canonical (base key)
+4,9,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+4,10,0,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+4,11,0,Ctrl+Enter,Key Press,Return Enter,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+Enter.,Sends L Ctrl+Enter.,canonical (base key)
+4,12,0,Bootloader,Bootloader,,,Bootloader entry for flashing firmware.,Sends default_transform:default_transform.,canonical
+4,0,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+4,1,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+4,2,1,Shift+F8,Key Press,F8,L Shift,Go to previous problem,"App: Visual Studio Code, importance=0.9",evolved
+4,3,1,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+4,4,1,Ctrl+Space,Key Press,Spacebar,L Ctrl,Select entire column,"App: Microsoft Excel, importance=3.0",evolved
+4,5,1,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+4,7,1,Ctrl+S,Key Press,S,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+S.,Sends L Ctrl+S.,canonical
+4,8,1,end,Key Press,End,,Evolved (evo_best_gen150): Sends End.,Sends End.,canonical
+4,9,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+4,10,1,Ctrl+X,Key Press,X,L Ctrl,Cut,"App: Windows 11, importance=6.0",evolved
+4,11,1,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+4,12,1,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
+4,0,2,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+4,1,2,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+4,2,2,Ctrl+Shift+D,Key Press,D,L Ctrl+L Shift,Decline call,"App: Microsoft Teams, importance=3.0",evolved
+4,3,2,Ctrl+F6,Key Press,F6,L Ctrl,Previous section,"App: Microsoft Teams, importance=1.0",evolved
+4,4,2,Ctrl+Shift+F6,Key Press,F6,L Ctrl+L Shift,Next section,"App: Microsoft Teams, importance=3.0",evolved
+4,5,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+4,7,2,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Expand compose box,"App: Microsoft Teams, importance=3.0",evolved
+4,8,2,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+4,9,2,MB4,Mouse Key Press,MB4,,Back button,"App: Mouse, importance=7.0",evolved
+4,10,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+4,11,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+4,12,2,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+4,0,3,Excel,Toggle Layer,Layer::10,,Toggle Excel layer (L10). Hold System thumb + tap here.,Toggles Layer 10 Excel.,canonical
+4,1,3,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+4,2,3,DMS,Toggle Layer,Layer::9,,Toggle M-Files/DMS layer (L9).,Toggle Layer 9.,canonical
+4,3,3,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
+4,4,3,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
+4,5,3,Page Up,Key Press,UpArrow,Page,Previous slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+4,7,3,Win+4,Key Press,4 and Dollar,L GUI,Open/switch pinned app 4,"App: Windows 11, importance=3.0",evolved
+4,8,3,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
+4,9,3,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+4,10,3,f7,Key Press,F7,,Evolved (evo_best_gen150): Sends F7.,Sends F7.,canonical
+4,11,3,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+4,12,3,Accept,Key Press,A,L Ctrl+L Shift,v2.3: L4 power shortcut — Teams accept call.,Sends L Ctrl+L Shift+A.,canonical
+4,3,4,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+4,4,4,F3,Key Press,F3,,Find next (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,5,4,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+4,7,4,Ctrl+X,Key Press,X,L Ctrl,Cut,"App: Windows 11, importance=6.0",evolved
+4,8,4,Win+Right,Key Press,RightArrow,L GUI,Snap window right,"App: Windows 11, importance=10.0",evolved
+4,4,5,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+4,5,5,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+4,7,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,0,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,1,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,2,0,Stop,Key Press,F5,L Shift,v2.2: Code/IDE — Stop debugging.,Sends L Shift+F5.,canonical
+5,3,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,4,0,GoSym,Key Press,O,L Ctrl+L Shift,v2.2: Code/IDE — Go to symbol.,Sends L Ctrl+L Shift+O.,canonical
+5,5,0,Ctrl+Click,Key Press,Click,L Ctrl,Select non-adjacent cells,"App: Microsoft Excel, importance=1.5",evolved
+5,7,0,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+H.,Sends L Ctrl+L Shift+H.,canonical
+5,8,0,Ctrl+G,Key Press,G,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+G.,Sends L Ctrl+G.,canonical (base key)
+5,9,0,Win+Ctrl+D,Key Press,D,L Ctrl+L GUI,Evolved (evo_best_gen150): Sends L GUI+L Ctrl+D.,Sends L GUI+L Ctrl+D.,canonical
+5,10,0,Explr,Key Press,E,L Ctrl+L Shift,v2.2: Code/IDE — Explorer panel.,Sends L Ctrl+L Shift+E.,canonical
+5,11,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,12,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,0,1,Wrap,Key Press,Z,L Alt,Alt+Z Toggle word wrap.,Sends L Alt+Z.,canonical
+5,1,1,Ctrl+Alt+Up,Key Press,UpArrow,L Ctrl+L Alt,Add cursor above,"App: Visual Studio Code, importance=5.4",evolved
+5,2,1,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
+5,3,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+5,4,1,Ctrl+Shift+End,Key Press,End,L Ctrl+L Shift,Select to last used cell,"App: Microsoft Excel, importance=1.5",evolved
+5,5,1,Ctrl+Shift+Down,Key Press,DownArrow,L Ctrl+L Shift,Select to bottom edge,"App: Microsoft Excel, importance=3.0",evolved
+5,7,1,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
+5,8,1,Alt+Enter,Key Press,Return Enter,L Alt,Properties / metadata card,"App: M-Files Desktop Client, importance=8.5",evolved
+5,9,1,Ctrl+W,Key Press,W,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+W.,Sends L Ctrl+W.,canonical
+5,10,1,f1,Key Press,F1,,Evolved (evo_best_gen150): Sends F1.,Sends F1.,canonical
+5,11,1,backslash,Key Press,Backslash and Pipe,,Evolved (evo_best_gen150): Sends |.,Sends |.,canonical
+5,12,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,0,2,Ctrl+Shift+F5,Key Press,F5,L Ctrl+L Shift,Restart debugging,"App: Visual Studio Code, importance=2.7",evolved
+5,1,2,Shift+Tab,Key Press,Tab,L Shift,Outdent,"App: Visual Studio Code, importance=5.4",evolved
+5,2,2,Ctrl+Shift+O,Key Press,O,L Ctrl+L Shift,Toggle camera,"App: Microsoft Teams, importance=6.0",evolved
+5,3,2,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+5,4,2,Ctrl+1,Key Press,1 and Bang,L Ctrl,Activity,"App: Microsoft Teams, importance=6.0",evolved
+5,5,2,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+S.,Sends L Ctrl+L Shift+S.,canonical
+5,7,2,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,8,2,Win+;,Key Press,SemiColon and Colon,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
+5,9,2,Ctrl+L,Key Press,L,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+L.,Sends L Ctrl+L.,canonical
+5,10,2,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+5,11,2,MB3,Mouse Key Press,MB3,,Middle click,"App: Mouse, importance=7.0",evolved
+5,12,2,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+5,0,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,1,3,Ctrl+Shift+Enter,Key Press,Return Enter,L Ctrl+L Shift,Insert line above,"App: Visual Studio Code, importance=2.7",evolved
+5,2,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,3,3,Ctrl+N,Key Press,N,L Ctrl,New chat,"App: Microsoft Teams, importance=6.0",evolved
+5,4,3,Ext,Key Press,X,L Ctrl+L Shift,v2.2: Code/IDE — Extensions panel.,Sends L Ctrl+L Shift+X.,canonical (base key)
+5,5,3,Ctrl+Shift+Left,Key Press,LeftArrow,L Ctrl+L Shift,Select to left edge,"App: Microsoft Excel, importance=3.0",evolved
+5,7,3,Win+Space,Key Press,Spacebar,L GUI,Switch input language,"App: Windows 11, importance=6.0",evolved
+5,8,3,Win+1,Key Press,1 and Bang,L GUI,Open/switch pinned app 1,"App: Windows 11, importance=10.0",evolved
+5,9,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,10,3,MB1,Mouse Key Press,MB1,,Left click,"App: Mouse, importance=9.0",evolved
+5,11,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,12,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+5,3,4,Ctrl+0,Key Press,0 and Right Bracket,L Ctrl,Reset zoom,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+5,4,4,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+5,5,4,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+5,7,4,Win+Ctrl+Right,Key Press,RightArrow,L GUI+L Ctrl,Switch desktop right,"App: Windows 11, importance=3.0",evolved
+5,8,4,Win+M,Key Press,M,L GUI,Minimize all windows,"App: Windows 11, importance=1.0",evolved
+5,4,5,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+5,5,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+5,7,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+6,0,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,1,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+6,2,0,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
+6,3,0,Alt+=,Key Press,Equals and Plus,L Alt,Evolved (evo_best_gen150): Sends L Alt+=.,Sends L Alt+=.,canonical
+6,4,0,Ctrl+Left,Key Press,LeftArrow,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+LeftArrow.,Sends L Ctrl+LeftArrow.,canonical
+6,5,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,7,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,8,0,Ctrl+Q,Key Press,Q,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+Q.,Sends L Ctrl+Q.,canonical
+6,9,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,10,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,11,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,12,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,0,1,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+6,1,1,Ctrl+I,Key Press,I,L Ctrl,Italic,"App: Microsoft Teams, importance=3.0",evolved
+6,2,1,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
+6,3,1,Ctrl+Shift+F,Key Press,F,L Ctrl+L Shift,Format text,"App: Microsoft Teams, importance=3.0",evolved
+6,4,1,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
+6,5,1,Ctrl+Right,Key Press,RightArrow,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+RightArrow.,Sends L Ctrl+RightArrow.,canonical
+6,7,1,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+R.,Sends L Ctrl+L Shift+R.,canonical
+6,8,1,Alt+Right,Key Press,RightArrow,L Alt,Evolved (evo_best_gen150): Sends L Alt+RightArrow.,Sends L Alt+RightArrow.,canonical
+6,9,1,Ctrl+5,Key Press,5 and Percent,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+5.,Sends L Ctrl+5.,canonical
+6,10,1,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+6,11,1,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+6,12,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,0,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+6,1,2,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+6,2,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+6,3,2,Ctrl+Enter,Key Press,Return Enter,L Ctrl,Send (expanded mode),"App: Microsoft Teams, importance=10.0",evolved
+6,4,2,Ctrl+3,Key Press,3 and Hash,L Ctrl,Teams/channels,"App: Microsoft Teams, importance=6.0",evolved
+6,5,2,Win+Space,Key Press,Spacebar,L GUI,Evolved (evo_best_gen150): Sends L GUI+Space.,Sends L GUI+Space.,canonical
+6,7,2,F11,Key Press,F11,,Toggle fullscreen,"App: Browser (Chrome/Edge), importance=0.95",evolved
+6,8,2,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
+6,9,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+6,10,2,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=9.0",evolved
+6,11,2,Ctrl+Shift+Up,Key Press,UpArrow,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+UpArrow.,Sends L Ctrl+L Shift+UpArrow.,canonical
+6,12,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+6,0,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,1,3,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+6,2,3,Ctrl+Shift++,Key Press,Equals and Plus,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+=.,Sends L Ctrl+L Shift+=.,canonical
+6,3,3,Ctrl+.,Key Press,Period and GreaterThan,L Ctrl,Show commands,"App: Microsoft Teams, importance=3.0",evolved
+6,4,3,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,5,3,Ctrl+Down,Key Press,DownArrow,L Ctrl,Jump to bottom edge of data,"App: Microsoft Excel, importance=3.0",evolved
+6,7,3,Win+Up,Key Press,UpArrow,L GUI,Maximize window,"App: Windows 11, importance=6.0",evolved
+6,8,3,Alt+Shift,Key Press,Shift,L Alt,Switch keyboard layout (alt),"App: Windows 11, importance=3.0",evolved
+6,9,3,Ctrl+6,Key Press,6 and Caret,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+6.,Sends L Ctrl+6.,canonical
+6,10,3,Ctrl+Shift+Right,Key Press,RightArrow,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+RightArrow.,Sends L Ctrl+L Shift+RightArrow.,canonical
+6,11,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,12,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,3,4,Alt+D,Key Press,D,L Alt,Focus address bar (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+6,4,4,Ctrl+Shift+T,Key Press,T,L Ctrl+L Shift,Reopen closed tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,5,4,Alt+F,Key Press,F,L Alt,Settings menu,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+6,7,4,Win+Down,Key Press,DownArrow,L GUI,Minimize / restore,"App: Windows 11, importance=6.0",evolved
+6,8,4,Win+Tab,Key Press,Tab,L GUI,Task View,"App: Windows 11, importance=6.0",evolved
+6,4,5,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
+6,5,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+6,7,5,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
+7,0,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,1,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,2,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,3,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,4,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,5,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,7,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,8,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,9,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,10,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,11,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,12,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,0,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,1,1,9 PU,Key Press,9 and PageUp,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,2,1,UpArrow,Key Press,UpArrow,,Up arrow,"App: Mouse, importance=8.0",evolved
+7,3,1,3 PD,Key Press,3 and PageDn,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,4,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,5,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,7,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,8,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,9,1,3 PD,Key Press,3 and PageDn,,RPG/game movement or menu navigation. Right-hand column-mirror of left x3 (reversed cluster).,Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,10,1,UpArrow,Key Press,UpArrow,,Up arrow,"App: Mouse, importance=8.0",evolved
+7,11,1,9 PU,Key Press,9 and PageUp,,RPG/game movement or menu navigation. Right-hand column-mirror of left x1.,Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,12,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,0,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,1,2,LeftArrow,Key Press,LeftArrow,,Left arrow,"App: Mouse, importance=8.0",evolved
+7,2,2,DownArrow,Key Press,DownArrow,,Down arrow,"App: Mouse, importance=8.0",evolved
+7,3,2,RightArrow,Key Press,RightArrow,,Right arrow,"App: Mouse, importance=8.0",evolved
+7,4,2,Z,Key Press,Z,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,5,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,7,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,8,2,Z,Key Press,Z,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,9,2,LeftArrow,Key Press,LeftArrow,,Left arrow,"App: Mouse, importance=8.0",evolved
+7,10,2,DownArrow,Key Press,DownArrow,,Down arrow,"App: Mouse, importance=8.0",evolved
+7,11,2,RightArrow,Key Press,RightArrow,,Right arrow,"App: Mouse, importance=8.0",evolved
+7,12,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,0,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,1,3,X,Key Press,X,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,2,3,C,Key Press,C,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,3,3,Shft,Key Press,LeftShift,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,4,3,Esc,Key Press,Escape,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,5,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,7,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,8,3,Esc,Key Press,Escape,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,9,3,Shft,Key Press,LeftShift,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x3.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,10,3,C,Key Press,C,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x2.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,11,3,X,Key Press,X,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x1.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,12,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+7,3,4,Exit Base,coach_base,,,Left-thumb exit from locked game layer to base. Must use coach_base (not plain To Layer) so the beacon listener clears lockedLayer 7.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22). Same macro as mouse-layer Base exits.,canonical
+7,4,4,␣,Key Press,Spacebar,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+7,5,4,Exit Base,coach_base,,,Left support-thumb exit from locked game layer to base.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22).,canonical
+7,7,4,Exit Base,coach_base,,,Right-thumb exit from locked game layer to base.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22).,canonical
+7,8,4,Exit Base,coach_base,,,Second right-thumb exit from locked game layer to base.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22).,canonical
+7,4,5,Click,Mouse Key Press,default_transform,,Mouse button binding: select:MB1.,Use for RPG/game play; exit keys return to base layer.,canonical
+7,5,5,Right Click,Mouse Key Press,default_transform,,Mouse button binding: select:MB2.,Use for RPG/game play; exit keys return to base layer.,canonical
+7,7,5,Ret,Key Press,Return Enter,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (base key)
+8,0,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,1,0,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
+8,2,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,3,0,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
+8,4,0,escape,Key Press,Escape,,Evolved (evo_best_gen150): Sends Escape.,Sends Escape.,canonical
+8,5,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,7,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,8,0,Shift+Space,Key Press,Spacebar,L Shift,Evolved (evo_best_gen150): Sends L Shift+Space.,Sends L Shift+Space.,canonical (base key)
+8,9,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,10,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,11,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,12,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,0,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,1,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+8,2,1,Ctrl+Shift+Z,Key Press,Z,L Ctrl+L Shift,Redo,"App: Visual Studio Code, importance=5.4",evolved
+8,3,1,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
+8,4,1,Ctrl+Shift+Up,Key Press,UpArrow,L Ctrl+L Shift,Select to top edge,"App: Microsoft Excel, importance=3.0",evolved
+8,5,1,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
+8,7,1,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+Escape.,Sends L Ctrl+L Shift+Escape.,canonical
+8,8,1,Ctrl+Shift+Z,Key Press,Z,L Ctrl+L Shift,Evolved (evo_best_gen150): Sends L Ctrl+L Shift+Z.,Sends L Ctrl+L Shift+Z.,canonical
+8,9,1,Ctrl+-,Key Press,Dash and Underscore,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+_.,Sends L Ctrl+_.,canonical
+8,10,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,11,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,12,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,0,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,1,2,Shift+F11,Key Press,F11,L Shift,Step out,"App: Visual Studio Code, importance=5.4",evolved
+8,2,2,F8,Key Press,F8,,Go to next problem,"App: Visual Studio Code, importance=2.7",evolved
+8,3,2,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+8,4,2,Ctrl+Home,Key Press,Home,L Ctrl,Go to cell A1,"App: Microsoft Excel, importance=3.0",evolved
+8,5,2,Ctrl+Shift+%,Key Press,%,L Ctrl+L Shift,Percent format,"App: Microsoft Excel, importance=1.5",evolved
+8,7,2,Ctrl+Shift+$,Key Press,$,L Ctrl+L Shift,Currency format,"App: Microsoft Excel, importance=1.5",evolved
+8,8,2,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
+8,9,2,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+8,10,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+8,11,2,Alt+Shift+-,Key Press,-,L Alt+L Shift,Split pane horizontal,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
+8,12,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,0,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,1,3,Shift+Alt+A,Key Press,A,L Shift+L Alt,Toggle block comment,"App: Visual Studio Code, importance=2.7",evolved
+8,2,3,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Start recording,"App: Microsoft Teams, importance=1.0",evolved
+8,3,3,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+8,4,3,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+8,5,3,Alt+=,Key Press,=,L Alt,AutoSum,"App: Microsoft Excel, importance=3.0",evolved
+8,7,3,Win+Left,Key Press,LeftArrow,L GUI,Snap window left,"App: Windows 11, importance=10.0",evolved
+8,8,3,Win+Shift+S,Key Press,S,L GUI+L Shift,Screenshot (Snip),"App: Windows 11, importance=6.0",evolved
+8,9,3,RightArrow,Key Press,RightArrow,,Right arrow,"App: Mouse, importance=8.0",evolved
+8,10,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,11,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,12,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,3,4,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+8,4,4,gg,Key Press,gg,,Scroll to top,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+8,5,4,Ctrl+Shift+Tab,Key Press,Tab,L Ctrl+L Shift,Previous tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+8,7,4,Win+5,Key Press,5 and Percent,L GUI,Open/switch pinned app 5,"App: Windows 11, importance=3.0",evolved
+8,8,4,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+8,4,5,Delete,Key Press,Delete,,Evolved (evo_best_gen150): Sends Delete.,Sends Delete.,canonical
+8,5,5,F10,Key Press,F10,,Evolved (evo_best_gen150): Sends F10.,Sends F10.,canonical
+8,7,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,0,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,1,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+9,2,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,3,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,4,0,Ctrl+End,Key Press,End,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+End.,Sends L Ctrl+End.,canonical
+9,5,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,7,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,8,0,Ctrl+Up,Key Press,UpArrow,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+UpArrow.,Sends L Ctrl+UpArrow.,canonical
+9,9,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,10,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,11,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,12,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,0,1,f2,Key Press,F2,,Evolved (evo_best_gen150): Sends F2.,Sends F2.,canonical
+9,1,1,Ctrl+K S,Key Press,S,L Ctrl+K,Save all,"App: Visual Studio Code, importance=2.7",evolved
+9,2,1,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
+9,3,1,Shift+Enter,Key Press,Return Enter,L Shift,New line in message,"App: Microsoft Teams, importance=6.0",evolved
+9,4,1,Alt+Right,Key Press,RightArrow,L Alt,Go forward,"App: Microsoft Teams, importance=3.0",evolved
+9,5,1,List,Key Press,1 and Bang,L Ctrl,v2.2: M-Files — List view.,Sends L Ctrl+1 and Bang.,canonical
+9,7,1,Print,Key Press,P,L Ctrl,v2.2: M-Files — Print.,Sends L Ctrl+P.,canonical
+9,8,1,Ctrl+M,Key Press,M,L Ctrl,Add to favorites,"App: M-Files Desktop Client, importance=2.55",evolved
+9,9,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,10,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,11,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,12,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+9,0,2,pageup,Key Press,9 and PageUp,,Evolved (evo_best_gen150): Sends Keypad 9 and PageUp.,Sends Keypad 9 and PageUp.,canonical (base key)
+9,1,2,Ctrl+Shift+\,Key Press,Backslash and Pipe,L Ctrl+L Shift,Jump to matching bracket,"App: Visual Studio Code, importance=2.7",evolved
+9,2,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+9,3,2,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+9,4,2,Ctrl+Page Up,Key Press,UpArrow,L Ctrl+Page,Previous sheet,"App: Microsoft Excel, importance=3.0",evolved
+9,5,2,Icon,Key Press,2 and At,L Ctrl,v2.2: M-Files — Icon view.,Sends L Ctrl+2 and At.,canonical
+9,7,2,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+9,8,2,leftshift,Key Press,LeftShift,,Evolved (evo_best_gen150): Sends LeftShift.,Sends LeftShift.,canonical
+9,9,2,Ctrl+Shift+Q,Key Press,Q,L Ctrl+L Shift,New meeting,"App: Microsoft Outlook, importance=2.0999999999999996",evolved
+9,10,2,Ctrl+Q,Key Press,Q,L Ctrl,Mark as read,"App: Microsoft Outlook, importance=4.199999999999999",evolved
+9,11,2,Rel,Key Press,K,L Ctrl,v2.2: M-Files — Add relationship.,Sends L Ctrl+K.,canonical
+9,12,2,UndCO,Key Press,U,L Ctrl+L Shift,v2.2: M-Files — Undo checkout.,Sends L Ctrl+L Shift+U.,canonical
+9,0,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,1,3,DLoad,Key Press,D,L Ctrl+L Shift,v2.2: M-Files — Download copy.,Sends L Ctrl+L Shift+D.,canonical (base key)
+9,2,3,Open,Key Press,O,L Ctrl,v2.2: M-Files — Open document.,Sends L Ctrl+O.,canonical
+9,3,3,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Expand compose box,"App: Microsoft Teams, importance=3.0",evolved
+9,4,3,Ctrl+I,Key Press,I,L Ctrl,Italic,"App: Microsoft Teams, importance=3.0",evolved
+9,5,3,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+9,7,3,Alt+F4,Key Press,F4,L Alt,Close window,"App: Windows 11, importance=6.0",evolved
+9,8,3,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
+9,9,3,Ctrl+Down,Key Press,DownArrow,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+DownArrow.,Sends L Ctrl+DownArrow.,canonical
+9,10,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,11,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,12,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+9,3,4,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+9,4,4,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
+9,5,4,Ctrl+D,Key Press,D,L Ctrl,Bookmark page,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+9,7,4,Win+D,Key Press,D,L GUI,Show/hide desktop,"App: Windows 11, importance=6.0",evolved
+9,8,4,F2,Key Press,F2,,Rename,"App: Windows 11, importance=6.0",evolved
+9,4,5,Ctrl+9,Key Press,9 and Left Bracket,L Ctrl,Last tab,"App: Browser (Chrome/Edge), importance=0.95",evolved
+9,5,5,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+9,7,5,Win+Ctrl+F4,Key Press,F4,L GUI+L Ctrl,Close current desktop,"App: Windows 11, importance=1.0",evolved
+10,0,0,ShftEnt,Key Press,Return Enter,L Shift,Confirm and move up (Shift+Enter).,Sends L Shift+Return Enter.,canonical (base key)
+10,1,0,SelAll,Key Press,A,L Ctrl,Select all / current region (Ctrl+A).,Sends L Ctrl+A.,canonical
+10,2,0,Copy,Key Press,C,L Ctrl,Copy (Ctrl+C).,Sends L Ctrl+C.,canonical (base key)
+10,3,0,Cut,Key Press,X,L Ctrl,Cut (Ctrl+X).,Sends L Ctrl+X.,canonical
+10,4,0,Shift+Click,Key Press,Click,L Shift,Select range,"App: File Explorer, importance=2.7",evolved
+10,5,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+10,7,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+10,8,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+10,9,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+10,10,0,Ctrl+Dn,Key Press,DownArrow,L Ctrl,Jump to bottom edge of data region.,Sends L Ctrl+DownArrow.,canonical
+10,11,0,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+10,12,0,Win+C,Key Press,C,L GUI,Evolved (evo_best_gen150): Sends L GUI+C.,Sends L GUI+C.,canonical
+10,0,1,ShftTab,Key Press,Tab,L Shift,Move to previous cell (Shift+Tab).,Sends L Shift+Tab.,canonical
+10,1,1,Ctrl+],Key Press,],L Ctrl,Indent line,"App: Visual Studio Code, importance=2.7",evolved
+10,2,1,Alt+Click,Key Press,Click,L Alt,Add cursor at position,"App: Visual Studio Code, importance=5.4",evolved
+10,3,1,Ctrl+\,Key Press,Backslash and Pipe,L Ctrl,Split editor,"App: Visual Studio Code, importance=2.7",evolved
+10,4,1,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+10,5,1,Ctrl+Shift+!,Key Press,!,L Ctrl+L Shift,Number format,"App: Microsoft Excel, importance=1.5",evolved
+10,7,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+10,8,1,coach_mouse_lock,coach_mouse_lock,,,Evolved (evo_best_gen150): coach_mouse_lock,,canonical
+10,9,1,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (base key)
+10,10,1,SelHome,Key Press,Home,L Ctrl+L Shift,Select to cell A1 (Ctrl+Shift+Home).,Sends L Ctrl+L Shift+Home.,canonical
+10,11,1,Win+B,Key Press,B,L GUI,Evolved (evo_best_gen150): Sends L GUI+B.,Sends L GUI+B.,canonical
+10,12,1,coach_game_lock,coach_game_lock,,,Evolved (evo_best_gen150): coach_game_lock,,canonical (base key)
+10,0,2,Ctrl+Alt+Down,Key Press,DownArrow,L Ctrl+L Alt,Add cursor below,"App: Visual Studio Code, importance=5.4",evolved
+10,1,2,Ctrl+Shift+`,Key Press,`,L Ctrl+L Shift,New terminal,"App: Visual Studio Code, importance=5.4",evolved
+10,2,2,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
+10,3,2,Ctrl+4,Key Press,4 and Dollar,L Ctrl,Calendar,"App: Microsoft Teams, importance=6.0",evolved
+10,4,2,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+10,5,2,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+10,7,2,Win+L,Key Press,L,L GUI,Evolved (evo_best_gen150): Sends L GUI+L.,Sends L GUI+L.,canonical (base key)
+10,8,2,Paste,Key Press,V,L Ctrl,Paste (Ctrl+V).,Sends L Ctrl+V.,canonical (base key)
+10,9,2,NextSht,Key Press,PageDown,L Ctrl,Next sheet tab (Ctrl+Page Down).,Sends L Ctrl+PageDown.,canonical
+10,10,2,Undo,Key Press,Z,L Ctrl,Undo (Ctrl+Z).,Sends L Ctrl+Z.,canonical
+10,11,2,Win+2,Key Press,2 and At,L GUI,Evolved (evo_best_gen150): Sends L GUI+2.,Sends L GUI+2.,canonical
+10,12,2,Win+N,Key Press,N,L GUI,Evolved (evo_best_gen150): Sends L GUI+N.,Sends L GUI+N.,canonical
+10,0,3,HideRow,Key Press,9 and Left Bracket,L Ctrl,Hide selected rows (Ctrl+9).,Sends L Ctrl+9 and Left Bracket.,canonical
+10,1,3,Ctrl+K Ctrl+F,Key Press,F,L Ctrl+K+L Ctrl,Format selection,"App: Visual Studio Code, importance=2.7",evolved
+10,2,3,Delete,Key Press,Dash and Underscore,L Ctrl,Delete cells/rows/columns (Ctrl+-).,Sends L Ctrl+Minus.,canonical
+10,3,3,Ctrl+Shift+L,Key Press,L,L Ctrl+L Shift,Toggle sidebar,"App: Microsoft Teams, importance=3.0",evolved
+10,4,3,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+10,5,3,Ctrl+Page Down,Key Press,PageDown,L Ctrl,Evolved (evo_best_gen150): Sends L Ctrl+PageDown.,Sends L Ctrl+PageDown.,canonical
+10,7,3,Win+R,Key Press,R,L GUI,Run dialog,"App: Windows 11, importance=3.0",evolved
+10,8,3,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
+10,9,3,UpArrow,Key Press,UpArrow,,Up arrow,"App: Mouse, importance=8.0",evolved
+10,10,3,grave accent_combo,Key Press,Grave Accent and Tilde,,Evolved (evo_best_gen150): Sends `.,Sends `.,canonical
+10,11,3,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
+10,12,3,Transparen,Transparent,,,Evolved (evo_best_gen150): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical
+10,3,4,F11,Key Press,F11,,Toggle fullscreen,"App: Browser (Chrome/Edge), importance=0.95",evolved
+10,4,4,Ctrl+H,Key Press,H,L Ctrl,History,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+10,5,4,F12,Key Press,F12,,Open DevTools,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+10,7,4,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
+10,8,4,Win+.,Key Press,Period and GreaterThan,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
+10,4,5,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+10,5,5,Ctrl+Shift+J,Key Press,J,L Ctrl+L Shift,Open Console,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+10,7,5,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
