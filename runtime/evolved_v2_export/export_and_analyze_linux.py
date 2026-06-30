@@ -59,6 +59,42 @@ RAW_KEY_ALIASES = {
 }
 
 L0_FROZEN_THUMB_RAW_KEYS = {"spacebar", "returnenter"}
+LITERAL_TO_HID_PARAMETER = {
+    "!": "1 and Bang", "@": "2 and At", "#": "3 and Hash", "$": "4 and Dollar",
+    "%": "5 and Percent", "^": "6 and Caret", "&": "7 and Ampersand", "*": "8 and Star",
+    "(": "9 and Left Bracket", ")": "0 and Right Bracket",
+    "-": "Dash and Underscore", "_": "Dash and Underscore",
+    "=": "Equals and Plus", "+": "Equals and Plus",
+    "`": "Grave Accent and Tilde", "~": "Grave Accent and Tilde",
+    "[": "Left Brace", "]": "Right Brace", "\\": "Backslash and Pipe", "|": "Backslash and Pipe",
+    ";": "SemiColon and Colon", ":": "SemiColon and Colon",
+    "'": "Left Apos and Double", '"': "Left Apos and Double",
+    ",": "Comma and LessThan", "<": "Comma and LessThan",
+    ".": "Period and GreaterThan", ">": "Period and GreaterThan",
+    "/": "ForwardSlash and QuestionMark", "?": "ForwardSlash and QuestionMark",
+}
+KEY_TOKEN_ALIASES = {
+    "Del": "Delete", "Backspace": "Delete", "BkSp": "Delete",
+    "Enter": "Return Enter", "Return": "Return Enter", "Space": "Spacebar", "Esc": "Escape",
+    "Page Up": "PageUp", "PgUp": "PageUp", "Page Down": "PageDown", "PgDn": "PageDown",
+}
+MULTIWORD_BASE_KEYS = (
+    "Page Down", "Page Up", "Return Enter", "Left Brace", "Right Brace",
+    "Dash and Underscore", "Equals and Plus", "Grave Accent and Tilde",
+    "Backslash and Pipe", "SemiColon and Colon", "Left Apos and Double",
+    "Comma and LessThan", "Period and GreaterThan", "ForwardSlash and QuestionMark",
+)
+
+
+def canonical_hid_parameter(token):
+    value = str(token or "").strip()
+    if value.startswith("Keyboard "):
+        value = value[len("Keyboard "):].strip()
+    if value in KEY_TOKEN_ALIASES:
+        return KEY_TOKEN_ALIASES[value]
+    if value in LITERAL_TO_HID_PARAMETER:
+        return LITERAL_TO_HID_PARAMETER[value]
+    return value
 
 
 def _normalize_raw_key_id(value):
@@ -134,12 +170,13 @@ def load_shortcuts(data_dir: Path):
                 continue
             seen_keys.add(keys)
 
-            base_key = sc_data.get("base_key", "")
+            base_key = canonical_hid_parameter(sc_data.get("base_key", ""))
             if not base_key:
-                parts = keys.replace("+", " ").split()
-                base_key = parts[-1] if parts else keys
+                _, base_key = parse_shortcut_keys(keys)
 
-            modifiers = [part for part in keys.replace("+", " ").split()[:-1]]
+            modifiers, parsed_base = parse_shortcut_keys(keys)
+            if parsed_base:
+                base_key = parsed_base
 
             raw_key_id = _normalize_raw_key_id(base_key) if not modifiers and "+" not in keys else None
             if raw_key_id is not None and raw_key_id in _permanent_l0_raw_keys(can):
@@ -263,16 +300,23 @@ def parse_shortcut_keys(keys: str):
     """Split 'Ctrl+Shift+T' into modifiers ['Ctrl','Shift'] and base 'T'."""
     if "+" in keys:
         if keys.endswith("+"):
-            return [p for p in keys[:-1].split("+") if p], "+"
+            return [p for p in keys[:-1].split("+") if p], "Equals and Plus"
         parts = keys.split("+")
-        return [p for p in parts[:-1] if p], parts[-1]
+        return [p for p in parts[:-1] if p], canonical_hid_parameter(parts[-1])
+
+    for base in MULTIWORD_BASE_KEYS:
+        suffix = " " + base
+        if keys == base:
+            return [], canonical_hid_parameter(base)
+        if keys.endswith(suffix):
+            return [p for p in keys[:-len(suffix)].split() if p], canonical_hid_parameter(base)
 
     parts = keys.split()
     if not parts:
         return [], keys
     if len(parts) == 1:
-        return [], parts[0]
-    return parts[:-1], parts[-1]
+        return [], canonical_hid_parameter(parts[0])
+    return parts[:-1], canonical_hid_parameter(parts[-1])
 
 
 def build_param_mapping(canonical_data):
@@ -303,6 +347,7 @@ def build_param_mapping(canonical_data):
 
 def base_to_zmk_parameter(base_key, param_mapping):
     """Map a shortcut base key to a ZMK Studio parameter string."""
+    base_key = canonical_hid_parameter(base_key)
     if base_key == "Click":
         return "MB1"
     if base_key in param_mapping:
@@ -568,6 +613,22 @@ def studio_apply_parameter(binding):
     if re.fullmatch(r"F\d{1,2}", parameter):
         return f"Keyboard {parameter}"
     if re.fullmatch(r"\d and .+", parameter):
+        # Norwegian numpad shifted variants use the Keypad namespace in ZMK Studio.
+        numpad_shifted = {
+            "0 and Insert": "Keypad 0 and Insert",
+            "1 and End": "Keypad 1 and End",
+            "2 and DownArrow": "Keypad 2 and DownArrow",
+            "3 and PageDn": "Keypad 3 and PageDn",
+            "4 and LeftArrow": "Keypad 4 and LeftArrow",
+            "5": "Keypad 5",
+            "6 and RightArrow": "Keypad 6 and RightArrow",
+            "7 and Home": "Keypad 7 and Home",
+            "8 and UpArrow": "Keypad 8 and UpArrow",
+            "9 and PageUp": "Keypad 9 and PageUp",
+            "Period and Delete": "Keypad Period and Delete",
+        }
+        if parameter in numpad_shifted:
+            return numpad_shifted[parameter]
         return f"Keyboard {parameter}"
     return parameter
 
@@ -648,13 +709,21 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
 
 
 def generate_verify_js(merged_bindings):
+    def escape_template_literal(value):
+        return (
+            str(value)
+            .replace("\\", "\\\\")
+            .replace("`", "\\`")
+            .replace("${", "\\${")
+        )
+
     csv_lines = ['"layer","x","y","label","behavior","parameter","modifiers"']
     for b in merged_bindings:
         if b.get("behavior", "").lower() == "transparent":
             continue
         mods = "+".join(b.get("modifiers", []))
         csv_lines.append(f'"{b["layer"]}","{b["x"]}","{b["y"]}","{b.get("label", "")}","{b.get("behavior", "")}","{b.get("parameter", "")}","{mods}"')
-    expected_csv = "\n".join(csv_lines)
+    expected_csv = escape_template_literal("\n".join(csv_lines))
 
     return f"""// ZMK Studio verify script for evolved V2 layout
 window.CHARYBDIS_VERSION = "evolved-v2";
