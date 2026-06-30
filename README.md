@@ -14,16 +14,19 @@ If you are an AI agent reading this repo, here is everything you need to know in
 - **Coach server**: Serves the browser-based keyboard visualizer at `http://127.0.0.1:8765/charybdis-coach/`.
 - **Mouse settings**: Enforces 1:1 pointer speed, no acceleration.
 
-### Prerequisites (must be installed first)
-1. [Git for Windows](https://git-scm.com/download/win)
-2. [Python 3.10+](https://www.python.org/downloads/) — for the optimizer and coach server
-3. [AutoHotkey v2](https://www.autohotkey.com/) — the AHK helper is the primary beacon + logging layer
+### Prerequisites
 
-> **Note:** The Python beacon listener (optional, AHK is preferred) requires the `keyboard` package, which needs **administrator privileges** to install. If you see a warning, run `python -m pip install keyboard` in an elevated PowerShell. The AHK beacon listener does not need this.
+The copy-paste installer below tries to install missing prerequisites with `winget`:
+
+1. [Git for Windows](https://git-scm.com/download/win)
+2. [Python 3.10+](https://www.python.org/downloads/) — for the coach server and optional Python beacon listener
+3. [AutoHotkey v2](https://www.autohotkey.com/) — primary logger + beacon helper
+
+If `winget` is unavailable, install those three manually and rerun the same block.
 
 ### Directory Layout (all repos share the same parent)
 ```
-C:\Users\<user>\                     # parent directory
+C:\Users\<user>\charybdis\            # parent directory used by the copy-paste commands
 ├── charybdis-tools\                  # this repo (AHK, logging, launchers)
 │   ├── ahk\charybdis_helpers.ahk
 │   ├── powershell\start_charybdis_helpers.ps1
@@ -40,93 +43,185 @@ C:\Users\<user>\                     # parent directory
 
 ---
 
-## One-Command Installation (Windows)
+## Copy-Paste Install / Repair / Start Everything
 
-Copy-paste this entire block into an **elevated PowerShell** window (Run as Administrator). It clones all repos, installs dependencies, applies mouse settings, and starts the tools.
+Use this on a new Windows machine, or on an existing machine when you want to repair/update all Charybdis host-side tooling. It is intentionally large: the goal is copy-paste and done, not small clean commands.
+
+Copy-paste the whole block into **PowerShell as Administrator**. It installs missing prerequisites, clones or updates sibling repos, applies mouse settings, validates/starts the AHK logger, creates the Windows Startup shortcut, starts the beacon listener, starts the coach website, and opens the browser.
 
 ```powershell
-# === CHARYBDIS FULL INSTALL ===
-# Run this in an elevated PowerShell window (right-click → Run as Administrator)
+# === CHARYBDIS FULL WINDOWS INSTALL / UPDATE / START ===
+# Run in elevated PowerShell: right-click PowerShell -> Run as Administrator.
+# Safe to rerun. Existing repos are updated; missing repos are cloned.
 $ErrorActionPreference = "Stop"
-$parent = "C:\Users\$env:USERNAME"
-Set-Location $parent
 
-# 1. Clone all 4 repos (skips if already present)
-$repos = @(
-    @("https://github.com/Glx28/charybdis-tools.git",          "charybdis-tools"),
-    @("https://github.com/Glx28/zmk-config-charybdis-beacons.git", "charybdis-zmk-config"),
-    @("https://github.com/Glx28/charybdis-coach.git",          "charybdis-coach"),
-    @("https://github.com/Glx28/charybdis-optimizer.git",     "charybdis-optimizer")
-)
-foreach ($r in $repos) {
-    $url = $r[0]; $name = $r[1]
-    if (Test-Path "$parent\$name\.git") {
-        Write-Host "[SKIP] $name already cloned" -ForegroundColor Green
-    } else {
-        Write-Host "[CLONE] $name ..." -ForegroundColor Cyan
-        git clone $url $name
+$Parent = Join-Path $env:USERPROFILE "charybdis"
+$Tools = Join-Path $Parent "charybdis-tools"
+$Runtime = Join-Path $Tools "runtime"
+$Port = 8765
+
+function Write-Step($Text) {
+    Write-Host ""
+    Write-Host "=== $Text ===" -ForegroundColor Cyan
+}
+
+function Refresh-Path {
+    $MachinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+    $UserPath = [Environment]::GetEnvironmentVariable("Path", "User")
+    $env:Path = "$MachinePath;$UserPath"
+}
+
+function Ensure-Command($Name, $WingetId, $FriendlyName) {
+    if (Get-Command $Name -ErrorAction SilentlyContinue) {
+        Write-Host "[OK] $FriendlyName already available" -ForegroundColor Green
+        return
+    }
+    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+        throw "$FriendlyName is missing and winget is not available. Install $FriendlyName manually, then rerun this block."
+    }
+    Write-Host "[INSTALL] $FriendlyName via winget" -ForegroundColor Yellow
+    winget install --id $WingetId --exact --accept-source-agreements --accept-package-agreements
+    Refresh-Path
+    if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) {
+        throw "$FriendlyName was installed but is not visible in this PowerShell session. Close PowerShell, reopen as Administrator, and rerun this block."
     }
 }
 
-# 2. Install Python dependencies for optimizer v1
-Write-Host "[DEPS] Installing Python packages..." -ForegroundColor Cyan
-python -m pip install numpy pandas scipy deap 2>$null | Out-Null
+function Ensure-GitRepo($Url, $Path, $Branch = "master") {
+    $Name = Split-Path -Leaf $Path
+    if (Test-Path (Join-Path $Path ".git")) {
+        Write-Host "[UPDATE] $Name" -ForegroundColor Cyan
+        Push-Location $Path
+        try {
+            git fetch --all --prune
+            $LocalChanges = git status --porcelain
+            if ([string]::IsNullOrWhiteSpace($LocalChanges)) {
+                git checkout $Branch 2>$null
+                git pull --ff-only
+            } else {
+                Write-Host "[KEEP] $Name has local changes; fetched only, no pull/rebase attempted." -ForegroundColor Yellow
+                git status -sb
+            }
+        } finally {
+            Pop-Location
+        }
+        return
+    }
+    if (Test-Path $Path) {
+        Write-Host "[SKIP] $Path exists but is not a git repo. Move it aside or clone manually." -ForegroundColor Yellow
+        return
+    }
+    Write-Host "[CLONE] $Name" -ForegroundColor Cyan
+    git clone $Url $Path
+}
 
-# 3. Apply mouse settings (1:1 pointer speed, no accel)
-Write-Host "[CONFIG] Applying mouse settings..." -ForegroundColor Cyan
-Set-Location "$parent\charybdis-tools"
-.\powershell\apply_mouse_settings.ps1
+Write-Step "Install prerequisites if missing"
+Ensure-Command git Git.Git "Git for Windows"
+Ensure-Command python Python.Python.3.12 "Python"
 
-# 4. Start AHK helper (with Startup shortcut so it survives reboots)
-Write-Host "[START] AHK helper..." -ForegroundColor Cyan
-.\powershell\start_charybdis_helpers.ps1
+if (-not (
+    (Test-Path "$env:LOCALAPPDATA\Programs\AutoHotkey\v2\AutoHotkey64.exe") -or
+    (Test-Path "$env:LOCALAPPDATA\Programs\AutoHotkey\v2\AutoHotkey.exe") -or
+    (Test-Path "$env:LOCALAPPDATA\Programs\AutoHotkey\UX\AutoHotkeyUX.exe") -or
+    (Test-Path "$env:ProgramFiles\AutoHotkey\v2\AutoHotkey64.exe") -or
+    (Test-Path "$env:ProgramFiles\AutoHotkey\v2\AutoHotkey.exe") -or
+    (Test-Path "$env:ProgramFiles\AutoHotkey\UX\AutoHotkeyUX.exe")
+)) {
+    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+        throw "AutoHotkey v2 is missing and winget is not available. Install AutoHotkey v2 manually, then rerun this block."
+    }
+    Write-Host "[INSTALL] AutoHotkey v2 via winget" -ForegroundColor Yellow
+    winget install --id AutoHotkey.AutoHotkey --exact --accept-source-agreements --accept-package-agreements
+    Refresh-Path
+} else {
+    Write-Host "[OK] AutoHotkey already installed" -ForegroundColor Green
+}
 
-# 5. Start Coach server + open browser
-Write-Host "[START] Coach server..." -ForegroundColor Cyan
-.\powershell\start_charybdis_coach.ps1
+Write-Step "Clone or update repos"
+New-Item -ItemType Directory -Force -Path $Parent | Out-Null
+Ensure-GitRepo "https://github.com/Glx28/charybdis-tools.git" "$Parent\charybdis-tools" "master"
+Ensure-GitRepo "https://github.com/Glx28/zmk-config-charybdis-beacons.git" "$Parent\charybdis-zmk-config" "master"
+Ensure-GitRepo "https://github.com/Glx28/charybdis-coach.git" "$Parent\charybdis-coach" "master"
+Ensure-GitRepo "https://github.com/Glx28/charybdis-optimizer.git" "$Parent\charybdis-optimizer" "master"
+Ensure-GitRepo "https://github.com/Glx28/charybdis-optimizer-v2.git" "$Parent\charybdis-optimizer-v2" "master"
 
-Write-Host "" 
-Write-Host "=== DONE ===" -ForegroundColor Green
-Write-Host "AHK helper is running. Coach is at http://127.0.0.1:8765/charybdis-coach/"
-Write-Host "All repos are in $parent"
+Write-Step "Install Python packages used by tools"
+python -m pip install --upgrade pip
+python -m pip install --upgrade keyboard numpy pandas scipy deap pyyaml
+
+Write-Step "Create runtime folder and apply mouse settings"
+New-Item -ItemType Directory -Force -Path $Runtime | Out-Null
+Set-Location $Tools
+PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\apply_mouse_settings.ps1"
+
+Write-Step "Start AHK helper: logger + BLE beacon receiver + startup shortcut"
+PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_helpers.ps1" -RepoRoot $Tools
+
+Write-Step "Start coach website + beacon listener fallback"
+PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_coach.ps1" -RepoRoot $Tools -Port $Port
+
+Write-Step "Verify generated runtime files"
+$StateFile = Join-Path $Runtime "charybdis_state.json"
+$UsageLog = Join-Path $Runtime "shortcut_usage.jsonl"
+$EventLog = Join-Path $Runtime "charybdis_events.jsonl"
+Write-Host "Coach:      http://127.0.0.1:$Port/charybdis-coach/" -ForegroundColor Green
+Write-Host "Tools repo: $Tools" -ForegroundColor Green
+Write-Host "State:      $StateFile"
+Write-Host "Usage log:  $UsageLog"
+Write-Host "Event log:  $EventLog"
+if (Test-Path $StateFile) { Write-Host "[OK] State file exists" -ForegroundColor Green } else { Write-Host "[WAIT] State file will appear after helper/beacon heartbeat" -ForegroundColor Yellow }
+if (Test-Path $UsageLog) { Write-Host "[OK] Usage log exists" -ForegroundColor Green } else { Write-Host "[WAIT] Usage log appears after first logged shortcut or flush interval" -ForegroundColor Yellow }
+
 Write-Host ""
-Write-Host "NOTE: The Python beacon listener requires the 'keyboard' package." -ForegroundColor Yellow
-Write-Host "If you see a warning about it, run this in an elevated PowerShell:"
-Write-Host "  python -m pip install keyboard" -ForegroundColor White
-Write-Host "The AHK beacon listener (recommended) does not need this package."
+Write-Host "DONE. The helper is installed in Startup and should run after reboot." -ForegroundColor Green
 ```
 
 ---
 
-## One-Command Startup After Reboot
+## Copy-Paste Daily Start / Update
 
-Copy-paste this entire block into **PowerShell** after every PC restart. It starts the AHK helper and the coach server (no admin needed for this step).
+Use this after reboot or when you want to update the tools without reinstalling prerequisites. Normal PowerShell is enough. It updates clean repos, starts/reloads the AHK logger, starts the coach website, and prints the important paths.
 
 ```powershell
-# === CHARYBDIS START AFTER REBOOT ===
+# === CHARYBDIS DAILY UPDATE + START ===
 $ErrorActionPreference = "Stop"
-$parent = "C:\Users\$env:USERNAME"
-Set-Location "$parent\charybdis-tools"
+$Parent = Join-Path $env:USERPROFILE "charybdis"
+$Tools = Join-Path $Parent "charybdis-tools"
+$Repos = @(
+    "$Parent\charybdis-tools",
+    "$Parent\charybdis-zmk-config",
+    "$Parent\charybdis-coach",
+    "$Parent\charybdis-optimizer",
+    "$Parent\charybdis-optimizer-v2"
+)
 
-# 1. Start AHK helper (if not already running)
-$ahk = Get-Process AutoHotkey64 -ErrorAction SilentlyContinue
-if (-not $ahk) {
-    Write-Host "[START] AHK helper..." -ForegroundColor Cyan
-    .\powershell\start_charybdis_helpers.ps1
-} else {
-    Write-Host "[SKIP] AHK already running (PID $($ahk.Id))" -ForegroundColor Green
+foreach ($Repo in $Repos) {
+    if (Test-Path (Join-Path $Repo ".git")) {
+        Push-Location $Repo
+        try {
+            Write-Host "[FETCH] $Repo" -ForegroundColor Cyan
+            git fetch --all --prune
+            if ([string]::IsNullOrWhiteSpace((git status --porcelain))) {
+                git pull --ff-only
+            } else {
+                Write-Host "[KEEP] Local changes present; leaving worktree as-is." -ForegroundColor Yellow
+                git status -sb
+            }
+        } finally {
+            Pop-Location
+        }
+    }
 }
 
-# 2. Start Coach server + beacon listener + open browser
-Write-Host "[START] Coach server..." -ForegroundColor Cyan
-.\powershell\start_charybdis_coach.ps1
+Set-Location $Tools
+PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_helpers.ps1" -RepoRoot $Tools
+PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_coach.ps1" -RepoRoot $Tools -Port 8765
 
 Write-Host "" 
 Write-Host "=== DONE ===" -ForegroundColor Green
-Write-Host "AHK helper: RUNNING"
-Write-Host "Coach:      http://127.0.0.1:8765/charybdis-coach/"
-Write-Host "State file: $parent\charybdis-tools\runtime\charybdis_state.json"
-Write-Host "Usage log:  $parent\charybdis-tools\runtime\shortcut_usage.jsonl"
+Write-Host "Coach:     http://127.0.0.1:8765/charybdis-coach/"
+Write-Host "State:     $Tools\runtime\charybdis_state.json"
+Write-Host "Usage log: $Tools\runtime\shortcut_usage.jsonl"
 ```
 
 ---
