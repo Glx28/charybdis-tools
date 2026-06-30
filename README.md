@@ -217,6 +217,12 @@ foreach ($Repo in $Repos) {
         try {
             Write-Host "[FETCH] $Repo" -ForegroundColor Cyan
             git fetch --all --prune
+            if ($Repo -eq $Tools) {
+                Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
+                    Where-Object { $_.CommandLine -match "charybdis_helpers\.ahk|coach_beacon_only\.ahk" } |
+                    ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+                Start-Sleep -Milliseconds 500
+            }
             if ([string]::IsNullOrWhiteSpace((git status --porcelain))) {
                 git pull --ff-only
             } else {
