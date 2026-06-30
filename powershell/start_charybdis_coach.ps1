@@ -50,7 +50,7 @@ if (-not (Test-Path -LiteralPath $runtimeDir)) {
     New-Item -ItemType Directory -Path $runtimeDir | Out-Null
 }
 
-# ── Config: optional, with graceful defaults ──
+# -- Config: optional, with graceful defaults --
 $helperConfig = @{
     coach_server_port = 8765
     coach_open_browser_on_start = $true
@@ -64,7 +64,7 @@ if (Test-Path -LiteralPath $helperConfigPath) {
         if ($null -ne $json.coach_open_browser_on_start) { $helperConfig.coach_open_browser_on_start = [bool]$json.coach_open_browser_on_start }
         if ($null -ne $json.coach_beacons_enabled) { $helperConfig.coach_beacons_enabled = [bool]$json.coach_beacons_enabled }
     } catch {
-        Write-Warning "Could not parse $helperConfigPath — using defaults."
+        Write-Warning "Could not parse $helperConfigPath -- using defaults."
     }
 } else {
     Write-Warning "Missing sibling repo: charybdis-zmk-config"
@@ -76,7 +76,7 @@ if ($Port -le 0) {
     $Port = $helperConfig.coach_server_port
 }
 
-# ── Coach app: required, but with helpful error if missing ──
+# -- Coach app: required, but with helpful error if missing --
 if (-not (Test-Path -LiteralPath $coachIndexPath)) {
     Write-Error @"
 
@@ -89,8 +89,8 @@ This repo (charybdis-tools) needs its sibling repo charybdis-coach
 in the same parent directory:
 
   C:\Users\<user>\
-  ├── charybdis-tools\       <-- you are here
-  └── charybdis-coach\      <-- missing
+  +-- charybdis-tools\       <-- you are here
+  +-- charybdis-coach\      <-- missing
 
 Fix: run this in the parent directory:
   cd "$parentDir"
@@ -101,7 +101,7 @@ Then re-run this script.
     exit 1
 }
 
-# ── Helper functions ──
+# -- Helper functions --
 function Test-LocalPort {
     param([int]$Port)
     try {
@@ -247,7 +247,9 @@ function Start-AhkBeaconListener {
     return $null
 }
 
-# ── Clean up old listeners ──
+# -- Clean up old listeners --
+$beaconScript = Join-Path $RepoRoot "python\coach_beacon_listener.py"
+$beaconPidPath = Join-Path $runtimeDir "coach_beacon_listener.pid"
 Stop-CoachBeaconListener -PidPath $beaconPidPath
 Stop-AllBeaconListeners
 if (Test-Path $ahkPidPath) {
@@ -256,9 +258,7 @@ if (Test-Path $ahkPidPath) {
     Remove-Item -LiteralPath $ahkPidPath -Force -ErrorAction SilentlyContinue
 }
 
-# ── Start beacon listener ──
-$beaconScript = Join-Path $RepoRoot "python\coach_beacon_listener.py"
-$beaconPidPath = Join-Path $runtimeDir "coach_beacon_listener.pid"
+# -- Start beacon listener --
 $beaconRunning = $false
 $ahkRunning = $false
 $python = Find-Python
@@ -282,7 +282,7 @@ if (-not $beaconRunning) {
     Write-Warning "No layer beacon listener is running. Thumb keys will not sync until you re-run this script."
 }
 
-# ── Start or confirm HTTP server ──
+# -- Start or confirm HTTP server --
 $serverReady = $false
 if (Test-LocalPort -Port $Port) {
     if (Test-CoachHttp -Port $Port) {
@@ -316,7 +316,7 @@ if (-not $serverReady) {
     Write-Host "Coach server started on http://127.0.0.1:$Port (PID $($server.Id))." -ForegroundColor Green
 }
 
-# ── Open browser ──
+# -- Open browser --
 $coachDirName = Split-Path -Leaf $coachDir
 $url = "http://127.0.0.1:$Port/$coachDirName/"
 if (-not $NoBrowser -and $helperConfig.coach_open_browser_on_start) {
@@ -334,7 +334,7 @@ if ($beaconRunning -and -not $ahkRunning) {
 } elseif ($ahkRunning) {
     Write-Host "Layer sync: AHK beacon listener (tray icon)" -ForegroundColor Yellow
 } else {
-    Write-Warning "No beacon listener running — layer thumb keys will not sync live."
+    Write-Warning "No beacon listener running -- layer thumb keys will not sync live."
 }
 Write-Host "Beacon log: $(Join-Path $runtimeDir 'beacon_debug.log')" -ForegroundColor DarkGray
 Write-Host "Event log:  $(Join-Path $runtimeDir 'charybdis_events.jsonl')" -ForegroundColor DarkGray
