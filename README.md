@@ -180,15 +180,31 @@ Write-Host "DONE. The helper is installed in Startup and should run after reboot
 
 ## Copy-Paste Daily Start / Update
 
-Use this after reboot or when you want to update the tools without reinstalling prerequisites. Normal PowerShell is enough. It updates clean repos, starts/reloads the AHK logger, starts the coach website, and prints the important paths.
+Use this after reboot or when you want to update the tools without reinstalling prerequisites. Normal PowerShell is enough.
+
+This block works when you are already inside `charybdis-tools`, and also checks the two common install locations:
+
+- `C:\Users\<user>\charybdis-tools`
+- `C:\Users\<user>\charybdis\charybdis-tools`
 
 ```powershell
 # === CHARYBDIS DAILY UPDATE + START ===
 $ErrorActionPreference = "Stop"
-$Parent = Join-Path $env:USERPROFILE "charybdis"
-$Tools = Join-Path $Parent "charybdis-tools"
+
+$Here = (Get-Location).Path
+$Candidates = @(
+    $Here,
+    (Join-Path $env:USERPROFILE "charybdis-tools"),
+    (Join-Path (Join-Path $env:USERPROFILE "charybdis") "charybdis-tools")
+)
+$Tools = $Candidates | Where-Object { Test-Path (Join-Path $_ "ahk\charybdis_helpers.ahk") } | Select-Object -First 1
+if (-not $Tools) {
+    throw "Could not find charybdis-tools. cd into the repo folder first, then rerun this block."
+}
+
+$Parent = Split-Path -Parent $Tools
 $Repos = @(
-    "$Parent\charybdis-tools",
+    $Tools,
     "$Parent\charybdis-zmk-config",
     "$Parent\charybdis-coach",
     "$Parent\charybdis-optimizer",
@@ -214,8 +230,8 @@ foreach ($Repo in $Repos) {
 }
 
 Set-Location $Tools
-PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_helpers.ps1" -RepoRoot $Tools
-PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_coach.ps1" -RepoRoot $Tools -Port 8765
+& ".\powershell\start_charybdis_helpers.ps1" -RepoRoot $Tools
+& ".\powershell\start_charybdis_coach.ps1" -RepoRoot $Tools -Port 8765
 
 Write-Host "" 
 Write-Host "=== DONE ===" -ForegroundColor Green
