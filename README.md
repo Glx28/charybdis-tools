@@ -182,69 +182,13 @@ Write-Host "DONE. The helper is installed in Startup and should run after reboot
 
 Use this after reboot or when you want to update the tools without reinstalling prerequisites. Normal PowerShell is enough.
 
-This block works when you are already inside `charybdis-tools`, and also checks the two common install locations:
-
-- `C:\Users\<user>\charybdis-tools`
-- `C:\Users\<user>\charybdis\charybdis-tools`
+If you are already inside `charybdis-tools`, run:
 
 ```powershell
-# === CHARYBDIS DAILY UPDATE + START ===
-$ErrorActionPreference = "Stop"
-
-$Here = (Get-Location).Path
-$Candidates = @(
-    $Here,
-    (Join-Path $env:USERPROFILE "charybdis-tools"),
-    (Join-Path (Join-Path $env:USERPROFILE "charybdis") "charybdis-tools")
-)
-$Tools = $Candidates | Where-Object { Test-Path (Join-Path $_ "ahk\charybdis_helpers.ahk") } | Select-Object -First 1
-if (-not $Tools) {
-    throw "Could not find charybdis-tools. cd into the repo folder first, then rerun this block."
-}
-
-$Parent = Split-Path -Parent $Tools
-$Repos = @(
-    $Tools,
-    "$Parent\charybdis-zmk-config",
-    "$Parent\charybdis-coach",
-    "$Parent\charybdis-optimizer",
-    "$Parent\charybdis-optimizer-v2"
-)
-
-foreach ($Repo in $Repos) {
-    if (Test-Path (Join-Path $Repo ".git")) {
-        Push-Location $Repo
-        try {
-            Write-Host "[FETCH] $Repo" -ForegroundColor Cyan
-            git fetch --all --prune
-            if ($Repo -eq $Tools) {
-                Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
-                    Where-Object { $_.CommandLine -match "charybdis_helpers\.ahk|coach_beacon_only\.ahk" } |
-                    ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
-                Start-Sleep -Milliseconds 500
-            }
-            if ([string]::IsNullOrWhiteSpace((git status --porcelain))) {
-                git pull --ff-only
-            } else {
-                Write-Host "[KEEP] Local changes present; leaving worktree as-is." -ForegroundColor Yellow
-                git status -sb
-            }
-        } finally {
-            Pop-Location
-        }
-    }
-}
-
-Set-Location $Tools
-& ".\powershell\start_charybdis_helpers.ps1" -RepoRoot $Tools
-& ".\powershell\start_charybdis_coach.ps1" -RepoRoot $Tools -Port 8765
-
-Write-Host "" 
-Write-Host "=== DONE ===" -ForegroundColor Green
-Write-Host "Coach:     http://127.0.0.1:8765/charybdis-coach/"
-Write-Host "State:     $Tools\runtime\charybdis_state.json"
-Write-Host "Usage log: $Tools\runtime\shortcut_usage.jsonl"
+powershell -NoProfile -ExecutionPolicy Bypass -File .\powershell\update_and_start_charybdis.ps1
 ```
+
+This script stops the running AHK helper first, then pulls, then restarts the helper and coach. Stopping AHK first matters because Windows locks `ahk\charybdis_helpers.ahk` while it is running.
 
 ---
 
