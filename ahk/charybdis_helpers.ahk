@@ -18,6 +18,7 @@ global EventLogPath := RuntimeDir "\charybdis_events.jsonl"
 global ShortcutLogPath := RuntimeDir "\shortcut_usage.jsonl"
 global LastShortcutKeys := ""
 global LastShortcutTime := 0
+global LastShortcutApp := ""
 
 ; ── Usage logger globals ──
 global EventBuffer := []
@@ -69,6 +70,18 @@ global ModifierErrorCandidate := Map("modifier", "", "time", 0)
 global LastShortcutLayer := "0"
 global LastShortcutOnLayerKeys := ""
 global LastShortcutOnLayerTime := 0
+global WORKFLOW_APP_WINDOW_MS := 120000
+global WORKFLOW_SHORTCUT_WINDOW_MS := 15000
+global WorkflowWindowStart := 0
+global WorkflowWindowApps := []
+global WorkflowWindowSwitches := 0
+global WorkflowWindowShortcutCount := 0
+global LastWorkflowSnapshotTime := 0
+global ShortcutWorkflowStart := 0
+global ShortcutWorkflowKeys := []
+global ShortcutWorkflowApps := []
+global ShortcutWorkflowLayers := []
+global ShortcutSequenceId := 0
 
 global DebugMode := false
 global CoachVisible := false
@@ -119,6 +132,7 @@ if HelperConfig["show_coach_on_start"] {
 }
 
 SetTimer(UpdateCoachContext, 1000)
+SetTimer(TrackAppFocus, 1000)
 SetTimer(FlushEventBuffer, FLUSH_INTERVAL)
 SetTimer(FlushPendingRepeat, 2500)
 RotateLogIfNeeded()
@@ -127,6 +141,8 @@ BufferEvent(Map("type", "startup", "keys", "logger_init", "app", "charybdis_help
 LastFocusApp := ""
 try LastFocusApp := ActiveAppProcessName()
 LastFocusTime := A_TickCount
+ResetAppWorkflowWindow(LastFocusTime)
+RecordAppWorkflowApp(LastFocusApp)
 
 LoadEverything() {
     global HelperConfig, AppEntries, LayoutRows, DebugMode
@@ -399,7 +415,7 @@ WriteCoachState(logEvent := false) {
 }
 
 LogShortcutUsage(shortcutKeys, name := "") {
-    global LastShortcutKeys, LastShortcutTime, ModifierComboFired, LastMouseEventTime, LastKey, CurrentAppContext, AppContextAtTime, LastLoggedShortcutKeys, LastLoggedShortcutTime, MouseSessionStart, MouseSessionShortcuts
+    global LastShortcutKeys, LastShortcutTime, LastShortcutApp, LastShortcutLayer, ModifierComboFired, LastMouseEventTime, LastKey, CurrentAppContext, AppContextAtTime, LastLoggedShortcutKeys, LastLoggedShortcutTime, MouseSessionStart, MouseSessionShortcuts
     try {
     if (shortcutKeys = "")
         return
@@ -421,12 +437,25 @@ LogShortcutUsage(shortcutKeys, name := "") {
         evt["name"] := name
 
     now := A_TickCount
-    if (LastShortcutKeys != "" && (now - LastShortcutTime) < 5000) {
-        evt["prev"] := LastShortcutKeys
-        evt["gap_ms"] := now - LastShortcutTime
+    prevKeys := LastShortcutKeys
+    prevApp := LastShortcutApp
+    prevLayer := LastShortcutLayer
+    gapMs := 0
+    if (prevKeys != "" && (now - LastShortcutTime) < 5000) {
+        gapMs := now - LastShortcutTime
+        evt["prev"] := prevKeys
+        evt["prev_app"] := prevApp
+        evt["prev_layer"] := prevLayer
+        evt["gap_ms"] := gapMs
     }
+    seqId := RecordShortcutWorkflow(shortcutKeys, activeApp, activeLayer, prevKeys, prevApp, gapMs)
+    if seqId
+        evt["sequence_id"] := seqId
+    RecordAppWorkflowShortcut(activeApp)
     LastShortcutKeys := shortcutKeys
     LastShortcutTime := now
+    LastShortcutApp := activeApp
+    LastShortcutLayer := activeLayer
 
     ; Mouse proximity hint: keyboard shortcut within 2 seconds of mouse click
     if LastMouseEventTime != 0 && (now - LastMouseEventTime) < 2000 {
@@ -1048,7 +1077,7 @@ FunctionalKeyUpCallback(hotkeyName) {
 }
 
 LogEventWithRepeatAndSequence(evtType, keys, layer) {
-    global LastRepeatKey, LastRepeatTime, RepeatCount, LastShortcutKeys, LastShortcutTime, LayerSessionKeys, MouseSessionStart, MouseSessionShortcuts, LastMouseEventTime, LastKey, CurrentAppContext, AppContextAtTime, LastLoggedShortcutKeys, LastLoggedShortcutTime, ShortcutVelocityWindow
+    global LastRepeatKey, LastRepeatTime, RepeatCount, LastShortcutKeys, LastShortcutTime, LastShortcutApp, LastShortcutLayer, LayerSessionKeys, MouseSessionStart, MouseSessionShortcuts, LastMouseEventTime, LastKey, CurrentAppContext, AppContextAtTime, LastLoggedShortcutKeys, LastLoggedShortcutTime, ShortcutVelocityWindow
     now := A_TickCount
 
     ; Track keys pressed during layer session
@@ -1082,12 +1111,27 @@ LogEventWithRepeatAndSequence(evtType, keys, layer) {
     evt := Map("type", evtType, "keys", keys, "app", activeApp, "layer", layer)
 
     ; Sequence tracking
-    if LastShortcutKeys != "" && (now - LastShortcutTime) < 5000 {
-        evt["prev"] := LastShortcutKeys
-        evt["gap_ms"] := now - LastShortcutTime
+    prevKeys := LastShortcutKeys
+    prevApp := LastShortcutApp
+    prevLayer := LastShortcutLayer
+    gapMs := 0
+    if prevKeys != "" && (now - LastShortcutTime) < 5000 {
+        gapMs := now - LastShortcutTime
+        evt["prev"] := prevKeys
+        evt["prev_app"] := prevApp
+        evt["prev_layer"] := prevLayer
+        evt["gap_ms"] := gapMs
+    }
+    if evtType = "shortcut" || evtType = "layer_key" {
+        seqId := RecordShortcutWorkflow(keys, activeApp, layer, prevKeys, prevApp, gapMs)
+        if seqId
+            evt["sequence_id"] := seqId
+        RecordAppWorkflowShortcut(activeApp)
     }
     LastShortcutKeys := keys
     LastShortcutTime := now
+    LastShortcutApp := activeApp
+    LastShortcutLayer := layer
 
     ; Mouse proximity hint: keyboard shortcut within 2 seconds of mouse click
     if (evtType = "shortcut" || evtType = "layer_key") && LastMouseEventTime != 0 && (now - LastMouseEventTime) < 2000 {
@@ -1295,9 +1339,11 @@ TrackAppFocus() {
         duration := now - LastFocusTime
         evt := Map("type", "app_focus", "app", activeApp, "prev_app", LastFocusApp, "prev_duration_ms", duration)
         BufferEvent(evt)
+        RecordAppTransition(LastFocusApp, activeApp, duration)
     }
     LastFocusApp := activeApp
     LastFocusTime := now
+    RecordAppWorkflowApp(activeApp)
 }
 
 ; ── Layer session tracking ──
@@ -1398,6 +1444,149 @@ HasArrayValue(list, value) {
         }
     }
     return false
+}
+
+AddUniqueValue(list, value) {
+    if value = ""
+        return
+    if !HasArrayValue(list, value)
+        list.Push(value)
+}
+
+ResetAppWorkflowWindow(startMs := 0) {
+    global WorkflowWindowStart, WorkflowWindowApps, WorkflowWindowSwitches, WorkflowWindowShortcutCount, LastWorkflowSnapshotTime
+    WorkflowWindowStart := startMs ? startMs : A_TickCount
+    WorkflowWindowApps := []
+    WorkflowWindowSwitches := 0
+    WorkflowWindowShortcutCount := 0
+    LastWorkflowSnapshotTime := 0
+}
+
+RecordAppWorkflowApp(app) {
+    global WorkflowWindowStart, WorkflowWindowApps, WORKFLOW_APP_WINDOW_MS
+    if app = ""
+        return
+    now := A_TickCount
+    if WorkflowWindowStart = 0 || (now - WorkflowWindowStart) > WORKFLOW_APP_WINDOW_MS {
+        EmitAppWorkflowWindow("rollover")
+        ResetAppWorkflowWindow(now)
+    }
+    AddUniqueValue(WorkflowWindowApps, app)
+}
+
+RecordAppWorkflowShortcut(app) {
+    global WorkflowWindowShortcutCount
+    if app = ""
+        return
+    RecordAppWorkflowApp(app)
+    WorkflowWindowShortcutCount += 1
+    EmitAppWorkflowWindow("activity")
+}
+
+RecordAppTransition(prevApp, activeApp, durationMs) {
+    global WorkflowWindowSwitches
+    if prevApp = "" || activeApp = "" || prevApp = activeApp
+        return
+    RecordAppWorkflowApp(prevApp)
+    RecordAppWorkflowApp(activeApp)
+    WorkflowWindowSwitches += 1
+    evt := Map("type", "app_transition", "from_app", prevApp, "to_app", activeApp, "prev_duration_ms", durationMs)
+    BufferEvent(evt)
+    EmitAppWorkflowWindow("app_transition")
+}
+
+EmitAppWorkflowWindow(reason := "snapshot") {
+    global WorkflowWindowStart, WorkflowWindowApps, WorkflowWindowSwitches, WorkflowWindowShortcutCount, LastWorkflowSnapshotTime
+    if WorkflowWindowStart = 0 || WorkflowWindowApps.Length < 2
+        return
+    now := A_TickCount
+    span := now - WorkflowWindowStart
+    if reason = "activity" && LastWorkflowSnapshotTime != 0 && (now - LastWorkflowSnapshotTime) < 30000
+        return
+    evt := Map(
+        "type", "app_workflow_window",
+        "apps", WorkflowWindowApps,
+        "app_count", WorkflowWindowApps.Length,
+        "switch_count", WorkflowWindowSwitches,
+        "shortcut_count", WorkflowWindowShortcutCount,
+        "span_ms", span,
+        "reason", reason
+    )
+    BufferEvent(evt)
+    LastWorkflowSnapshotTime := now
+}
+
+ResetShortcutWorkflowWindow(startMs := 0) {
+    global ShortcutWorkflowStart, ShortcutWorkflowKeys, ShortcutWorkflowApps, ShortcutWorkflowLayers
+    ShortcutWorkflowStart := startMs ? startMs : A_TickCount
+    ShortcutWorkflowKeys := []
+    ShortcutWorkflowApps := []
+    ShortcutWorkflowLayers := []
+}
+
+RecordShortcutWorkflow(keys, app, layer, prevKeys := "", prevApp := "", gapMs := 0) {
+    global ShortcutWorkflowStart, ShortcutWorkflowKeys, ShortcutWorkflowApps, ShortcutWorkflowLayers, WORKFLOW_SHORTCUT_WINDOW_MS, ShortcutSequenceId, LastShortcutLayer
+    if keys = ""
+        return 0
+    now := A_TickCount
+    if ShortcutWorkflowStart = 0 || (now - ShortcutWorkflowStart) > WORKFLOW_SHORTCUT_WINDOW_MS {
+        EmitShortcutWorkflowWindow("rollover")
+        ResetShortcutWorkflowWindow(now)
+    }
+
+    ShortcutWorkflowKeys.Push(keys)
+    ShortcutWorkflowApps.Push(app)
+    ShortcutWorkflowLayers.Push(layer)
+    while ShortcutWorkflowKeys.Length > 5 {
+        ShortcutWorkflowKeys.RemoveAt(1)
+        ShortcutWorkflowApps.RemoveAt(1)
+        ShortcutWorkflowLayers.RemoveAt(1)
+    }
+
+    ShortcutSequenceId += 1
+    seqId := ShortcutSequenceId
+    if prevKeys != "" && gapMs > 0 {
+        seqEvt := Map(
+            "type", "shortcut_sequence",
+            "sequence_id", seqId,
+            "from", prevKeys,
+            "to", keys,
+            "from_app", prevApp,
+            "to_app", app,
+            "from_layer", LastShortcutLayer,
+            "to_layer", layer,
+            "gap_ms", gapMs,
+            "same_app", prevApp = app ? "true" : "false"
+        )
+        BufferEvent(seqEvt)
+    }
+    EmitShortcutWorkflowWindow("shortcut")
+    return seqId
+}
+
+EmitShortcutWorkflowWindow(reason := "snapshot") {
+    global ShortcutWorkflowStart, ShortcutWorkflowKeys, ShortcutWorkflowApps, ShortcutWorkflowLayers
+    if ShortcutWorkflowStart = 0 || ShortcutWorkflowKeys.Length < 3
+        return
+    span := A_TickCount - ShortcutWorkflowStart
+    appSet := []
+    layerSet := []
+    for app in ShortcutWorkflowApps
+        AddUniqueValue(appSet, app)
+    for layer in ShortcutWorkflowLayers
+        AddUniqueValue(layerSet, layer)
+    evt := Map(
+        "type", "shortcut_workflow_window",
+        "keys", ShortcutWorkflowKeys,
+        "apps", appSet,
+        "layers", layerSet,
+        "chain_len", ShortcutWorkflowKeys.Length,
+        "app_count", appSet.Length,
+        "layer_count", layerSet.Length,
+        "span_ms", span,
+        "reason", reason
+    )
+    BufferEvent(evt)
 }
 
 LayerKeyHint(kind, layer) {
