@@ -173,12 +173,12 @@ BuildTrayMenu() {
     A_TrayMenu.Add("Toggle Debug Mode", (*) => ToggleDebug())
     A_TrayMenu.Add()
     A_TrayMenu.Add("Coach Layer 0 Base", (*) => SetCoachLayer("0"))
-    A_TrayMenu.Add("Coach Layer 1 Nav/Edit", (*) => SetCoachLayer("1"))
-    A_TrayMenu.Add("Coach Layer 2 Mouse", (*) => SetCoachLayer("2"))
-    A_TrayMenu.Add("Coach Layer 3 Windows", (*) => SetCoachLayer("3"))
-    A_TrayMenu.Add("Coach Layer 4 Helpers", (*) => SetCoachLayer("4"))
+    A_TrayMenu.Add("Coach Layer 1", (*) => SetCoachLayer("1"))
+    A_TrayMenu.Add("Coach Layer 2", (*) => SetCoachLayer("2"))
+    A_TrayMenu.Add("Coach Layer 3", (*) => SetCoachLayer("3"))
+    A_TrayMenu.Add("Coach Layer 4", (*) => SetCoachLayer("4"))
     A_TrayMenu.Add("Coach Layer 7 Game", (*) => SetCoachLayer("7"))
-    A_TrayMenu.Add("Coach Layer 8 Travel", (*) => SetCoachLayer("8"))
+    A_TrayMenu.Add("Coach Layer 8", (*) => SetCoachLayer("8"))
     A_TrayMenu.Add()
     A_TrayMenu.Add("Open App Config", (*) => Run("notepad.exe `"" AppsConfigPath "`""))
     A_TrayMenu.Add("Open Helper Config", (*) => Run("notepad.exe `"" HelperConfigPath "`""))
@@ -1999,7 +1999,7 @@ UpdateCoachGrid() {
     role := LayerRole(CurrentCoachLayer)
     CoachTitle.Text := "Charybdis Coach - Layer " CurrentCoachLayer " - " role
     CoachGrid.Text := RenderLayerGrid(CurrentCoachLayer)
-    CoachLegend.Text := "Thumb anchors: L1/Nav x3 y4 | Space x4 y4 | Mouse x4 y5 | L3/Window x7 y4 | L4/System x8 y4 | Enter x7 y5`n" .
+    CoachLegend.Text := "Layer roles are dynamic except L0 and L7. Numbered coach keys are access beacons; infer roles from the loaded CSV.`n" .
         "Launcher: Ctrl+Alt+Space.  Force new app: Shift+Enter or !prefix.  PowerToys: Win+Alt+Space (default)."
     UpdateCoachContext()
 }

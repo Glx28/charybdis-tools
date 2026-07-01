@@ -49,10 +49,10 @@ $patterns = @{
     '&mo 1'   = '&coach_l1_hold    (Layer 1 momentary)'
     '&mo 3'   = '&coach_l3_hold    (Layer 3 momentary)'
     '&mo 4'   = '&coach_l4_hold    (Layer 4 momentary)'
-    '&to 2'   = '&coach_mouse_lock (Mouse lock to Layer 2)'
+    '&to 2'   = '&coach_mouse_lock (Lock configured target layer; role is dynamic)'
     '&to 7'   = '&coach_game_lock  (Game layer lock)'
     '&to 0'   = '&coach_base       (Return to base layer)'
-    '&tog 8'  = '&coach_travel_toggle (Travel layer toggle)'
+    '&tog 8'  = '&coach_travel_toggle (Toggle configured target layer; role is dynamic)'
 }
 
 $found = @()

@@ -20,6 +20,12 @@ The user **ONLY** cares about:
 
 Your analysis must be grounded in **real apps, real shortcuts, real physical positions, and real effort to reach them**.
 
+## Dynamic Layer Role Rule
+
+Only L0 and L7 have stable semantic roles. L0 is base typing/thumb access. L7 is frozen fallback/game/system-safe space.
+
+Every other layer is dynamically assigned by the optimizer for the current generation. Do not write or assume "L2 is mouse", "L3 is windows", "L4 is system", "L6 is scroll", or "L8 is travel". Behavior names such as `coach_l2_hold` are transport/access beacons only; they do not prove that layer 2 is a mouse layer. Infer layer roles from the current `keybindings_explained.csv`, usage data, mouse/button clusters, app shortcut clusters, and access paths.
+
 ---
 
 ## Physical Keyboard Reality
@@ -29,19 +35,14 @@ Your analysis must be grounded in **real apps, real shortcuts, real physical pos
 - **Thumb row**: y=4 (3 keys per side) + y=5 (2 keys per side)
 - **L0 (Base)**: Letters, numbers, punctuation. Mostly frozen except ~8 thumb positions
 - **L0 thumb positions** (critical — these are the most-pressed keys after letters):
-  - (3,4) left inner thumb → usually `coach_l1_hold` (clipboard layer)
+  - (3,4) left inner thumb → usually a layer-access key
   - (4,4) left middle thumb → usually `spacebar` (typing)
-  - (5,4) left outer thumb → usually `coach_l2_hold` or transparent
-  - (4,5) left bottom thumb → usually `coach_l2_hold` (mouse layer)
-  - (7,4) right inner thumb → usually `coach_l3_hold` (app shortcuts)
-  - (8,4) right middle thumb → usually `coach_l4_hold` (more apps)
+  - (5,4) left outer thumb → usually a layer-access key or transparent
+  - (4,5) left bottom thumb → usually a layer-access key
+  - (7,4) right inner thumb → usually a layer-access key
+  - (8,4) right middle thumb → usually a layer-access key
   - (7,5) right bottom thumb → usually `return enter`
-- **Layer access mechanics**:
-  - L1: hold left thumb (3,4) — momentary
-  - L2: hold left thumb (4,5) — momentary or locked
-  - L3: hold right thumb (7,4) — momentary
-  - L4: hold right thumb (8,4) — momentary
-  - L5–L10: toggled or locked (no thumb hold)
+- **Layer access mechanics**: Current firmware exposes numbered access beacons. The generated layout decides what each non-L0/non-L7 target layer actually contains.
 - **Effort model**: Lower = better. Home row (y=2) = ~1.0, top row (y=0) = ~3.5, thumb (y=4) = ~1.5, thumb bottom (y=5) = ~2.5, outer columns = +2.0 stretch
 
 ---
@@ -288,13 +289,10 @@ The CSV has exactly these columns:
 Rules:
 - ~616 rows (56 positions × 11 layers)
 - `layer` = 0–10 (skip 7 = Game)
-- `layer_role` = human description:
+- `layer_role` = human description inferred from the current generated layout:
   - L0: "Base typing and thumb access"
-  - L1: "Clipboard and editing"
-  - L2: "Mouse and trackball"
-  - L3: "App shortcuts and navigation"
-  - L4: "More apps and window management"
-  - L5–L10: "Specialized [context]"
+  - L7: "Frozen fallback/game/system-safe layer"
+  - L1–L6/L8–L10: inferred from current app clusters, shortcut clusters, mouse actions, and access path usage
 - `visual_label` = short lowercase name (e.g., "ctrl+c", "mb1", "spacebar", "coach_l1")
 - `behavior` = "Key Press", "Transparent", "Momentary Layer", "Toggle Layer", "Mod Tap", etc.
 - `parameter` = ZMK parameter name (e.g., "Keyboard C", "Spacebar")
@@ -367,12 +365,12 @@ The L0 thumbs are the interface to the entire keyboard. Analyze them deeply:
 **Physical thumb positions**:
 | Position | Typical Role | Key Question |
 |----------|-------------|--------------|
-| (3,4) left inner | coach_l1_hold (L1) | Is L1 the most-used layer? Should it be? |
+| (3,4) left inner | layer access or generated binding | Is the target layer useful enough for this prime thumb position? |
 | (4,4) left middle | spacebar | Correct for typing — yes, but verify |
-| (5,4) left outer | coach_l2_hold or transparent | Is L2 (mouse) easy to reach? |
-| (4,5) left bottom | coach_l2_hold | Is this comfortable for prolonged hold? |
-| (7,4) right inner | coach_l3_hold (L3) | Are the most-used apps on L3? |
-| (8,4) right middle | coach_l4_hold (L4) | Are secondary apps on L4? |
+| (5,4) left outer | layer access or transparent | Is the target layer useful enough for this reach? |
+| (4,5) left bottom | layer access | Is this comfortable for the target layer's expected hold/toggle use? |
+| (7,4) right inner | layer access | Are the target layer's actions worth this prime right-thumb position? |
+| (8,4) right middle | layer access | Are the target layer's actions worth this right-thumb position? |
 | (7,5) right bottom | return enter | Is this easy for right thumb? |
 
 **Analysis to perform**:
@@ -481,10 +479,10 @@ Compare the evolved layout to the current layout (`canonical.json`):
 - Click, double-click
 
 Check:
-- Are they on L2 (mouse layer)?
+- Do mouse buttons and scroll-mode access form a coherent dynamic cluster or access path?
 - Are they reachable while holding the trackball?
 - Is there a "scroll cluster" (scroll up/down adjacent) on the left hand?
-- Is the mouse layer (L2) accessible via a comfortable thumb hold?
+- Is the detected mouse/action cluster accessible via a comfortable hold, toggle, or lock path?
 
 ### 3.8 Norwegian Character Accessibility
 

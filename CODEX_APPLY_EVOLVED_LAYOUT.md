@@ -107,7 +107,7 @@ cat C:\Users\nos\charybdis-optimizer\build\evolved_diff.txt
 
 Check for sanity:
 - [ ] Are the number of changes reasonable? (expect 100-300 key changes across layers)
-- [ ] Do layer assignments make sense? (mouse buttons on L2, clipboard on L1, app shortcuts on L3-L10)
+- [ ] Do dynamic layer assignments make sense? Infer each non-L0/non-L7 layer role from the generated CSV; do not assume L2 is mouse or that any other layer number has a fixed role.
 - [ ] Are frozen L0 keys unchanged? (letters, numbers on main grid should not change)
 - [ ] Are structural keys present? (coach_base on exit-required layers, coach holds on L0 thumbs)
 
@@ -241,8 +241,8 @@ Before committing changes across repos, verify:
 - [ ] `keybindings_explained.csv` has ~616 rows, correct headers
 - [ ] Coach app loads and shows all 11 layers correctly
 - [ ] Frozen L0 keys (letters, numbers, spacebar at (4,4), return enter at (7,5)) are unchanged
-- [ ] Mouse buttons appear on L2 left hand in the CSV
-- [ ] Clipboard shortcuts appear on L1 in the CSV
+- [ ] Mouse buttons form a usable cluster on the layer or layers chosen by the generated layout
+- [ ] Clipboard/editing shortcuts are reachable through the access path chosen by the generated layout
 - [ ] Coach holds (coach_l1_hold through coach_l4_hold) are on L0 thumb positions
 - [ ] Usage log is archived and fresh log file exists
 
@@ -270,10 +270,10 @@ After this task:
 
 ## Key Layout Summary (what the evolved layout should have)
 
-From Run 7 (1000 gen) best_weighted selection:
-- **L0 thumbs:** spacebar (4,4), return enter (7,5), coach_l1 (3,4), coach_l2 (4,5), coach_l3 (7,4), coach_l4 (8,4), MB2 at one thumb
-- **Mouse (L2):** MB1 (3,3) eff=1.0 left, MB2 (4,4) eff=1.5 left thumb, MB3 (1,3) eff=1.0 left, MB4 (8,2) eff=0 right, MB5 (4,3) eff=1.0 left
-- **Clipboard (L1):** Ctrl+C (8,2) eff=0, Ctrl+V (9,2) eff=0, Ctrl+Z (7,0) eff=5.5, Ctrl+X (7,4) eff=3.5
+From Run 7 (1000 gen) best_weighted selection. Treat this as a historical snapshot, not a role template:
+- **L0 thumbs:** spacebar (4,4), return enter (7,5), layer-access behaviors, MB2 at one thumb
+- **Mouse actions:** MB1/MB2/MB3/MB4/MB5 landed on the generated layout's chosen access paths; future runs may place them on different non-L0/non-L7 layers
+- **Clipboard/editing actions:** Ctrl+C, Ctrl+V, Ctrl+Z, Ctrl+X landed on the generated layout's chosen access path; future runs may move them when usage data changes
 - **All groups 100%:** arrows, clipboard, f_keys
 - **Violations:** 49 (acceptable)
 - **Effort:** -2,785 (negative = rewards exceed penalties)
