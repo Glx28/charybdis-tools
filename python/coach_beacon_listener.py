@@ -26,11 +26,16 @@ LAYER_KEY_HINTS: dict[tuple[str, str], dict[str, str]] = {
     ("hold", "2"): {"layer": "0", "x": "5", "y": "5", "label": "Mouse"},
     ("hold", "3"): {"layer": "0", "x": "8", "y": "4", "label": "Window"},
     ("hold", "4"): {"layer": "0", "x": "7", "y": "4", "label": "System"},
+    ("hold", "5"): {"layer": "3", "x": "4", "y": "5", "label": "Layer 5"},
+    ("hold", "6"): {"layer": "0", "x": "5", "y": "4", "label": "Layer 6"},
     ("hold", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Speed"},
     ("lock", "2"): {"layer": "3", "x": "10", "y": "2", "label": "Mouse Lock"},
     ("lock", "7"): {"layer": "1", "x": "0", "y": "1", "label": "Game"},
+    ("toggle", "5"): {"layer": "3", "x": "4", "y": "5", "label": "Layer 5"},
     ("toggle", "6"): {"layer": "2", "x": "12", "y": "2", "label": "Scroll"},
     ("toggle", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Speed"},
+    ("toggle", "9"): {"layer": "0", "x": "4", "y": "5", "label": "Layer 9"},
+    ("toggle", "10"): {"layer": "6", "x": "7", "y": "4", "label": "Layer 10"},
     ("base", "0"): {"layer": "2", "x": "7", "y": "4", "label": "Base"},
     ("exit", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Exit Base"},
     ("exit", "8"): {"layer": "8", "x": "7", "y": "4", "label": "Exit Travel"},
@@ -205,6 +210,16 @@ def register_beacons(state: CoachState) -> None:
         104: lambda: state.on_hold("8", "up"),
         105: lambda: state.on_toggle("6", "toggle"),
         106: lambda: state.on_toggle("6", "off"),
+        107: lambda: state.on_hold("5", "down"),
+        108: lambda: state.on_hold("5", "up"),
+        109: lambda: state.on_hold("6", "down"),
+        110: lambda: state.on_hold("6", "up"),
+    }
+    CTRL_ALT_SHIFT_WIN: dict[int, object] = {
+        100: lambda: state.on_toggle("5", "toggle"),
+        101: lambda: state.on_toggle("6", "toggle"),
+        102: lambda: state.on_toggle("9", "toggle"),
+        103: lambda: state.on_toggle("10", "toggle"),
     }
 
     mods: dict[str, bool] = {"ctrl": False, "shift": False, "alt": False, "win": False}
@@ -229,6 +244,8 @@ def register_beacons(state: CoachState) -> None:
             fn = CTRL_ALT_SHIFT.get(sc)
         elif mods["ctrl"] and mods["alt"] and mods["win"] and not mods["shift"]:
             fn = CTRL_ALT_WIN.get(sc)
+        elif mods["ctrl"] and mods["alt"] and mods["shift"] and mods["win"]:
+            fn = CTRL_ALT_SHIFT_WIN.get(sc)
 
         if fn:
             fn()

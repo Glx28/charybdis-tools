@@ -85,6 +85,28 @@ MULTIWORD_BASE_KEYS = (
     "Comma and LessThan", "Period and GreaterThan", "ForwardSlash and QuestionMark",
 )
 
+COACH_LAYER_ACCESS = {
+    ("hold", 1): "coach_l1_hold",
+    ("hold", 2): "coach_l2_hold",
+    ("hold", 3): "coach_l3_hold",
+    ("hold", 4): "coach_l4_hold",
+    ("hold", 5): "coach_l5_hold",
+    ("hold", 6): "coach_l6_hold",
+    ("hold", 8): "coach_l8_hold",
+    ("toggle", 0): "coach_base",
+    ("toggle", 2): "coach_mouse_lock",
+    ("toggle", 5): "coach_l5_toggle",
+    ("toggle", 6): "coach_l6_toggle",
+    ("toggle", 7): "coach_game_lock",
+    ("toggle", 8): "coach_travel_toggle",
+    ("toggle", 9): "coach_l9_toggle",
+    ("toggle", 10): "coach_l10_toggle",
+    ("to", 0): "coach_base",
+    ("to", 2): "coach_mouse_lock",
+    ("to", 7): "coach_game_lock",
+    ("to", 8): "coach_travel_toggle",
+}
+
 
 def canonical_hid_parameter(token):
     value = str(token or "").strip()
@@ -95,6 +117,23 @@ def canonical_hid_parameter(token):
     if value in LITERAL_TO_HID_PARAMETER:
         return LITERAL_TO_HID_PARAMETER[value]
     return value
+
+
+def coach_behavior_for_layer_access(action, target):
+    action_key = str(action or "").strip().lower()
+    if action_key == "momentary layer":
+        mode = "hold"
+    elif action_key == "toggle layer":
+        mode = "toggle"
+    elif action_key == "to layer":
+        mode = "to"
+    else:
+        return None
+    try:
+        target_int = int(target)
+    except (TypeError, ValueError):
+        return None
+    return COACH_LAYER_ACCESS.get((mode, target_int))
 
 
 def _normalize_raw_key_id(value):
@@ -447,7 +486,12 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                 elif sc.get("is_layer_access"):
                     behavior = sc.get("action", "")
                     target = int(sc.get("access_target_layer", -1))
-                    parameter = f"Layer::{target}" if behavior in ("Momentary Layer", "Toggle Layer", "To Layer") and target >= 0 else ""
+                    coach_behavior = coach_behavior_for_layer_access(behavior, target)
+                    if coach_behavior:
+                        behavior = coach_behavior
+                        parameter = ""
+                    else:
+                        parameter = f"Layer::{target}" if behavior in ("Momentary Layer", "Toggle Layer", "To Layer") and target >= 0 else ""
                     effective = {
                         "x": pos["x"], "y": pos["y"],
                         "label": sc.get("base_key") or sc["keys"],
@@ -696,6 +740,10 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
       .filter((item) => Number(item.layer) !== 7)
       .filter((item) => !APPLY_ONLY_BATCH || item.apply_batch === true || MODE === "oneKeyTest");
   }"""
+    )
+    suffix = suffix.replace(
+        """"coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle", "coach_travel_off", "coach_recover_base"]""",
+        """"coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold", "coach_l6_hold", "coach_l8_hold", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_l5_toggle", "coach_l6_toggle", "coach_l9_toggle", "coach_l10_toggle", "coach_travel_toggle", "coach_travel_off", "coach_recover_base"]"""
     )
     suffix = suffix.replace(
         """    const aliases = new Set([text, upper]);""",
