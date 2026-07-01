@@ -92,13 +92,19 @@ COACH_LAYER_ACCESS = {
     ("hold", 4): "coach_l4_hold",
     ("hold", 5): "coach_l5_hold",
     ("hold", 6): "coach_l6_hold",
+    ("hold", 7): "coach_l7_hold",
     ("hold", 8): "coach_l8_hold",
+    ("hold", 9): "coach_l9_hold",
+    ("hold", 10): "coach_l10_hold",
     ("toggle", 0): "coach_base",
-    ("toggle", 2): "coach_mouse_lock",
+    ("toggle", 1): "coach_l1_toggle",
+    ("toggle", 2): "coach_l2_toggle",
+    ("toggle", 3): "coach_l3_toggle",
+    ("toggle", 4): "coach_l4_toggle",
     ("toggle", 5): "coach_l5_toggle",
     ("toggle", 6): "coach_l6_toggle",
-    ("toggle", 7): "coach_game_lock",
-    ("toggle", 8): "coach_travel_toggle",
+    ("toggle", 7): "coach_l7_toggle",
+    ("toggle", 8): "coach_l8_toggle",
     ("toggle", 9): "coach_l9_toggle",
     ("toggle", 10): "coach_l10_toggle",
     ("to", 0): "coach_base",
@@ -106,6 +112,15 @@ COACH_LAYER_ACCESS = {
     ("to", 7): "coach_game_lock",
     ("to", 8): "coach_travel_toggle",
 }
+
+COACH_STUDIO_BEHAVIORS = [
+    "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold",
+    "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold",
+    "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle",
+    "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle",
+    "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
+    "coach_travel_off", "coach_recover_base",
+]
 
 
 def canonical_hid_parameter(token):
@@ -741,10 +756,14 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
       .filter((item) => !APPLY_ONLY_BATCH || item.apply_batch === true || MODE === "oneKeyTest");
   }"""
     )
-    suffix = suffix.replace(
-        """"coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle", "coach_travel_off", "coach_recover_base"]""",
-        """"coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold", "coach_l6_hold", "coach_l8_hold", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_l5_toggle", "coach_l6_toggle", "coach_l9_toggle", "coach_l10_toggle", "coach_travel_toggle", "coach_travel_off", "coach_recover_base"]"""
+    full_supported = (
+        'const supported = new Set(["Key Press", "Mouse Key Press", "Momentary Layer", '
+        '"To Layer", "Toggle Layer", "Bluetooth", "Output Selection", "Studio Unlock", '
+        '"Reset", "Bootloader", "Transparent", "None", '
+        + ", ".join(json.dumps(item) for item in COACH_STUDIO_BEHAVIORS)
+        + "]);"
     )
+    suffix = re.sub(r'const supported = new Set\(\[[^\]]*\]\);', full_supported, suffix, count=1)
     suffix = suffix.replace(
         """    const aliases = new Set([text, upper]);""",
         """    const aliases = new Set([text, upper]);

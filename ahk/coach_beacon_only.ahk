@@ -158,7 +158,10 @@ LayerKeyHint(kind, layer) {
             case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "System")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
             case "6": return Map("layer", "0", "x", "5", "y", "4", "label", "Layer 6")
+            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
             case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
+            case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
     } else if kind = "lock" {
         switch layer {
@@ -167,8 +170,13 @@ LayerKeyHint(kind, layer) {
         }
     } else if kind = "toggle" {
         switch layer {
+            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Layer 1")
+            case "2": return Map("layer", "0", "x", "5", "y", "5", "label", "Layer 2")
+            case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 3")
+            case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 4")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
             case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Scroll")
+            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
             case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
             case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
             case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
@@ -308,7 +316,19 @@ CoachBeacon(kind, layer, direction) {
 ^!#F21::CoachBeacon("hold", "5", "up")
 ^!#F22::CoachBeacon("hold", "6", "down")
 ^!#F23::CoachBeacon("hold", "6", "up")
-^!+#F13::CoachBeacon("toggle", "5", "toggle")
-^!+#F14::CoachBeacon("toggle", "6", "toggle")
-^!+#F15::CoachBeacon("toggle", "9", "toggle")
-^!+#F16::CoachBeacon("toggle", "10", "toggle")
+^+#F13::CoachBeacon("hold", "7", "down")
+^+#F14::CoachBeacon("hold", "7", "up")
+^+#F15::CoachBeacon("hold", "9", "down")
+^+#F16::CoachBeacon("hold", "9", "up")
+^+#F17::CoachBeacon("hold", "10", "down")
+^+#F18::CoachBeacon("hold", "10", "up")
+^!+#F13::CoachBeacon("toggle", "1", "toggle")
+^!+#F14::CoachBeacon("toggle", "2", "toggle")
+^!+#F15::CoachBeacon("toggle", "3", "toggle")
+^!+#F16::CoachBeacon("toggle", "4", "toggle")
+^!+#F17::CoachBeacon("toggle", "5", "toggle")
+^!+#F18::CoachBeacon("toggle", "6", "toggle")
+^!+#F19::CoachBeacon("toggle", "7", "toggle")
+^!+#F20::CoachBeacon("toggle", "8", "toggle")
+^!+#F21::CoachBeacon("toggle", "9", "toggle")
+^!+#F22::CoachBeacon("toggle", "10", "toggle")

@@ -1612,7 +1612,10 @@ LayerKeyHint(kind, layer) {
             case "4": return Map("layer", "0", "x", "8", "y", "4", "label", "System")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
             case "6": return Map("layer", "0", "x", "5", "y", "4", "label", "Layer 6")
+            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
             case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
+            case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
     } else if kind = "lock" {
         switch layer {
@@ -1621,8 +1624,16 @@ LayerKeyHint(kind, layer) {
         }
     } else if kind = "toggle" {
         switch layer {
+            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Layer 1")
+            case "2": return Map("layer", "0", "x", "5", "y", "5", "label", "Layer 2")
+            case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 3")
+            case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 4")
+            case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
             case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Scroll")
+            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
             case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
+            case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
     } else if kind = "base" {
         return Map("layer", "2", "x", "7", "y", "4", "label", "Base")
@@ -1645,7 +1656,10 @@ CoachBehaviorForAccess(kind, layer) {
             case "4": return "coach_l4_hold"
             case "5": return "coach_l5_hold"
             case "6": return "coach_l6_hold"
+            case "7": return "coach_l7_hold"
             case "8": return "coach_l8_hold"
+            case "9": return "coach_l9_hold"
+            case "10": return "coach_l10_hold"
         }
     } else if kind = "lock" {
         switch layer {
@@ -1654,9 +1668,14 @@ CoachBehaviorForAccess(kind, layer) {
         }
     } else if kind = "toggle" {
         switch layer {
+            case "1": return "coach_l1_toggle"
+            case "2": return "coach_l2_toggle"
+            case "3": return "coach_l3_toggle"
+            case "4": return "coach_l4_toggle"
             case "5": return "coach_l5_toggle"
             case "6": return "coach_l6_toggle"
-            case "8": return "coach_travel_toggle"
+            case "7": return "coach_l7_toggle"
+            case "8": return "coach_l8_toggle"
             case "9": return "coach_l9_toggle"
             case "10": return "coach_l10_toggle"
         }
@@ -2417,10 +2436,22 @@ DebouncedHoldDown(layer) {
 ^!#F21::DebouncedHoldUp("5")
 ^!#F22::DebouncedHoldDown("6")
 ^!#F23::DebouncedHoldUp("6")
-^!+#F13::CoachBeacon("toggle", "5", "toggle")
-^!+#F14::CoachBeacon("toggle", "6", "toggle")
-^!+#F15::CoachBeacon("toggle", "9", "toggle")
-^!+#F16::CoachBeacon("toggle", "10", "toggle")
+^+#F13::DebouncedHoldDown("7")
+^+#F14::DebouncedHoldUp("7")
+^+#F15::DebouncedHoldDown("9")
+^+#F16::DebouncedHoldUp("9")
+^+#F17::DebouncedHoldDown("10")
+^+#F18::DebouncedHoldUp("10")
+^!+#F13::CoachBeacon("toggle", "1", "toggle")
+^!+#F14::CoachBeacon("toggle", "2", "toggle")
+^!+#F15::CoachBeacon("toggle", "3", "toggle")
+^!+#F16::CoachBeacon("toggle", "4", "toggle")
+^!+#F17::CoachBeacon("toggle", "5", "toggle")
+^!+#F18::CoachBeacon("toggle", "6", "toggle")
+^!+#F19::CoachBeacon("toggle", "7", "toggle")
+^!+#F20::CoachBeacon("toggle", "8", "toggle")
+^!+#F21::CoachBeacon("toggle", "9", "toggle")
+^!+#F22::CoachBeacon("toggle", "10", "toggle")
 
 #HotIf LauncherVisible
 Enter::SubmitLauncher(false)
