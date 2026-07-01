@@ -519,20 +519,36 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                     source = "evolved"
                 else:
                     mods, base = parse_shortcut_keys(sc["keys"])
-                    zmk_mods = [MOD_MAP.get(m, m) for m in mods]
-                    is_mouse_button = (base.startswith("MB") and base[2:].isdigit()) or base == "Click"
-                    behavior = "Mouse Key Press" if is_mouse_button else "Key Press"
-                    param = base_to_zmk_parameter(base, param_mapping)
-                    effective = {
-                        "x": pos["x"], "y": pos["y"],
-                        "label": sc["keys"],
-                        "behavior": behavior,
-                        "parameter": param,
-                        "modifiers": zmk_mods,
-                        "purpose": sc["action"] or f"Evolved: {sc['keys']}",
-                        "usage_notes": f"App: {sc['app']}, importance={sc['importance']}",
+                    # Multi-stroke chords (e.g. "Ctrl+K Ctrl+F") produce invalid modifier
+                    # tokens like "K Ctrl" that cannot be emitted as a single ZMK key press.
+                    VALID_PRE_MAP_MODS = {
+                        "Ctrl", "Shift", "Alt", "Win",
+                        "L Ctrl", "R Ctrl", "L Shift", "R Shift",
+                        "L Alt", "R Alt", "L GUI", "R GUI",
                     }
-                    source = "evolved"
+                    if any(m not in VALID_PRE_MAP_MODS for m in mods):
+                        effective = {
+                            "x": pos["x"], "y": pos["y"], "label": "transparent",
+                            "behavior": "Transparent", "parameter": "", "modifiers": [],
+                            "purpose": f"skipped: multi-stroke chord {sc['keys']!r}",
+                            "usage_notes": "",
+                        }
+                        source = "transparent"
+                    else:
+                        zmk_mods = [MOD_MAP.get(m, m) for m in mods]
+                        is_mouse_button = (base.startswith("MB") and base[2:].isdigit()) or base == "Click"
+                        behavior = "Mouse Key Press" if is_mouse_button else "Key Press"
+                        param = base_to_zmk_parameter(base, param_mapping)
+                        effective = {
+                            "x": pos["x"], "y": pos["y"],
+                            "label": sc["keys"],
+                            "behavior": behavior,
+                            "parameter": param,
+                            "modifiers": zmk_mods,
+                            "purpose": sc["action"] or f"Evolved: {sc['keys']}",
+                            "usage_notes": f"App: {sc['app']}, importance={sc['importance']}",
+                        }
+                        source = "evolved"
             else:
                 effective = {
                     "x": pos["x"], "y": pos["y"], "label": "transparent",
