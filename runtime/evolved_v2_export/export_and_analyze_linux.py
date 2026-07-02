@@ -135,12 +135,13 @@ def canonical_hid_parameter(token):
 
 
 def coach_behavior_for_layer_access(action, target):
+    # v2 optimizer emits full strings like "Momentary Layer 4" / "Toggle Layer 3"
     action_key = str(action or "").strip().lower()
-    if action_key == "momentary layer":
+    if action_key.startswith("momentary layer") or action_key.startswith("scroll mode layer"):
         mode = "hold"
-    elif action_key == "toggle layer":
+    elif action_key.startswith("toggle layer") or action_key == "return to base":
         mode = "toggle"
-    elif action_key == "to layer":
+    elif action_key.startswith("to layer"):
         mode = "to"
     else:
         return None
@@ -481,7 +482,10 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
         coord = f"{int(pos['x'])}:{int(pos['y'])}"
         key = (pos["layer"], coord)
         can_binding = can_bindings.get(key, {})
-        is_critical = pos["layer"] == 0 and (pos["x"], pos["y"]) in CRITICAL_L0
+        # A position is "critical" only when a canonical binding actually exists for it.
+        # In v2, CRITICAL_L0 positions are mutable if not in l0_frozen — fall through to
+        # evolved handling when can_binding is empty.
+        is_critical = pos["layer"] == 0 and (pos["x"], pos["y"]) in CRITICAL_L0 and bool(can_binding)
 
         if is_critical or pos["is_frozen"]:
             effective = dict(can_binding) if can_binding else {
@@ -506,7 +510,7 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                         behavior = coach_behavior
                         parameter = ""
                     else:
-                        parameter = f"Layer::{target}" if behavior in ("Momentary Layer", "Toggle Layer", "To Layer") and target >= 0 else ""
+                        parameter = f"Layer::{target}" if target >= 0 else ""
                     effective = {
                         "x": pos["x"], "y": pos["y"],
                         "label": sc.get("base_key") or sc["keys"],
@@ -1163,7 +1167,19 @@ def main():
         shortcuts = load_shortcuts(data_dir)
         positions = load_positions(data_dir)
         print(f"Loaded standalone layout snapshot: {len(positions)} positions, {len(shortcuts)} shortcuts")
-    canonical = json.loads((data_dir / "canonical.json").read_text(encoding="utf-8"))
+    canonical_path = data_dir / "canonical.json"
+    if canonical_path.exists():
+        canonical = json.loads(canonical_path.read_text(encoding="utf-8"))
+    else:
+        # Synthesize canonical from layout.json (v2 optimizer stores frozen bindings there)
+        layout_json = json.loads((data_dir / "layout.json").read_text(encoding="utf-8"))
+        canonical = {
+            "layers": {
+                "0": {"keys": layout_json.get("l0_frozen", {})},
+                "7": {"keys": layout_json.get("l7_frozen", {})},
+            }
+        }
+        print("Synthesized canonical from layout.json (l0_frozen + l7_frozen)")
 
     merged, changes, cp = build_merged_layout(cp_path, positions, shortcuts, canonical)
     generation = cp.get("generation", "unknown")

@@ -1,0 +1,31 @@
+Checkpoint: v2_checkpoint_gen1000.json  Generation: 1000
+Objectives: [7.627615928649902, -11.778410911560059, 0.9000430107116699]
+Total score: -3.2507519721984863
+
+=== Mouse Buttons ===
+  MB1: L4 (5,4) [left] FAIL
+  MB4: L1 (11,0) [right] OK
+  MB2: L5 (4,4) [left] FAIL
+  MB5: L6 (3,4) [left] FAIL
+  MB3: L4 (2,2) [left] FAIL
+Right-hand mouse buttons: 1/5 (20%)
+
+=== Scroll Mode Access ===
+  @access:L1->L6:hold:Scroll: L3 (4,4) [left]
+  @access:L2->L6:hold:Scroll: L9 (9,3) [right]
+  @access:L2->L6:toggle:Scroll: L2 (8,4) [right]
+  policy: ScrollUp/ScrollDown are not direct keypress assignments
+
+=== Arrow Keys ===
+  DownArrow: NOT FOUND
+  UpArrow: NOT FOUND
+  RightArrow: NOT FOUND
+  LeftArrow: NOT FOUND
+Arrows grouped on same layer: True (layers: set())
+Arrow order score: 0% (incomplete)
+
+=== Canonical L7 Arrow Reference ===
+  DownArrow: L7 (10,2)
+  UpArrow: L7 (10,1)
+  RightArrow: L7 (11,2)
+  LeftArrow: L7 (9,2)

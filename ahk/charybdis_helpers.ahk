@@ -829,6 +829,17 @@ RegisterAllHooks() {
             }
         }
     }
+    ; Bare Norwegian raw completion keys missing from L0. These are logged as
+    ; backup physical-key demand so the optimizer can place the cluster by real
+    ; usage priority instead of treating it as a fixed layer role.
+    for key in ["]", "``", "-", "="] {
+        try {
+            Hotkey "~" key, LogRawCompletionCallback
+            registered++
+        } catch as e {
+            errors .= "~" key ": " e.Message "`n"
+        }
+    }
     ; Modifier + navigation/editing keys
     for key in ["Left", "Right", "Up", "Down", "Home", "End", "PgUp", "PgDn", "Delete", "Insert", "Tab", "Enter", "Space", "Backspace"] {
         for prefix in ["~^", "~^+", "~!", "~!+", "~#", "~#+", "~+"] {
@@ -1057,6 +1068,20 @@ LogShiftFunctionalCallback(hotkeyName) {
     LogEventWithRepeatAndSequence(evtType, keys, layer)
 }
 
+LogRawCompletionCallback(hotkeyName) {
+    global ModifierComboFired
+    try {
+        ModifierComboFired := true
+        keys := ParseHotkeyName(hotkeyName)
+        layer := "0"
+        try layer := CoachActiveLayer()
+        evtType := layer != "0" ? "layer_key" : "functional"
+        LogEventWithRepeatAndSequence(evtType, keys, layer)
+    } catch as e {
+        try FileAppend("LogRawCompletionCallback error: " hotkeyName " - " e.Message "`n", RuntimeDir "\hook_debug.log", "UTF-8")
+    }
+}
+
 FunctionalKeyUpCallback(hotkeyName) {
     global FunctionalKeyDownTime
     rawName := StrReplace(hotkeyName, "~", "")
@@ -1175,6 +1200,7 @@ LogEventWithRepeatAndSequence(evtType, keys, layer) {
     }
 
     BufferEvent(evt)
+    EmitRawCompletionUsage(keys, layer, activeApp, 1)
 }
 
 FlushRepeatEvent() {
@@ -1187,7 +1213,41 @@ FlushRepeatEvent() {
     try layer := CoachActiveLayer()
     evt := Map("type", "shortcut", "keys", LastRepeatKey, "app", activeApp, "layer", layer, "repeat_count", RepeatCount)
     BufferEvent(evt)
+    EmitRawCompletionUsage(LastRepeatKey, layer, activeApp, RepeatCount)
     RepeatCount := 0
+}
+
+RawCompletionBaseName(keys) {
+    parts := StrSplit(String(keys), "+")
+    base := parts[parts.Length]
+    base := StrReplace(base, "Page Up", "PgUp")
+    base := StrReplace(base, "Page Down", "PgDn")
+    map := Map(
+        "-", "Dash and Underscore",
+        "=", "Equals and Plus",
+        "``", "Grave Accent and Tilde",
+        "]", "Right Brace",
+        "PgUp", "PageUp",
+        "PgDn", "PageDown",
+        "Home", "Home",
+        "End", "End"
+    )
+    return map.Has(base) ? map[base] : ""
+}
+
+EmitRawCompletionUsage(keys, layer, app, count := 1) {
+    base := RawCompletionBaseName(keys)
+    if base = ""
+        return
+    evt := Map(
+        "type", "raw_completion_key",
+        "keys", keys,
+        "base_key", base,
+        "count", count,
+        "app", app,
+        "layer", layer
+    )
+    BufferEvent(evt)
 }
 
 FlushPendingRepeat() {
@@ -1606,21 +1666,21 @@ LayerKeyHint(kind, layer) {
     }
     if kind = "hold" {
         switch layer {
-            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Nav")
-            case "2": return Map("layer", "0", "x", "4", "y", "5", "label", "Mouse")
-            case "3": return Map("layer", "0", "x", "7", "y", "4", "label", "Window")
-            case "4": return Map("layer", "0", "x", "8", "y", "4", "label", "System")
+            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Layer 1")
+            case "2": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 2")
+            case "3": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 3")
+            case "4": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 4")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
             case "6": return Map("layer", "0", "x", "5", "y", "4", "label", "Layer 6")
             case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
-            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Layer 8")
             case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
             case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
     } else if kind = "lock" {
         switch layer {
-            case "2": return Map("layer", "3", "x", "10", "y", "2", "label", "Mouse Lock")
-            case "7": return Map("layer", "1", "x", "0", "y", "1", "label", "Game")
+            case "2": return Map("layer", "3", "x", "10", "y", "2", "label", "Layer 2 Lock")
+            case "7": return Map("layer", "1", "x", "0", "y", "1", "label", "L7 Lock")
         }
     } else if kind = "toggle" {
         switch layer {
@@ -1629,9 +1689,9 @@ LayerKeyHint(kind, layer) {
             case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 3")
             case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 4")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
-            case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Scroll")
+            case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Layer 6")
             case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
-            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Layer 8")
             case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
             case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
@@ -1640,7 +1700,7 @@ LayerKeyHint(kind, layer) {
     } else if kind = "exit" {
         switch layer {
             case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Exit Base")
-            case "8": return Map("layer", "8", "x", "7", "y", "4", "label", "Exit Travel")
+            case "8": return Map("layer", "8", "x", "7", "y", "4", "label", "Exit Layer 8")
         }
     }
     return Map()
@@ -2007,13 +2067,8 @@ UpdateCoachGrid() {
 LayerRole(layer) {
     switch layer {
         case "0": return "Base typing and thumb access"
-        case "1": return "Navigation, editing, function keys"
-        case "2": return "Mouse lock and button layer"
-        case "3": return "Window, app, language, mouse/game/travel control"
-        case "4": return "Language, host, system, F13-F24 helpers"
-        case "7": return "RPG/game layer"
-        case "8": return "Pointer-travel overlay exits"
-        default: return "Reserved / transparent"
+        case "7": return "Frozen RPG/arrows/navigation/keyboard-system fallback"
+        default: return "Dynamic workflow layer inferred from current bindings"
     }
 }
 

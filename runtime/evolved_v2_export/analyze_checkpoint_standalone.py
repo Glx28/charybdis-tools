@@ -5,20 +5,24 @@ Reads:
   /home/nos/charybdis/charybdis-optimizer/build/canonical.json
   /home/nos/charybdis/charybdis-optimizer/build/v2_checkpoint_gen*.json
 
-Analyzes mouse-button right-hand bias and arrow-key grouping/order.
+Analyzes mouse-button effective placement, scroll-mode access, and arrow grouping.
 """
 import json
 import sys
+import os
+import subprocess
 from collections import defaultdict
 from pathlib import Path
 
 DEFAULT_BUILD_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2/build")
 DEFAULT_DATA_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2/data")
 OUT_DIR = Path("/home/nos/charybdis/charybdis-tools/runtime/evolved_v2_export")
+OPTIMIZER_ROOT = Path("/home/nos/charybdis/charybdis-optimizer-v2")
+OPTIMIZER_PYTHON = OPTIMIZER_ROOT / ".venv" / "bin" / "python"
 
 ARROW_KEYS = {"LeftArrow", "RightArrow", "UpArrow", "DownArrow"}
 MOUSE_KEYS = {"MB1", "MB2", "MB3", "MB4", "MB5"}
-SCROLL_KEYS = {"ScrollUp", "ScrollDown"}
+FAKE_DIRECT_KEYS = {"ScrollUp", "ScrollDown", "gg", "gi", "yy", "Ctrl+K S"}
 
 
 RAW_KEY_ALIASES = {
@@ -83,6 +87,89 @@ def _permanent_l0_raw_keys(canonical_data):
     return permanent
 
 
+def _parse_layer_from_behavior(label, behavior, parameter):
+    import re
+    if parameter:
+        if str(parameter).isdigit():
+            return int(parameter)
+        m = re.search(r"Layer::(\d+)", str(parameter))
+        if m:
+            return int(m.group(1))
+    behavior = str(behavior)
+    if "coach_l1_hold" in behavior:
+        return 1
+    if "coach_l2_hold" in behavior:
+        return 2
+    if "coach_l3_hold" in behavior:
+        return 3
+    if "coach_l4_hold" in behavior:
+        return 4
+    if "coach_travel_toggle" in behavior:
+        return 8
+    if "coach_travel_off" in behavior or "coach_base" in behavior:
+        return 0
+    if "coach_game_lock" in behavior:
+        return 7
+    if "coach_mouse_lock" in behavior:
+        return 2
+    label = str(label)
+    if "Nav" in label:
+        return 1
+    if "Mouse" in label:
+        return 2
+    if "Window" in label:
+        return 3
+    if "System" in label:
+        return 4
+    if "Code" in label:
+        return 5
+    if "Scroll" in label:
+        return 6
+    if "Speed" in label or "Travel" in label:
+        return 8
+    if "DMS" in label or "M-Files" in label:
+        return 9
+    if "Excel" in label:
+        return 10
+    return None
+
+
+def _is_momentary_access(behavior):
+    b = str(behavior).lower()
+    if "toggle" in b or "lock" in b or "base" in b or "travel_off" in b:
+        return False
+    return "hold" in b or "momentary" in b
+
+
+def _access_shortcut_key(source_layer, target_layer, is_momentary, label):
+    import re
+    mode = "hold" if is_momentary else "toggle"
+    clean = re.sub(r"[^A-Za-z0-9]+", "_", label or f"L{target_layer}").strip("_") or f"L{target_layer}"
+    return f"@access:L{source_layer}->L{target_layer}:{mode}:{clean}"
+
+
+def _is_structural_system_key(label, behavior="", parameter="", action=""):
+    text = f"{label} {behavior} {parameter} {action}".lower()
+    return "bluetooth" in text or "bt_sel" in text or "output selection" in text or "out_sel" in text
+
+
+def _is_plain_keypress_shortcut(keys, sc_data):
+    clean = str(keys or "").strip()
+    category = str(sc_data.get("category", "")).lower()
+    action = str(sc_data.get("action", "")).lower()
+    behavior = str(sc_data.get("behavior", "")).lower()
+    parameter = str(sc_data.get("parameter", "")).lower()
+    if _is_structural_system_key(clean, behavior, parameter, action):
+        return False
+    if clean in FAKE_DIRECT_KEYS:
+        return False
+    if "vimium" in category and "+" not in clean and len(clean) > 1:
+        return False
+    if "scroll" in action and clean in {"ScrollUp", "ScrollDown"}:
+        return False
+    return True
+
+
 def load_shortcuts(data_dir: Path = DEFAULT_DATA_DIR):
     data = json.loads((data_dir / "app_shortcut_scores.json").read_text(encoding="utf-8"))
     can = json.loads((data_dir / "canonical.json").read_text(encoding="utf-8"))
@@ -104,11 +191,53 @@ def load_shortcuts(data_dir: Path = DEFAULT_DATA_DIR):
             "preferred_hand": "either",
         })
 
+    # Then layer-access capabilities, matching optimizer SID order. Scroll is a
+    # trackball mode switch with a layer side effect; it is reported as access,
+    # not as ScrollUp/ScrollDown keypresses.
+    access_seen = set()
+    for layer_id, layer_data in can.get("layers", {}).items():
+        if not str(layer_id).strip():
+            continue
+        source_layer = int(layer_id)
+        for key_data in layer_data.get("keys", {}).values():
+            behavior = key_data.get("behavior", "")
+            parameter = key_data.get("parameter", "")
+            label = key_data.get("label", "")
+            target_layer = _parse_layer_from_behavior(label, behavior, parameter)
+            if target_layer is None or target_layer == source_layer:
+                continue
+            if target_layer == 0 and "base" not in str(behavior).lower() and "travel_off" not in str(behavior).lower():
+                continue
+            is_momentary = _is_momentary_access(behavior)
+            keys = _access_shortcut_key(source_layer, target_layer, is_momentary, label)
+            if keys in access_seen:
+                continue
+            access_seen.add(keys)
+            shortcuts.append({
+                "sid": len(shortcuts),
+                "keys": keys,
+                "action": behavior or ("Momentary Layer" if is_momentary else "Toggle Layer"),
+                "app": "Layer Access",
+                "importance": 1.0,
+                "category": "layer_access",
+                "modifiers": [],
+                "base_key": label or f"L{target_layer}",
+                "is_capability": True,
+                "is_l0_only": False,
+                "complexity": 1,
+                "preferred_hand": "either",
+                "is_layer_access": True,
+                "access_target_layer": target_layer,
+                "access_is_momentary": is_momentary,
+            })
+
     for app_data in data.get("apps", []):
         app_name = app_data.get("name", "unknown")
         for sc_data in app_data.get("shortcuts", []):
             keys = sc_data.get("keys", "")
             if keys in seen_keys:
+                continue
+            if not _is_plain_keypress_shortcut(keys, sc_data):
                 continue
             seen_keys.add(keys)
 
@@ -177,6 +306,51 @@ def load_positions(data_dir: Path = DEFAULT_DATA_DIR):
     return positions
 
 
+def load_optimizer_layout_snapshot(data_dir: Path = DEFAULT_DATA_DIR):
+    """Use the optimizer loader so SID/order decoding matches export exactly."""
+    if not OPTIMIZER_PYTHON.exists():
+        return None
+    script = r"""
+import json
+import sys
+from core.loader import build_layout
+layout = build_layout(sys.argv[1])
+canonical = json.load(open(sys.argv[1] + "/canonical.json", encoding="utf-8"))
+positions = []
+for pos in layout.positions:
+    binding = canonical.get("layers", {}).get(str(int(pos.layer)), {}).get("keys", {}).get(f"{int(pos.x)}:{int(pos.y)}", {})
+    positions.append({
+        "layer": int(pos.layer), "x": int(pos.x), "y": int(pos.y),
+        "coord": f"{int(pos.x)}:{int(pos.y)}", "hand": pos.hand,
+        "is_thumb": bool(pos.is_thumb), "is_frozen": bool(pos.is_frozen),
+        "behavior": binding.get("behavior", ""), "label": binding.get("label", ""),
+        "parameter": binding.get("parameter", ""), "modifiers": binding.get("modifiers", []),
+        "purpose": binding.get("purpose", ""),
+    })
+shortcuts = []
+for sc in layout.shortcuts:
+    shortcuts.append({
+        "sid": int(sc.sid), "keys": sc.keys, "action": sc.action, "app": sc.app,
+        "importance": float(sc.importance), "category": sc.category,
+        "modifiers": list(sc.modifiers), "base_key": sc.base_key,
+        "is_l0_only": bool(sc.is_l0_only), "preferred_hand": sc.preferred_hand,
+        "is_layer_access": bool(sc.is_layer_access),
+        "access_target_layer": int(sc.access_target_layer),
+        "access_is_momentary": bool(sc.access_is_momentary),
+    })
+print(json.dumps({"positions": positions, "shortcuts": shortcuts}))
+"""
+    result = subprocess.run(
+        [str(OPTIMIZER_PYTHON), "-c", script, str(data_dir)],
+        check=True,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        env={**os.environ, "PYTHONPATH": str(OPTIMIZER_ROOT)},
+    )
+    return json.loads(result.stdout)
+
+
 def build_layer_bindings(positions, genome, shortcuts):
     """Map each position to either canonical (frozen/critical) or evolved shortcut."""
     layer_bindings = defaultdict(list)
@@ -195,8 +369,9 @@ def build_layer_bindings(positions, genome, shortcuts):
                 label = sc.get("keys", "")
                 purpose = sc.get("action", "")
             else:
-                label = pos["label"]  # fallback to canonical
-                purpose = pos["purpose"]
+                # Empty mutable position: do not inherit canonical label, which
+                # may contain stale evolved arrow names from a previous run.
+                continue
         if not label or label.lower() == "transparent":
             continue
         layer_bindings[pos["layer"]].append({
@@ -222,16 +397,22 @@ def analyze_checkpoint(cp_path, shortcuts, positions):
     # Find placements
     arrow = {}
     mouse = {}
-    scroll = {}
+    scroll_mode = {}
     for layer, bs in bindings.items():
         for b in bs:
             lab = b["label"]
-            if lab in ARROW_KEYS and lab not in arrow:
-                arrow[lab] = (layer, b["x"], b["y"], b["hand"])
+            arrow_key = lab if lab in ARROW_KEYS else None
+            purpose = b.get("purpose", "")
+            for candidate in ARROW_KEYS:
+                if candidate in purpose:
+                    arrow_key = candidate
+                    break
+            if arrow_key and arrow_key not in arrow:
+                arrow[arrow_key] = (layer, b["x"], b["y"], b["hand"])
             if lab in MOUSE_KEYS and lab not in mouse:
                 mouse[lab] = (layer, b["x"], b["y"], b["hand"])
-            if lab in SCROLL_KEYS and lab not in scroll:
-                scroll[lab] = (layer, b["x"], b["y"], b["hand"])
+            if ("Scroll" in lab or "scroll" in b["purpose"].lower() or lab.startswith("@access:")) and "Scroll" in lab:
+                scroll_mode[lab] = (layer, b["x"], b["y"], b["hand"])
 
     return {
         "path": cp_path.name,
@@ -240,7 +421,7 @@ def analyze_checkpoint(cp_path, shortcuts, positions):
         "total_score": total,
         "arrow": arrow,
         "mouse": mouse,
-        "scroll": scroll,
+        "scroll_mode": scroll_mode,
         "bindings": bindings,
     }
 
@@ -310,8 +491,13 @@ def main():
             build_dir = target.parent
             data_dir = resolve_data_dir(build_dir)
 
-    shortcuts = load_shortcuts(data_dir)
-    positions = load_positions(data_dir)
+    snapshot = load_optimizer_layout_snapshot(data_dir)
+    if snapshot:
+        shortcuts = snapshot["shortcuts"]
+        positions = snapshot["positions"]
+    else:
+        shortcuts = load_shortcuts(data_dir)
+        positions = load_positions(data_dir)
     if target is None:
         checkpoints = sorted(build_dir.glob("v2_checkpoint_gen*.json"), key=lambda p: p.stat().st_mtime)
         if not checkpoints:
@@ -339,13 +525,13 @@ def main():
     print(f"Right-hand mouse buttons: {right_count}/{len(MOUSE_KEYS)} ({100*right_count/len(MOUSE_KEYS):.0f}%)")
     print()
 
-    print("=== Scroll Keys ===")
-    for k in SCROLL_KEYS:
-        if k in result["scroll"]:
-            layer, x, y, hand = result["scroll"][k]
+    print("=== Scroll Mode Access ===")
+    if result["scroll_mode"]:
+        for k, (layer, x, y, hand) in sorted(result["scroll_mode"].items()):
             print(f"  {k}: L{layer} ({x},{y}) [{hand}]")
-        else:
-            print(f"  {k}: NOT FOUND")
+    else:
+        print("  no scroll-mode access found")
+    print("  policy: ScrollUp/ScrollDown are not direct keypress assignments")
     print()
 
     print("=== Arrow Keys ===")
