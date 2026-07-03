@@ -9,6 +9,7 @@ Use when AutoHotkey v2 is not installed. Requires admin on Windows for global ho
 
 from __future__ import annotations
 
+import csv
 import json
 import sys
 import time
@@ -19,35 +20,72 @@ TOOLS_ROOT = Path(__file__).resolve().parent.parent
 STATE_FILE = TOOLS_ROOT / "runtime" / "charybdis_state.json"
 EVENT_LOG = TOOLS_ROOT / "runtime" / "charybdis_events.jsonl"
 BEACON_LOG = TOOLS_ROOT / "runtime" / "charybdis_beacon.log"
+LAYOUT_CSV = TOOLS_ROOT.parent / "charybdis-zmk-config" / "layout" / "keybindings_explained.csv"
+LAYOUT_ROWS: list[dict[str, str]] = []
 
 # Maps beacon events to the physical key that triggers them (for coach highlight).
 LAYER_KEY_HINTS: dict[tuple[str, str], dict[str, str]] = {
-    ("hold", "1"): {"layer": "0", "x": "3", "y": "4", "label": "Nav"},
-    ("hold", "2"): {"layer": "0", "x": "5", "y": "5", "label": "Mouse"},
-    ("hold", "3"): {"layer": "0", "x": "8", "y": "4", "label": "Window"},
-    ("hold", "4"): {"layer": "0", "x": "7", "y": "4", "label": "System"},
+    ("hold", "1"): {"layer": "0", "x": "3", "y": "4", "label": "Layer 1"},
+    ("hold", "2"): {"layer": "0", "x": "5", "y": "5", "label": "Layer 2"},
+    ("hold", "3"): {"layer": "0", "x": "8", "y": "4", "label": "Layer 3"},
+    ("hold", "4"): {"layer": "0", "x": "7", "y": "4", "label": "Layer 4"},
     ("hold", "5"): {"layer": "3", "x": "4", "y": "5", "label": "Layer 5"},
     ("hold", "6"): {"layer": "0", "x": "5", "y": "4", "label": "Layer 6"},
     ("hold", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Layer 7"},
-    ("hold", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Speed"},
+    ("hold", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Layer 8"},
     ("hold", "9"): {"layer": "0", "x": "4", "y": "5", "label": "Layer 9"},
     ("hold", "10"): {"layer": "6", "x": "7", "y": "4", "label": "Layer 10"},
-    ("lock", "2"): {"layer": "3", "x": "10", "y": "2", "label": "Mouse Lock"},
-    ("lock", "7"): {"layer": "1", "x": "0", "y": "1", "label": "Game"},
+    ("lock", "2"): {"layer": "3", "x": "10", "y": "2", "label": "Layer 2 Lock"},
+    ("lock", "7"): {"layer": "1", "x": "0", "y": "1", "label": "Layer 7 Lock"},
     ("toggle", "1"): {"layer": "0", "x": "3", "y": "4", "label": "Layer 1"},
     ("toggle", "2"): {"layer": "0", "x": "5", "y": "5", "label": "Layer 2"},
     ("toggle", "3"): {"layer": "0", "x": "8", "y": "4", "label": "Layer 3"},
     ("toggle", "4"): {"layer": "0", "x": "7", "y": "4", "label": "Layer 4"},
     ("toggle", "5"): {"layer": "3", "x": "4", "y": "5", "label": "Layer 5"},
-    ("toggle", "6"): {"layer": "2", "x": "12", "y": "2", "label": "Scroll"},
+    ("toggle", "6"): {"layer": "2", "x": "12", "y": "2", "label": "Layer 6"},
     ("toggle", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Layer 7"},
-    ("toggle", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Speed"},
+    ("toggle", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Layer 8"},
     ("toggle", "9"): {"layer": "0", "x": "4", "y": "5", "label": "Layer 9"},
     ("toggle", "10"): {"layer": "6", "x": "7", "y": "4", "label": "Layer 10"},
     ("base", "0"): {"layer": "2", "x": "7", "y": "4", "label": "Base"},
     ("exit", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Exit Base"},
     ("exit", "8"): {"layer": "8", "x": "7", "y": "4", "label": "Exit Travel"},
 }
+
+
+def load_layout_rows() -> list[dict[str, str]]:
+    if not LAYOUT_CSV.exists():
+        return []
+    with LAYOUT_CSV.open(newline="", encoding="utf-8") as f:
+        return [dict(row) for row in csv.DictReader(f)]
+
+
+def coach_behavior_for_access(kind: str, layer: str) -> str:
+    if kind == "hold" and layer.isdigit():
+        return f"coach_l{layer}_hold"
+    if kind == "toggle" and layer.isdigit():
+        return f"coach_l{layer}_toggle"
+    if kind == "lock" and layer == "2":
+        return "coach_mouse_lock"
+    if kind == "lock" and layer == "7":
+        return "coach_game_lock"
+    if kind in {"base", "exit"}:
+        return "coach_base"
+    return ""
+
+
+def layout_key_hint(kind: str, layer: str) -> dict[str, str]:
+    behavior = coach_behavior_for_access(kind, layer)
+    if behavior:
+        for row in LAYOUT_ROWS:
+            if row.get("behavior") == behavior:
+                return {
+                    "layer": row.get("layer", ""),
+                    "x": row.get("x", ""),
+                    "y": row.get("y", ""),
+                    "label": row.get("visual_label") or behavior,
+                }
+    return dict(LAYER_KEY_HINTS.get((kind, layer), {}))
 
 
 class CoachState:
@@ -84,7 +122,7 @@ class CoachState:
             items.remove(value)
 
     def set_key_hint(self, kind: str, layer: str) -> None:
-        hint = LAYER_KEY_HINTS.get((kind, layer))
+        hint = layout_key_hint(kind, layer)
         if hint:
             self.last_key = dict(hint)
         else:
@@ -112,7 +150,7 @@ class CoachState:
             self.toggled_layers = []
             self.displayed_layer = "0"
             self.last_action = "Base layer"
-            hint = LAYER_KEY_HINTS.get(("exit", exiting)) or LAYER_KEY_HINTS.get(("base", "0"))
+            hint = layout_key_hint("exit", exiting) or layout_key_hint("base", "0")
             self.last_key = dict(hint) if hint else {"layer": "", "x": "", "y": "", "label": ""}
         else:
             self.held_layers = []
@@ -127,7 +165,7 @@ class CoachState:
             self.remove_value(self.toggled_layers, layer)
             self.displayed_layer = self.active_layer()
             self.last_action = f"Layer {layer} toggled off"
-            hint = LAYER_KEY_HINTS.get(("exit", layer)) if direction == "off" else None
+            hint = layout_key_hint("exit", layer) if direction == "off" else None
             self.last_key = dict(hint) if hint else {"layer": "", "x": "", "y": "", "label": ""}
         else:
             self.add_unique(self.toggled_layers, layer)
@@ -279,6 +317,9 @@ def register_beacons(state: CoachState) -> None:
 
 
 def main() -> int:
+    global LAYOUT_ROWS
+    LAYOUT_ROWS = load_layout_rows()
+
     try:
         import keyboard
     except ImportError:

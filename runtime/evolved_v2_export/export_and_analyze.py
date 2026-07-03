@@ -152,17 +152,11 @@ for layer_id, layer_data in canonical['layers'].items():
 # Layer role mapping (inferred from canonical if available, else from shortcuts)
 LAYER_ROLES = {
     0: "Base typing and thumb access",
-    1: "Clipboard and editing",
-    2: "Mouse and trackball",
-    3: "App shortcuts and navigation",
-    4: "More apps and window management",
-    5: "Specialized context",
-    6: "Specialized context",
-    7: "Game (frozen)",
-    8: "Specialized context",
-    9: "Specialized context",
-    10: "Specialized context",
+    7: "Frozen fallback/game/system layer",
 }
+for _layer in range(1, 11):
+    if _layer != 7:
+        LAYER_ROLES[_layer] = "Dynamic generated layer"
 
 # Override with canonical layer roles if present
 for layer_id, layer_data in canonical['layers'].items():
@@ -213,9 +207,10 @@ for i, pos in enumerate(positions):
         # Use evolved
         sc = shortcuts[evolved_sid]
         mods, base = split_shortcut_keys(sc.keys)
-        zmk_param = KEY_TO_ZMK_PARAM.get(base, f"Keyboard {base}")
+        mouse_click_map = {"Click": "MB1", "Left Click": "MB1", "Right Click": "MB2", "Middle Click": "MB3"}
+        zmk_param = mouse_click_map.get(base, KEY_TO_ZMK_PARAM.get(base, f"Keyboard {base}"))
         zmk_mods = [MOD_MAP.get(m, m) for m in mods]
-        behavior = "Mouse Key Press" if base.startswith("MB") and base[2:].isdigit() else "Key Press"
+        behavior = "Mouse Key Press" if (base.startswith("MB") and base[2:].isdigit()) or base in mouse_click_map else "Key Press"
         effective = {
             "x": pos.x, "y": pos.y,
             "label": sc.keys,
@@ -549,10 +544,20 @@ print("Saved evolved_verify.js")
 # Analysis helpers
 # ---------------------------------------------------------------------------
 def effort_from_xy(x, y):
-    """Recompute effort from x,y."""
-    row_comfort = {0: 3.5, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.5, 5: 2.5}
-    col_effort = {0: 2, 1: 0, 2: 0, 3: 0, 4: 0, 5: 2, 7: 2, 8: 0, 9: 0, 10: 0, 11: 0, 12: 2}
-    return row_comfort.get(y, 5) + col_effort.get(x, 5)
+    """Return corrected per-coordinate effort. Lower means more valuable."""
+    effort = {
+        (0, 0): 2.75, (1, 0): 2.0, (2, 0): 2.0, (3, 0): 2.0, (4, 0): 2.0, (5, 0): 2.75,
+        (7, 0): 2.75, (8, 0): 2.0, (9, 0): 2.0, (10, 0): 2.0, (11, 0): 2.0, (12, 0): 2.75,
+        (0, 1): 1.75, (1, 1): 1.0, (2, 1): 1.0, (3, 1): 1.0, (4, 1): 1.0, (5, 1): 1.75,
+        (7, 1): 1.75, (8, 1): 1.0, (9, 1): 1.0, (10, 1): 1.0, (11, 1): 1.0, (12, 1): 1.75,
+        (0, 2): 1.25, (1, 2): 0.0, (2, 2): 0.0, (3, 2): 0.0, (4, 2): 0.0, (5, 2): 1.25,
+        (7, 2): 1.25, (8, 2): 0.0, (9, 2): 0.0, (10, 2): 0.0, (11, 2): 0.0, (12, 2): 1.25,
+        (0, 3): 1.75, (1, 3): 1.0, (2, 3): 1.0, (3, 3): 1.0, (4, 3): 1.0, (5, 3): 1.75,
+        (7, 3): 1.75, (8, 3): 1.0, (9, 3): 1.0, (10, 3): 1.0, (11, 3): 1.0, (12, 3): 1.75,
+        (3, 4): 1.0, (4, 4): 0.0, (5, 4): 1.0, (7, 4): 1.0, (8, 4): 0.0,
+        (4, 5): 1.0, (5, 5): 1.5, (7, 5): 1.5,
+    }
+    return effort.get((x, y), 5.0)
 
 def hand_from_x(x):
     return "left" if x < 6 else "right"

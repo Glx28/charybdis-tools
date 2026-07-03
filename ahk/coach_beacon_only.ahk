@@ -9,6 +9,7 @@ global StatePath := RuntimeDir "\charybdis_state.json"
 global EventLogPath := RuntimeDir "\charybdis_events.jsonl"
 global BeaconLogPath := RuntimeDir "\charybdis_beacon.log"
 global HelperConfigPath := ZmkConfigRoot "\config\charybdis_helper.json"
+global LayoutCsvPath := ZmkConfigRoot "\layout\keybindings_explained.csv"
 
 global CurrentCoachLayer := "0"
 global LastAction := "Beacon listener ready"
@@ -18,6 +19,7 @@ global LockedLayer := ""
 global ToggledLayers := []
 global Transport := "usb"
 global LastUserAppLabel := ""
+global LayoutRows := LoadLayoutRows()
 
 if !DirExist(RuntimeDir) {
     DirCreate(RuntimeDir)
@@ -149,24 +151,38 @@ RemoveLayer(list, layer) {
 }
 
 LayerKeyHint(kind, layer) {
+    global LayoutRows
     layer := String(layer)
+    behavior := CoachBehaviorForAccess(kind, layer)
+    if behavior {
+        for row in LayoutRows {
+            if row.Has("behavior") && row["behavior"] = behavior {
+                return Map(
+                    "layer", row.Has("layer") ? row["layer"] : "",
+                    "x", row.Has("x") ? row["x"] : "",
+                    "y", row.Has("y") ? row["y"] : "",
+                    "label", row.Has("visual_label") && row["visual_label"] ? row["visual_label"] : behavior
+                )
+            }
+        }
+    }
     if kind = "hold" {
         switch layer {
-            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Nav")
-            case "2": return Map("layer", "0", "x", "5", "y", "5", "label", "Mouse")
-            case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Window")
-            case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "System")
+            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Layer 1")
+            case "2": return Map("layer", "0", "x", "5", "y", "5", "label", "Layer 2")
+            case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 3")
+            case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 4")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
             case "6": return Map("layer", "0", "x", "5", "y", "4", "label", "Layer 6")
             case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
-            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Layer 8")
             case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
             case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
     } else if kind = "lock" {
         switch layer {
-            case "2": return Map("layer", "3", "x", "10", "y", "2", "label", "Mouse Lock")
-            case "7": return Map("layer", "1", "x", "0", "y", "1", "label", "Game")
+            case "2": return Map("layer", "3", "x", "10", "y", "2", "label", "Layer 2 Lock")
+            case "7": return Map("layer", "1", "x", "0", "y", "1", "label", "Layer 7 Lock")
         }
     } else if kind = "toggle" {
         switch layer {
@@ -175,9 +191,9 @@ LayerKeyHint(kind, layer) {
             case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 3")
             case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 4")
             case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
-            case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Scroll")
+            case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Layer 6")
             case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
-            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Speed")
+            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Layer 8")
             case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
             case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
         }
@@ -185,6 +201,96 @@ LayerKeyHint(kind, layer) {
         return Map("layer", "2", "x", "7", "y", "4", "label", "Base")
     }
     return Map()
+}
+
+CoachBehaviorForAccess(kind, layer) {
+    layer := String(layer)
+    if kind = "hold" {
+        switch layer {
+            case "1": return "coach_l1_hold"
+            case "2": return "coach_l2_hold"
+            case "3": return "coach_l3_hold"
+            case "4": return "coach_l4_hold"
+            case "5": return "coach_l5_hold"
+            case "6": return "coach_l6_hold"
+            case "7": return "coach_l7_hold"
+            case "8": return "coach_l8_hold"
+            case "9": return "coach_l9_hold"
+            case "10": return "coach_l10_hold"
+        }
+    } else if kind = "lock" {
+        switch layer {
+            case "2": return "coach_mouse_lock"
+            case "7": return "coach_game_lock"
+        }
+    } else if kind = "toggle" {
+        switch layer {
+            case "1": return "coach_l1_toggle"
+            case "2": return "coach_l2_toggle"
+            case "3": return "coach_l3_toggle"
+            case "4": return "coach_l4_toggle"
+            case "5": return "coach_l5_toggle"
+            case "6": return "coach_l6_toggle"
+            case "7": return "coach_l7_toggle"
+            case "8": return "coach_l8_toggle"
+            case "9": return "coach_l9_toggle"
+            case "10": return "coach_l10_toggle"
+        }
+    } else if kind = "base" || kind = "exit" {
+        return "coach_base"
+    }
+    return ""
+}
+
+LoadLayoutRows() {
+    global LayoutCsvPath
+    rows := []
+    if !FileExist(LayoutCsvPath) {
+        return rows
+    }
+    lines := StrSplit(FileRead(LayoutCsvPath, "UTF-8"), "`n", "`r")
+    if lines.Length < 2 {
+        return rows
+    }
+    headers := ParseCsvLine(lines[1])
+    Loop lines.Length - 1 {
+        line := lines[A_Index + 1]
+        if Trim(line) = "" {
+            continue
+        }
+        values := ParseCsvLine(line)
+        row := Map()
+        for i, header in headers {
+            row[header] := i <= values.Length ? values[i] : ""
+        }
+        rows.Push(row)
+    }
+    return rows
+}
+
+ParseCsvLine(line) {
+    out := []
+    cur := ""
+    quoted := false
+    i := 1
+    while i <= StrLen(line) {
+        ch := SubStr(line, i, 1)
+        next := SubStr(line, i + 1, 1)
+        if ch = '"' && quoted && next = '"' {
+            cur .= '"'
+            i += 1
+        } else if ch = '"' {
+            quoted := !quoted
+        } else if ch = "," && !quoted {
+            out.Push(cur)
+            cur := ""
+        } else {
+            cur .= ch
+        }
+        i += 1
+    }
+    out.Push(cur)
+    return out
 }
 
 BeaconLog(message) {

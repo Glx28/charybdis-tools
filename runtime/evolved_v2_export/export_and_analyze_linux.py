@@ -79,11 +79,17 @@ KEY_TOKEN_ALIASES = {
     "Page Up": "PageUp", "PgUp": "PageUp", "Page Down": "PageDown", "PgDn": "PageDown",
 }
 MULTIWORD_BASE_KEYS = (
+    "Middle Click",
+    "Right Click",
+    "Left Click",
     "Page Down", "Page Up", "Return Enter", "Left Brace", "Right Brace",
     "Dash and Underscore", "Equals and Plus", "Grave Accent and Tilde",
     "Backslash and Pipe", "SemiColon and Colon", "Left Apos and Double",
     "Comma and LessThan", "Period and GreaterThan", "ForwardSlash and QuestionMark",
 )
+NON_EXPORTABLE_SEQUENCE_KEYS = {"Ctrl+K S", "gg", "gi", "yy"}
+NON_EXPORTABLE_BASE_KEYS = {"ScrollUp", "ScrollDown", "Pause"}
+MOUSE_CLICK_BASE_KEYS = {"Click", "Left Click", "Right Click", "Middle Click"}
 
 COACH_LAYER_ACCESS = {
     ("hold", 1): "coach_l1_hold",
@@ -120,6 +126,7 @@ COACH_STUDIO_BEHAVIORS = [
     "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle",
     "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
     "coach_travel_off", "coach_recover_base",
+    "coach_ctrl_click", "coach_shift_click", "coach_alt_click",
 ]
 
 
@@ -346,9 +353,19 @@ print(json.dumps({"positions": positions, "shortcuts": shortcuts}))
 
 
 def _effort_from_xy(x, y):
-    row_comfort = {0: 3.5, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.5, 5: 2.5}
-    col_effort = {0: 2, 1: 0, 2: 0, 3: 0, 4: 0, 5: 2, 7: 2, 8: 0, 9: 0, 10: 0, 11: 0, 12: 2}
-    return row_comfort.get(y, 5) + col_effort.get(x, 5)
+    effort = {
+        (0, 0): 2.75, (1, 0): 2.0, (2, 0): 2.0, (3, 0): 2.0, (4, 0): 2.0, (5, 0): 2.75,
+        (7, 0): 2.75, (8, 0): 2.0, (9, 0): 2.0, (10, 0): 2.0, (11, 0): 2.0, (12, 0): 2.75,
+        (0, 1): 1.75, (1, 1): 1.0, (2, 1): 1.0, (3, 1): 1.0, (4, 1): 1.0, (5, 1): 1.75,
+        (7, 1): 1.75, (8, 1): 1.0, (9, 1): 1.0, (10, 1): 1.0, (11, 1): 1.0, (12, 1): 1.75,
+        (0, 2): 1.25, (1, 2): 0.0, (2, 2): 0.0, (3, 2): 0.0, (4, 2): 0.0, (5, 2): 1.25,
+        (7, 2): 1.25, (8, 2): 0.0, (9, 2): 0.0, (10, 2): 0.0, (11, 2): 0.0, (12, 2): 1.25,
+        (0, 3): 1.75, (1, 3): 1.0, (2, 3): 1.0, (3, 3): 1.0, (4, 3): 1.0, (5, 3): 1.75,
+        (7, 3): 1.75, (8, 3): 1.0, (9, 3): 1.0, (10, 3): 1.0, (11, 3): 1.0, (12, 3): 1.75,
+        (3, 4): 1.0, (4, 4): 0.0, (5, 4): 1.0, (7, 4): 1.0, (8, 4): 0.0,
+        (4, 5): 1.0, (5, 5): 1.5, (7, 5): 1.5,
+    }
+    return effort.get((x, y), 5.0)
 
 
 def parse_shortcut_keys(keys: str):
@@ -403,8 +420,12 @@ def build_param_mapping(canonical_data):
 def base_to_zmk_parameter(base_key, param_mapping):
     """Map a shortcut base key to a ZMK Studio parameter string."""
     base_key = canonical_hid_parameter(base_key)
-    if base_key == "Click":
+    if base_key in {"Click", "Left Click"}:
         return "MB1"
+    if base_key == "Right Click":
+        return "MB2"
+    if base_key == "Middle Click":
+        return "MB3"
     if base_key in param_mapping:
         return param_mapping[base_key]
     if base_key.startswith("F") and base_key[1:].isdigit():
@@ -419,9 +440,9 @@ def base_to_zmk_parameter(base_key, param_mapping):
 
 
 def is_studio_unsupported_shortcut(base_key):
-    if base_key in {"Page Up", "Page Down"}:
+    if base_key in MOUSE_CLICK_BASE_KEYS or base_key in {"Page Up", "Page Down"}:
         return False
-    if base_key in {"ScrollUp", "ScrollDown", "Pause"}:
+    if base_key in NON_EXPORTABLE_BASE_KEYS:
         return True
     if re.fullmatch(r"[a-z]{2,}", base_key or ""):
         return True
@@ -530,7 +551,23 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                         "L Ctrl", "R Ctrl", "L Shift", "R Shift",
                         "L Alt", "R Alt", "L GUI", "R GUI",
                     }
-                    if any(m not in VALID_PRE_MAP_MODS for m in mods):
+                    if sc["keys"] in NON_EXPORTABLE_SEQUENCE_KEYS:
+                        effective = {
+                            "x": pos["x"], "y": pos["y"], "label": "transparent",
+                            "behavior": "Transparent", "parameter": "", "modifiers": [],
+                            "purpose": f"skipped: non-exportable sequence {sc['keys']!r}",
+                            "usage_notes": "",
+                        }
+                        source = "transparent"
+                    elif base in NON_EXPORTABLE_BASE_KEYS:
+                        effective = {
+                            "x": pos["x"], "y": pos["y"], "label": "transparent",
+                            "behavior": "Transparent", "parameter": "", "modifiers": [],
+                            "purpose": f"skipped: non-exportable key {sc['keys']!r}",
+                            "usage_notes": "",
+                        }
+                        source = "transparent"
+                    elif any(m not in VALID_PRE_MAP_MODS for m in mods):
                         effective = {
                             "x": pos["x"], "y": pos["y"], "label": "transparent",
                             "behavior": "Transparent", "parameter": "", "modifiers": [],
@@ -540,15 +577,26 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                         source = "transparent"
                     else:
                         zmk_mods = [MOD_MAP.get(m, m) for m in mods]
-                        is_mouse_button = (base.startswith("MB") and base[2:].isdigit()) or base == "Click"
-                        behavior = "Mouse Key Press" if is_mouse_button else "Key Press"
-                        param = base_to_zmk_parameter(base, param_mapping)
+                        click_macro = None
+                        if base in {"Click", "Left Click"}:
+                            mod_set = set(zmk_mods)
+                            if mod_set == {"L Ctrl"}:
+                                click_macro = "coach_ctrl_click"
+                            elif mod_set == {"L Shift"}:
+                                click_macro = "coach_shift_click"
+                            elif mod_set == {"L Alt"}:
+                                click_macro = "coach_alt_click"
+
+                        is_mouse_button = (base.startswith("MB") and base[2:].isdigit()) or base in MOUSE_CLICK_BASE_KEYS
+                        behavior = click_macro or ("Mouse Key Press" if is_mouse_button else "Key Press")
+                        param = "" if click_macro else base_to_zmk_parameter(base, param_mapping)
+                        export_mods = [] if click_macro else zmk_mods
                         effective = {
                             "x": pos["x"], "y": pos["y"],
                             "label": sc["keys"],
                             "behavior": behavior,
                             "parameter": param,
-                            "modifiers": zmk_mods,
+                            "modifiers": export_mods,
                             "purpose": sc["action"] or f"Evolved: {sc['keys']}",
                             "usage_notes": f"App: {sc['app']}, importance={sc['importance']}",
                         }
