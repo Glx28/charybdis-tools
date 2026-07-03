@@ -36,9 +36,19 @@ for layer_id, layer_data in canonical['layers'].items():
         can_bindings[(int(layer_id), coord)] = binding
 
 def effort_from_xy(x, y):
-    row_comfort = {0: 3.5, 1: 1.0, 2: 0.0, 3: 1.0, 4: 1.5, 5: 2.5}
-    col_effort = {0: 2, 1: 0, 2: 0, 3: 0, 4: 0, 5: 2, 7: 2, 8: 0, 9: 0, 10: 0, 11: 0, 12: 2}
-    return row_comfort.get(y, 5) + col_effort.get(x, 5)
+    effort = {
+        (0, 0): 2.75, (1, 0): 2.0, (2, 0): 2.0, (3, 0): 2.0, (4, 0): 2.0, (5, 0): 2.75,
+        (7, 0): 2.75, (8, 0): 2.0, (9, 0): 2.0, (10, 0): 2.0, (11, 0): 2.0, (12, 0): 2.75,
+        (0, 1): 1.75, (1, 1): 1.0, (2, 1): 1.0, (3, 1): 1.0, (4, 1): 1.0, (5, 1): 1.75,
+        (7, 1): 1.75, (8, 1): 1.0, (9, 1): 1.0, (10, 1): 1.0, (11, 1): 1.0, (12, 1): 1.75,
+        (0, 2): 1.25, (1, 2): 0.0, (2, 2): 0.0, (3, 2): 0.0, (4, 2): 0.0, (5, 2): 1.25,
+        (7, 2): 1.25, (8, 2): 0.0, (9, 2): 0.0, (10, 2): 0.0, (11, 2): 0.0, (12, 2): 1.25,
+        (0, 3): 1.75, (1, 3): 1.0, (2, 3): 1.0, (3, 3): 1.0, (4, 3): 1.0, (5, 3): 1.75,
+        (7, 3): 1.75, (8, 3): 1.0, (9, 3): 1.0, (10, 3): 1.0, (11, 3): 1.0, (12, 3): 1.75,
+        (3, 4): 1.0, (4, 4): 0.0, (5, 4): 1.0, (7, 4): 1.0, (8, 4): 0.0,
+        (4, 5): 1.0, (5, 5): 1.5, (7, 5): 1.5,
+    }
+    return effort.get((x, y), 5.0)
 
 def hand_from_x(x):
     return "left" if x < 6 else "right"
@@ -233,7 +243,7 @@ if len(arrow_placement) >= 4:
     
     report_lines.append(f"**LeftArrow x={left_x} < RightArrow x={right_x}:** {'OK' if left_x < right_x else 'FAIL'}")
     report_lines.append(f"**UpArrow between Left/Right:** {'OK' if min(left_x, right_x) <= up_x <= max(left_x, right_x) else 'FAIL'}")
-    report_lines.append(f"**DownArrow between Left/Right:** {'OK' if min(left_x, right_x) <= down_x <= max(left_x, right_x) else 'FAIL'}"
+    report_lines.append(f"**DownArrow between Left/Right:** {'OK' if min(left_x, right_x) <= down_x <= max(left_x, right_x) else 'FAIL'}")
 report_lines.append("")
 
 # Mouse button section
@@ -355,4 +365,3 @@ with open(OUT_DIR / "workflow_layer_analysis_gen1000.md", "w", encoding='utf-8')
 print(f"\nReport written to: {OUT_DIR / 'workflow_layer_analysis_gen1000.md'}")
 print(f"Total layers: {len([l for l in layer_bindings if l != 7])}")
 print(f"Total shortcuts placed: {sum(len(v) for v in layer_bindings.values())}")
-

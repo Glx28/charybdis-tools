@@ -1,4 +1,6 @@
 # Charybdis V2 — Layer Quality & Familiarity Analysis (Gen 8000)
+> Effort values in this historical report were normalized to the corrected 2026-07-03 per-position effort model. Lower effort means a more valuable/easier key.
+
 
 **Checkpoint:** `v2_checkpoint_gen8000.json`
 **Generation:** 8000

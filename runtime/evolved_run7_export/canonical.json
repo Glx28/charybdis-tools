@@ -27,7 +27,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "Tab",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 2.5,
+        "edge_bonus": 0.25,
+        "effort": 2.75
       },
       {
         "x": 1,
@@ -35,7 +41,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "1",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 2,
@@ -43,7 +55,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "2",
+        "start_x": 2,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 3,
@@ -51,7 +69,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "3",
+        "start_x": 3,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 4,
@@ -59,7 +83,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "4",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 5,
@@ -67,7 +97,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "5",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 2.5,
+        "edge_bonus": 0.25,
+        "effort": 2.75
       },
       {
         "x": 7,
@@ -75,7 +111,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "6",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 2.5,
+        "edge_bonus": 0.25,
+        "effort": 2.75
       },
       {
         "x": 8,
@@ -83,7 +125,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "7",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 9,
@@ -91,7 +139,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "8",
+        "start_x": 9,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 10,
@@ -99,7 +153,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "9",
+        "start_x": 10,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 11,
@@ -107,7 +167,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "0",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 2.0,
+        "edge_bonus": 0.0,
+        "effort": 2.0
       },
       {
         "x": 12,
@@ -115,7 +181,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "top"
+        "row_type": "top",
+        "key": "Del",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 2.5,
+        "edge_bonus": 0.25,
+        "effort": 2.75
       },
       {
         "x": 0,
@@ -123,7 +195,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "Esc",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 1,
@@ -131,7 +209,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "Q",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 2,
@@ -139,7 +223,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "W",
+        "start_x": 2,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 3,
@@ -147,7 +237,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "E",
+        "start_x": 3,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 4,
@@ -155,7 +251,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "R",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 5,
@@ -163,7 +265,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "T",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 7,
@@ -171,7 +279,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "Y",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 8,
@@ -179,7 +293,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "U",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 9,
@@ -187,7 +307,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "I",
+        "start_x": 9,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 10,
@@ -195,7 +321,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "O",
+        "start_x": 10,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 11,
@@ -203,7 +335,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "P",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 12,
@@ -211,7 +349,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "upper"
+        "row_type": "upper",
+        "key": "Å",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 0,
@@ -219,7 +363,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "Shift",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.25,
+        "effort": 1.25
       },
       {
         "x": 1,
@@ -227,7 +377,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "A",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 2,
@@ -235,7 +391,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "S",
+        "start_x": 2,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 3,
@@ -243,7 +405,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "D",
+        "start_x": 3,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 4,
@@ -251,7 +419,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "F",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 5,
@@ -259,7 +433,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "G",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.25,
+        "effort": 1.25
       },
       {
         "x": 7,
@@ -267,7 +447,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "H",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.25,
+        "effort": 1.25
       },
       {
         "x": 8,
@@ -275,7 +461,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "J",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 9,
@@ -283,7 +475,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "K",
+        "start_x": 9,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 10,
@@ -291,7 +489,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "L",
+        "start_x": 10,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 11,
@@ -299,7 +503,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "Ø",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 12,
@@ -307,7 +517,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "home"
+        "row_type": "home",
+        "key": "Æ",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.25,
+        "effort": 1.25
       },
       {
         "x": 0,
@@ -315,7 +531,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "Ctrl",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 1,
@@ -323,7 +545,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "Z",
+        "start_x": 1,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 2,
@@ -331,7 +559,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "X",
+        "start_x": 2,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 3,
@@ -339,7 +573,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "C",
+        "start_x": 3,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 4,
@@ -347,7 +587,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "V",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 5,
@@ -355,7 +601,13 @@
         "hand": "left",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "B",
+        "start_x": 4,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 7,
@@ -363,7 +615,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index_stretch",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "N",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 8,
@@ -371,7 +629,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "index",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "M",
+        "start_x": 8,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 9,
@@ -379,7 +643,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "middle",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "Comma",
+        "start_x": 9,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 10,
@@ -387,7 +657,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "ring",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "Period",
+        "start_x": 10,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 11,
@@ -395,7 +671,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "pinky",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "Minus",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 12,
@@ -403,7 +685,13 @@
         "hand": "right",
         "zone": "finger",
         "finger": "far_pinky",
-        "row_type": "bottom"
+        "row_type": "bottom",
+        "key": "Apostrophe",
+        "start_x": 11,
+        "start_y": 2,
+        "base_effort": 1.5,
+        "edge_bonus": 0.25,
+        "effort": 1.75
       },
       {
         "x": 3,
@@ -411,7 +699,13 @@
         "hand": "left",
         "zone": "thumb",
         "finger": "middle",
-        "row_type": "thumb"
+        "row_type": "thumb",
+        "key": "LT_y4_x3",
+        "start_x": 4,
+        "start_y": 4,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 4,
@@ -419,7 +713,13 @@
         "hand": "left",
         "zone": "thumb",
         "finger": "index",
-        "row_type": "thumb"
+        "row_type": "thumb",
+        "key": "LT_y4_x4",
+        "start_x": 4,
+        "start_y": 4,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 5,
@@ -427,7 +727,13 @@
         "hand": "left",
         "zone": "thumb",
         "finger": "index_stretch",
-        "row_type": "thumb"
+        "row_type": "thumb",
+        "key": "LT_y4_x5",
+        "start_x": 4,
+        "start_y": 4,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 7,
@@ -435,7 +741,13 @@
         "hand": "right",
         "zone": "thumb",
         "finger": "index_stretch",
-        "row_type": "thumb"
+        "row_type": "thumb",
+        "key": "RT_y4_x7",
+        "start_x": 8,
+        "start_y": 4,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 8,
@@ -443,7 +755,13 @@
         "hand": "right",
         "zone": "thumb",
         "finger": "index",
-        "row_type": "thumb"
+        "row_type": "thumb",
+        "key": "RT_y4_x8",
+        "start_x": 8,
+        "start_y": 4,
+        "base_effort": 0.0,
+        "edge_bonus": 0.0,
+        "effort": 0.0
       },
       {
         "x": 4,
@@ -451,7 +769,13 @@
         "hand": "left",
         "zone": "thumb",
         "finger": "index",
-        "row_type": "thumb2"
+        "row_type": "thumb2",
+        "key": "LT_y5_x4",
+        "start_x": 4,
+        "start_y": 4,
+        "base_effort": 1.0,
+        "edge_bonus": 0.0,
+        "effort": 1.0
       },
       {
         "x": 5,
@@ -459,7 +783,13 @@
         "hand": "left",
         "zone": "thumb",
         "finger": "index_stretch",
-        "row_type": "thumb2"
+        "row_type": "thumb2",
+        "key": "LT_y5_x5",
+        "start_x": 4,
+        "start_y": 4,
+        "base_effort": 1.5,
+        "edge_bonus": 0.0,
+        "effort": 1.5
       },
       {
         "x": 7,
@@ -467,10 +797,32 @@
         "hand": "right",
         "zone": "thumb",
         "finger": "index_stretch",
-        "row_type": "thumb2"
+        "row_type": "thumb2",
+        "key": "RT_y5_x7",
+        "start_x": 8,
+        "start_y": 4,
+        "base_effort": 1.5,
+        "edge_bonus": 0.0,
+        "effort": 1.5
       }
     ],
-    "total": 56
+    "total": 56,
+    "effort_model": {
+      "version": "user_corrected_2026-07-03",
+      "meaning": "Lower effort means a more valuable/easier key position.",
+      "fields": [
+        "key",
+        "hand",
+        "zone",
+        "x",
+        "y",
+        "start_x",
+        "start_y",
+        "base_effort",
+        "edge_bonus",
+        "effort"
+      ]
+    }
   },
   "layers": {
     "0": {
