@@ -811,19 +811,21 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
         suffix,
         count=1,
     )
-    suffix = suffix.replace(
-        """  function plannedKeys() {
-    return getLayout().keys
-      .filter((item) => item && Number.isInteger(Number(item.layer)))
-      .filter((item) => !APPLY_ONLY_BATCH || item.apply_batch === true || MODE === "oneKeyTest");
-  }""",
-        """  function plannedKeys() {
+    _plannedkeys_new = """  function plannedKeys() {
     return getLayout().keys
       .filter((item) => item && Number.isInteger(Number(item.layer)))
       .filter((item) => Number(item.layer) !== 7)
       .filter((item) => !APPLY_ONLY_BATCH || item.apply_batch === true || MODE === "oneKeyTest");
   }"""
-    )
+    if _plannedkeys_new not in suffix:
+        suffix = suffix.replace(
+            """  function plannedKeys() {
+    return getLayout().keys
+      .filter((item) => item && Number.isInteger(Number(item.layer)))
+      .filter((item) => !APPLY_ONLY_BATCH || item.apply_batch === true || MODE === "oneKeyTest");
+  }""",
+            _plannedkeys_new,
+        )
     full_supported = (
         'const supported = new Set(["Key Press", "Mouse Key Press", "Momentary Layer", '
         '"To Layer", "Toggle Layer", "Bluetooth", "Output Selection", "Studio Unlock", '
@@ -831,24 +833,22 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
         + ", ".join(json.dumps(item) for item in COACH_STUDIO_BEHAVIORS)
         + "]);"
     )
-    suffix = re.sub(r'const supported = new Set\(\[[^\]]*\]\);', full_supported, suffix, count=1)
-    suffix = suffix.replace(
-        """    const aliases = new Set([text, upper]);""",
-        """    const aliases = new Set([text, upper]);
+    if 'const supported = new Set(["Key Press"' not in suffix or full_supported not in suffix:
+        suffix = re.sub(r'const supported = new Set\(\[[^\]]*\]\);', full_supported, suffix, count=1)
+    _layermatch_new = """    const aliases = new Set([text, upper]);
 
     const layerMatch = text.match(/^Layer::(\\d+)$/i) || text.match(/^Layer\\s+(\\d+)$/i);
     if (layerMatch) {
       aliases.add(layerMatch[1]);
       aliases.add(`Layer ${layerMatch[1]}`);
-    }""",
-        1,
-    )
-    suffix = suffix.replace(
-        """    if (!selectWorked) {
-      console.warn(`No exact visible select option matched parameter "${item.parameter}". Trying visible text input/combobox. Verify manually before saving.`);
-      await setTextParameter(item.parameter);
-    }""",
-        """    if (!selectWorked) {
+    }"""
+    if "const layerMatch = text.match" not in suffix:
+        suffix = suffix.replace(
+            """    const aliases = new Set([text, upper]);""",
+            _layermatch_new,
+            1,
+        )
+    _mousemod_new = """    if (!selectWorked) {
       console.warn(`No exact visible select option matched parameter "${item.parameter}". Trying visible text input/combobox. Verify manually before saving.`);
       await setTextParameter(item.parameter);
     }
@@ -856,18 +856,27 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
     if (item.behavior === "Mouse Key Press") {
       await setImplicitModifiers(item.modifiers || []);
     }"""
-    )
-    suffix = suffix.replace(
-        """const confirmed = window.confirm(`Apply ${modeItems.length} planned changes ${APPLY_LAYER_INDEX === "all" ? "across multiple layers" : `to layer ${APPLY_LAYER_INDEX}`}? This will NOT save.`);""",
-        """const confirmed = window.confirm(`Apply ${modeItems.length} planned changes (Layer 7 skipped) ${APPLY_LAYER_INDEX === "all" ? "across multiple layers" : `to layer ${APPLY_LAYER_INDEX}`}? This will NOT save.`);"""
-    )
-    suffix = suffix.replace(
-        """    for (const item of modeItems) {
+    if "await setImplicitModifiers(item.modifiers || [])" not in suffix:
+        suffix = suffix.replace(
+            """    if (!selectWorked) {
+      console.warn(`No exact visible select option matched parameter "${item.parameter}". Trying visible text input/combobox. Verify manually before saving.`);
+      await setTextParameter(item.parameter);
+    }""",
+            _mousemod_new,
+        )
+    if "(Layer 7 skipped)" not in suffix:
+        suffix = suffix.replace(
+            """const confirmed = window.confirm(`Apply ${modeItems.length} planned changes ${APPLY_LAYER_INDEX === "all" ? "across multiple layers" : `to layer ${APPLY_LAYER_INDEX}`}? This will NOT save.`);""",
+            """const confirmed = window.confirm(`Apply ${modeItems.length} planned changes (Layer 7 skipped) ${APPLY_LAYER_INDEX === "all" ? "across multiple layers" : `to layer ${APPLY_LAYER_INDEX}`}? This will NOT save.`);"""
+        )
+    if "let applied = 0;" not in suffix:
+        suffix = suffix.replace(
+            """    for (const item of modeItems) {
       console.log("Applying", item);
       await applyItem(item);
     }
     console.warn("Layer apply complete. This script did NOT save. Verify in the UI before saving manually.");""",
-        """    let applied = 0;
+            """    let applied = 0;
     let failed = 0;
     for (const item of modeItems) {
       console.log("Applying", item);
@@ -881,7 +890,7 @@ Self-contained: paste this one file in ZMK Studio console. It will ask before ap
       }
     }
     console.warn(`Layer apply complete. Attempted ${modeItems.length}; completed ${applied}; failed ${failed}. This script did NOT save. Verify in the UI before saving manually.`);"""
-    )
+        )
     return prefix + "window._CHARYBDIS_APPLY_ERRORS = [];\n" + start_marker + json.dumps(layout, indent=2) + ";\n" + suffix.lstrip()
 
 

@@ -315,7 +315,10 @@ import json
 import sys
 from core.loader import build_layout
 layout = build_layout(sys.argv[1])
-canonical = json.load(open(sys.argv[1] + "/canonical.json", encoding="utf-8"))
+try:
+    canonical = json.load(open(sys.argv[1] + "/canonical.json", encoding="utf-8"))
+except FileNotFoundError:
+    canonical = {}
 positions = []
 for pos in layout.positions:
     binding = canonical.get("layers", {}).get(str(int(pos.layer)), {}).get("keys", {}).get(f"{int(pos.x)}:{int(pos.y)}", {})
@@ -455,7 +458,10 @@ def arrow_order_score(arrow):
 
 
 def canonical_l7_arrows(data_dir: Path = DEFAULT_DATA_DIR):
-    can = json.loads((data_dir / "canonical.json").read_text(encoding="utf-8"))
+    canonical_path = data_dir / "canonical.json"
+    if not canonical_path.exists():
+        return {}
+    can = json.loads(canonical_path.read_text(encoding="utf-8"))
     l7 = can.get("layers", {}).get("7", {}).get("keys", {})
     arrows = {}
     for coord, binding in l7.items():
