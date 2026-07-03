@@ -1222,7 +1222,7 @@ RawCompletionBaseName(keys) {
     base := parts[parts.Length]
     base := StrReplace(base, "Page Up", "PgUp")
     base := StrReplace(base, "Page Down", "PgDn")
-    map := Map(
+    baseNameMap := Map(
         "-", "Dash and Underscore",
         "=", "Equals and Plus",
         "``", "Grave Accent and Tilde",
@@ -1232,7 +1232,7 @@ RawCompletionBaseName(keys) {
         "Home", "Home",
         "End", "End"
     )
-    return map.Has(base) ? map[base] : ""
+    return baseNameMap.Has(base) ? baseNameMap[base] : ""
 }
 
 EmitRawCompletionUsage(keys, layer, app, count := 1) {
