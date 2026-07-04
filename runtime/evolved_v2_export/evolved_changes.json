@@ -491,9 +491,9 @@
     "hand": "left",
     "effort": 0.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+1",
+    "to_label": "Ctrl+Shift+2",
     "to_behavior": "Key Press",
-    "to_parameter": "1 and Bang",
+    "to_parameter": "2 and At",
     "to_modifiers": [
       "L Ctrl",
       "L Shift"
@@ -538,10 +538,12 @@
     "hand": "right",
     "effort": 1.25,
     "from_label": "transparent",
-    "to_label": "Page Down",
+    "to_label": "Ctrl+5",
     "to_behavior": "Key Press",
-    "to_parameter": "PageDown",
-    "to_modifiers": []
+    "to_parameter": "5 and Percent",
+    "to_modifiers": [
+      "L Ctrl"
+    ]
   },
   {
     "layer": 1,
@@ -1307,9 +1309,9 @@
     "hand": "left",
     "effort": 0.0,
     "from_label": "transparent",
-    "to_label": "MB1",
+    "to_label": "MB3",
     "to_behavior": "Mouse Key Press",
-    "to_parameter": "MB1",
+    "to_parameter": "MB3",
     "to_modifiers": []
   },
   {
@@ -1603,9 +1605,9 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "MB3",
+    "to_label": "MB1",
     "to_behavior": "Mouse Key Press",
-    "to_parameter": "MB3",
+    "to_parameter": "MB1",
     "to_modifiers": []
   },
   {
@@ -1905,12 +1907,12 @@
     "hand": "right",
     "effort": 2.75,
     "from_label": "transparent",
-    "to_label": "Win+Ctrl+D",
+    "to_label": "Ctrl+Shift+C",
     "to_behavior": "Key Press",
-    "to_parameter": "D",
+    "to_parameter": "C",
     "to_modifiers": [
-      "L GUI",
-      "L Ctrl"
+      "L Ctrl",
+      "L Shift"
     ]
   },
   {
@@ -2132,9 +2134,9 @@
     "hand": "left",
     "effort": 0.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+V",
+    "to_label": "Ctrl+Shift+%",
     "to_behavior": "Key Press",
-    "to_parameter": "V",
+    "to_parameter": "5 and Percent",
     "to_modifiers": [
       "L Ctrl",
       "L Shift"
@@ -2268,13 +2270,10 @@
     "hand": "right",
     "effort": 1.25,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+B",
+    "to_label": "Page Up",
     "to_behavior": "Key Press",
-    "to_parameter": "B",
-    "to_modifiers": [
-      "L Ctrl",
-      "L Shift"
-    ]
+    "to_parameter": "PageUp",
+    "to_modifiers": []
   },
   {
     "layer": 3,
@@ -2300,9 +2299,9 @@
     "hand": "left",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+Z",
+    "to_label": "Ctrl+G",
     "to_behavior": "Key Press",
-    "to_parameter": "Z",
+    "to_parameter": "G",
     "to_modifiers": [
       "L Ctrl"
     ]
@@ -2376,10 +2375,13 @@
     "hand": "right",
     "effort": 1.75,
     "from_label": "transparent",
-    "to_label": "F5",
+    "to_label": "Ctrl+Shift+B",
     "to_behavior": "Key Press",
-    "to_parameter": "F5",
-    "to_modifiers": []
+    "to_parameter": "B",
+    "to_modifiers": [
+      "L Ctrl",
+      "L Shift"
+    ]
   },
   {
     "layer": 3,
@@ -2419,10 +2421,13 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "F9",
+    "to_label": "Ctrl+Shift+Q",
     "to_behavior": "Key Press",
-    "to_parameter": "F9",
-    "to_modifiers": []
+    "to_parameter": "Q",
+    "to_modifiers": [
+      "L Ctrl",
+      "L Shift"
+    ]
   },
   {
     "layer": 3,
@@ -2637,12 +2642,10 @@
     "hand": "left",
     "effort": 2.75,
     "from_label": "transparent",
-    "to_label": "Ctrl+[",
-    "to_behavior": "Key Press",
-    "to_parameter": "Left Brace",
-    "to_modifiers": [
-      "L Ctrl"
-    ]
+    "to_label": "L8",
+    "to_behavior": "coach_l8_toggle",
+    "to_parameter": "",
+    "to_modifiers": []
   },
   {
     "layer": 4,
@@ -4282,13 +4285,10 @@
     "hand": "right",
     "effort": 2.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+I",
-    "to_behavior": "Key Press",
-    "to_parameter": "I",
-    "to_modifiers": [
-      "L Ctrl",
-      "L Shift"
-    ]
+    "to_label": "L0",
+    "to_behavior": "coach_base",
+    "to_parameter": "",
+    "to_modifiers": []
   },
   {
     "layer": 6,
@@ -5080,11 +5080,12 @@
     "hand": "right",
     "effort": 2.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+J",
+    "to_label": "Ctrl+Shift+2",
     "to_behavior": "Key Press",
-    "to_parameter": "J",
+    "to_parameter": "2 and At",
     "to_modifiers": [
-      "L Ctrl"
+      "L Ctrl",
+      "L Shift"
     ]
   },
   {
@@ -5243,10 +5244,13 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Page Up",
+    "to_label": "Ctrl+Shift+B",
     "to_behavior": "Key Press",
-    "to_parameter": "PageUp",
-    "to_modifiers": []
+    "to_parameter": "B",
+    "to_modifiers": [
+      "L Ctrl",
+      "L Shift"
+    ]
   },
   {
     "layer": 8,
@@ -5287,12 +5291,10 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Win+Right",
+    "to_label": "F2",
     "to_behavior": "Key Press",
-    "to_parameter": "RightArrow",
-    "to_modifiers": [
-      "L GUI"
-    ]
+    "to_parameter": "F2",
+    "to_modifiers": []
   },
   {
     "layer": 8,
@@ -5826,9 +5828,9 @@
     "hand": "left",
     "effort": 2.0,
     "from_label": "transparent",
-    "to_label": "Alt+F",
+    "to_label": "Alt+P",
     "to_behavior": "Key Press",
-    "to_parameter": "F",
+    "to_parameter": "P",
     "to_modifiers": [
       "L Alt"
     ]
@@ -5934,10 +5936,12 @@
     "hand": "right",
     "effort": 2.0,
     "from_label": "transparent",
-    "to_label": "F2",
+    "to_label": "Win+Right",
     "to_behavior": "Key Press",
-    "to_parameter": "F2",
-    "to_modifiers": []
+    "to_parameter": "RightArrow",
+    "to_modifiers": [
+      "L GUI"
+    ]
   },
   {
     "layer": 9,
@@ -6837,12 +6841,10 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+5",
+    "to_label": "Page Down",
     "to_behavior": "Key Press",
-    "to_parameter": "5 and Percent",
-    "to_modifiers": [
-      "L Ctrl"
-    ]
+    "to_parameter": "PageDown",
+    "to_modifiers": []
   },
   {
     "layer": 10,
@@ -7089,6 +7091,22 @@
     "to_behavior": "coach_l2_hold",
     "to_parameter": "",
     "to_modifiers": []
+  },
+  {
+    "layer": 10,
+    "x": 2,
+    "y": 3,
+    "coord": "2:3",
+    "hand": "left",
+    "effort": 1.0,
+    "from_label": "transparent",
+    "to_label": "Ctrl+Shift+1",
+    "to_behavior": "Key Press",
+    "to_parameter": "1 and Bang",
+    "to_modifiers": [
+      "L Ctrl",
+      "L Shift"
+    ]
   },
   {
     "layer": 10,
