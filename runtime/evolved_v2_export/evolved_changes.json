@@ -3650,9 +3650,9 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+;",
+    "to_label": "Ctrl+Shift+1",
     "to_behavior": "Key Press",
-    "to_parameter": "SemiColon and Colon",
+    "to_parameter": "1 and Bang",
     "to_modifiers": [
       "L Ctrl",
       "L Shift"
@@ -5527,9 +5527,9 @@
     "hand": "left",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+1",
+    "to_label": "Ctrl+Shift+;",
     "to_behavior": "Key Press",
-    "to_parameter": "1 and Bang",
+    "to_parameter": "SemiColon and Colon",
     "to_modifiers": [
       "L Ctrl",
       "L Shift"
@@ -5751,22 +5751,6 @@
     "to_parameter": "Comma and LessThan",
     "to_modifiers": [
       "L Ctrl"
-    ]
-  },
-  {
-    "layer": 8,
-    "x": 5,
-    "y": 5,
-    "coord": "5:5",
-    "hand": "left",
-    "effort": 1.5,
-    "from_label": "transparent",
-    "to_label": "Ctrl+Shift+$",
-    "to_behavior": "Key Press",
-    "to_parameter": "4 and Dollar",
-    "to_modifiers": [
-      "L Ctrl",
-      "L Shift"
     ]
   },
   {
@@ -6628,9 +6612,9 @@
     "hand": "left",
     "effort": 2.75,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+Home",
+    "to_label": "Ctrl+Shift+;",
     "to_behavior": "Key Press",
-    "to_parameter": "Home",
+    "to_parameter": "SemiColon and Colon",
     "to_modifiers": [
       "L Ctrl",
       "L Shift"
@@ -6764,9 +6748,9 @@
     "hand": "left",
     "effort": 1.75,
     "from_label": "transparent",
-    "to_label": "Ctrl+Shift+;",
+    "to_label": "Ctrl+Shift+Home",
     "to_behavior": "Key Press",
-    "to_parameter": "SemiColon and Colon",
+    "to_parameter": "Home",
     "to_modifiers": [
       "L Ctrl",
       "L Shift"
@@ -7118,9 +7102,9 @@
     "hand": "right",
     "effort": 1.75,
     "from_label": "transparent",
-    "to_label": "F7",
-    "to_behavior": "Key Press",
-    "to_parameter": "F7",
+    "to_label": "Scroll_L9",
+    "to_behavior": "coach_l9_hold",
+    "to_parameter": "",
     "to_modifiers": []
   },
   {
@@ -7131,9 +7115,9 @@
     "hand": "right",
     "effort": 1.0,
     "from_label": "transparent",
-    "to_label": "Scroll_L9",
-    "to_behavior": "coach_l9_hold",
-    "to_parameter": "",
+    "to_label": "F7",
+    "to_behavior": "Key Press",
+    "to_parameter": "F7",
     "to_modifiers": []
   },
   {
