@@ -33,7 +33,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Escape",
       "modifiers": [],
       "label": "Esc",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -45,7 +45,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 1 and Bang",
       "modifiers": [],
       "label": "1",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -57,7 +57,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 2 and At",
       "modifiers": [],
       "label": "2",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -69,7 +69,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 3 and Hash",
       "modifiers": [],
       "label": "3",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -81,7 +81,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 4 and Dollar",
       "modifiers": [],
       "label": "4",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -93,7 +93,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 5 and Percent",
       "modifiers": [],
       "label": "5",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -105,7 +105,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 6 and Caret",
       "modifiers": [],
       "label": "6",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -117,7 +117,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 7 and Ampersand",
       "modifiers": [],
       "label": "7",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -129,7 +129,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 8 and Star",
       "modifiers": [],
       "label": "8",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -141,7 +141,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 9 and Left Bracket",
       "modifiers": [],
       "label": "9",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -153,7 +153,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard 0 and Right Bracket",
       "modifiers": [],
       "label": "0",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -165,7 +165,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Delete",
       "modifiers": [],
       "label": "BkSp",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -177,7 +177,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Tab",
       "modifiers": [],
       "label": "Tab",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -189,7 +189,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Q",
       "modifiers": [],
       "label": "Q",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -201,7 +201,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard W",
       "modifiers": [],
       "label": "W",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -213,7 +213,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard E",
       "modifiers": [],
       "label": "E",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -225,7 +225,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard R",
       "modifiers": [],
       "label": "R",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -237,7 +237,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard T",
       "modifiers": [],
       "label": "T",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -249,7 +249,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Y",
       "modifiers": [],
       "label": "Y",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -261,7 +261,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard U",
       "modifiers": [],
       "label": "U",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -273,7 +273,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard I",
       "modifiers": [],
       "label": "I",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -285,7 +285,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard O",
       "modifiers": [],
       "label": "O",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -297,7 +297,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard P",
       "modifiers": [],
       "label": "P",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -309,7 +309,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Left Brace",
       "modifiers": [],
       "label": "\u00e5",
-      "rationale": "canonical (frozen/critical): Norwegian \u00e5. Sends the [ scancode (ZMK Studio name 'Left Brace', same key as Layer 1 x9 y3) = \u00e5 on Norwegian Windows. Label is for the coach only.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -321,7 +321,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard LeftShift",
       "modifiers": [],
       "label": "Shft",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -333,7 +333,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard A",
       "modifiers": [],
       "label": "A",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -345,7 +345,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard S",
       "modifiers": [],
       "label": "S",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -357,7 +357,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard D",
       "modifiers": [],
       "label": "D",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -369,7 +369,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard F",
       "modifiers": [],
       "label": "F",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -381,7 +381,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard G",
       "modifiers": [],
       "label": "G",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -393,7 +393,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard H",
       "modifiers": [],
       "label": "H",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -405,7 +405,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard J",
       "modifiers": [],
       "label": "J",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -417,7 +417,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard K",
       "modifiers": [],
       "label": "K",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -429,7 +429,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard L",
       "modifiers": [],
       "label": "L",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -441,7 +441,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard SemiColon and Colon",
       "modifiers": [],
       "label": "\u00f8",
-      "rationale": "canonical (frozen/critical): Norwegian \u00f8. Keycode is unchanged (SemiColon scancode); Windows Norwegian layout renders it as \u00f8. Label is for the coach only.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -453,7 +453,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Left Apos and Double",
       "modifiers": [],
       "label": "\u00e6",
-      "rationale": "canonical (frozen/critical): Norwegian \u00e6. Keycode is unchanged (Apostrophe/Quote scancode); Windows Norwegian layout renders it as \u00e6. Label is for the coach only.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -465,7 +465,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard LeftControl",
       "modifiers": [],
       "label": "Ctrl",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -477,7 +477,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Z",
       "modifiers": [],
       "label": "Z",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -489,7 +489,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard X",
       "modifiers": [],
       "label": "X",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -501,7 +501,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard C",
       "modifiers": [],
       "label": "C",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -513,7 +513,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard V",
       "modifiers": [],
       "label": "V",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -525,7 +525,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard B",
       "modifiers": [],
       "label": "B",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -537,7 +537,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard N",
       "modifiers": [],
       "label": "N",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -549,7 +549,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard M",
       "modifiers": [],
       "label": "M",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -561,7 +561,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Comma and LessThan",
       "modifiers": [],
       "label": ",",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -573,7 +573,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Period and GreaterThan",
       "modifiers": [],
       "label": ".",
-      "rationale": "canonical (frozen/critical): CRITICAL v1.9: Period must be on base layer for typing flow. Moves [ to Layer 1.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -585,7 +585,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard ForwardSlash and QuestionMark",
       "modifiers": [],
       "label": "/",
-      "rationale": "canonical (frozen/critical): Base typing key for the main work layout.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -597,7 +597,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Backslash and Pipe",
       "modifiers": [],
       "label": "\\",
-      "rationale": "canonical (frozen/critical): International backslash/pipe (US HID). On Norwegian Windows this key is layout-dependent (often |); not English apostrophe \u2014 use Win+Space to US English for ' in contractions, or type \u00f8/\u00e6 on their base positions.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -605,12 +605,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 0,
       "x": 3,
       "y": 4,
-      "behavior": "coach_l1_hold",
+      "behavior": "coach_l2_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "Nav",
-      "rationale": "canonical (frozen/critical): Hold Nav for layer 1 navigation/editing.",
-      "optimizer_changed": false,
+      "label": "L2",
+      "rationale": "evolved: Dynamic layer access: @access:L2:hold",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -621,7 +621,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Spacebar",
       "modifiers": [],
       "label": "\u2423",
-      "rationale": "canonical (frozen/critical): Thumb/control key for typing, layer access, mouse access, or Enter.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -629,11 +629,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 0,
       "x": 5,
       "y": 4,
-      "behavior": "coach_l5_toggle",
+      "behavior": "coach_l4_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "Code",
-      "rationale": "evolved: Dynamic layer access: @access:L1->L5:toggle:Code",
+      "label": "L4",
+      "rationale": "evolved: Dynamic layer access: @access:L4:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -641,12 +641,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 0,
       "x": 7,
       "y": 4,
-      "behavior": "coach_l4_hold",
+      "behavior": "coach_l7_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "System",
-      "rationale": "canonical (frozen/critical): Hold layer 4; role is dynamic in generated layouts.",
-      "optimizer_changed": false,
+      "label": "L7",
+      "rationale": "evolved: Dynamic layer access: @access:L7:hold",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -656,32 +656,32 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "coach_l3_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "Window",
-      "rationale": "canonical (frozen/critical): Hold layer 3; role is dynamic in generated layouts.",
-      "optimizer_changed": false,
+      "label": "Scroll_L3",
+      "rationale": "evolved: Dynamic layer access: @scroll:L3:hold",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 0,
       "x": 4,
       "y": 5,
-      "behavior": "Transparent",
+      "behavior": "coach_l1_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "L1",
+      "rationale": "evolved: Dynamic layer access: @access:L1:hold",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 0,
       "x": 5,
       "y": 5,
-      "behavior": "coach_l2_hold",
+      "behavior": "coach_l10_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "Mouse",
-      "rationale": "evolved: Dynamic layer access: @access:L0->L2:hold:Mouse",
+      "label": "L10",
+      "rationale": "evolved: Dynamic layer access: @access:L10:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -693,7 +693,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Return Enter",
       "modifiers": [],
       "label": "Ret",
-      "rationale": "canonical (frozen/critical): Thumb/control key for typing, layer access, mouse access, or Enter.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -702,12 +702,10 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 0,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard B",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+B",
-      "rationale": "evolved: Focus system tray",
+      "parameter": "Keyboard F10",
+      "modifiers": [],
+      "label": "F10",
+      "rationale": "evolved: Step over",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -715,12 +713,15 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 1,
       "x": 1,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Z",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Z",
+      "rationale": "evolved: Redo",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -728,12 +729,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 2,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard F",
+      "parameter": "Keyboard F11",
       "modifiers": [
-        "L Ctrl"
+        "L Shift"
       ],
-      "label": "Ctrl+F",
-      "rationale": "evolved: Find in conversation",
+      "label": "Shift+F11",
+      "rationale": "evolved: Step out",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -742,12 +743,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 3,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard 1 and Bang",
+      "parameter": "Keyboard RightArrow",
       "modifiers": [
+        "L GUI",
         "L Ctrl"
       ],
-      "label": "Ctrl+1",
-      "rationale": "evolved: Activity",
+      "label": "Win+Ctrl+Right",
+      "rationale": "evolved: Switch desktop right",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -756,12 +758,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 4,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard I",
+      "parameter": "Keyboard Equals and Plus",
       "modifiers": [
-        "L GUI"
+        "L Alt",
+        "L Shift"
       ],
-      "label": "Win+I",
-      "rationale": "evolved: Settings",
+      "label": "Alt+Shift++",
+      "rationale": "evolved: Split pane vertical",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -770,13 +773,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 5,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard G",
+      "parameter": "Keyboard 4 and Dollar",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+G",
-      "rationale": "evolved: Find previous",
+      "label": "Ctrl+Shift+$",
+      "rationale": "evolved: Currency format",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -784,25 +787,26 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 1,
       "x": 7,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 9 and Left Bracket",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+9",
+      "rationale": "evolved: Unhide rows",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 8,
       "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard O",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+O",
-      "rationale": "evolved: Open file",
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -810,14 +814,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 1,
       "x": 9,
       "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard UpArrow",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Up",
-      "rationale": "evolved: Select to top edge",
+      "behavior": "coach_alt_click",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Alt+Click",
+      "rationale": "evolved: Add cursor at position",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -826,13 +827,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 10,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard DownArrow",
+      "parameter": "Keyboard LeftArrow",
       "modifiers": [
-        "L Ctrl",
-        "L Shift"
+        "L GUI",
+        "L Ctrl"
       ],
-      "label": "Ctrl+Shift+Down",
-      "rationale": "evolved: Select to bottom edge",
+      "label": "Win+Ctrl+Left",
+      "rationale": "evolved: Switch desktop left",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -840,69 +841,34 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 1,
       "x": 11,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftShift",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Shift",
+      "rationale": "evolved: Switch keyboard layout (alt)",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 12,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+1",
+      "rationale": "evolved: Extra large icons",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 0,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard P",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+P",
-      "rationale": "evolved: Print",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 1,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F12",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+F12",
-      "rationale": "evolved: Peek definition",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 3,
       "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard W",
@@ -917,834 +883,117 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 1,
-      "x": 4,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 5,
+      "x": 1,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard V",
+      "parameter": "Keyboard M",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+V",
-      "rationale": "evolved: Paste",
+      "label": "Ctrl+M",
+      "rationale": "evolved: Add to favorites",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
-      "x": 7,
+      "x": 2,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+E",
-      "rationale": "evolved: Toggle screen share",
+      "parameter": "Keyboard F3",
+      "modifiers": [],
+      "label": "F3",
+      "rationale": "evolved: Find next (alt)",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
-      "x": 8,
+      "x": 3,
       "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard H",
       "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+H",
-      "rationale": "evolved: Hang up / end call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 9,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard R",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+R",
-      "rationale": "evolved: Run dialog",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 10,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard C",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+C",
-      "rationale": "evolved: Inspect element",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 11,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 12,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 0,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+G",
-      "rationale": "evolved: Go to...",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 1,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 2,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard U",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+U",
-      "rationale": "evolved: Mark as unread",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 3,
-      "y": 2,
-      "behavior": "coach_l6_hold",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Scroll",
-      "rationale": "evolved: Dynamic layer access: @access:L1->L6:hold:Scroll",
+      "label": "Ctrl+H",
+      "rationale": "evolved: History",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 4,
-      "y": 2,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard LeftShift",
+      "parameter": "Keyboard 2 and At",
       "modifiers": [
-        "L Alt"
+        "L GUI"
       ],
-      "label": "Alt+Shift",
-      "rationale": "evolved: Switch keyboard layout (alt)",
+      "label": "Win+2",
+      "rationale": "evolved: Open/switch pinned app 2",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 5,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F2",
-      "modifiers": [],
-      "label": "F2",
-      "rationale": "evolved: Rename",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 7,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard S",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+S",
-      "rationale": "evolved: Search",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 8,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 9,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard DownArrow",
-      "modifiers": [],
-      "label": "Down",
-      "rationale": "evolved: Next command",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 10,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 11,
-      "y": 2,
+      "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard End",
       "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+End",
-      "rationale": "evolved: Go to last used cell",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 12,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard SemiColon and Colon",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+;",
-      "rationale": "evolved: Emoji picker",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 0,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 1,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 2,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [],
-      "label": "F5",
-      "rationale": "evolved: Refresh page",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 3,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 4,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 5,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard A",
-      "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+A",
-      "rationale": "evolved: Accept call",
+      "label": "Ctrl+Shift+End",
+      "rationale": "evolved: Select to last used cell",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 7,
-      "y": 3,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard C",
+      "parameter": "Keyboard Grave Accent and Tilde",
       "modifiers": [
-        "L Ctrl"
+        "L Ctrl",
+        "L Shift"
       ],
-      "label": "Ctrl+C",
-      "rationale": "evolved: Copy",
+      "label": "Ctrl+Shift+~",
+      "rationale": "evolved: General format",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 8,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard K",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+K",
-      "rationale": "evolved: Insert link",
+      "y": 1,
+      "behavior": "coach_alt_click",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Alt+Click",
+      "rationale": "evolved: Add cursor at position",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 1,
       "x": 9,
-      "y": 3,
-      "behavior": "coach_game_lock",
-      "parameter": "",
-      "modifiers": [],
-      "label": "coach_game_lock",
-      "rationale": "evolved: Dynamic layer access: @access:L1->L7:toggle:coach_game_lock",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 10,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 11,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 12,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 3,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard N",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+N",
-      "rationale": "evolved: Notification center",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 4,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 2 and At",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+2",
-      "rationale": "evolved: Chat",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 5,
-      "y": 4,
+      "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard Return Enter",
       "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Enter",
-      "rationale": "evolved: Send (expanded mode)",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 7,
-      "y": 4,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 8,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+E",
-      "rationale": "evolved: Search / command bar",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 4,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+D",
-      "rationale": "evolved: Bookmark page",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 5,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard PageUp",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Page Up",
-      "rationale": "evolved: Previous sheet",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 1,
-      "x": 7,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Spacebar",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Space",
-      "rationale": "evolved: Select entire column",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 0,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 1,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F9",
-      "modifiers": [],
-      "label": "F9",
-      "rationale": "evolved: Toggle breakpoint",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 2,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+D",
-      "rationale": "evolved: Show/hide desktop",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 3,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F10",
-      "modifiers": [],
-      "label": "F10",
-      "rationale": "evolved: Step over",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 4,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+G",
-      "rationale": "evolved: Find previous",
+      "label": "Shift+Enter",
+      "rationale": "evolved: New line in message",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 2,
-      "x": 5,
-      "y": 0,
-      "behavior": "coach_l6_hold",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Scroll",
-      "rationale": "evolved: Dynamic layer access: @access:L2->L6:hold:Scroll",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 7,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 8,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 2 and At",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+2",
-      "rationale": "evolved: Chat",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 9,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
+      "layer": 1,
       "x": 10,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+F",
-      "rationale": "evolved: Find in conversation",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 0,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+E",
-      "rationale": "evolved: File Explorer",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 1,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard K",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+K",
-      "rationale": "evolved: Raise/lower hand",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 2,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard W",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+W",
-      "rationale": "evolved: Close tab",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 3,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 4,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [],
-      "label": "F5",
-      "rationale": "evolved: Refresh page",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 5,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard UpArrow",
-      "modifiers": [
-        "L Alt",
-        "L Shift"
-      ],
-      "label": "Alt+Shift+Up",
-      "rationale": "evolved: Previous unread",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 7,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard DownArrow",
-      "modifiers": [
-        "L Alt",
-        "L Shift"
-      ],
-      "label": "Alt+Shift+Down",
-      "rationale": "evolved: Next unread",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 8,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 9,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard S",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+S",
-      "rationale": "evolved: Save page as",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 10,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 11,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 12,
       "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard X",
@@ -1757,1147 +1006,23 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "apply_batch": true
     },
     {
-      "layer": 2,
-      "x": 0,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Equals and Plus",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift++",
-      "rationale": "evolved: Insert cells/rows/columns",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 1,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+H",
-      "rationale": "evolved: History",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 2,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Equals and Plus",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+=",
-      "rationale": "evolved: AutoSum",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 3,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Dash and Underscore",
-      "modifiers": [],
-      "label": "Dash and Underscore",
-      "rationale": "evolved: Raw Dash and Underscore completion key.",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 4,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard I",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+I",
-      "rationale": "evolved: Italic",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 5,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 6 and Caret",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+6",
-      "rationale": "evolved: Files",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 7,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard C",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+C",
-      "rationale": "evolved: Copy",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 8,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F4",
-      "modifiers": [],
-      "label": "F4",
-      "rationale": "evolved: Toggle absolute ref ($)",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 9,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Right Brace",
-      "modifiers": [],
-      "label": "Right Brace",
-      "rationale": "evolved: Raw Right Brace completion key.",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 10,
-      "y": 2,
-      "behavior": "coach_base",
-      "parameter": "",
-      "modifiers": [],
-      "label": "coach_base",
-      "rationale": "evolved: Dynamic layer access: @access:L2->L0:toggle:coach_base",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 11,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [],
-      "label": "F5",
-      "rationale": "evolved: Refresh page",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 12,
-      "y": 2,
-      "behavior": "coach_l6_toggle",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Scroll",
-      "rationale": "evolved: Dynamic layer access: @access:L2->L6:toggle:Scroll",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 0,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 1,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 2,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard A",
-      "modifiers": [
-        "L Shift",
-        "L Alt"
-      ],
-      "label": "Shift+Alt+A",
-      "rationale": "evolved: Toggle block comment",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 3,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+G",
-      "rationale": "evolved: Go to...",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 4,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+E",
-      "rationale": "evolved: Toggle screen share",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 5,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 7,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard LeftArrow",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Left",
-      "rationale": "evolved: Jump to left edge of data",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 8,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 9,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 10,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Z",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Z",
-      "rationale": "evolved: Undo",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 11,
-      "y": 3,
-      "behavior": "coach_l8_hold",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Layer 8",
-      "rationale": "evolved: Dynamic layer access: @access:L2->L8:hold:Layer_8",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 12,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 3,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard M",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+M",
-      "rationale": "evolved: Toggle mute",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 4,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Tab",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+Tab",
-      "rationale": "evolved: Switch apps",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 5,
-      "y": 4,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 7,
-      "y": 4,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 8,
-      "y": 4,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 4,
-      "y": 5,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 5,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Grave Accent and Tilde",
-      "modifiers": [],
-      "label": "Grave Accent and Tilde",
-      "rationale": "evolved: Raw Grave Accent and Tilde completion key.",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 2,
-      "x": 7,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+F5",
-      "rationale": "evolved: Hard refresh (bypass cache)",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 0,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 1,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 2,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 4,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard A",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+A",
-      "rationale": "evolved: Quick settings / Action center",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 5,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard N",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+N",
-      "rationale": "evolved: Notification center",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 7,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard T",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+T",
-      "rationale": "evolved: Cycle taskbar apps",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 8,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 9,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard P",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+P",
-      "rationale": "evolved: Print",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 10,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 0,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 1,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 3,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 4,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard M",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+M",
-      "rationale": "evolved: Minimize all windows",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 5,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 7,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 8,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard V",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+V",
-      "rationale": "evolved: Paste without formatting",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 9,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 10,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
+      "layer": 1,
       "x": 11,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard K",
+      "parameter": "Keyboard UpArrow",
       "modifiers": [
-        "L Ctrl",
-        "L Shift"
+        "L GUI"
       ],
-      "label": "Ctrl+Shift+K",
-      "rationale": "evolved: Raise/lower hand",
+      "label": "Win+Up",
+      "rationale": "evolved: Maximize window",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 3,
+      "layer": 1,
       "x": 12,
       "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F8",
-      "modifiers": [
-        "L Shift"
-      ],
-      "label": "Shift+F8",
-      "rationale": "evolved: Go to previous problem",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 0,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard U",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+U",
-      "rationale": "evolved: Underline",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 1,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+D",
-      "rationale": "evolved: Focus address bar (alt)",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 2,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+G",
-      "rationale": "evolved: Go to...",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 3,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 1 and Bang",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+1",
-      "rationale": "evolved: Open/switch pinned app 1",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 4,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 4 and Dollar",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+4",
-      "rationale": "evolved: Open/switch pinned app 4",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 5,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 5 and Percent",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+5",
-      "rationale": "evolved: Open/switch pinned app 5",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 7,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard S",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+S",
-      "rationale": "evolved: Search",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 8,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Spacebar",
-      "modifiers": [
-        "L Shift"
-      ],
-      "label": "Shift+Space",
-      "rationale": "evolved: Scroll up one screen",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 9,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F3",
-      "modifiers": [],
-      "label": "F3",
-      "rationale": "evolved: Find next (alt)",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 10,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 11,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+H",
-      "rationale": "evolved: Hang up / end call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 12,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+E",
-      "rationale": "evolved: Toggle screen share",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 0,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard O",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+O",
-      "rationale": "evolved: Open file",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 1,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 2,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 3,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+H",
-      "rationale": "evolved: Voice typing",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 4,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard S",
-      "modifiers": [
-        "L GUI",
-        "L Shift"
-      ],
-      "label": "Win+Shift+S",
-      "rationale": "evolved: Screenshot (Snip)",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 5,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 7,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 8,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Y",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Y",
-      "rationale": "evolved: Redo",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 9,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 10,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard R",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+R",
-      "rationale": "evolved: Reply",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 11,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 12,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard N",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+N",
-      "rationale": "evolved: Incognito/InPrivate window",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 3,
-      "y": 4,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 4,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard B",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+B",
-      "rationale": "evolved: Focus system tray",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 5,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Grave Accent and Tilde",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+`",
-      "rationale": "evolved: Toggle terminal",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 7,
-      "y": 4,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB1",
-      "modifiers": [],
-      "label": "MB1",
-      "rationale": "evolved: Left click",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 8,
-      "y": 4,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB2",
-      "modifiers": [],
-      "label": "MB2",
-      "rationale": "evolved: Right click",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 4,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Equals and Plus",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl++",
-      "rationale": "evolved: Zoom in",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 5,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Dash and Underscore",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+-",
-      "rationale": "evolved: Zoom out",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 3,
-      "x": 7,
-      "y": 5,
       "behavior": "Key Press",
       "parameter": "Keyboard J",
       "modifiers": [
@@ -2910,232 +1035,64 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "apply_batch": true
     },
     {
-      "layer": 4,
+      "layer": 1,
       "x": 0,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 1,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 2,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 4,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 5,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 7,
-      "y": 0,
+      "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard X",
+      "parameter": "Keyboard R",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+R",
+      "rationale": "evolved: Run dialog",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 1,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+B",
+      "rationale": "evolved: Focus system tray",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 2,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 3,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+X",
-      "rationale": "evolved: Expand compose box",
+      "label": "Ctrl+Shift+1",
+      "rationale": "evolved: Extra large icons",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 4,
-      "x": 8,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 9,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 10,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 0,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+G",
-      "rationale": "evolved: Go to...",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 1,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard O",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+O",
-      "rationale": "evolved: Open file",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 3,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
+      "layer": 1,
       "x": 4,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 5,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 7,
-      "y": 1,
+      "y": 2,
       "behavior": "Key Press",
       "parameter": "Keyboard S",
       "modifiers": [
@@ -3147,947 +1104,63 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "apply_batch": true
     },
     {
-      "layer": 4,
-      "x": 8,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard End",
-      "modifiers": [],
-      "label": "End",
-      "rationale": "evolved: Raw End completion key.",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 9,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 10,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard L",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+L",
-      "rationale": "evolved: Focus address bar",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 11,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 12,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard U",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+U",
-      "rationale": "evolved: Underline",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 0,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 1,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+F",
-      "rationale": "evolved: Settings menu",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 2,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Comma and LessThan",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+,",
-      "rationale": "evolved: Open settings",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 3,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Backslash and Pipe",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+\\",
-      "rationale": "evolved: Split editor",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 4,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard I",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+I",
-      "rationale": "evolved: Italic",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
+      "layer": 1,
       "x": 5,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Return Enter",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Enter",
-      "rationale": "evolved: Insert line above",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 7,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Right Brace",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+]",
-      "rationale": "evolved: Indent line",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 8,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 9,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Tab",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Tab",
-      "rationale": "evolved: Next tab",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 10,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F12",
-      "modifiers": [],
-      "label": "F12",
-      "rationale": "evolved: Open DevTools",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 11,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [],
-      "label": "F5",
-      "rationale": "evolved: Refresh page",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 12,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+E",
-      "rationale": "evolved: Toggle screen share",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 0,
-      "y": 3,
-      "behavior": "coach_l10_toggle",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Excel",
-      "rationale": "evolved: Dynamic layer access: @access:L4->L10:toggle:Excel",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 1,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 2,
-      "y": 3,
-      "behavior": "coach_l9_toggle",
-      "parameter": "",
-      "modifiers": [],
-      "label": "DMS",
-      "rationale": "evolved: Dynamic layer access: @access:L4->L9:toggle:DMS",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 3,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard PageDown",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Page Down",
-      "rationale": "evolved: Next sheet",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 4,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 5,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 7,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard V",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+V",
-      "rationale": "evolved: Paste without formatting",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 8,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Home",
-      "modifiers": [],
-      "label": "Home",
-      "rationale": "evolved: Raw Home completion key.",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 9,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F11",
-      "modifiers": [],
-      "label": "F11",
-      "rationale": "evolved: Toggle fullscreen",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 10,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F7",
-      "modifiers": [],
-      "label": "F7",
-      "rationale": "evolved: Spell check",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 11,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+H",
-      "rationale": "evolved: Hang up / end call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 12,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard A",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+A",
-      "rationale": "evolved: Accept call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 3,
-      "y": 4,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 4,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard T",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+T",
-      "rationale": "evolved: New tab",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 5,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Return Enter",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+Enter",
-      "rationale": "evolved: Properties / metadata card",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 7,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L GUI",
-        "L Ctrl"
-      ],
-      "label": "Win+Ctrl+D",
-      "rationale": "evolved: New virtual desktop",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 8,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F9",
-      "modifiers": [],
-      "label": "F9",
-      "rationale": "evolved: Toggle breakpoint",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 4,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Left Brace",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+[",
-      "rationale": "evolved: Outdent line",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 5,
-      "y": 5,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 4,
-      "x": 7,
-      "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Backslash and Pipe",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+\\",
-      "rationale": "evolved: Jump to matching bracket",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 0,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 1,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 2,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [
-        "L Shift"
-      ],
-      "label": "Shift+F5",
-      "rationale": "evolved: Stop debugging",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 4,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard O",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+O",
-      "rationale": "evolved: Toggle camera",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 5,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 7,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+H",
-      "rationale": "evolved: Hang up / end call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 8,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+G",
-      "rationale": "evolved: Go to...",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 9,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L GUI",
-        "L Ctrl"
-      ],
-      "label": "Win+Ctrl+D",
-      "rationale": "evolved: New virtual desktop",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 10,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+E",
-      "rationale": "evolved: Toggle screen share",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 0,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 1,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+F",
-      "rationale": "evolved: Format text",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 3,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 4,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 5,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 7,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 8,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 9,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard W",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+W",
-      "rationale": "evolved: Close tab",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 10,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F1",
-      "modifiers": [],
-      "label": "F1",
-      "rationale": "evolved: Help",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 11,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 12,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 0,
       "y": 2,
       "behavior": "Key Press",
       "parameter": "Keyboard N",
       "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+N",
-      "rationale": "evolved: New chat",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 1,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard S",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+S",
-      "rationale": "evolved: Save page as",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 2,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard J",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+J",
-      "rationale": "evolved: Downloads",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 3,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 4,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard K",
-      "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+K",
-      "rationale": "evolved: Raise/lower hand",
+      "label": "Ctrl+Shift+N",
+      "rationale": "evolved: Incognito/InPrivate window",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 5,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard S",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+S",
-      "rationale": "evolved: Attach file",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
+      "layer": 1,
       "x": 7,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard F3",
-      "modifiers": [
-        "L Shift"
-      ],
-      "label": "Shift+F3",
-      "rationale": "evolved: Find previous",
+      "parameter": "Keyboard PageDown",
+      "modifiers": [],
+      "label": "Page Down",
+      "rationale": "evolved: Next slide",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
+      "layer": 1,
       "x": 8,
       "y": 2,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB1",
-      "modifiers": [
-        "L Shift"
-      ],
-      "label": "Shift+Click",
-      "rationale": "evolved: Select range",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 9,
-      "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard L",
+      "parameter": "Keyboard A",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+L",
-      "rationale": "evolved: Focus address bar",
+      "label": "Ctrl+A",
+      "rationale": "evolved: Select all",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 10,
+      "layer": 1,
+      "x": 9,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard D",
+      "parameter": "Keyboard V",
       "modifiers": [
-        "L Alt",
-        "L Shift"
+        "L Ctrl"
       ],
-      "label": "Alt+Shift+D",
-      "rationale": "evolved: Split pane (auto)",
+      "label": "Ctrl+V",
+      "rationale": "evolved: Paste",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 11,
+      "layer": 1,
+      "x": 10,
       "y": 2,
       "behavior": "Key Press",
       "parameter": "Keyboard Q",
@@ -4101,62 +1174,1154 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 12,
+      "layer": 1,
+      "x": 11,
       "y": 2,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB1",
+      "behavior": "Key Press",
+      "parameter": "Keyboard Q",
       "modifiers": [
         "L Ctrl"
       ],
+      "label": "Ctrl+Q",
+      "rationale": "evolved: Mark as read",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 12,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L GUI",
+        "L Shift"
+      ],
+      "label": "Win+Shift+Left",
+      "rationale": "evolved: Move to left monitor",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 0,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Period and GreaterThan",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+>",
+      "rationale": "evolved: Increase font size",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 1,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 2,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+1",
+      "rationale": "evolved: Open/switch pinned app 1",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 3,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+L",
+      "rationale": "evolved: Lock PC",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Return Enter",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Enter",
+      "rationale": "evolved: Insert line above",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F8",
+      "modifiers": [],
+      "label": "F8",
+      "rationale": "evolved: Go to next problem",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 7,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+F",
+      "rationale": "evolved: Find in conversation",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 8,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F6",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+F6",
+      "rationale": "evolved: Next section",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 9,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard C",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+C",
+      "rationale": "evolved: Copy",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 10,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Q",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Q",
+      "rationale": "evolved: Mark as read",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 11,
+      "y": 3,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB3",
+      "modifiers": [],
+      "label": "MB3",
+      "rationale": "evolved: Middle click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 12,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 2 and At",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+2",
+      "rationale": "evolved: Chat",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 3,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+B",
+      "rationale": "evolved: Toggle background blur",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 4,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F11",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+F11",
+      "rationale": "evolved: Step out",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 5,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Right Brace",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+]",
+      "rationale": "evolved: Indent line",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 7,
+      "y": 4,
+      "behavior": "coach_l9_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L9",
+      "rationale": "evolved: Dynamic layer access: @access:L9:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 8,
+      "y": 4,
+      "behavior": "coach_l2_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L2",
+      "rationale": "evolved: Dynamic layer access: @scroll:L2:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 4,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+L",
+      "rationale": "evolved: Toggle sidebar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 5,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+B",
+      "rationale": "evolved: Bold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 1,
+      "x": 7,
+      "y": 5,
+      "behavior": "coach_l1_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L1",
+      "rationale": "evolved: Dynamic layer access: @access:L1:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 0,
+      "y": 0,
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 1,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+A",
+      "rationale": "evolved: Toggle block comment",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 2,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Alt",
+        "L Shift"
+      ],
+      "label": "Alt+Shift+Down",
+      "rationale": "evolved: Next unread",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 3,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Home",
+      "rationale": "evolved: Open home page",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 4,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Alt",
+        "L Shift"
+      ],
+      "label": "Alt+Shift+D",
+      "rationale": "evolved: Split pane (auto)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Alt"
+      ],
+      "label": "Ctrl+Alt+Up",
+      "rationale": "evolved: Add cursor above",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 7,
+      "y": 0,
+      "behavior": "coach_ctrl_click",
+      "parameter": "",
+      "modifiers": [],
       "label": "Ctrl+Click",
       "rationale": "evolved: Select non-adjacent cells",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 0,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 1,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 2,
-      "y": 3,
+      "layer": 2,
+      "x": 8,
+      "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard V",
+      "parameter": "Keyboard Home",
       "modifiers": [
-        "L Ctrl",
-        "L Shift"
+        "L Ctrl"
       ],
-      "label": "Ctrl+Shift+V",
-      "rationale": "evolved: Paste without formatting",
+      "label": "Ctrl+Home",
+      "rationale": "evolved: Go to cell A1",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
+      "layer": 2,
+      "x": 9,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard C",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+C",
+      "rationale": "evolved: Open Copilot",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard M",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+M",
+      "rationale": "evolved: Minimize all windows",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 12,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F8",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+F8",
+      "rationale": "evolved: Go to previous problem",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 0,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F5",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+F5",
+      "rationale": "evolved: Hard refresh (bypass cache)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 1,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Home",
+      "rationale": "evolved: Select to cell A1",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 2,
+      "y": 1,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB4",
+      "modifiers": [],
+      "label": "MB4",
+      "rationale": "evolved: Back button",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 3,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 8 and Star",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+8",
+      "rationale": "evolved: Switch to tab 8",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 4,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard H",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+H",
+      "rationale": "evolved: History",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 5,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 6 and Caret",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+6",
+      "rationale": "evolved: Toggle details pane",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 7,
+      "y": 1,
+      "behavior": "coach_ctrl_click",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Ctrl+Click",
+      "rationale": "evolved: Select non-adjacent cells",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 8,
+      "y": 1,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB3",
+      "modifiers": [],
+      "label": "MB3",
+      "rationale": "evolved: Middle click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 9,
+      "y": 1,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB3",
+      "modifiers": [],
+      "label": "MB3",
+      "rationale": "evolved: Middle click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 10,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Tab",
+      "rationale": "evolved: Switch apps",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 11,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+D",
+      "rationale": "evolved: Show/hide desktop",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 12,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Up",
+      "rationale": "evolved: Move line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 0,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+F",
+      "rationale": "evolved: Settings menu",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 1,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 2,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 3,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Tab",
+      "rationale": "evolved: Next tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+D",
+      "rationale": "evolved: Bookmark page",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Home",
+      "rationale": "evolved: Go to cell A1",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 8,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Period and GreaterThan",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+.",
+      "rationale": "evolved: Show commands",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 9,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard O",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+O",
+      "rationale": "evolved: Toggle camera",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 10,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 11,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 12,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Left",
+      "rationale": "evolved: Jump to left edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 0,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard E",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+E",
+      "rationale": "evolved: Search / command bar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 1,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard T",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+T",
+      "rationale": "evolved: New tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 2,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+A",
+      "rationale": "evolved: Quick settings / Action center",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
       "x": 3,
       "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+L",
+      "rationale": "evolved: Toggle sidebar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard T",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+T",
+      "rationale": "evolved: Cycle taskbar apps",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard O",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+O",
+      "rationale": "evolved: Open file",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 7,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+P",
+      "rationale": "evolved: Print",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 8,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard U",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+U",
+      "rationale": "evolved: Underline",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 9,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+F",
+      "rationale": "evolved: Find in conversation",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 10,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Tab",
+      "rationale": "evolved: Previous tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 11,
+      "y": 3,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB3",
+      "modifiers": [],
+      "label": "MB3",
+      "rationale": "evolved: Middle click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 12,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Up",
+      "rationale": "evolved: Move line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 3,
+      "y": 4,
+      "behavior": "coach_alt_click",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Alt+Click",
+      "rationale": "evolved: Add cursor at position",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 4,
+      "y": 4,
+      "behavior": "coach_alt_click",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Alt+Click",
+      "rationale": "evolved: Add cursor at position",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 5,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+L",
+      "rationale": "evolved: Toggle sidebar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 7,
+      "y": 4,
+      "behavior": "coach_l7_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L7",
+      "rationale": "evolved: Dynamic layer access: @access:L7:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 8,
+      "y": 4,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 4,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 9 and Left Bracket",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+9",
+      "rationale": "evolved: Last tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 5,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+Tab",
+      "rationale": "evolved: Outdent",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 2,
+      "x": 7,
+      "y": 5,
+      "behavior": "coach_l2_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L2",
+      "rationale": "evolved: Dynamic layer access: @access:L2:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 0,
+      "y": 0,
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 1,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Up",
+      "rationale": "evolved: Move line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 2,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Space",
+      "rationale": "evolved: Select entire column",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 3,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Comma and LessThan",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+<",
+      "rationale": "evolved: Decrease font size",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 4,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Return Enter",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Enter",
+      "rationale": "evolved: Send (expanded mode)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F9",
+      "modifiers": [],
+      "label": "F9",
+      "rationale": "evolved: Toggle breakpoint",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 7,
+      "y": 0,
       "behavior": "Key Press",
       "parameter": "Keyboard X",
       "modifiers": [
@@ -4169,181 +2334,696 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 4,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 5,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F8",
-      "modifiers": [],
-      "label": "F8",
-      "rationale": "evolved: Go to next problem",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 7,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
+      "layer": 3,
       "x": 8,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 9,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 10,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 11,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 12,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 3,
-      "y": 4,
-      "behavior": "coach_base",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Base",
-      "rationale": "evolved: Dynamic layer access: @access:L5->L0:toggle:Base",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 4,
-      "y": 4,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB3",
-      "modifiers": [],
-      "label": "MB3",
-      "rationale": "evolved: Middle click",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 5,
-      "y": 4,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB4",
-      "modifiers": [],
-      "label": "MB4",
-      "rationale": "evolved: Back button",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 7,
-      "y": 4,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB5",
-      "modifiers": [],
-      "label": "MB5",
-      "rationale": "evolved: Forward button",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 5,
-      "x": 8,
-      "y": 4,
+      "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard Return Enter",
+      "parameter": "Keyboard RightArrow",
       "modifiers": [
+        "L Ctrl",
         "L Shift"
       ],
-      "label": "Shift+Enter",
-      "rationale": "evolved: New line in message",
+      "label": "Ctrl+Shift+Right",
+      "rationale": "evolved: Select to right edge",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
-      "x": 4,
-      "y": 5,
+      "layer": 3,
+      "x": 9,
+      "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard SemiColon and Colon",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+I",
+      "rationale": "evolved: Open DevTools (alt)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L GUI",
+        "L Ctrl"
+      ],
+      "label": "Win+Ctrl+Right",
+      "rationale": "evolved: Switch desktop right",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Period and GreaterThan",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+.",
+      "rationale": "evolved: Emoji picker",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 12,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L GUI",
+        "L Ctrl"
+      ],
+      "label": "Win+Ctrl+D",
+      "rationale": "evolved: New virtual desktop",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 0,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+A",
+      "rationale": "evolved: Quick settings / Action center",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 1,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard X",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+X",
+      "rationale": "evolved: Expand compose box",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 2,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+P",
+      "rationale": "evolved: Toggle chat in meeting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 3,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Home",
+      "rationale": "evolved: Select to cell A1",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 4,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F11",
+      "modifiers": [],
+      "label": "F11",
+      "rationale": "evolved: Toggle fullscreen",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 5,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Left",
+      "rationale": "evolved: Select to left edge",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 7,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Equals and Plus",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift++",
+      "rationale": "evolved: Insert cells/rows/columns",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 8,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard S",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+S",
+      "rationale": "evolved: Search",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 9,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard X",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+X",
+      "rationale": "evolved: Power User menu",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 10,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+1",
+      "rationale": "evolved: Open/switch pinned app 1",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 11,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Tab",
+      "rationale": "evolved: Task View",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 12,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+;",
-      "rationale": "evolved: Insert current date",
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
-      "layer": 5,
+      "layer": 3,
+      "x": 0,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F4",
+      "modifiers": [],
+      "label": "F4",
+      "rationale": "evolved: Toggle absolute ref ($)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 1,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Left",
+      "rationale": "evolved: Go back",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 2,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard V",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+V",
+      "rationale": "evolved: Paste without formatting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 3,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+J",
+      "rationale": "evolved: Open Console",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Dash and Underscore",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+-",
+      "rationale": "evolved: Zoom out",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F12",
+      "modifiers": [],
+      "label": "F12",
+      "rationale": "evolved: Open DevTools",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Left",
+      "rationale": "evolved: Jump to left edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 8,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard E",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+E",
+      "rationale": "evolved: Search / command bar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 9,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard E",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+E",
+      "rationale": "evolved: Toggle screen share",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 10,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F12",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+F12",
+      "rationale": "evolved: Peek definition",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 11,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+1",
+      "rationale": "evolved: Activity",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 12,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+B",
+      "rationale": "evolved: Toggle background blur",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 0,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+P",
+      "rationale": "evolved: Toggle chat in meeting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 1,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Z",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Z",
+      "rationale": "evolved: Undo",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 2,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Space",
+      "rationale": "evolved: Switch input language",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 3,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 5 and Percent",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+5",
+      "rationale": "evolved: Open/switch pinned app 5",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+Up",
+      "rationale": "evolved: Copy line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F12",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+F12",
+      "rationale": "evolved: Peek definition",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 7,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F5",
+      "modifiers": [],
+      "label": "F5",
+      "rationale": "evolved: Refresh page",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 8,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard ForwardSlash and QuestionMark",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+/",
+      "rationale": "evolved: Show keyboard shortcuts",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 9,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard K",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+K",
+      "rationale": "evolved: Insert link",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 10,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F9",
+      "modifiers": [],
+      "label": "F9",
+      "rationale": "evolved: Toggle breakpoint",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 11,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Down",
+      "rationale": "evolved: Minimize / restore",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 12,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Up",
+      "rationale": "evolved: Move line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 3,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+D",
+      "rationale": "evolved: Focus address bar (alt)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 4,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Grave Accent and Tilde",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+`",
+      "rationale": "evolved: New terminal",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 5,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+I",
+      "rationale": "evolved: Italic",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 7,
+      "y": 4,
+      "behavior": "coach_l4_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L4",
+      "rationale": "evolved: Dynamic layer access: @scroll:L4:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 8,
+      "y": 4,
+      "behavior": "coach_l1_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L1",
+      "rationale": "evolved: Dynamic layer access: @scroll:L1:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 4,
+      "y": 5,
+      "behavior": "coach_l5_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L5",
+      "rationale": "evolved: Dynamic layer access: @access:L5:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
       "x": 5,
       "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard V",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+V",
+      "rationale": "evolved: Paste without formatting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 3,
+      "x": 7,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+B",
+      "rationale": "evolved: Focus system tray",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 0,
+      "y": 0,
       "behavior": "Key Press",
       "parameter": "Keyboard 1 and Bang",
       "modifiers": [
@@ -4356,9 +3036,1704 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "apply_batch": true
     },
     {
+      "layer": 4,
+      "x": 1,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+B",
+      "rationale": "evolved: Focus system tray",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 2,
+      "y": 0,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 3,
+      "y": 0,
+      "behavior": "coach_l9_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L9",
+      "rationale": "evolved: Dynamic layer access: @access:L9:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 4,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F5",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+F5",
+      "rationale": "evolved: Stop debugging",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Left Brace",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+[",
+      "rationale": "evolved: Outdent line",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 7,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageDown",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Page Down",
+      "rationale": "evolved: Next sheet",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 8,
+      "y": 0,
+      "behavior": "coach_l5_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L5",
+      "rationale": "evolved: Dynamic layer access: @access:L5:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 9,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Alt",
+        "L Shift"
+      ],
+      "label": "Alt+Shift+D",
+      "rationale": "evolved: Split pane (auto)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Down",
+      "rationale": "evolved: Minimize / restore",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+A",
+      "rationale": "evolved: Quick settings / Action center",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 12,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Comma and LessThan",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+,",
+      "rationale": "evolved: Open settings",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 0,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F2",
+      "modifiers": [],
+      "label": "F2",
+      "rationale": "evolved: Rename",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 1,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard W",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+W",
+      "rationale": "evolved: Change workflow state",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 2,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L GUI",
+        "L Shift"
+      ],
+      "label": "Win+Shift+Right",
+      "rationale": "evolved: Move to right monitor",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 3,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Grave Accent and Tilde",
+      "modifiers": [],
+      "label": "`",
+      "rationale": "evolved: Raw Grave Accent and Tilde completion key.",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 4,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Dash and Underscore",
+      "modifiers": [],
+      "label": "-",
+      "rationale": "evolved: Raw Dash and Underscore completion key.",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 5,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Equals and Plus",
+      "modifiers": [],
+      "label": "=",
+      "rationale": "evolved: Start formula",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 7,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Down",
+      "rationale": "evolved: Select to bottom edge",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 8,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 4 and Dollar",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+4",
+      "rationale": "evolved: Open/switch pinned app 4",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 9,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+1",
+      "rationale": "evolved: Activity",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 10,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard H",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+H",
+      "rationale": "evolved: Voice typing",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 11,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 3 and Hash",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+3",
+      "rationale": "evolved: Open/switch pinned app 3",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 12,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Left",
+      "rationale": "evolved: Go back",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 0,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Tab",
+      "rationale": "evolved: Previous tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 1,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F10",
+      "modifiers": [],
+      "label": "F10",
+      "rationale": "evolved: Step over",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 2,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 3,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Right Brace",
+      "modifiers": [],
+      "label": "]",
+      "rationale": "evolved: Raw Right Brace completion key.",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard V",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+V",
+      "rationale": "evolved: Paste without formatting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F5",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+F5",
+      "rationale": "evolved: Hard refresh (bypass cache)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Down",
+      "rationale": "evolved: Jump to bottom edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 8,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Right",
+      "rationale": "evolved: Go forward",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 9,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard M",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+M",
+      "rationale": "evolved: Toggle mute",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 10,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 11,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+B",
+      "rationale": "evolved: Focus system tray",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 12,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+I",
+      "rationale": "evolved: Italic",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 0,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+A",
+      "rationale": "evolved: Toggle block comment",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 1,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard S",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+S",
+      "rationale": "evolved: Attach file",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 2,
+      "y": 3,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB4",
+      "modifiers": [],
+      "label": "MB4",
+      "rationale": "evolved: Back button",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 3,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+B",
+      "rationale": "evolved: Bold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+J",
+      "rationale": "evolved: Open Console",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F8",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+F8",
+      "rationale": "evolved: Go to previous problem",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 7,
+      "y": 3,
+      "behavior": "coach_l4_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L4",
+      "rationale": "evolved: Dynamic layer access: @access:L4:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 8,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard S",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+S",
+      "rationale": "evolved: Attach file",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 9,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+A",
+      "rationale": "evolved: Accept call",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 10,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F4",
+      "modifiers": [],
+      "label": "F4",
+      "rationale": "evolved: Toggle absolute ref ($)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 11,
+      "y": 3,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 12,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard H",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+H",
+      "rationale": "evolved: Hang up / end call",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 3,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Backslash and Pipe",
+      "modifiers": [],
+      "label": "\\",
+      "rationale": "evolved: Raw Backslash and Pipe completion key.",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 4,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Backslash and Pipe",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+\\",
+      "rationale": "evolved: Split editor",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 5,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 8 and Star",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+8",
+      "rationale": "evolved: Switch to tab 8",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 7,
+      "y": 4,
+      "behavior": "coach_l1_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L1",
+      "rationale": "evolved: Dynamic layer access: @access:L1:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 8,
+      "y": 4,
+      "behavior": "coach_l6_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L6",
+      "rationale": "evolved: Dynamic layer access: @scroll:L6:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 4,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Down",
+      "rationale": "evolved: Move line down",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 5,
+      "y": 5,
+      "behavior": "coach_l8_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L8",
+      "rationale": "evolved: Dynamic layer access: @access:L8:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 4,
+      "x": 7,
+      "y": 5,
+      "behavior": "coach_l6_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L6",
+      "rationale": "evolved: Dynamic layer access: @access:L6:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 0,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+F",
+      "rationale": "evolved: Format text",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 1,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 2,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+I",
+      "rationale": "evolved: Open DevTools (alt)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 3,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+1",
+      "rationale": "evolved: Activity",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 4,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L GUI",
+        "L Ctrl"
+      ],
+      "label": "Win+Ctrl+D",
+      "rationale": "evolved: New virtual desktop",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard R",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+R",
+      "rationale": "evolved: Run dialog",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 7,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Comma and LessThan",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+<",
+      "rationale": "evolved: Decrease font size",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 8,
+      "y": 0,
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 9,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Up",
+      "rationale": "evolved: Move line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard X",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+X",
+      "rationale": "evolved: Power User menu",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 5 and Percent",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+5",
+      "rationale": "evolved: Open/switch pinned app 5",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 12,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F4",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+F4",
+      "rationale": "evolved: Close window",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 0,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F3",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+F3",
+      "rationale": "evolved: Find previous",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 1,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Space",
+      "rationale": "evolved: Select entire column",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 2,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 4 and Dollar",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+$",
+      "rationale": "evolved: Currency format",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 3,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F1",
+      "modifiers": [],
+      "label": "F1",
+      "rationale": "evolved: Help",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 4,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Equals and Plus",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl++",
+      "rationale": "evolved: Zoom in",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 5,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Right",
+      "rationale": "evolved: Select to right edge",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 7,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F4",
+      "modifiers": [],
+      "label": "F4",
+      "rationale": "evolved: Toggle absolute ref ($)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 8,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Down",
+      "rationale": "evolved: Move line down",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 9,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+1",
+      "rationale": "evolved: Extra large icons",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 10,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard S",
+      "modifiers": [
+        "L GUI",
+        "L Shift"
+      ],
+      "label": "Win+Shift+S",
+      "rationale": "evolved: Screenshot (Snip)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 11,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard E",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+E",
+      "rationale": "evolved: File Explorer",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 12,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Left",
+      "rationale": "evolved: Snap window left",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 0,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+Tab",
+      "rationale": "evolved: Outdent",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 1,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 2,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Right",
+      "rationale": "evolved: Jump to right edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 3,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard N",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+N",
+      "rationale": "evolved: New chat",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Tab",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Tab",
+      "rationale": "evolved: Previous tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+Space",
+      "rationale": "evolved: Scroll up one screen",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageDown",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Page Down",
+      "rationale": "evolved: Next sheet",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 8,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 2 and At",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+2",
+      "rationale": "evolved: Chat",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 9,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Return Enter",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Enter",
+      "rationale": "evolved: Send (expanded mode)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 10,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard SemiColon and Colon",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+;",
+      "rationale": "evolved: Emoji picker",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 11,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard T",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+T",
+      "rationale": "evolved: Cycle taskbar apps",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 12,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard G",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+G",
+      "rationale": "evolved: Find previous",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 0,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+Left",
+      "rationale": "evolved: Shrink selection",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 1,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageUp",
+      "modifiers": [],
+      "label": "Page Up",
+      "rationale": "evolved: Previous slide",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 2,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard R",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+R",
+      "rationale": "evolved: Start recording",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 3,
+      "y": 3,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+S'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Down",
+      "rationale": "evolved: Move line down",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Backslash and Pipe",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+\\",
+      "rationale": "evolved: Jump to matching bracket",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 7,
+      "y": 3,
+      "behavior": "coach_l10_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L10",
+      "rationale": "evolved: Dynamic layer access: @access:L10:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 8,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard G",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+G",
+      "rationale": "evolved: Go to...",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 9,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+I",
+      "rationale": "evolved: Italic",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 10,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Delete",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Del",
+      "rationale": "evolved: Clear browsing data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 11,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 0 and Right Bracket",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+0",
+      "rationale": "evolved: Reset zoom",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 12,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 2 and At",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+2",
+      "rationale": "evolved: Large icons",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 3,
+      "y": 4,
+      "behavior": "coach_l2_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L2",
+      "rationale": "evolved: Dynamic layer access: @access:L2:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 4,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Grave Accent and Tilde",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+`",
+      "rationale": "evolved: Toggle terminal",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 5,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 7,
+      "y": 4,
+      "behavior": "coach_l6_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L6",
+      "rationale": "evolved: Dynamic layer access: @access:L6:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 8,
+      "y": 4,
+      "behavior": "coach_l8_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L8",
+      "rationale": "evolved: Dynamic layer access: @scroll:L8:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 4,
+      "y": 5,
+      "behavior": "coach_l10_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L10",
+      "rationale": "evolved: Dynamic layer access: @scroll:L10:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 5,
+      "x": 5,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 9 and Left Bracket",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+9",
+      "rationale": "evolved: Last tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
       "layer": 5,
       "x": 7,
       "y": 5,
+      "behavior": "coach_l5_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L5",
+      "rationale": "evolved: Dynamic layer access: @access:L5:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 0,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L GUI",
+        "L Shift"
+      ],
+      "label": "Win+Shift+Left",
+      "rationale": "evolved: Move to left monitor",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 1,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 7 and Ampersand",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+7",
+      "rationale": "evolved: Switch to tab 7",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 2,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+Down",
+      "rationale": "evolved: Copy line down",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 3,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard C",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+C",
+      "rationale": "evolved: Inspect element",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 4,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Dash and Underscore",
+      "modifiers": [
+        "L Alt",
+        "L Shift"
+      ],
+      "label": "Alt+Shift+-",
+      "rationale": "evolved: Split pane horizontal",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+B",
+      "rationale": "evolved: Toggle background blur",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 7,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+!",
+      "rationale": "evolved: Number format",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 8,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+I",
+      "rationale": "evolved: Open DevTools (alt)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 9,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard U",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+U",
+      "rationale": "evolved: Mark as unread",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+L",
+      "rationale": "evolved: Lock PC",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L GUI",
+        "L Shift"
+      ],
+      "label": "Win+Shift+Left",
+      "rationale": "evolved: Move to left monitor",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 12,
+      "y": 0,
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 0,
+      "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard 4 and Dollar",
       "modifiers": [
@@ -4372,227 +4747,91 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 6,
-      "x": 0,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
       "x": 1,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 9 and Left Bracket",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+9",
+      "rationale": "evolved: Last tab",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 2,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Left Brace",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+[",
+      "rationale": "evolved: Outdent line",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F1",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "F1",
+      "rationale": "evolved: Help",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 4,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+I",
+      "rationale": "evolved: Open DevTools (alt)",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 5,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 9 and Left Bracket",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+9",
+      "rationale": "evolved: Unhide rows",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 7,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Equals and Plus",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+=",
+      "rationale": "evolved: AutoSum",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 8,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Q",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Q",
-      "rationale": "evolved: Mark as read",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 9,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 10,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 0,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 1,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 3,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F10",
-      "modifiers": [],
-      "label": "F10",
-      "rationale": "evolved: Step over",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 4,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 5,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard V",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+V",
-      "rationale": "evolved: Paste",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 7,
       "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard R",
@@ -4607,27 +4846,16 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 6,
-      "x": 8,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
       "x": 9,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard 5 and Percent",
+      "parameter": "Keyboard G",
       "modifiers": [
-        "L Ctrl"
+        "L Ctrl",
+        "L Shift"
       ],
-      "label": "Ctrl+5",
-      "rationale": "evolved: Calls",
+      "label": "Ctrl+Shift+G",
+      "rationale": "evolved: Find previous",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4636,12 +4864,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 10,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard LeftArrow",
+      "parameter": "Keyboard 4 and Dollar",
       "modifiers": [
         "L GUI"
       ],
-      "label": "Win+Left",
-      "rationale": "evolved: Snap window left",
+      "label": "Win+4",
+      "rationale": "evolved: Open/switch pinned app 4",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4649,24 +4877,29 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 11,
       "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Space",
+      "rationale": "evolved: Switch input language",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 12,
       "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F4",
+      "modifiers": [
+        "L GUI",
+        "L Ctrl"
+      ],
+      "label": "Win+Ctrl+F4",
+      "rationale": "evolved: Close current desktop",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -4674,13 +4907,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 0,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard 5 and Percent",
+      "parameter": "Keyboard UpArrow",
       "modifiers": [
         "L Ctrl",
-        "L Shift"
+        "L Alt"
       ],
-      "label": "Ctrl+Shift+%",
-      "rationale": "evolved: Percent format",
+      "label": "Ctrl+Alt+Up",
+      "rationale": "evolved: Add cursor above",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4689,13 +4922,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 1,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard Dash and Underscore",
+      "parameter": "Keyboard LeftArrow",
       "modifiers": [
-        "L Alt",
-        "L Shift"
+        "L Shift",
+        "L Alt"
       ],
-      "label": "Alt+Shift+-",
-      "rationale": "evolved: Split pane horizontal",
+      "label": "Shift+Alt+Left",
+      "rationale": "evolved: Shrink selection",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4704,10 +4937,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 2,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard F9",
-      "modifiers": [],
-      "label": "F9",
-      "rationale": "evolved: Toggle breakpoint",
+      "parameter": "Keyboard F6",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+F6",
+      "rationale": "evolved: Previous section",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4716,19 +4951,61 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 3,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard Equals and Plus",
+      "parameter": "Keyboard G",
       "modifiers": [
-        "L Alt",
+        "L Ctrl",
         "L Shift"
       ],
-      "label": "Alt+Shift++",
-      "rationale": "evolved: Split pane vertical",
+      "label": "Ctrl+Shift+G",
+      "rationale": "evolved: Find previous",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 6,
       "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard W",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+W",
+      "rationale": "evolved: Close tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+P",
+      "rationale": "evolved: Print",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard End",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+End",
+      "rationale": "evolved: Go to last used cell",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 8,
       "y": 2,
       "behavior": "Key Press",
       "parameter": "Keyboard 3 and Hash",
@@ -4742,51 +5019,16 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 6,
-      "x": 5,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 7,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard PageDown",
-      "modifiers": [],
-      "label": "Page Down",
-      "rationale": "evolved: Next slide",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 8,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 4 and Dollar",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+4",
-      "rationale": "evolved: Calendar",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
       "x": 9,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard F5",
-      "modifiers": [],
-      "label": "F5",
-      "rationale": "evolved: Refresh page",
+      "parameter": "Keyboard H",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+H",
+      "rationale": "evolved: Hang up / end call",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4795,10 +5037,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 10,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard PageUp",
-      "modifiers": [],
-      "label": "Page Up",
-      "rationale": "evolved: Previous slide",
+      "parameter": "Keyboard F4",
+      "modifiers": [
+        "L GUI",
+        "L Ctrl"
+      ],
+      "label": "Win+Ctrl+F4",
+      "rationale": "evolved: Close current desktop",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4807,10 +5052,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 11,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard UpArrow",
-      "modifiers": [],
-      "label": "Up",
-      "rationale": "evolved: Edit last sent message",
+      "parameter": "Keyboard N",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+N",
+      "rationale": "evolved: Notification center",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4822,7 +5069,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+W'",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -4834,7 +5081,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+S'",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -4842,12 +5089,15 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 1,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Delete",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Del",
+      "rationale": "evolved: Clear browsing data",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -4858,7 +5108,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+W'",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -4867,12 +5117,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 3,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard F11",
+      "parameter": "Keyboard Delete",
       "modifiers": [
         "L Shift"
       ],
-      "label": "Shift+F11",
-      "rationale": "evolved: Step out",
+      "label": "Shift+Delete",
+      "rationale": "evolved: Permanent delete",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4880,12 +5130,15 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 4,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+Left",
+      "rationale": "evolved: Shrink selection",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -4893,10 +5146,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 5,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard F4",
-      "modifiers": [],
-      "label": "F4",
-      "rationale": "evolved: Toggle absolute ref ($)",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+Right",
+      "rationale": "evolved: Expand selection",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4905,13 +5161,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 7,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard I",
+      "parameter": "Keyboard RightArrow",
       "modifiers": [
-        "L Ctrl",
-        "L Shift"
+        "L GUI"
       ],
-      "label": "Ctrl+Shift+I",
-      "rationale": "evolved: Open DevTools (alt)",
+      "label": "Win+Right",
+      "rationale": "evolved: Snap window right",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4920,13 +5175,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 8,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard T",
+      "parameter": "Keyboard L",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+T",
-      "rationale": "evolved: Reopen closed tab",
+      "label": "Ctrl+Shift+L",
+      "rationale": "evolved: Toggle sidebar",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4935,12 +5190,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 9,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard 6 and Caret",
+      "parameter": "Keyboard U",
       "modifiers": [
-        "L Ctrl"
+        "L Ctrl",
+        "L Shift"
       ],
-      "label": "Ctrl+6",
-      "rationale": "evolved: Files",
+      "label": "Ctrl+Shift+U",
+      "rationale": "evolved: Mark as unread",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4949,12 +5205,10 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 10,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard RightArrow",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+Right",
-      "rationale": "evolved: Go forward",
+      "parameter": "Keyboard PageUp",
+      "modifiers": [],
+      "label": "Page Up",
+      "rationale": "evolved: Previous slide",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4963,12 +5217,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 11,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard LeftArrow",
+      "parameter": "Keyboard DownArrow",
       "modifiers": [
+        "L Shift",
         "L Alt"
       ],
-      "label": "Alt+Left",
-      "rationale": "evolved: Go back",
+      "label": "Shift+Alt+Down",
+      "rationale": "evolved: Copy line down",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -4976,32 +5231,6 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 12,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 3,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard B",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+B",
-      "rationale": "evolved: Bold",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 4,
-      "y": 4,
       "behavior": "Key Press",
       "parameter": "Keyboard 0 and Right Bracket",
       "modifiers": [
@@ -5014,15 +5243,43 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 6,
+      "x": 3,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Left",
+      "rationale": "evolved: Go back",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 4,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Up",
+      "rationale": "evolved: Move line up",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
       "x": 5,
       "y": 4,
       "behavior": "Key Press",
-      "parameter": "Keyboard Tab",
+      "parameter": "Keyboard F5",
       "modifiers": [
-        "L GUI"
+        "L Shift"
       ],
-      "label": "Win+Tab",
-      "rationale": "evolved: Task View",
+      "label": "Shift+F5",
+      "rationale": "evolved: Stop debugging",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -5030,13 +5287,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 7,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard V",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+V",
-      "rationale": "evolved: Clipboard history",
+      "behavior": "coach_l5_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L5",
+      "rationale": "evolved: Dynamic layer access: @access:L5:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -5044,13 +5299,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 8,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 3 and Hash",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+3",
-      "rationale": "evolved: Open/switch pinned app 3",
+      "behavior": "coach_l5_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L5",
+      "rationale": "evolved: Dynamic layer access: @scroll:L5:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -5058,25 +5311,27 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 4,
       "y": 5,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 6,
-      "x": 5,
-      "y": 5,
       "behavior": "Key Press",
-      "parameter": "Keyboard F6",
+      "parameter": "Keyboard 7 and Ampersand",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+F6",
-      "rationale": "evolved: Previous section",
+      "label": "Ctrl+7",
+      "rationale": "evolved: Switch to tab 7",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 6,
+      "x": 5,
+      "y": 5,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+D",
+      "rationale": "evolved: Focus address bar (alt)",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -5084,23 +5339,23 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 7,
       "y": 5,
+      "behavior": "coach_l3_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L3",
+      "rationale": "evolved: Dynamic layer access: @access:L3:toggle",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 7,
+      "x": 0,
+      "y": 0,
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 7,
-      "x": 0,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5111,8 +5366,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5123,8 +5378,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5135,8 +5390,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5147,8 +5402,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5159,8 +5414,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5171,8 +5426,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5183,8 +5438,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5195,8 +5450,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5207,8 +5462,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5219,8 +5474,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5231,8 +5486,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5243,8 +5498,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5256,7 +5511,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keypad 9 and PageUp",
       "modifiers": [],
       "label": "9 PU",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5268,7 +5523,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard UpArrow",
       "modifiers": [],
       "label": "\u2191",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5280,7 +5535,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keypad 3 and PageDn",
       "modifiers": [],
       "label": "3 PD",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5291,8 +5546,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5303,8 +5558,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5315,8 +5570,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5327,8 +5582,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5340,7 +5595,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keypad 3 and PageDn",
       "modifiers": [],
       "label": "3 PD",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation. Right-hand column-mirror of left x3 (reversed cluster).",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5352,7 +5607,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard UpArrow",
       "modifiers": [],
       "label": "\u2191",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation. Right-hand column-mirror of left x2.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5364,7 +5619,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keypad 9 and PageUp",
       "modifiers": [],
       "label": "9 PU",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation. Right-hand column-mirror of left x1.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5375,8 +5630,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5387,8 +5642,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5400,7 +5655,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard LeftArrow",
       "modifiers": [],
       "label": "\u2190",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5412,7 +5667,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard DownArrow",
       "modifiers": [],
       "label": "\u2193",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5424,7 +5679,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard RightArrow",
       "modifiers": [],
       "label": "\u2192",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5436,7 +5691,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Z",
       "modifiers": [],
       "label": "Z",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5447,8 +5702,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5459,8 +5714,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5472,7 +5727,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Z",
       "modifiers": [],
       "label": "Z",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5484,7 +5739,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard LeftArrow",
       "modifiers": [],
       "label": "\u2190",
-      "rationale": "canonical (frozen/critical): RPG/game movement: left arrow on left column of right-hand cluster (x9).",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5496,7 +5751,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard DownArrow",
       "modifiers": [],
       "label": "\u2193",
-      "rationale": "canonical (frozen/critical): RPG/game movement or menu navigation. Right-hand column-mirror of left x2.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5508,7 +5763,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard RightArrow",
       "modifiers": [],
       "label": "\u2192",
-      "rationale": "canonical (frozen/critical): RPG/game movement: right arrow on right column of right-hand cluster (x11).",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5519,8 +5774,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5531,8 +5786,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5544,7 +5799,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard X",
       "modifiers": [],
       "label": "X",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5556,7 +5811,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard C",
       "modifiers": [],
       "label": "C",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5568,7 +5823,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard LeftShift",
       "modifiers": [],
       "label": "Shft",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5580,7 +5835,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Escape",
       "modifiers": [],
       "label": "Esc",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5591,8 +5846,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5603,8 +5858,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5616,7 +5871,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Escape",
       "modifiers": [],
       "label": "Esc",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5628,7 +5883,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard LeftShift",
       "modifiers": [],
       "label": "Shft",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x3.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5640,7 +5895,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard C",
       "modifiers": [],
       "label": "C",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x2.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5652,7 +5907,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard X",
       "modifiers": [],
       "label": "X",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x1.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5663,8 +5918,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Transparent",
-      "rationale": "canonical (frozen/critical): Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.",
+      "label": "transparent",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5676,7 +5931,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "Exit Base",
-      "rationale": "canonical (frozen/critical): Left-thumb exit from locked game layer to base. Must use coach_base (not plain To Layer) so the beacon listener clears lockedLayer 7.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5688,7 +5943,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Spacebar",
       "modifiers": [],
       "label": "\u2423",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5700,7 +5955,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "Exit Base",
-      "rationale": "canonical (frozen/critical): Left support-thumb exit from locked game layer to base.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5712,7 +5967,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "Exit Base",
-      "rationale": "canonical (frozen/critical): Right-thumb exit from locked game layer to base.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5724,7 +5979,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "Exit Base",
-      "rationale": "canonical (frozen/critical): Second right-thumb exit from locked game layer to base.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5736,7 +5991,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "MB1",
       "modifiers": [],
       "label": "Click",
-      "rationale": "canonical (frozen/critical): Mouse button binding: select:MB1.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5748,7 +6003,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "MB2",
       "modifiers": [],
       "label": "Right Click",
-      "rationale": "canonical (frozen/critical): Mouse button binding: select:MB2.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5760,7 +6015,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "Keyboard Return Enter",
       "modifiers": [],
       "label": "Ret",
-      "rationale": "canonical (frozen/critical): RPG/game action, cancel, menu, dash, pause, or confirm key.",
+      "rationale": "canonical (frozen/critical):",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -5768,372 +6023,133 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 0,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 1,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 2,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 4,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 5,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 7,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 8,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 9,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 10,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 0,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 1,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 3,
-      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard S",
+      "parameter": "Keyboard 7 and Ampersand",
       "modifiers": [
-        "L Ctrl",
+        "L Ctrl"
+      ],
+      "label": "Ctrl+7",
+      "rationale": "evolved: Switch to tab 7",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 1,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 7 and Ampersand",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+7",
+      "rationale": "evolved: Switch to tab 7",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 2,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F3",
+      "modifiers": [
         "L Shift"
       ],
-      "label": "Ctrl+Shift+S",
-      "rationale": "evolved: Attach file",
+      "label": "Shift+F3",
+      "rationale": "evolved: Find previous",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
-      "x": 4,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Home",
-      "modifiers": [],
-      "label": "Home",
-      "rationale": "evolved: Raw Home completion key.",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 5,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard RightArrow",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+Right",
-      "rationale": "evolved: Snap window right",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 7,
-      "y": 1,
+      "x": 3,
+      "y": 0,
       "behavior": "Key Press",
       "parameter": "Keyboard DownArrow",
       "modifiers": [
+        "L Shift",
         "L Alt"
       ],
-      "label": "Alt+Down",
-      "rationale": "evolved: Move line down",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 8,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Z",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Z",
-      "rationale": "evolved: Redo",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 9,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 10,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 11,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 12,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 0,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 1,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 2,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard F6",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+F6",
-      "rationale": "evolved: Next section",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 3,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard DownArrow",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+Down",
-      "rationale": "evolved: Minimize / restore",
+      "label": "Shift+Alt+Down",
+      "rationale": "evolved: Copy line down",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 4,
-      "y": 2,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Delete",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Del",
+      "rationale": "evolved: Clear browsing data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard SemiColon and Colon",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+;",
+      "rationale": "evolved: Insert current time",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 7,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageUp",
+      "modifiers": [],
+      "label": "Page Up",
+      "rationale": "evolved: Previous slide",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 8,
+      "y": 0,
       "behavior": "Key Press",
       "parameter": "Keyboard LeftArrow",
       "modifiers": [
-        "L GUI",
-        "L Shift"
+        "L Alt"
       ],
-      "label": "Win+Shift+Left",
-      "rationale": "evolved: Move to left monitor",
+      "label": "Alt+Left",
+      "rationale": "evolved: Go back",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
-      "x": 5,
-      "y": 2,
+      "x": 9,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 10,
+      "y": 0,
       "behavior": "Key Press",
       "parameter": "Keyboard RightArrow",
       "modifiers": [
@@ -6147,16 +6163,295 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 8,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard R",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+R",
+      "rationale": "evolved: Run dialog",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 12,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F7",
+      "modifiers": [],
+      "label": "F7",
+      "rationale": "evolved: Spell check",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 0,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard SemiColon and Colon",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+;",
+      "rationale": "evolved: Insert current time",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 1,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+P",
+      "rationale": "evolved: Toggle chat in meeting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 2,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F3",
+      "modifiers": [],
+      "label": "F3",
+      "rationale": "evolved: Find next (alt)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 3,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Delete",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Del",
+      "rationale": "evolved: Clear browsing data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 4,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 9 and Left Bracket",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+9",
+      "rationale": "evolved: Last tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 5,
+      "y": 1,
+      "behavior": "coach_shift_click",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Shift+Click",
+      "rationale": "evolved: Select range",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 7,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageUp",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Page Up",
+      "rationale": "evolved: Previous sheet",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 8,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageUp",
+      "modifiers": [],
+      "label": "Page Up",
+      "rationale": "evolved: Previous slide",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 9,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard R",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+R",
+      "rationale": "evolved: Start recording",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 10,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 2 and At",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+2",
+      "rationale": "evolved: Open/switch pinned app 2",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 11,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Right",
+      "rationale": "evolved: Snap window right",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 12,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard K",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+K",
+      "rationale": "evolved: Connect / Cast",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 0,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+L",
+      "rationale": "evolved: Focus address bar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 1,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 2,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Period and GreaterThan",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+>",
+      "rationale": "evolved: Increase font size",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 3,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Delete",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Del",
+      "rationale": "evolved: Clear browsing data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard T",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+T",
+      "rationale": "evolved: Reopen closed tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+D",
+      "rationale": "evolved: Focus address bar (alt)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
       "x": 7,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard LeftArrow",
+      "parameter": "Keyboard UpArrow",
       "modifiers": [
-        "L GUI",
-        "L Ctrl"
+        "L Alt",
+        "L Shift"
       ],
-      "label": "Win+Ctrl+Left",
-      "rationale": "evolved: Switch desktop left",
+      "label": "Alt+Shift+Up",
+      "rationale": "evolved: Previous unread",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6165,12 +6460,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 8,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard F4",
+      "parameter": "Keyboard 4 and Dollar",
       "modifiers": [
-        "L Alt"
+        "L Ctrl"
       ],
-      "label": "Alt+F4",
-      "rationale": "evolved: Close window",
+      "label": "Ctrl+4",
+      "rationale": "evolved: Calendar",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6178,12 +6473,14 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 9,
       "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Z",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Z",
+      "rationale": "evolved: Undo",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -6191,13 +6488,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 10,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard F4",
+      "parameter": "Keyboard K",
       "modifiers": [
-        "L GUI",
-        "L Ctrl"
+        "L GUI"
       ],
-      "label": "Win+Ctrl+F4",
-      "rationale": "evolved: Close current desktop",
+      "label": "Win+K",
+      "rationale": "evolved: Connect / Cast",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6220,12 +6516,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 12,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard S",
+      "parameter": "Keyboard A",
       "modifiers": [
-        "L Ctrl"
+        "L Shift",
+        "L Alt"
       ],
-      "label": "Ctrl+S",
-      "rationale": "evolved: Save page as",
+      "label": "Shift+Alt+A",
+      "rationale": "evolved: Toggle block comment",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6233,24 +6530,28 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 0,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 6 and Caret",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+6",
+      "rationale": "evolved: Files",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 1,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 0 and Right Bracket",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+0",
+      "rationale": "evolved: Reset zoom",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -6258,16 +6559,76 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 2,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard F10",
-      "modifiers": [],
-      "label": "F10",
-      "rationale": "evolved: Step over",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Home",
+      "rationale": "evolved: Select to cell A1",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 3,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Alt"
+      ],
+      "label": "Ctrl+Alt+Up",
+      "rationale": "evolved: Add cursor above",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Alt"
+      ],
+      "label": "Ctrl+Alt+Down",
+      "rationale": "evolved: Add cursor below",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard A",
+      "modifiers": [
+        "L Shift",
+        "L Alt"
+      ],
+      "label": "Shift+Alt+A",
+      "rationale": "evolved: Toggle block comment",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 7,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard PageUp",
+      "modifiers": [],
+      "label": "Page Up",
+      "rationale": "evolved: Previous slide",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 8,
+      "x": 8,
       "y": 3,
       "behavior": "Key Press",
       "parameter": "Keyboard B",
@@ -6282,70 +6643,15 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 8,
-      "x": 4,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard UpArrow",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+Up",
-      "rationale": "evolved: Maximize window",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 5,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard UpArrow",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+Up",
-      "rationale": "evolved: Move line up",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 7,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard RightArrow",
-      "modifiers": [
-        "L GUI",
-        "L Ctrl"
-      ],
-      "label": "Win+Ctrl+Right",
-      "rationale": "evolved: Switch desktop right",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
-      "x": 8,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 8,
       "x": 9,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard Home",
+      "parameter": "Keyboard LeftArrow",
       "modifiers": [
-        "L Ctrl"
+        "L Alt"
       ],
-      "label": "Ctrl+Home",
-      "rationale": "evolved: Go to cell A1",
+      "label": "Alt+Left",
+      "rationale": "evolved: Go back",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6353,49 +6659,54 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 10,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard R",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+R",
+      "rationale": "evolved: Reply",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 11,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard X",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+X",
+      "rationale": "evolved: Expand compose box",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 12,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Left Brace",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+[",
+      "rationale": "evolved: Outdent line",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 3,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Spacebar",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+Space",
-      "rationale": "evolved: Switch input language",
+      "behavior": "coach_l10_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L10",
+      "rationale": "evolved: Dynamic layer access: @scroll:L10:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6404,13 +6715,10 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 4,
       "y": 4,
       "behavior": "Key Press",
-      "parameter": "Keyboard Tab",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Tab",
-      "rationale": "evolved: Previous tab",
+      "parameter": "Keyboard F10",
+      "modifiers": [],
+      "label": "F10",
+      "rationale": "evolved: Step over",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6419,13 +6727,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 5,
       "y": 4,
       "behavior": "Key Press",
-      "parameter": "Keyboard Grave Accent and Tilde",
+      "parameter": "Keyboard Z",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+`",
-      "rationale": "evolved: New terminal",
+      "label": "Ctrl+Shift+Z",
+      "rationale": "evolved: Redo",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6433,11 +6741,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 7,
       "y": 4,
-      "behavior": "coach_travel_off",
+      "behavior": "coach_l4_hold",
       "parameter": "",
       "modifiers": [],
-      "label": "Exit Layer 8",
-      "rationale": "evolved: Dynamic layer access: @access:L8->L0:toggle:Exit_Layer_8",
+      "label": "L4",
+      "rationale": "evolved: Dynamic layer access: @access:L4:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6445,13 +6753,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 8,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Tab",
-      "modifiers": [
-        "L Shift"
-      ],
-      "label": "Shift+Tab",
-      "rationale": "evolved: Outdent",
+      "behavior": "coach_l3_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L3",
+      "rationale": "evolved: Dynamic layer access: @access:L3:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6460,10 +6766,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 4,
       "y": 5,
       "behavior": "Key Press",
-      "parameter": "Keyboard F11",
-      "modifiers": [],
-      "label": "F11",
-      "rationale": "evolved: Toggle fullscreen",
+      "parameter": "Keyboard Comma and LessThan",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+,",
+      "rationale": "evolved: Open settings",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6471,176 +6779,60 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 8,
       "x": 5,
       "y": 5,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 4 and Dollar",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+$",
+      "rationale": "evolved: Currency format",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 8,
       "x": 7,
       "y": 5,
-      "behavior": "Transparent",
+      "behavior": "coach_l8_toggle",
       "parameter": "",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "L8",
+      "rationale": "evolved: Dynamic layer access: @access:L8:toggle",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 0,
       "y": 0,
-      "behavior": "Transparent",
+      "behavior": "coach_base",
       "parameter": "",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 1,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+P",
+      "rationale": "evolved: Toggle chat in meeting",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 2,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 4,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard End",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+End",
-      "rationale": "evolved: Go to last used cell",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 5,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 7,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 8,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 9,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 10,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 12,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 0,
-      "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard F2",
       "modifiers": [],
@@ -6651,16 +6843,154 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 9,
-      "x": 1,
-      "y": 1,
+      "x": 3,
+      "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard W",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Alt",
+        "L Shift"
+      ],
+      "label": "Alt+Shift+D",
+      "rationale": "evolved: Split pane (auto)",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 4,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 5,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Space",
+      "rationale": "evolved: Select entire column",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 7,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 4 and Dollar",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+W",
-      "rationale": "evolved: Change workflow state",
+      "label": "Ctrl+Shift+$",
+      "rationale": "evolved: Currency format",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 8,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Home",
+      "rationale": "evolved: Open home page",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 9,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+Home",
+      "rationale": "evolved: Minimize all except active",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F2",
+      "modifiers": [],
+      "label": "F2",
+      "rationale": "evolved: Rename",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Escape",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Esc",
+      "rationale": "evolved: Task Manager",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 12,
+      "y": 0,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: non-exportable key 'Win+Pause'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 0,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard S",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+S",
+      "rationale": "evolved: Search",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 1,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Return Enter",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Enter",
+      "rationale": "evolved: Properties / metadata card",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6669,45 +6999,19 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 2,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard A",
+      "parameter": "Keyboard Home",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+A",
-      "rationale": "evolved: Accept call",
+      "label": "Ctrl+Shift+Home",
+      "rationale": "evolved: Select to cell A1",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 3,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 4,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard M",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+M",
-      "rationale": "evolved: Add to favorites",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 5,
       "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard 1 and Bang",
@@ -6721,15 +7025,43 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 9,
-      "x": 7,
+      "x": 4,
       "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard P",
+      "parameter": "Keyboard F",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+F",
+      "rationale": "evolved: Settings menu",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 5,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard SemiColon and Colon",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+P",
-      "rationale": "evolved: Print",
+      "label": "Ctrl+;",
+      "rationale": "evolved: Insert current date",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 7,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Spacebar",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Space",
+      "rationale": "evolved: Select entire column",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6737,48 +7069,57 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 9,
       "x": 8,
       "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F6",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+F6",
+      "rationale": "evolved: Previous section",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 9,
       "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+F",
+      "rationale": "evolved: Format text",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 10,
       "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Y",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Y",
+      "rationale": "evolved: Redo",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 11,
       "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F4",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+F4",
+      "rationale": "evolved: Close window",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -6789,7 +7130,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -6797,24 +7138,29 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 9,
       "x": 0,
       "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard SemiColon and Colon",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+;",
+      "rationale": "evolved: Insert current time",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 1,
       "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 6 and Caret",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+6",
+      "rationale": "evolved: Files",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -6822,13 +7168,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 2,
       "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard E",
+      "parameter": "Keyboard X",
       "modifiers": [
         "L Ctrl",
         "L Shift"
       ],
-      "label": "Ctrl+Shift+E",
-      "rationale": "evolved: Toggle screen share",
+      "label": "Ctrl+Shift+X",
+      "rationale": "evolved: Expand compose box",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -6836,18 +7182,185 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 9,
       "x": 3,
       "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 8 and Star",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+8",
+      "rationale": "evolved: Switch to tab 8",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 4,
       "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard T",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+T",
+      "rationale": "evolved: New tab",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard C",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+C",
+      "rationale": "evolved: Inspect element",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 6 and Caret",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+6",
+      "rationale": "evolved: Files",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 8,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 1 and Bang",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+1",
+      "rationale": "evolved: Activity",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 9,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard B",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+B",
+      "rationale": "evolved: Bold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 10,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L GUI",
+        "L Ctrl"
+      ],
+      "label": "Win+Ctrl+D",
+      "rationale": "evolved: New virtual desktop",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 11,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard X",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+X",
+      "rationale": "evolved: Expand compose box",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 12,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB4",
+      "modifiers": [],
+      "label": "MB4",
+      "rationale": "evolved: Back button",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 0,
+      "y": 3,
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 1,
+      "y": 3,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+S'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 2,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 7 and Ampersand",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+7",
+      "rationale": "evolved: Switch to tab 7",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 3,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 7 and Ampersand",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+7",
+      "rationale": "evolved: Switch to tab 7",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 4,
+      "y": 3,
       "behavior": "Key Press",
       "parameter": "Keyboard DownArrow",
       "modifiers": [
@@ -6862,21 +7375,118 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     {
       "layer": 9,
       "x": 5,
-      "y": 2,
+      "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard 2 and At",
+      "parameter": "Keyboard Left Brace",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+2",
-      "rationale": "evolved: Chat",
+      "label": "Ctrl+[",
+      "rationale": "evolved: Outdent line",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 9,
       "x": 7,
-      "y": 2,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard DownArrow",
+      "modifiers": [
+        "L Alt",
+        "L Shift"
+      ],
+      "label": "Alt+Shift+Down",
+      "rationale": "evolved: Next unread",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 8,
+      "y": 3,
+      "behavior": "coach_l10_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L10",
+      "rationale": "evolved: Dynamic layer access: @scroll:L10:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 9,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard X",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+X",
+      "rationale": "evolved: Expand compose box",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 10,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Home",
+      "rationale": "evolved: Select to cell A1",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 11,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 12,
+      "y": 3,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: non-exportable key 'Win+Pause'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 3,
+      "y": 4,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Comma and LessThan",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+,",
+      "rationale": "evolved: Open settings",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 9,
+      "x": 4,
+      "y": 4,
       "behavior": "Key Press",
       "parameter": "Keyboard UpArrow",
       "modifiers": [
@@ -6890,132 +7500,8 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 9,
-      "x": 8,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 9,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 10,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+H",
-      "rationale": "evolved: Hang up / end call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 11,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard K",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+K",
-      "rationale": "evolved: Insert link",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 12,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard U",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+U",
-      "rationale": "evolved: Mark as unread",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 0,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 1,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+D",
-      "rationale": "evolved: Decline call",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 2,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard O",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+O",
-      "rationale": "evolved: Open file",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 3,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard C",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+C",
-      "rationale": "evolved: Inspect element",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 4,
-      "y": 3,
+      "x": 5,
+      "y": 4,
       "behavior": "Key Press",
       "parameter": "Keyboard F5",
       "modifiers": [
@@ -7029,148 +7515,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 9,
-      "x": 5,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+G",
-      "rationale": "evolved: Find previous",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 7,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard G",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+G",
-      "rationale": "evolved: Go to...",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 8,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard DownArrow",
-      "modifiers": [
-        "L Ctrl",
-        "L Alt"
-      ],
-      "label": "Ctrl+Alt+Down",
-      "rationale": "evolved: Add cursor below",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 9,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 10,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 11,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 12,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 3,
-      "y": 4,
-      "behavior": "Mouse Key Press",
-      "parameter": "MB1",
-      "modifiers": [
-        "L Alt"
-      ],
-      "label": "Alt+Click",
-      "rationale": "evolved: Add cursor at position",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 4,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Equals and Plus",
-      "modifiers": [],
-      "label": "=",
-      "rationale": "evolved: Start formula",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
-      "x": 5,
-      "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Period and GreaterThan",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+.",
-      "rationale": "evolved: Show commands",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 9,
       "x": 7,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard P",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+P",
-      "rationale": "evolved: Toggle chat in meeting",
+      "behavior": "coach_l8_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L8",
+      "rationale": "evolved: Dynamic layer access: @access:L8:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7179,13 +7530,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 8,
       "y": 4,
       "behavior": "Key Press",
-      "parameter": "Keyboard L",
+      "parameter": "Keyboard RightArrow",
       "modifiers": [
-        "L Ctrl",
-        "L Shift"
+        "L Ctrl"
       ],
-      "label": "Ctrl+Shift+L",
-      "rationale": "evolved: Toggle sidebar",
+      "label": "Ctrl+Right",
+      "rationale": "evolved: Jump to right edge of data",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7196,11 +7546,10 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Key Press",
       "parameter": "Keyboard UpArrow",
       "modifiers": [
-        "L Shift",
-        "L Alt"
+        "L Ctrl"
       ],
-      "label": "Shift+Alt+Up",
-      "rationale": "evolved: Copy line up",
+      "label": "Ctrl+Up",
+      "rationale": "evolved: Jump to top edge of data",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7209,13 +7558,13 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 5,
       "y": 5,
       "behavior": "Key Press",
-      "parameter": "Keyboard RightArrow",
+      "parameter": "Keyboard Period and GreaterThan",
       "modifiers": [
-        "L Shift",
-        "L Alt"
+        "L Ctrl",
+        "L Shift"
       ],
-      "label": "Shift+Alt+Right",
-      "rationale": "evolved: Expand selection",
+      "label": "Ctrl+Shift+>",
+      "rationale": "evolved: Increase font size",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7223,14 +7572,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 9,
       "x": 7,
       "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard LeftArrow",
-      "modifiers": [
-        "L Shift",
-        "L Alt"
-      ],
-      "label": "Shift+Alt+Left",
-      "rationale": "evolved: Shrink selection",
+      "behavior": "coach_l9_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L9",
+      "rationale": "evolved: Dynamic layer access: @access:L9:toggle",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7238,12 +7584,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 0,
       "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
+      "behavior": "Key Press",
+      "parameter": "Keyboard F5",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "F5",
+      "rationale": "evolved: Refresh page",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
@@ -7251,257 +7597,62 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 1,
       "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard A",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+A",
-      "rationale": "evolved: Select all",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 2,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 3,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 4,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 5,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard C",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+C",
-      "rationale": "evolved: Copy",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 7,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard V",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+V",
-      "rationale": "evolved: Paste",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 8,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 9,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 10,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 11,
-      "y": 0,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 12,
-      "y": 0,
-      "behavior": "Key Press",
-      "parameter": "Keyboard C",
+      "parameter": "Keyboard S",
       "modifiers": [
         "L GUI"
       ],
-      "label": "Win+C",
-      "rationale": "evolved: Open Copilot",
+      "label": "Win+S",
+      "rationale": "evolved: Search",
       "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 0,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 1,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 2,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 3,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 4,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Period and GreaterThan",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+>",
+      "rationale": "evolved: Increase font size",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 5,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Z",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+Z",
-      "rationale": "evolved: Undo",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 7,
-      "y": 1,
-      "behavior": "Key Press",
-      "parameter": "Keyboard X",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+X",
-      "rationale": "evolved: Cut",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 8,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 9,
-      "y": 1,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 10,
-      "y": 1,
+      "y": 0,
       "behavior": "Key Press",
       "parameter": "Keyboard Home",
       "modifiers": [
@@ -7515,99 +7666,172 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 10,
-      "x": 11,
-      "y": 1,
+      "x": 7,
+      "y": 0,
       "behavior": "Key Press",
-      "parameter": "Keyboard B",
+      "parameter": "Keyboard 5 and Percent",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+%",
+      "rationale": "evolved: Percent format",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 8,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 2 and At",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+2",
+      "rationale": "evolved: Large icons",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 9,
+      "y": 0,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: non-exportable key 'Win+Pause'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 10,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard LeftArrow",
       "modifiers": [
         "L GUI"
       ],
-      "label": "Win+B",
-      "rationale": "evolved: Focus system tray",
+      "label": "Win+Left",
+      "rationale": "evolved: Snap window left",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 11,
+      "y": 0,
+      "behavior": "Key Press",
+      "parameter": "Keyboard I",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+I",
+      "rationale": "evolved: Settings",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 12,
-      "y": 1,
-      "behavior": "coach_game_lock",
+      "y": 0,
+      "behavior": "coach_base",
       "parameter": "",
       "modifiers": [],
-      "label": "coach_game_lock",
-      "rationale": "evolved: Dynamic layer access: @access:L10->L7:toggle:coach_game_lock",
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 0,
-      "y": 2,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard F",
+      "parameter": "Keyboard N",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+F",
-      "rationale": "evolved: Find in conversation",
+      "label": "Ctrl+N",
+      "rationale": "evolved: New chat",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 1,
-      "y": 2,
+      "y": 1,
       "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
       "optimizer_changed": false,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 2,
-      "y": 2,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard F4",
-      "modifiers": [],
-      "label": "F4",
-      "rationale": "evolved: Toggle absolute ref ($)",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+P",
+      "rationale": "evolved: Preview pane",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 3,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard SemiColon and Colon",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+;",
+      "rationale": "evolved: Insert current time",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 4,
-      "y": 2,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard End",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+End",
-      "rationale": "evolved: Select to last used cell",
+      "parameter": "Keyboard F3",
+      "modifiers": [],
+      "label": "F3",
+      "rationale": "evolved: Find next (alt)",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 5,
-      "y": 2,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard UpArrow",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+Up",
+      "rationale": "evolved: Select to top edge",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 7,
+      "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard UpArrow",
       "modifiers": [
@@ -7620,141 +7844,65 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 10,
-      "x": 7,
-      "y": 2,
+      "x": 8,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard L",
+      "parameter": "Keyboard 5 and Percent",
       "modifiers": [
-        "L GUI"
+        "L Ctrl"
       ],
-      "label": "Win+L",
-      "rationale": "evolved: Lock PC",
+      "label": "Ctrl+5",
+      "rationale": "evolved: Calls",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
-      "x": 8,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
       "x": 9,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard D",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+D",
+      "rationale": "evolved: Decline call",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 10,
-      "y": 2,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "y": 1,
+      "behavior": "Key Press",
+      "parameter": "Keyboard V",
+      "modifiers": [
+        "L GUI"
+      ],
+      "label": "Win+V",
+      "rationale": "evolved: Clipboard history",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 11,
-      "y": 2,
+      "y": 1,
       "behavior": "Key Press",
-      "parameter": "Keyboard 2 and At",
+      "parameter": "Keyboard S",
       "modifiers": [
         "L GUI"
       ],
-      "label": "Win+2",
-      "rationale": "evolved: Open/switch pinned app 2",
+      "label": "Win+S",
+      "rationale": "evolved: Search",
       "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 12,
-      "y": 2,
-      "behavior": "Key Press",
-      "parameter": "Keyboard N",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+N",
-      "rationale": "evolved: Notification center",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 0,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 9 and Left Bracket",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+9",
-      "rationale": "evolved: Last tab",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 1,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard H",
-      "modifiers": [
-        "L Ctrl"
-      ],
-      "label": "Ctrl+H",
-      "rationale": "evolved: History",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 2,
-      "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 3,
-      "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard 1 and Bang",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+1",
-      "rationale": "evolved: Extra large icons",
-      "optimizer_changed": true,
-      "apply_batch": true
-    },
-    {
-      "layer": 10,
-      "x": 4,
-      "y": 3,
+      "y": 1,
       "behavior": "Key Press",
       "parameter": "Keyboard RightArrow",
       "modifiers": [
@@ -7767,15 +7915,239 @@ window.CHARYBDIS_FINAL_LAYOUT = {
     },
     {
       "layer": 10,
-      "x": 5,
-      "y": 3,
+      "x": 0,
+      "y": 2,
       "behavior": "Key Press",
-      "parameter": "Keyboard DownArrow",
+      "parameter": "Keyboard F9",
+      "modifiers": [],
+      "label": "F9",
+      "rationale": "evolved: Toggle breakpoint",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 1,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Home",
+      "rationale": "evolved: Open home page",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 2,
+      "y": 2,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 3,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 0 and Right Bracket",
       "modifiers": [
         "L Ctrl"
       ],
-      "label": "Ctrl+Down",
-      "rationale": "evolved: Jump to bottom edge of data",
+      "label": "Ctrl+0",
+      "rationale": "evolved: Reset zoom",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 4,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F5",
+      "modifiers": [],
+      "label": "F5",
+      "rationale": "evolved: Refresh page",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 5,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard L",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+L",
+      "rationale": "evolved: Focus address bar",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 7,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard RightArrow",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+Right",
+      "rationale": "evolved: Jump to right edge of data",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 8,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard N",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+N",
+      "rationale": "evolved: New chat",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 9,
+      "y": 2,
+      "behavior": "Key Press",
+      "parameter": "Keyboard P",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+P",
+      "rationale": "evolved: Toggle chat in meeting",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 10,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB2",
+      "modifiers": [],
+      "label": "MB2",
+      "rationale": "evolved: Right click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 11,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB1",
+      "modifiers": [],
+      "label": "MB1",
+      "rationale": "evolved: Left click",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 12,
+      "y": 2,
+      "behavior": "Mouse Key Press",
+      "parameter": "MB5",
+      "modifiers": [],
+      "label": "MB5",
+      "rationale": "evolved: Forward button",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 0,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard 2 and At",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+2",
+      "rationale": "evolved: Large icons",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 1,
+      "y": 3,
+      "behavior": "coach_l2_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L2",
+      "rationale": "evolved: Dynamic layer access: @access:L2:hold",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 2,
+      "y": 3,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+S'",
+      "optimizer_changed": false,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 3,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard J",
+      "modifiers": [
+        "L Ctrl"
+      ],
+      "label": "Ctrl+J",
+      "rationale": "evolved: Downloads",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 4,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard F3",
+      "modifiers": [
+        "L Shift"
+      ],
+      "label": "Shift+F3",
+      "rationale": "evolved: Find previous",
+      "optimizer_changed": true,
+      "apply_batch": true
+    },
+    {
+      "layer": 10,
+      "x": 5,
+      "y": 3,
+      "behavior": "Key Press",
+      "parameter": "Keyboard Home",
+      "modifiers": [
+        "L Alt"
+      ],
+      "label": "Alt+Home",
+      "rationale": "evolved: Open home page",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7784,13 +8156,10 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 7,
       "y": 3,
       "behavior": "Key Press",
-      "parameter": "Keyboard LeftArrow",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Left",
-      "rationale": "evolved: Select to left edge",
+      "parameter": "Keyboard F7",
+      "modifiers": [],
+      "label": "F7",
+      "rationale": "evolved: Spell check",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7798,13 +8167,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 8,
       "y": 3,
-      "behavior": "Key Press",
-      "parameter": "Keyboard E",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+E",
-      "rationale": "evolved: File Explorer",
+      "behavior": "coach_l9_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "Scroll_L9",
+      "rationale": "evolved: Dynamic layer access: @scroll:L9:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7812,60 +8179,63 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 9,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
-      "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "behavior": "Key Press",
+      "parameter": "Keyboard K",
+      "modifiers": [
+        "L Ctrl",
+        "L Shift"
+      ],
+      "label": "Ctrl+Shift+K",
+      "rationale": "evolved: Raise/lower hand",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 10,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
+      "behavior": "Mouse Key Press",
+      "parameter": "MB4",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "MB4",
+      "rationale": "evolved: Back button",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 11,
       "y": 3,
-      "behavior": "Transparent",
-      "parameter": "",
+      "behavior": "Mouse Key Press",
+      "parameter": "MB3",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "MB3",
+      "rationale": "evolved: Middle click",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 12,
       "y": 3,
-      "behavior": "Transparent",
+      "behavior": "coach_base",
       "parameter": "",
       "modifiers": [],
-      "label": "transparent",
-      "rationale": "transparent:",
-      "optimizer_changed": false,
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
+      "optimizer_changed": true,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 3,
       "y": 4,
-      "behavior": "coach_base",
+      "behavior": "Transparent",
       "parameter": "",
       "modifiers": [],
-      "label": "Base",
-      "rationale": "evolved: Dynamic layer access: @access:L10->L0:toggle:Base",
-      "optimizer_changed": true,
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+F'",
+      "optimizer_changed": false,
       "apply_batch": true
     },
     {
@@ -7873,12 +8243,12 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 4,
       "y": 4,
       "behavior": "Key Press",
-      "parameter": "Keyboard X",
+      "parameter": "Keyboard Tab",
       "modifiers": [
-        "L GUI"
+        "L Shift"
       ],
-      "label": "Win+X",
-      "rationale": "evolved: Power User menu",
+      "label": "Shift+Tab",
+      "rationale": "evolved: Outdent",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7887,12 +8257,10 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "x": 5,
       "y": 4,
       "behavior": "Key Press",
-      "parameter": "Keyboard Period and GreaterThan",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+.",
-      "rationale": "evolved: Emoji picker",
+      "parameter": "Keyboard F9",
+      "modifiers": [],
+      "label": "F9",
+      "rationale": "evolved: Toggle breakpoint",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7900,13 +8268,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 7,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard T",
-      "modifiers": [
-        "L GUI"
-      ],
-      "label": "Win+T",
-      "rationale": "evolved: Cycle taskbar apps",
+      "behavior": "coach_l10_toggle",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L10",
+      "rationale": "evolved: Dynamic layer access: @access:L10:toggle",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7914,14 +8280,11 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 8,
       "y": 4,
-      "behavior": "Key Press",
-      "parameter": "Keyboard Escape",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Esc",
-      "rationale": "evolved: Task Manager",
+      "behavior": "coach_l2_hold",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L2",
+      "rationale": "evolved: Dynamic layer access: @access:L2:hold",
       "optimizer_changed": true,
       "apply_batch": true
     },
@@ -7933,7 +8296,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "parameter": "",
       "modifiers": [],
       "label": "transparent",
-      "rationale": "transparent:",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+W'",
       "optimizer_changed": false,
       "apply_batch": true
     },
@@ -7941,29 +8304,23 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 5,
       "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard RightArrow",
-      "modifiers": [
-        "L Ctrl",
-        "L Shift"
-      ],
-      "label": "Ctrl+Shift+Right",
-      "rationale": "evolved: Select to right edge",
-      "optimizer_changed": true,
+      "behavior": "Transparent",
+      "parameter": "",
+      "modifiers": [],
+      "label": "transparent",
+      "rationale": "transparent: skipped: multi-stroke chord 'Ctrl+K Ctrl+S'",
+      "optimizer_changed": false,
       "apply_batch": true
     },
     {
       "layer": 10,
       "x": 7,
       "y": 5,
-      "behavior": "Key Press",
-      "parameter": "Keyboard D",
-      "modifiers": [
-        "L GUI",
-        "L Ctrl"
-      ],
-      "label": "Win+Ctrl+D",
-      "rationale": "evolved: New virtual desktop",
+      "behavior": "coach_base",
+      "parameter": "",
+      "modifiers": [],
+      "label": "L0",
+      "rationale": "evolved: Dynamic layer access: @access:L0:return",
       "optimizer_changed": true,
       "apply_batch": true
     }
@@ -8110,7 +8467,7 @@ console.log("Applying " + window.CHARYBDIS_FINAL_LAYOUT.keyCount + " keys across
   }
 
   function validateSupportedBehaviors(items) {
-    const supported = new Set(["Key Press", "Mouse Key Press", "Momentary Layer", "To Layer", "Toggle Layer", "Bluetooth", "Output Selection", "Studio Unlock", "Reset", "Bootloader", "Transparent", "None", "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold", "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold", "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle", "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle", "coach_travel_off", "coach_recover_base"]);
+    const supported = new Set(["Key Press", "Mouse Key Press", "Momentary Layer", "To Layer", "Toggle Layer", "Bluetooth", "Output Selection", "Studio Unlock", "Reset", "Bootloader", "Transparent", "None", "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold", "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold", "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle", "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle", "coach_travel_off", "coach_recover_base", "coach_ctrl_click", "coach_shift_click", "coach_alt_click"]);
     const unsupported = items.filter((item) => !supported.has(item.behavior));
     if (!unsupported.length) return true;
 
