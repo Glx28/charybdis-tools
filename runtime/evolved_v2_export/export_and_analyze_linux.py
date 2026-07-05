@@ -102,6 +102,7 @@ COACH_LAYER_ACCESS = {
     ("hold", 8): "coach_l8_hold",
     ("hold", 9): "coach_l9_hold",
     ("hold", 10): "coach_l10_hold",
+    ("hold", 11): "coach_l11_hold",
     ("toggle", 0): "coach_base",
     ("toggle", 1): "coach_l1_toggle",
     ("toggle", 2): "coach_l2_toggle",
@@ -121,7 +122,7 @@ COACH_LAYER_ACCESS = {
 
 COACH_STUDIO_BEHAVIORS = [
     "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold",
-    "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold",
+    "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold", "coach_l11_hold",
     "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle",
     "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle",
     "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
@@ -144,7 +145,14 @@ def canonical_hid_parameter(token):
 def coach_behavior_for_layer_access(action, target):
     # v2 optimizer emits full strings like "Momentary Layer 4" / "Toggle Layer 3"
     action_key = str(action or "").strip().lower()
-    if action_key.startswith("momentary layer") or action_key.startswith("scroll mode layer"):
+    if action_key.startswith("scroll mode layer"):
+        # All scroll shortcuts export as &mo 11 (L11 is the dedicated scroll mode layer).
+        # L11 is listed in scroll-layers in charybdis_right.overlay so PMW3610 activates
+        # scroll mode when it is active. L11 is all-transparent, so the current layer's
+        # bindings remain visible. This makes every layer's @scroll:LX:hold work correctly
+        # without jumping away from the active layer.
+        return COACH_LAYER_ACCESS.get(("hold", 11))
+    elif action_key.startswith("momentary layer"):
         mode = "hold"
     elif action_key.startswith("toggle layer") or action_key == "return to base":
         mode = "toggle"

@@ -653,7 +653,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 0,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L3",
@@ -1426,7 +1426,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 1,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L2",
@@ -2992,7 +2992,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 3,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L1",
@@ -4554,7 +4554,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 5,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L8",
@@ -5328,7 +5328,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 6,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L5",
@@ -7397,7 +7397,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 9,
       "x": 7,
       "y": 3,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L10",
@@ -7539,7 +7539,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 9,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L6",
@@ -8174,7 +8174,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 8,
       "y": 3,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L9",
@@ -8290,7 +8290,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 8,
       "y": 4,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L4",
@@ -8326,7 +8326,7 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "layer": 10,
       "x": 7,
       "y": 5,
-      "behavior": "coach_l6_hold",
+      "behavior": "coach_l11_hold",
       "parameter": "",
       "modifiers": [],
       "label": "Scroll_L9",
@@ -8477,7 +8477,7 @@ console.log("Applying " + window.CHARYBDIS_FINAL_LAYOUT.keyCount + " keys across
   }
 
   function validateSupportedBehaviors(items) {
-    const supported = new Set(["Key Press", "Mouse Key Press", "Momentary Layer", "To Layer", "Toggle Layer", "Bluetooth", "Output Selection", "Studio Unlock", "Reset", "Bootloader", "Transparent", "None", "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold", "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold", "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle", "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle", "coach_travel_off", "coach_recover_base", "coach_ctrl_click", "coach_shift_click", "coach_alt_click"]);
+    const supported = new Set(["Key Press", "Mouse Key Press", "Momentary Layer", "To Layer", "Toggle Layer", "Bluetooth", "Output Selection", "Studio Unlock", "Reset", "Bootloader", "Transparent", "None", "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold", "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold", "coach_l11_hold", "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle", "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle", "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle", "coach_travel_off", "coach_recover_base", "coach_ctrl_click", "coach_shift_click", "coach_alt_click"]);
     const unsupported = items.filter((item) => !supported.has(item.behavior));
     if (!unsupported.length) return true;
 

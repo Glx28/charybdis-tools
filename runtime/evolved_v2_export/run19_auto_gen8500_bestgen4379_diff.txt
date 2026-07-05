@@ -1,6 +1,6 @@
 Charybdis V2 Evolved Layout Diff
-Source: v2_checkpoint_gen9500.json
-Generation: 9500
+Source: v2_checkpoint_gen8500.json
+Generation: 8500
 ============================================================
 
 --- Layer 0 ---
