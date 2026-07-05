@@ -47,8 +47,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L3",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -863,8 +863,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L2",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -2541,8 +2541,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L1",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -4137,8 +4137,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L8",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -4967,8 +4967,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L5",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -6323,8 +6323,8 @@
     "effort": 1.75,
     "from_label": "transparent",
     "to_label": "Scroll_L10",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -6475,8 +6475,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L6",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -7092,8 +7092,8 @@
     "effort": 1.0,
     "from_label": "transparent",
     "to_label": "Scroll_L9",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -7204,8 +7204,8 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L4",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   },
   {
@@ -7217,8 +7217,8 @@
     "effort": 1.5,
     "from_label": "transparent",
     "to_label": "Scroll_L9",
-    "to_behavior": "coach_l11_hold",
-    "to_parameter": "",
+    "to_behavior": "Momentary Layer",
+    "to_parameter": "Layer::11",
     "to_modifiers": []
   }
 ]

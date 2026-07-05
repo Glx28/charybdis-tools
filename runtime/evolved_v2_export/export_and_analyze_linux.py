@@ -102,7 +102,6 @@ COACH_LAYER_ACCESS = {
     ("hold", 8): "coach_l8_hold",
     ("hold", 9): "coach_l9_hold",
     ("hold", 10): "coach_l10_hold",
-    ("hold", 11): "coach_l11_hold",
     ("toggle", 0): "coach_base",
     ("toggle", 1): "coach_l1_toggle",
     ("toggle", 2): "coach_l2_toggle",
@@ -122,7 +121,7 @@ COACH_LAYER_ACCESS = {
 
 COACH_STUDIO_BEHAVIORS = [
     "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold",
-    "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold", "coach_l11_hold",
+    "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold",
     "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle",
     "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle",
     "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
@@ -534,12 +533,16 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                 elif sc.get("is_layer_access"):
                     behavior = sc.get("action", "")
                     target = int(sc.get("access_target_layer", -1))
-                    coach_behavior = coach_behavior_for_layer_access(behavior, target)
-                    if coach_behavior:
-                        behavior = coach_behavior
-                        parameter = ""
+                    if str(behavior or "").strip().lower().startswith("scroll mode layer"):
+                        behavior = "Momentary Layer"
+                        parameter = "Layer::11"
                     else:
-                        parameter = f"Layer::{target}" if target >= 0 else ""
+                        coach_behavior = coach_behavior_for_layer_access(behavior, target)
+                        if coach_behavior:
+                            behavior = coach_behavior
+                            parameter = ""
+                        else:
+                            parameter = f"Layer::{target}" if target >= 0 else ""
                     effective = {
                         "x": pos["x"], "y": pos["y"],
                         "label": sc.get("base_key") or sc["keys"],

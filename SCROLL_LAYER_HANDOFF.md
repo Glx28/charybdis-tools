@@ -12,7 +12,7 @@ A dedicated transparent scroll mode layer (L11) was added to the ZMK firmware. E
 ### After
 - `scroll-layers = <11>` — L11 is the dedicated scroll mode layer
 - L11 is all-transparent (56× `&trans`) — current layer bindings stay visible while scrolling
-- Export maps ALL `@scroll:LX:hold` → `&mo 11` (coach_l11_hold)
+- Export maps ALL `@scroll:LX:hold` → ZMK Studio's built-in `Momentary Layer` behavior with `Layer::11`
 - Holding scroll from layer X: L11 stacks on top of X → scroll active, X bindings still accessible
 
 ---
@@ -35,10 +35,12 @@ snipe-layers = <8>;     // unchanged
 
 **`runtime/evolved_v2_export/export_and_analyze_linux.py`**
 
-Three changes:
-1. `COACH_LAYER_ACCESS`: added `("hold", 11): "coach_l11_hold"`
-2. `COACH_STUDIO_BEHAVIORS`: added `"coach_l11_hold"` to the list
-3. `coach_behavior_for_layer_access()`: scroll mode shortcuts now return `COACH_LAYER_ACCESS.get(("hold", 11))` instead of `("hold", 6)`
+Current export behavior:
+1. `@scroll:LX:hold` remains labeled as `Scroll_LX` so the optimizer/source context is visible.
+2. The exported behavior is Studio's built-in `Momentary Layer`.
+3. The exported parameter is `Layer::11`.
+
+Do not export scroll holds as a custom `coach_l11_hold` behavior. ZMK Studio may expose L11 as a layer while still not exposing a custom macro behavior named `coach_l11_hold`; using the built-in momentary layer selector is the reliable path.
 
 ---
 
@@ -48,7 +50,7 @@ Three changes:
 Run: `python3 runtime/evolved_v2_export/promote.py --apply`
 
 Check the behavior counts in the output. You should see:
-- `coach_l11_hold`: N (one per scroll shortcut in the genome, typically 8-10)
+- `Momentary Layer` with `Layer::11`: N (one per scroll shortcut in the genome, typically 8-10)
 - `coach_l6_hold`: 0 or 1 at most (any remaining ones are regular L6 holds, NOT scroll)
 - No scroll shortcut should export as `coach_l9_hold`, `coach_l10_hold`, etc.
 
