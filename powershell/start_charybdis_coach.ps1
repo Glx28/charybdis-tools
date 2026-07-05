@@ -38,7 +38,7 @@ if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
 }
 
 $parentDir = (Resolve-Path (Join-Path $RepoRoot "..")).Path
-$coachDir = Join-Path $parentDir "charybdis-coach"
+$coachDir = Join-Path $RepoRoot "coach"
 $helperConfigPath = Join-Path $parentDir "charybdis-zmk-config\config\charybdis_helper.json"
 $coachIndexPath = Join-Path $coachDir "index.html"
 $runtimeDir = Join-Path $RepoRoot "runtime"
@@ -85,18 +85,11 @@ MISSING COACH APP
 The coach web UI was not found at:
   $coachIndexPath
 
-This repo (charybdis-tools) needs its sibling repo charybdis-coach
-in the same parent directory:
+The coach web UI should be at:
+  $coachIndexPath
 
-  C:\Users\<user>\
-  +-- charybdis-tools\       <-- you are here
-  +-- charybdis-coach\      <-- missing
-
-Fix: run this in the parent directory:
-  cd "$parentDir"
-  git clone https://github.com/Glx28/charybdis-coach.git
-
-Then re-run this script.
+Fix: ensure the coach folder exists inside charybdis-tools:
+  charybdis-tools  +-- coach\            <-- must exist
 "@
     exit 1
 }
@@ -122,7 +115,7 @@ function Test-LocalPort {
 function Test-CoachHttp {
     param([int]$Port, [int]$TimeoutSec = 3)
     try {
-        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/charybdis-coach/index.html" -UseBasicParsing -TimeoutSec $TimeoutSec
+        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/coach/index.html" -UseBasicParsing -TimeoutSec $TimeoutSec
         return $response.StatusCode -eq 200
     } catch {
         return $false
@@ -305,7 +298,7 @@ if (-not $serverReady) {
     } else {
         $arguments = @("-m", "http.server", "$Port", "--bind", "127.0.0.1")
     }
-    $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $parentDir -WindowStyle Hidden -PassThru
+    $server = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $RepoRoot -WindowStyle Hidden -PassThru
     Set-Content -LiteralPath $pidPath -Value $server.Id -Encoding ASCII
     $deadline = (Get-Date).AddSeconds(8)
     while ((Get-Date) -lt $deadline) {
