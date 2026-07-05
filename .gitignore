@@ -3,6 +3,9 @@ runtime/shortcut_usage.jsonl
 runtime/charybdis_events.jsonl
 runtime/charybdis_beacon.log
 runtime/coach_beacon_stderr.log
+runtime/*.log
+runtime/*.pid
+runtime/shortcut_first_seen.json
 trackball_benchmarks/results/
 AGENTS.md
 .claude/
