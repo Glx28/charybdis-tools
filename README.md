@@ -28,6 +28,16 @@ For generated layout/checkpoint analysis, use the repo's existing tools before a
 
 Do not reverse-engineer checkpoint schemas or hand-edit generated layout artifacts unless the existing tools expose a specific bug to fix.
 
+### One-Command Runtime Refresh
+
+After a layout/default update, future agents should use the single refresh script instead of manually pulling repos, editing cache-busters, and restarting processes:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\nos\charybdis-tools\powershell\update_and_start_charybdis.ps1
+```
+
+It pulls `charybdis-tools`, `../charybdis-coach`, and `../charybdis-zmk-config`, ensures the ZMK repo is on `codex/build-coach-layers-cpi750`, refreshes the coach app cache-buster from the current tools commit, validates JavaScript, restarts the helper/logger, beacon listener, and coach server, then prints only commit hashes, PIDs, and the coach URL.
+
 ### Prerequisites
 
 The copy-paste installer below tries to install missing prerequisites with `winget`:
