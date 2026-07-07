@@ -12,6 +12,8 @@ Usage:
   promote.py                                 # auto-pick best checkpoint, check only (dry run)
   promote.py --checkpoint PATH               # check a specific checkpoint, dry run
   promote.py --apply                         # check + export + propagate files (no git)
+  promote.py --checkpoint PATH --default-only --apply
+                                             # overwrite only default layout files; do not keep archives
   promote.py --apply --commit                # also git commit in all 3 repos
   promote.py --apply --commit --push         # also git push
   promote.py --mark-verified                 # flip verified_in_zmk_studio on the currently
@@ -155,16 +157,29 @@ def validate_export(prefix):
     }
 
 
-def propagate(validated, run_label, generation, best_generation, gap):
+def cleanup_export(prefix):
+    for suffix in ("apply.js", "verify.js", "keybindings_explained.csv", "diff.txt"):
+        path = EXPORT_DIR / f"{prefix}_{suffix}"
+        if path.exists():
+            path.unlink()
+
+
+def propagate(validated, run_label, generation, best_generation, gap, archive=True):
     apply_js, verify_js, csv_path = validated["apply_js"], validated["verify_js"], validated["csv_path"]
 
-    (ZMK_DIR / "layout/keybindings_explained.csv").write_bytes(csv_path.read_bytes())
-    (ZMK_DIR / "scripts/zmk-studio/apply_every_key.js").write_bytes(apply_js.read_bytes())
-    (ZMK_DIR / "scripts/zmk-studio/verify_every_key.js").write_bytes(verify_js.read_bytes())
-    archive_apply = ZMK_DIR / f"scripts/zmk-studio/apply_v2_current_best_gen{generation}_{run_label}.js"
-    archive_verify = ZMK_DIR / f"scripts/zmk-studio/verify_v2_current_best_gen{generation}_{run_label}.js"
-    archive_apply.write_bytes(apply_js.read_bytes())
-    archive_verify.write_bytes(verify_js.read_bytes())
+    zmk_csv = ZMK_DIR / "layout/keybindings_explained.csv"
+    zmk_apply = ZMK_DIR / "scripts/zmk-studio/apply_every_key.js"
+    zmk_verify = ZMK_DIR / "scripts/zmk-studio/verify_every_key.js"
+    zmk_csv.write_bytes(csv_path.read_bytes())
+    zmk_apply.write_bytes(apply_js.read_bytes())
+    zmk_verify.write_bytes(verify_js.read_bytes())
+
+    archive_apply = archive_verify = None
+    if archive:
+        archive_apply = ZMK_DIR / f"scripts/zmk-studio/apply_v2_current_best_gen{generation}_{run_label}.js"
+        archive_verify = ZMK_DIR / f"scripts/zmk-studio/verify_v2_current_best_gen{generation}_{run_label}.js"
+        archive_apply.write_bytes(apply_js.read_bytes())
+        archive_verify.write_bytes(verify_js.read_bytes())
 
     (COACH_DIR / "data/keybindings_explained.csv").write_bytes(csv_path.read_bytes())
     tools_coach_data = TOOLS_COACH_DIR / "data/keybindings_explained.csv"
@@ -179,9 +194,9 @@ def propagate(validated, run_label, generation, best_generation, gap):
     layout["source_run"] = f"run_{run_label}"
     layout["source_generation"] = generation
     layout["best_generation"] = best_generation
-    layout["source_apply_script"] = str(apply_js)
-    layout["source_verify_script"] = str(verify_js)
-    layout["source_csv"] = str(csv_path)
+    layout["source_apply_script"] = str(zmk_apply)
+    layout["source_verify_script"] = str(zmk_verify)
+    layout["source_csv"] = str(zmk_csv)
     layout["verified_in_zmk_studio"] = False
     layout["verify_result"] = {
         "pass": None, "fail": None, "percent": None,
@@ -191,8 +206,8 @@ def propagate(validated, run_label, generation, best_generation, gap):
     (ZMK_DIR / "layout/final_user_layout_v2.json").write_text(json.dumps(layout, indent=2))
 
     print(f"\nPropagated to zmk-config + coach copies (gap={gap:+.3f}).")
-    print(f"  Apply:  {ZMK_DIR / 'scripts/zmk-studio/apply_every_key.js'}")
-    print(f"  Verify: {ZMK_DIR / 'scripts/zmk-studio/verify_every_key.js'}")
+    print(f"  Apply:  {zmk_apply}")
+    print(f"  Verify: {zmk_verify}")
     return archive_apply, archive_verify
 
 
@@ -205,23 +220,24 @@ def git_run(cmd, cwd):
     return r.returncode == 0
 
 
-def commit_and_push(export_prefix, archive_apply, archive_verify, run_label, generation, gap, push):
+def commit_and_push(export_prefix, archive_apply, archive_verify, run_label, generation, gap, push, default_only=False):
     coauthor = "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
 
-    tools_files = [
-        f"runtime/evolved_v2_export/{export_prefix}_apply.js",
-        f"runtime/evolved_v2_export/{export_prefix}_verify.js",
-        f"runtime/evolved_v2_export/{export_prefix}_keybindings_explained.csv",
-        f"runtime/evolved_v2_export/{export_prefix}_diff.txt",
-        "runtime/evolved_v2_export/selected_candidate.json",
-        "runtime/evolved_v2_export/evolved_changes.json",
-    ]
+    tools_files = ["runtime/evolved_v2_export/selected_candidate.json", "runtime/evolved_v2_export/evolved_changes.json"]
+    if not default_only:
+        tools_files = [
+            f"runtime/evolved_v2_export/{export_prefix}_apply.js",
+            f"runtime/evolved_v2_export/{export_prefix}_verify.js",
+            f"runtime/evolved_v2_export/{export_prefix}_keybindings_explained.csv",
+            f"runtime/evolved_v2_export/{export_prefix}_diff.txt",
+            *tools_files,
+        ]
     tools_coach_csv = TOOLS_COACH_DIR / "data/keybindings_explained.csv"
     if tools_coach_csv.exists():
         tools_files.append("coach/data/keybindings_explained.csv")
     git_run(["git", "add", *tools_files], cwd=TOOLS_DIR)
     git_run(["git", "commit", "-m",
-             f"Export gen{generation} checkpoint layout ({run_label} run, gap={gap:+.3f})\n\n{coauthor}"],
+             f"Set gen{generation} default layout data ({run_label}, gap={gap:+.3f})\n\n{coauthor}"],
             cwd=TOOLS_DIR)
 
     zmk_files = [
@@ -229,12 +245,12 @@ def commit_and_push(export_prefix, archive_apply, archive_verify, run_label, gen
         "layout/keybindings_explained.csv",
         "scripts/zmk-studio/apply_every_key.js",
         "scripts/zmk-studio/verify_every_key.js",
-        str(archive_apply.relative_to(ZMK_DIR)),
-        str(archive_verify.relative_to(ZMK_DIR)),
     ]
+    if archive_apply and archive_verify:
+        zmk_files.extend([str(archive_apply.relative_to(ZMK_DIR)), str(archive_verify.relative_to(ZMK_DIR))])
     git_run(["git", "add", *zmk_files], cwd=ZMK_DIR)
     git_run(["git", "commit", "-m",
-             f"Apply gen{generation} checkpoint layout ({run_label} run, gap={gap:+.3f})\n\n{coauthor}"],
+             f"Set gen{generation} as default ZMK Studio layout ({run_label}, gap={gap:+.3f})\n\n{coauthor}"],
             cwd=ZMK_DIR)
 
     git_run(["git", "add", "data/keybindings_explained.csv"], cwd=COACH_DIR)
@@ -267,6 +283,8 @@ def main():
     ap.add_argument("--checkpoint", type=Path, help="Specific checkpoint path; default = best by gap in build/")
     ap.add_argument("--label", default="auto", help="Run label used in filenames/commit messages (e.g. v19)")
     ap.add_argument("--apply", action="store_true", help="Export and propagate files into zmk-config/coach")
+    ap.add_argument("--default-only", action="store_true",
+                    help="With --apply, overwrite default files only and delete temporary export artifacts")
     ap.add_argument("--commit", action="store_true", help="Also git commit in all 3 repos (implies --apply)")
     ap.add_argument("--push", action="store_true", help="Also git push (implies --commit)")
     ap.add_argument("--list", action="store_true", help="Print gap table for all kept checkpoints and exit")
@@ -277,6 +295,8 @@ def main():
     if args.push:
         args.commit = True
     if args.commit:
+        args.apply = True
+    if args.default_only:
         args.apply = True
 
     if args.list:
@@ -316,13 +336,17 @@ def main():
     validated = validate_export(prefix)
 
     archive_apply, archive_verify = propagate(
-        validated, args.label, stats["generation"], stats["best_generation"], stats["gap"]
+        validated, args.label, stats["generation"], stats["best_generation"], stats["gap"],
+        archive=not args.default_only,
     )
+    if args.default_only:
+        cleanup_export(prefix)
 
     if args.commit:
         print("\nCommitting:")
         commit_and_push(prefix, archive_apply, archive_verify, args.label,
-                         stats["generation"], stats["gap"], push=args.push)
+                         stats["generation"], stats["gap"], push=args.push,
+                         default_only=args.default_only)
 
     print("\nDone. verified_in_zmk_studio=false — run apply -> verify in ZMK Studio, "
           "then `promote.py --mark-verified --commit --push`.")

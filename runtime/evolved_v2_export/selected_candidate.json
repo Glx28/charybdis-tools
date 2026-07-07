@@ -1,7 +1,7 @@
 {
   "mode": "feasible",
-  "source": "v2_checkpoint_gen21500.json",
-  "generation": 21500,
-  "change_count": 469,
-  "timestamp": "2026-07-07T07:24:38.520261Z"
+  "source": "v2_checkpoint_gen30000.json",
+  "generation": 30000,
+  "change_count": 493,
+  "timestamp": "2026-07-07T11:14:29.690556Z"
 }
