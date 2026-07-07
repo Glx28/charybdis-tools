@@ -38,6 +38,7 @@ TOOLS_DIR = Path("/home/nos/charybdis/charybdis-tools")
 EXPORT_DIR = TOOLS_DIR / "runtime/evolved_v2_export"
 ZMK_DIR = Path("/home/nos/charybdis/charybdis-zmk-config")
 COACH_DIR = Path("/home/nos/charybdis/charybdis-coach")
+TOOLS_COACH_DIR = TOOLS_DIR / "coach"
 EXPORTER = EXPORT_DIR / "export_and_analyze_linux.py"
 GAP_OFFSET = 49.30
 EXPECTED_KEYS = 616
@@ -101,6 +102,7 @@ def next_run_number():
 
 
 def run_export(checkpoint_path, prefix):
+    checkpoint_path = checkpoint_path.resolve()
     result = subprocess.run(
         [sys.executable, str(EXPORTER), "--checkpoint", str(checkpoint_path), "--prefix", prefix],
         cwd=EXPORT_DIR, capture_output=True, text=True,
@@ -165,6 +167,9 @@ def propagate(validated, run_label, generation, best_generation, gap):
     archive_verify.write_bytes(verify_js.read_bytes())
 
     (COACH_DIR / "data/keybindings_explained.csv").write_bytes(csv_path.read_bytes())
+    tools_coach_data = TOOLS_COACH_DIR / "data/keybindings_explained.csv"
+    if tools_coach_data.exists():
+        tools_coach_data.write_bytes(csv_path.read_bytes())
 
     text = apply_js.read_text()
     start = text.find("window.CHARYBDIS_FINAL_LAYOUT = ") + len("window.CHARYBDIS_FINAL_LAYOUT = ")
@@ -185,7 +190,7 @@ def propagate(validated, run_label, generation, best_generation, gap):
     layout["score_summary"] = {"run": run_label, "best_generation": best_generation, "gap": round(gap, 3)}
     (ZMK_DIR / "layout/final_user_layout_v2.json").write_text(json.dumps(layout, indent=2))
 
-    print(f"\nPropagated to zmk-config + coach (gap={gap:+.3f}).")
+    print(f"\nPropagated to zmk-config + coach copies (gap={gap:+.3f}).")
     print(f"  Apply:  {ZMK_DIR / 'scripts/zmk-studio/apply_every_key.js'}")
     print(f"  Verify: {ZMK_DIR / 'scripts/zmk-studio/verify_every_key.js'}")
     return archive_apply, archive_verify
@@ -211,6 +216,9 @@ def commit_and_push(export_prefix, archive_apply, archive_verify, run_label, gen
         "runtime/evolved_v2_export/selected_candidate.json",
         "runtime/evolved_v2_export/evolved_changes.json",
     ]
+    tools_coach_csv = TOOLS_COACH_DIR / "data/keybindings_explained.csv"
+    if tools_coach_csv.exists():
+        tools_files.append("coach/data/keybindings_explained.csv")
     git_run(["git", "add", *tools_files], cwd=TOOLS_DIR)
     git_run(["git", "commit", "-m",
              f"Export gen{generation} checkpoint layout ({run_label} run, gap={gap:+.3f})\n\n{coauthor}"],

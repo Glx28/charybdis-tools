@@ -23,7 +23,15 @@ class NumpyEncoder(json.JSONEncoder):
 
 sys.path.insert(0, str(Path("/home/nos/charybdis/charybdis-optimizer-v2")))
 from core.loader import build_layout
-from core.norwegian_keys import RAW_COMPLETION_NORWEGIAN, parse_shortcut_keys_norwegian
+from core.norwegian_keys import (
+    LITERAL_TO_HID_PARAMETER,
+    RAW_COMPLETION_NORWEGIAN,
+    canonical_hid_parameter,
+    parse_shortcut_keys_norwegian,
+)
+from evolution.arrow_cluster import analyze_arrows
+from evolution.acceptance import _dynamic_mouse_layer_report
+from evolution.completion_cluster import analyze_completion_cluster
 
 
 OPTIMIZER_DATA_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2/data")
@@ -45,87 +53,29 @@ def valid_hid_parameters(canonical_data: dict):
             param = key_data.get("parameter", "")
             if param:
                 valid.add(param)
+                valid.add(str(param).replace("Keyboard ", ""))
+                valid.add(canonical_hid_parameter(param))
             label = key_data.get("label", "")
             if label:
                 valid.add(label)
+                valid.add(canonical_hid_parameter(label))
+    valid.update(LITERAL_TO_HID_PARAMETER.values())
     return valid
 
 
 def check_completion_cluster(layout):
-    family = set(RAW_COMPLETION_NORWEGIAN)
-    base_by_layer = {}
-    all_layers = set()
-    for i, sid in enumerate(layout.genome):
-        if sid < 0:
-            continue
-        sc = layout.shortcuts[sid]
-        if sc.base_key not in family:
-            continue
-        pos = layout.positions[i]
-        if pos.layer == 7 or pos.is_frozen:
-            continue
-        all_layers.add(pos.layer)
-        if sc.modifiers:
-            continue
-        base_by_layer.setdefault(pos.layer, []).append(
-            (sc.base_key, float(pos.x), float(pos.y))
-        )
-
-    anchor_layer = None
-    best_unique = -1
-    for layer, items in base_by_layer.items():
-        unique = len({k for k, _, _ in items})
-        if unique > best_unique:
-            best_unique = unique
-            anchor_layer = layer
-
-    present = set()
-    if anchor_layer is not None:
-        present = {k for k, _, _ in base_by_layer[anchor_layer]}
-    missing = family - present
-
-    ordered = True
-    compactness = 0.0
-    if anchor_layer is not None:
-        items = base_by_layer[anchor_layer]
-        xs = [x for _, x, _ in items]
-        ys = [y for _, _, y in items]
-        if xs:
-            x_span = max(xs) - min(xs)
-            y_span = max(ys) - min(ys)
-            inversions = 0
-            order_map = {k: i for i, k in enumerate(RAW_COMPLETION_NORWEGIAN)}
-            sorted_by_x = sorted(items, key=lambda t: t[1])
-            for i in range(len(sorted_by_x)):
-                for j in range(i + 1, len(sorted_by_x)):
-                    if order_map[sorted_by_x[i][0]] > order_map[sorted_by_x[j][0]]:
-                        inversions += 1
-            compactness = (
-                len(items) * 10.0
-                - x_span * 1.5
-                - max(0.0, y_span - 1.0) * 4.0
-                - inversions * 5.0
-            )
-            # Loose left-to-right check: allow a few out-of-order pairs.
-            ordered = inversions <= 1
-
-    raw_base_layers = len(base_by_layer)
-    family_layers = len(all_layers)
-
+    report = analyze_completion_cluster(layout)
     return {
-        "anchor_layer": anchor_layer,
-        "raw_base_present": sorted(present),
-        "raw_base_missing": sorted(missing),
-        "raw_base_layers_used": raw_base_layers,
-        "family_layers_used": family_layers,
-        "compactness_order_score": round(compactness, 3),
-        "ordered_left_to_right": ordered,
-        "pass": (
-            family_layers <= 2
-            and raw_base_layers == 1
-            and len(missing) == 0
-            and compactness > 0
-        ),
+        "anchor_layer": report["anchor_layer"],
+        "raw_base_present": report["raw_base_keys_present"],
+        "raw_base_missing": report["raw_base_keys_missing"],
+        "raw_base_layers_used": report["raw_base_layers_used"],
+        "raw_base_layers": report["raw_base_layers"],
+        "family_layers_used": len(report["all_family_layers"]),
+        "family_layers": report["all_family_layers"],
+        "compactness_order_score": report["compactness_order_score"],
+        "shape_preserved": report["ordered_left_to_right"],
+        "pass": report["acceptance_pass"],
     }
 
 
@@ -139,77 +89,46 @@ def check_duplicates(cp):
 
 
 def check_mouse_and_scroll(layout):
-    mouse_keys = {"MB1", "MB2", "MB3", "MB4", "MB5"}
     fake_scroll = {"ScrollUp", "ScrollDown"}
-    mouse = {}
     fake = []
     scroll_access = []
+    dynamic_report = _dynamic_mouse_layer_report(layout)
     for i, sid in enumerate(layout.genome):
         if sid < 0:
             continue
         sc = layout.shortcuts[sid]
         pos = layout.positions[i]
-        if sc.keys in mouse_keys:
-            mouse[sc.keys] = (int(pos.layer), float(pos.x), float(pos.y), pos.hand, float(pos.effort))
         if sc.keys in fake_scroll:
             fake.append(sc.keys)
         if sc.is_layer_access and ("Scroll" in sc.keys or "scroll" in sc.action.lower()):
             scroll_access.append((sc.keys, int(pos.layer), float(pos.x), float(pos.y), pos.hand, float(pos.effort)))
 
-    right_mouse = sum(1 for v in mouse.values() if v[3] == "right")
-    avg_mouse_effort = sum(v[4] for v in mouse.values()) / len(mouse) if mouse else 999.0
     avg_scroll_effort = sum(a[5] for a in scroll_access) / len(scroll_access) if scroll_access else 999.0
-    # The layout should not fake scroll keypresses, must expose all five mouse
-    # buttons, and both mouse buttons and scroll-mode access should have low
-    # effective access cost.  Handedness is reported but not hard-required.
-    passes = (
-        len(fake) == 0
-        and len(mouse) == 5
-        and avg_mouse_effort <= 1.6
-        and len(scroll_access) > 0
-        and avg_scroll_effort <= 1.6
-    )
+    best = dynamic_report.get("best_candidate") or {}
+    buttons = best.get("button_keys_present", [])
+    passes = len(fake) == 0 and bool(dynamic_report.get("acceptance_pass"))
     return {
-        "mouse_buttons_found": len(mouse),
-        "right_hand_mouse": f"{right_mouse}/{len(mouse)}",
-        "avg_mouse_effort": round(avg_mouse_effort, 3),
+        "mouse_layer": dynamic_report.get("mouse_layer"),
+        "mouse_buttons_found_on_mouse_layer": len(buttons),
+        "mouse_buttons_on_mouse_layer": buttons,
+        "dynamic_mouse_layer_acceptance": dynamic_report.get("acceptance_pass"),
         "avg_scroll_effort": round(avg_scroll_effort, 3),
         "fake_scroll_keypresses": fake,
         "scroll_mode_access": scroll_access,
+        "best_candidate": best,
         "pass": passes,
     }
 
 
 def check_arrows(layout):
-    arrow_keys = {"LeftArrow", "RightArrow", "UpArrow", "DownArrow"}
-    arrows = {}
-    for i, sid in enumerate(layout.genome):
-        if sid < 0:
-            continue
-        sc = layout.shortcuts[sid]
-        if sc.base_key in arrow_keys and not sc.modifiers:
-            pos = layout.positions[i]
-            if not pos.is_frozen:
-                arrows[sc.base_key] = (int(pos.layer), float(pos.x), float(pos.y))
-    layers = {v[0] for v in arrows.values()}
-    # Complete cluster: exactly one of each arrow on a single non-L7 layer and
-    # ordered (left < right, up above down, up/down centered over left/right).
-    complete = False
-    if len(arrows) == 4 and len(layers) == 1:
-        left = arrows.get("LeftArrow")
-        right = arrows.get("RightArrow")
-        up = arrows.get("UpArrow")
-        down = arrows.get("DownArrow")
-        if left and right and up and down:
-            ordered = left[1] < right[1] and up[2] < down[2]
-            centered = (
-                min(left[1], right[1]) <= up[1] <= max(left[1], right[1])
-                and min(left[1], right[1]) <= down[1] <= max(left[1], right[1])
-            )
-            complete = ordered and centered
+    report = analyze_arrows(layout)
     return {
-        "non_frozen_arrows": arrows,
-        "pass": len(arrows) == 0 or complete,
+        "non_frozen_arrows": report["placements"],
+        "layers": report["layers"],
+        "is_complete_cluster": report["is_complete_cluster"],
+        "allowed_cluster_shape": report["allowed_cluster_shape"],
+        "allowed_shapes": report["allowed_shapes"],
+        "pass": report["acceptance_pass"],
     }
 
 
@@ -233,24 +152,28 @@ def check_win_s(layout):
 
 
 def check_l7_frozen(layout, canonical_data: dict):
-    """Verify that frozen L7 keys are still present in the genome."""
+    """Verify canonical L7 is frozen in the physical layout.
+
+    L7 content is intentionally frozen and may not be represented by mutable
+    genome SIDs in checkpoints.  Do not treat frozen canonical keys as genome
+    omissions.
+    """
     l7 = canonical_data.get("layers", {}).get("7", {}).get("keys", {})
     errors = []
+    pos_by_coord = {
+        f"{int(pos.x)}:{int(pos.y)}": pos
+        for pos in layout.positions
+        if int(pos.layer) == 7
+    }
     for coord, key_data in l7.items():
         behavior = str(key_data.get("behavior", "")).lower()
         if behavior in ("transparent", "none", "", "mouse") or "mouse" in behavior:
             continue
-        x, y = (int(v) for v in coord.split(":"))
-        for pos in layout.positions:
-            if pos.layer == 7 and pos.x == x and pos.y == y:
-                sid = int(layout.genome[pos.gene_idx])
-                if sid < 0:
-                    errors.append(f"L7 {coord} empty")
-                else:
-                    sc = layout.shortcuts[sid]
-                    if not sc.keys:
-                        errors.append(f"L7 {coord} has empty shortcut")
-                break
+        pos = pos_by_coord.get(coord)
+        if pos is None:
+            errors.append(f"L7 {coord} missing physical position")
+        elif not pos.is_frozen:
+            errors.append(f"L7 {coord} is not frozen")
     return {"frozen_l7_errors": errors, "pass": len(errors) == 0}
 
 

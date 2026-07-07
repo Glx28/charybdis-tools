@@ -14,6 +14,20 @@ If you are an AI agent reading this repo, here is everything you need to know in
 - **Coach server**: Serves the browser-based keyboard visualizer at `http://127.0.0.1:8765/charybdis-coach/`.
 - **Mouse settings**: Enforces 1:1 pointer speed, no acceleration.
 
+### Layout Optimizer Analysis Rules For Agents
+
+For generated layout/checkpoint analysis, use the repo's existing tools before any ad hoc inspection:
+
+1. Read `runtime/evolved_v2_export/HANDOFF_LAYOUT_OPTIMIZATION.md`.
+2. Identify the active/latest run with `pgrep -af run_evolution`, `../charybdis-optimizer-v2/build/latest_run_dir`, and direct checkpoint listing under `../charybdis-optimizer-v2/build/runs/<run>/`.
+3. Run the standard checkpoint tools:
+   - `python3 runtime/evolved_v2_export/promote.py --checkpoint <checkpoint.json>`
+   - `python runtime/evolved_v2_export/analyze_checkpoint_standalone.py <checkpoint.json>`
+   - `../charybdis-optimizer-v2/.venv/bin/python runtime/evolved_v2_export/acceptance_check.py <checkpoint.json>`
+4. Compare against `../charybdis-zmk-config/layout/final_user_layout_v2.json` before recommending promotion.
+
+Do not reverse-engineer checkpoint schemas or hand-edit generated layout artifacts unless the existing tools expose a specific bug to fix.
+
 ### Prerequisites
 
 The copy-paste installer below tries to install missing prerequisites with `winget`:
@@ -198,6 +212,7 @@ This script stops the running AHK helper first, then pulls, then restarts the he
 |--------|---------|-------------|
 | `powershell/start_charybdis_helpers.ps1` | Starts `ahk/charybdis_helpers.ahk`, creates Windows Startup shortcut | After install + after every reboot |
 | `powershell/start_charybdis_coach.ps1` | Starts Python HTTP server (port 8765) + beacon listener + opens browser | After install + after every reboot |
+| `powershell/apply_latest_layout.ps1` | Checks promoted layout CSV sync, copies ZMK Studio apply script to clipboard, optionally restarts coach/logger | When applying the current default layout |
 | `powershell/apply_mouse_settings.ps1` | Sets Windows pointer speed to 1:1, disables acceleration | Once after install |
 | `powershell/setup_rawaccel.ps1` | Installs Raw Accel for trackball acceleration curves | Optional, once |
 | `powershell/validate_layout_bundle.ps1` | Validates layout CSV consistency across all repos | After layout changes |
