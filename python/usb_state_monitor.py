@@ -52,7 +52,7 @@ def get_current_state():
         "toggledLayers": [],
         "lastAction": "USB Connected",
         "lastKey": {"layer": "", "x": "", "y": "", "label": ""},
-        "activeApp": "USB Monitor",
+        "activeApp": "Unknown",
         "launcherVisible": False,
         "transport": "usb",
         "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

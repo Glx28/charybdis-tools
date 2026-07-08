@@ -60,6 +60,25 @@ def load_layout_rows() -> list[dict[str, str]]:
         return [dict(row) for row in csv.DictReader(f)]
 
 
+def read_current_state() -> dict:
+    try:
+        if not STATE_FILE.exists():
+            return {}
+        content = STATE_FILE.read_text(encoding="utf-8-sig")
+        return json.loads(content) if content.strip() else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def foreground_fields_from_current_state() -> dict:
+    current = read_current_state()
+    fields = {
+        "activeApp": current.get("activeApp") or "Unknown",
+        "launcherVisible": bool(current.get("launcherVisible", False)),
+    }
+    return fields
+
+
 def coach_behavior_for_access(kind: str, layer: str) -> str:
     if kind == "hold" and layer.isdigit():
         return f"coach_l{layer}_hold"
@@ -196,8 +215,6 @@ class CoachState:
             "toggledLayers": list(self.toggled_layers),
             "lastAction": self.last_action,
             "lastKey": dict(self.last_key),
-            "activeApp": "Charybdis beacon listener",
-            "launcherVisible": False,
             "transport": self.transport,
             "beaconAlive": True,
             "beaconSource": "python",
@@ -206,6 +223,7 @@ class CoachState:
             "beaconHeartbeatAt": now,
             "updatedAt": now,
         }
+        payload.update(foreground_fields_from_current_state())
         text = json.dumps(payload, ensure_ascii=False)
         tmp = STATE_FILE.with_suffix(STATE_FILE.suffix + ".tmp")
         for attempt in range(8):
