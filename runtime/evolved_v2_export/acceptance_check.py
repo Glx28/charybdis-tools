@@ -45,20 +45,40 @@ def load_checkpoint(path: str):
     return cp, layout
 
 
+def load_canonical_layout_data():
+    canonical = OPTIMIZER_DATA_DIR / "canonical.json"
+    if canonical.exists():
+        return json.loads(canonical.read_text(encoding="utf-8"))
+    layout_json = OPTIMIZER_DATA_DIR / "layout.json"
+    if layout_json.exists():
+        return json.loads(layout_json.read_text(encoding="utf-8"))
+    raise FileNotFoundError(f"No canonical layout data found in {OPTIMIZER_DATA_DIR}")
+
+
+def iter_layout_key_data(canonical_data: dict):
+    if "layers" in canonical_data:
+        for layer_data in canonical_data.get("layers", {}).values():
+            for key_data in layer_data.get("keys", {}).values():
+                yield key_data
+        return
+    for section in ("l0_frozen", "l7_frozen"):
+        for key_data in canonical_data.get(section, {}).values():
+            yield key_data
+
+
 def valid_hid_parameters(canonical_data: dict):
-    """Collect all parameter strings that appear in canonical.json keypress bindings."""
+    """Collect all parameter strings that appear in canonical layout keypress bindings."""
     valid = set()
-    for layer_data in canonical_data.get("layers", {}).values():
-        for key_data in layer_data.get("keys", {}).values():
-            param = key_data.get("parameter", "")
-            if param:
-                valid.add(param)
-                valid.add(str(param).replace("Keyboard ", ""))
-                valid.add(canonical_hid_parameter(param))
-            label = key_data.get("label", "")
-            if label:
-                valid.add(label)
-                valid.add(canonical_hid_parameter(label))
+    for key_data in iter_layout_key_data(canonical_data):
+        param = key_data.get("parameter", "")
+        if param:
+            valid.add(param)
+            valid.add(str(param).replace("Keyboard ", ""))
+            valid.add(canonical_hid_parameter(param))
+        label = key_data.get("label", "")
+        if label:
+            valid.add(label)
+            valid.add(canonical_hid_parameter(label))
     valid.update(LITERAL_TO_HID_PARAMETER.values())
     return valid
 
@@ -158,7 +178,10 @@ def check_l7_frozen(layout, canonical_data: dict):
     genome SIDs in checkpoints.  Do not treat frozen canonical keys as genome
     omissions.
     """
-    l7 = canonical_data.get("layers", {}).get("7", {}).get("keys", {})
+    if "layers" in canonical_data:
+        l7 = canonical_data.get("layers", {}).get("7", {}).get("keys", {})
+    else:
+        l7 = canonical_data.get("l7_frozen", {})
     errors = []
     pos_by_coord = {
         f"{int(pos.x)}:{int(pos.y)}": pos
@@ -213,7 +236,7 @@ def main():
         sys.exit(1)
     cp_path = sys.argv[1]
     cp, layout = load_checkpoint(cp_path)
-    canonical_data = json.loads(Path("/home/nos/charybdis/charybdis-optimizer-v2/data/canonical.json").read_text(encoding="utf-8"))
+    canonical_data = load_canonical_layout_data()
 
     results = {
         "checkpoint": Path(cp_path).name,
