@@ -116,6 +116,7 @@ class CoachState:
         self.toggled_layers: list[str] = []
         self.displayed_layer = "0"
         self.last_action = "Beacon listener ready"
+        self.last_action_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         self.last_key: dict[str, str] = {"layer": "", "x": "", "y": "", "label": ""}
         self.transport = "usb"
         self.beacon_pid = os.getpid()
@@ -140,6 +141,10 @@ class CoachState:
         while value in items:
             items.remove(value)
 
+    def set_last_action(self, text: str) -> None:
+        self.last_action = text
+        self.last_action_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     def set_key_hint(self, kind: str, layer: str) -> None:
         hint = layout_key_hint(kind, layer)
         if hint:
@@ -151,13 +156,13 @@ class CoachState:
         layer = str(layer)
         if direction == "down":
             self.add_unique(self.held_layers, layer)
-            self.last_action = f"Layer {layer} held"
+            self.set_last_action(f"Layer {layer} held")
             self.set_key_hint("hold", layer)
             self.displayed_layer = layer
         else:
             self.remove_value(self.held_layers, layer)
             self.displayed_layer = self.active_layer()
-            self.last_action = f"Layer {layer} released"
+            self.set_last_action(f"Layer {layer} released")
             self.last_key = {"layer": "", "x": "", "y": "", "label": ""}
 
     def on_lock(self, layer: str, direction: str) -> None:
@@ -168,14 +173,14 @@ class CoachState:
             self.held_layers = []
             self.toggled_layers = []
             self.displayed_layer = "0"
-            self.last_action = "Base layer"
+            self.set_last_action("Base layer")
             hint = layout_key_hint("exit", exiting) or layout_key_hint("base", "0")
             self.last_key = dict(hint) if hint else {"layer": "", "x": "", "y": "", "label": ""}
         else:
             self.held_layers = []
             self.locked_layer = layer
             self.displayed_layer = layer
-            self.last_action = f"Layer {layer} locked"
+            self.set_last_action(f"Layer {layer} locked")
             self.set_key_hint("lock", layer)
 
     def on_toggle(self, layer: str, direction: str) -> None:
@@ -183,13 +188,13 @@ class CoachState:
         if direction == "off" or layer in self.toggled_layers:
             self.remove_value(self.toggled_layers, layer)
             self.displayed_layer = self.active_layer()
-            self.last_action = f"Layer {layer} toggled off"
+            self.set_last_action(f"Layer {layer} toggled off")
             hint = layout_key_hint("exit", layer) if direction == "off" else None
             self.last_key = dict(hint) if hint else {"layer": "", "x": "", "y": "", "label": ""}
         else:
             self.add_unique(self.toggled_layers, layer)
             self.displayed_layer = layer
-            self.last_action = f"Layer {layer} toggled on"
+            self.set_last_action(f"Layer {layer} toggled on")
             self.set_key_hint("toggle", layer)
 
     def log(self, message: str) -> None:
@@ -214,6 +219,7 @@ class CoachState:
             "lockedLayer": self.locked_layer,
             "toggledLayers": list(self.toggled_layers),
             "lastAction": self.last_action,
+            "lastActionAt": self.last_action_at,
             "lastKey": dict(self.last_key),
             "transport": self.transport,
             "beaconAlive": True,

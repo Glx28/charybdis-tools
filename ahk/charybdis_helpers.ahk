@@ -88,6 +88,7 @@ global CoachFullscreen := false
 global LauncherVisible := false
 global CurrentCoachLayer := "0"
 global LastAction := "Loaded"
+global LastActionAt := FormatTime(A_NowUTC, "yyyy-MM-ddTHH:mm:ss") "Z"
 global LastKey := Map("layer", "", "x", "", "y", "", "label", "")
 global HeldLayers := []
 global LockedLayer := ""
@@ -214,8 +215,9 @@ ShowNotice(title, message, seconds := 3) {
 }
 
 TouchAction(name) {
-    global LastAction
+    global LastAction, LastActionAt
     LastAction := name
+    LastActionAt := FormatTime(A_NowUTC, "yyyy-MM-ddTHH:mm:ss") "Z"
     UpdateCoachContext()
     WriteCoachState(true)
 }
@@ -369,7 +371,7 @@ JsonKeyObject(key) {
 }
 
 WriteCoachState(logEvent := false) {
-    global StatePath, EventLogPath, CurrentCoachLayer, LastAction, LastKey, HeldLayers, LockedLayer, ToggledLayers, LauncherVisible, HelperConfig
+    global StatePath, EventLogPath, CurrentCoachLayer, LastAction, LastActionAt, LastKey, HeldLayers, LockedLayer, ToggledLayers, LauncherVisible, HelperConfig
     try {
     EnsureRuntime()
     activeApp := ""
@@ -393,6 +395,7 @@ WriteCoachState(logEvent := false) {
         '"lockedLayer":' JsonStringValue(LockedLayer) "," .
         '"toggledLayers":' JsonArrayValue(ToggledLayers) "," .
         '"lastAction":' JsonStringValue(LastAction) "," .
+        '"lastActionAt":' JsonStringValue(LastActionAt) "," .
         '"lastKey":' JsonKeyObject(LastKey) "," .
         '"activeApp":' JsonStringValue(activeApp) "," .
         '"launcherVisible":' (LauncherVisible ? "true" : "false") "," .

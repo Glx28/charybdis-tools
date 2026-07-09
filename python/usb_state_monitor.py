@@ -51,6 +51,7 @@ def get_current_state():
         "lockedLayer": "",
         "toggledLayers": [],
         "lastAction": "USB Connected",
+        "lastActionAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "lastKey": {"layer": "", "x": "", "y": "", "label": ""},
         "activeApp": "Unknown",
         "launcherVisible": False,
@@ -62,6 +63,8 @@ def update_state(changes):
     """Update state file with new changes"""
     state = get_current_state()
     state.update(changes)
+    if "lastAction" in changes:
+        state["lastActionAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     state["updatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     state["transport"] = "usb"
 
