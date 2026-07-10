@@ -8,6 +8,7 @@ This is the USB-first implementation - Bluetooth beacon version is WIP.
 """
 
 import json
+import os
 import time
 import sys
 from pathlib import Path
@@ -69,9 +70,13 @@ def update_state(changes):
     state["transport"] = "usb"
 
     RUNTIME_DIR.mkdir(exist_ok=True)
-    # Write with BOM for compatibility with existing AHK reader
-    with open(STATE_FILE, 'w', encoding='utf-8-sig') as f:
+    # Write with BOM for compatibility with existing AHK reader. Write to a
+    # temp file and atomically replace so readers (the coach web app, other
+    # writers) never observe a truncated/blank file mid-write.
+    tmp_path = STATE_FILE.with_suffix(STATE_FILE.suffix + ".tmp")
+    with open(tmp_path, 'w', encoding='utf-8-sig') as f:
         json.dump(state, f, ensure_ascii=False)
+    os.replace(tmp_path, STATE_FILE)
 
 def parse_zmk_console_line(line):
     """
