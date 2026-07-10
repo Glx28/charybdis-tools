@@ -89,10 +89,17 @@ function Update-CoachCacheBuster {
     if (-not (Test-Path -LiteralPath $IndexPath)) {
         throw "Missing coach index: $IndexPath"
     }
-    $html = Get-Content -Raw -LiteralPath $IndexPath
+    # index.html is BOM-less UTF-8 (see the write below), so Get-Content -Raw
+    # (no -Encoding) has no BOM to auto-detect from and falls back to the
+    # system's ANSI codepage on Windows PowerShell 5.1 - that mangles every
+    # non-ASCII glyph (e.g. the modifiers icon), and re-writing the already-
+    # mangled string back out as UTF-8 doubles the corruption (mojibake).
+    # Read with the exact same explicit UTF-8-no-BOM encoding used for the
+    # write so this round-trips correctly regardless of locale/codepage.
+    $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+    $html = [System.IO.File]::ReadAllText($IndexPath, $utf8NoBom)
     $html = $html -replace 'styles\.css\?v=[^"]+', "styles.css?v=$Version"
     $html = $html -replace 'app\.js\?v=[^"]+', "app.js?v=$Version"
-    $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
     [System.IO.File]::WriteAllText($IndexPath, $html, $utf8NoBom)
 }
 
