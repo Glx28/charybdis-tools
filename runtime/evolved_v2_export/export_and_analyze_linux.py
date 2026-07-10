@@ -117,6 +117,21 @@ COACH_LAYER_ACCESS = {
     ("to", 2): "coach_mouse_lock",
     ("to", 7): "coach_game_lock",
     ("to", 8): "coach_travel_toggle",
+    # Scroll-mode-while-holding-layer-X. Unlike plain "&mo 11" (which only ever
+    # stacks L11's transparent bindings on top of whatever layer is *already*
+    # active), these combine &mo 11 with &mo <target> in one macro, so holding
+    # the key genuinely exposes target layer X's bindings while scroll mode is
+    # active - not just L0's (or whatever the current layer happened to be).
+    ("scroll_hold", 1): "coach_l1_scroll_hold",
+    ("scroll_hold", 2): "coach_l2_scroll_hold",
+    ("scroll_hold", 3): "coach_l3_scroll_hold",
+    ("scroll_hold", 4): "coach_l4_scroll_hold",
+    ("scroll_hold", 5): "coach_l5_scroll_hold",
+    ("scroll_hold", 6): "coach_l6_scroll_hold",
+    ("scroll_hold", 7): "coach_l7_scroll_hold",
+    ("scroll_hold", 8): "coach_l8_scroll_hold",
+    ("scroll_hold", 9): "coach_l9_scroll_hold",
+    ("scroll_hold", 10): "coach_l10_scroll_hold",
 }
 
 COACH_STUDIO_BEHAVIORS = [
@@ -127,6 +142,9 @@ COACH_STUDIO_BEHAVIORS = [
     "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
     "coach_travel_off", "coach_recover_base",
     "coach_ctrl_click", "coach_shift_click", "coach_alt_click",
+    "coach_l1_scroll_hold", "coach_l2_scroll_hold", "coach_l3_scroll_hold", "coach_l4_scroll_hold",
+    "coach_l5_scroll_hold", "coach_l6_scroll_hold", "coach_l7_scroll_hold", "coach_l8_scroll_hold",
+    "coach_l9_scroll_hold", "coach_l10_scroll_hold",
 ]
 
 
@@ -145,12 +163,16 @@ def coach_behavior_for_layer_access(action, target):
     # v2 optimizer emits full strings like "Momentary Layer 4" / "Toggle Layer 3"
     action_key = str(action or "").strip().lower()
     if action_key.startswith("scroll mode layer"):
-        # All scroll shortcuts export as &mo 11 (L11 is the dedicated scroll mode layer).
-        # L11 is listed in scroll-layers in charybdis_right.overlay so PMW3610 activates
-        # scroll mode when it is active. L11 is all-transparent, so the current layer's
-        # bindings remain visible. This makes every layer's @scroll:LX:hold work correctly
-        # without jumping away from the active layer.
-        return COACH_LAYER_ACCESS.get(("hold", 11))
+        # coach_l<target>_scroll_hold combines &mo 11 (scroll mode - L11 is listed in
+        # scroll-layers in charybdis_right.overlay so PMW3610 activates scroll mode
+        # when it's active) with &mo <target> in one macro, so holding the key
+        # actually exposes target layer's bindings while scroll mode is active,
+        # instead of falling through to whatever layer happened to already be active.
+        try:
+            target_int = int(target)
+        except (TypeError, ValueError):
+            target_int = -1
+        return COACH_LAYER_ACCESS.get(("scroll_hold", target_int))
     elif action_key.startswith("momentary layer"):
         mode = "hold"
     elif action_key.startswith("toggle layer") or action_key == "return to base":
@@ -534,8 +556,15 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                     behavior = sc.get("action", "")
                     target = int(sc.get("access_target_layer", -1))
                     if str(behavior or "").strip().lower().startswith("scroll mode layer"):
-                        behavior = "Momentary Layer"
-                        parameter = "Layer::11"
+                        scroll_behavior = COACH_LAYER_ACCESS.get(("scroll_hold", target))
+                        if scroll_behavior:
+                            behavior = scroll_behavior
+                            parameter = ""
+                        else:
+                            # No dual-layer macro compiled for this target (e.g. target
+                            # out of range) - fall back to plain scroll-mode-only access.
+                            behavior = "Momentary Layer"
+                            parameter = "Layer::11"
                     else:
                         coach_behavior = coach_behavior_for_layer_access(behavior, target)
                         if coach_behavior:
