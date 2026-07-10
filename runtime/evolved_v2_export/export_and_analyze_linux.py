@@ -1132,9 +1132,24 @@ function parseExpected() {{
   return out;
 }}
 
+// A scroll-hold position ("coach_lN_scroll_hold" expected) that's still just
+// plain "Momentary Layer" / "Layer::11" is the old, pre-fix behavior: scroll
+// mode alone, with no target layer combined in, so it silently falls through
+// to whatever layer was already active instead of exposing layer N's
+// bindings. That's a distinct, known regression - flag it separately from a
+// generic mismatch so it reads as "still the bad old scroll" not just "wrong".
+function isScrollHoldExpectation(behavior) {{
+  return /^coach_l\\d+_scroll_hold$/i.test(clean(behavior));
+}}
+
+function isOldPlainScrollBehavior(actual) {{
+  return clean(actual.behavior) === "Momentary Layer" && normalizeParameter(actual.parameter) === "11";
+}}
+
 async function runVerify() {{
   const expected = parseExpected().filter((exp) => Number(exp.layer) !== 7);
   let pass = 0, fail = 0, errors = [];
+  let scrollHoldOk = 0, scrollHoldRegressed = 0, scrollHoldOtherFail = 0;
   let currentLayer = null;
   for (const exp of expected) {{
     const layer = parseInt(exp.layer);
@@ -1163,26 +1178,49 @@ async function runVerify() {{
     const bMatch = clean(actual.behavior).toLowerCase() === clean(exp.behavior).toLowerCase();
     const pMatch = normalizeParameter(actual.parameter) === normalizeParameter(exp.parameter);
     const mMatch = normalizeModifiers(actual.modifiers) === normalizeModifiers(exp.modifiers);
+    const expectsScrollHold = isScrollHoldExpectation(exp.behavior);
 
     if (bMatch && pMatch && mMatch) {{
       pass++;
+      if (expectsScrollHold) scrollHoldOk++;
     }} else {{
       fail++;
       const issues = [];
       if (!bMatch) issues.push(`behavior expected "${{exp.behavior}}" got "${{actual.behavior}}"`);
       if (!pMatch) issues.push(`parameter expected "${{exp.parameter}}" got "${{actual.parameter}}"`);
       if (!mMatch) issues.push(`modifiers expected "${{exp.modifiers}}" got "${{actual.modifiers.join('+')}}"`);
-      errors.push({{layer, x, y, expected: exp, actual, issues}});
-      console.warn(`FAIL L${{layer}} x${{x}} y${{y}} ${{exp.label || ""}}: ${{issues.join("; ")}}`);
+
+      let scrollRegression = false;
+      if (expectsScrollHold && !bMatch && isOldPlainScrollBehavior(actual)) {{
+        scrollRegression = true;
+        scrollHoldRegressed++;
+        issues.push(`OLD SCROLL (bad, pre-fix): still plain "Momentary Layer" / Layer::11 - scroll mode only, target layer not exposed. Needs reflashed firmware + reapply.`);
+      }} else if (expectsScrollHold) {{
+        scrollHoldOtherFail++;
+      }}
+
+      errors.push({{layer, x, y, expected: exp, actual, issues, scrollRegression}});
+      console.warn(`FAIL L${{layer}} x${{x}} y${{y}} ${{exp.label || ""}}${{scrollRegression ? " [OLD SCROLL]" : ""}}: ${{issues.join("; ")}}`);
     }}
   }}
   console.log('Verify result: ' + pass + ' pass, ' + fail + ' fail (' + (pass/(pass+fail)*100).toFixed(1) + '%)');
-  window._CHARYBDIS_VERIFY_RESULT = {{pass, fail, errors}};
+  const scrollHoldTotal = scrollHoldOk + scrollHoldRegressed + scrollHoldOtherFail;
+  if (scrollHoldTotal) {{
+    console.log(
+      `Scroll-hold keys: ${{scrollHoldOk}}/${{scrollHoldTotal}} real per-layer coach_lN_scroll_hold, `
+      + `${{scrollHoldRegressed}} still old plain scroll-mode-only (Momentary Layer/L11), `
+      + `${{scrollHoldOtherFail}} other mismatch.`
+    );
+    if (scrollHoldRegressed) {{
+      console.warn(`${{scrollHoldRegressed}} scroll-hold key(s) are still the OLD pre-fix behavior - flash the updated firmware (coach_lN_scroll_hold macros) and reapply before trusting scroll layer access.`);
+    }}
+  }}
+  window._CHARYBDIS_VERIFY_RESULT = {{pass, fail, errors, scrollHoldOk, scrollHoldRegressed, scrollHoldOtherFail}};
   if (errors.length) {{
     console.table(errors.slice(0, 50).map((err) => ({{
       pos: `L${{err.layer}} x${{err.x}} y${{err.y}}`,
       label: err.expected?.label || "",
-      issues: err.issues?.join("; ") || err.error || ""
+      issues: (err.scrollRegression ? "[OLD SCROLL] " : "") + (err.issues?.join("; ") || err.error || "")
     }})));
     console.warn(`Stored full error list in window._CHARYBDIS_VERIFY_RESULT.errors (${{errors.length}} entries).`);
   }}
