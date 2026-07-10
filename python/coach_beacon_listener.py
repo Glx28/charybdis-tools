@@ -79,6 +79,23 @@ def foreground_fields_from_current_state() -> dict:
     return fields
 
 
+def action_fields_from_current_state() -> dict:
+    """Preserve whatever writer (AHK or this listener, in a prior run) last
+    reported a real action, instead of clobbering it with our own startup
+    placeholder. Without this, this listener's periodic heartbeat writes
+    overwrite AHK's real, more current lastAction/lastActionAt/lastKey with
+    "Beacon listener ready" on every write - the coach UI then sees the state
+    file's lastAction flip between AHK's real value and this stale
+    placeholder on every alternating write, which looks like a new physical
+    action even though nothing happened."""
+    current = read_current_state()
+    return {
+        "lastAction": current.get("lastAction") or "Beacon listener ready",
+        "lastActionAt": current.get("lastActionAt") or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "lastKey": current.get("lastKey") or {"layer": "", "x": "", "y": "", "label": ""},
+    }
+
+
 def coach_behavior_for_access(kind: str, layer: str) -> str:
     if kind == "hold" and layer.isdigit():
         return f"coach_l{layer}_hold"
@@ -118,6 +135,7 @@ class CoachState:
         self.last_action = "Beacon listener ready"
         self.last_action_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         self.last_key: dict[str, str] = {"layer": "", "x": "", "y": "", "label": ""}
+        self.has_real_action = False
         self.transport = "usb"
         self.beacon_pid = os.getpid()
         self.beacon_started_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -144,6 +162,7 @@ class CoachState:
     def set_last_action(self, text: str) -> None:
         self.last_action = text
         self.last_action_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        self.has_real_action = True
 
     def set_key_hint(self, kind: str, layer: str) -> None:
         hint = layout_key_hint(kind, layer)
@@ -212,15 +231,22 @@ class CoachState:
         import os
 
         now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        action_fields = (
+            {
+                "lastAction": self.last_action,
+                "lastActionAt": self.last_action_at,
+                "lastKey": dict(self.last_key),
+            }
+            if self.has_real_action
+            else action_fields_from_current_state()
+        )
         payload = {
             "activeLayer": self.active_layer(),
             "displayedLayer": self.displayed_layer,
             "heldLayers": list(self.held_layers),
             "lockedLayer": self.locked_layer,
             "toggledLayers": list(self.toggled_layers),
-            "lastAction": self.last_action,
-            "lastActionAt": self.last_action_at,
-            "lastKey": dict(self.last_key),
+            **action_fields,
             "transport": self.transport,
             "beaconAlive": True,
             "beaconSource": "python",
