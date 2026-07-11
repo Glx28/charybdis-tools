@@ -34,6 +34,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+import usage_mismatch_report
+
 OPTIMIZER_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2")
 BUILD_DIR = OPTIMIZER_DIR / "build"
 TOOLS_DIR = Path("/home/nos/charybdis/charybdis-tools")
@@ -334,6 +336,11 @@ def main():
 
     print("\nValidating export:")
     validated = validate_export(prefix)
+
+    try:
+        usage_mismatch_report.report(validated["csv_path"])
+    except Exception as exc:  # advisory only - never let this block a promotion
+        print(f"\n(usage_mismatch_report failed, skipping: {exc})")
 
     archive_apply, archive_verify = propagate(
         validated, args.label, stats["generation"], stats["best_generation"], stats["gap"],

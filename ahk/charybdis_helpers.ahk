@@ -1667,45 +1667,6 @@ LayerKeyHint(kind, layer) {
             }
         }
     }
-    if kind = "hold" {
-        switch layer {
-            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Layer 1")
-            case "2": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 2")
-            case "3": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 3")
-            case "4": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 4")
-            case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
-            case "6": return Map("layer", "0", "x", "5", "y", "4", "label", "Layer 6")
-            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
-            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Layer 8")
-            case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
-            case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
-        }
-    } else if kind = "lock" {
-        switch layer {
-            case "2": return Map("layer", "3", "x", "10", "y", "2", "label", "Layer 2 Lock")
-            case "7": return Map("layer", "1", "x", "0", "y", "1", "label", "L7 Lock")
-        }
-    } else if kind = "toggle" {
-        switch layer {
-            case "1": return Map("layer", "0", "x", "3", "y", "4", "label", "Layer 1")
-            case "2": return Map("layer", "0", "x", "5", "y", "5", "label", "Layer 2")
-            case "3": return Map("layer", "0", "x", "8", "y", "4", "label", "Layer 3")
-            case "4": return Map("layer", "0", "x", "7", "y", "4", "label", "Layer 4")
-            case "5": return Map("layer", "3", "x", "4", "y", "5", "label", "Layer 5")
-            case "6": return Map("layer", "2", "x", "12", "y", "2", "label", "Layer 6")
-            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Layer 7")
-            case "8": return Map("layer", "3", "x", "11", "y", "2", "label", "Layer 8")
-            case "9": return Map("layer", "0", "x", "4", "y", "5", "label", "Layer 9")
-            case "10": return Map("layer", "6", "x", "7", "y", "4", "label", "Layer 10")
-        }
-    } else if kind = "base" {
-        return Map("layer", "2", "x", "7", "y", "4", "label", "Base")
-    } else if kind = "exit" {
-        switch layer {
-            case "7": return Map("layer", "7", "x", "7", "y", "4", "label", "Exit Base")
-            case "8": return Map("layer", "8", "x", "7", "y", "4", "label", "Exit Layer 8")
-        }
-    }
     return Map()
 }
 
@@ -2132,25 +2093,16 @@ CoachCellLabel(row) {
     return behavior
 }
 
+; Historical exports used a "Momentary Layer"/parameter="Layer::N" naming
+; convention (confirmed still present in several runtime/evolved_v2_export/
+; *_keybindings_explained.csv archives) where this used to guess a role
+; (NAV/MOUSE/WIN/SYS/GAME/TRAVEL) from the layer number alone. That guess
+; goes stale the moment a promotion assigns a different role to that layer
+; number - "layer 2 = mouse" has NOT been true across several recent
+; promotions this session (mouse layer has been L2, L5, L6, L9, L10).
+; label is already the live CSV's visual_label - trust it instead of
+; guessing, same as every other fallback fixed this session.
 LayerIcon(label, parameter) {
-    if InStr(parameter, "Layer::1") {
-        return "NAV"
-    }
-    if InStr(parameter, "Layer::2") {
-        return "MOUSE"
-    }
-    if InStr(parameter, "Layer::3") {
-        return "WIN"
-    }
-    if InStr(parameter, "Layer::4") {
-        return "SYS"
-    }
-    if InStr(parameter, "Layer::7") {
-        return "GAME"
-    }
-    if InStr(parameter, "Layer::8") {
-        return "TRAVEL"
-    }
     return label ? label : "LAYER"
 }
 

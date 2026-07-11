@@ -129,8 +129,13 @@ with open(BUILD_DIR / "usage_stats.json", encoding='utf-8') as f:
 with open(ZMK_CONFIG_DIR / "config" / "charybdis_apps.json", encoding='utf-8') as f:
     charybdis_apps = json.load(f)
 
-# Read usage log for top shortcuts and mouse context
-usage_log_path = TOOLS_DIR / "runtime" / "shortcut_usage.jsonl"
+# Read usage log for top shortcuts and mouse context. The AHK helper's
+# nominal write target is runtime/, but real accumulated data has been
+# observed living at the repo root instead - check root first, same order
+# as ../charybdis-optimizer-v2/pipeline/aggregate_usage.js's USAGE_CANDIDATES.
+usage_log_path = TOOLS_DIR / "shortcut_usage.jsonl"
+if not usage_log_path.exists():
+    usage_log_path = TOOLS_DIR / "runtime" / "shortcut_usage.jsonl"
 usage_lines = []
 if usage_log_path.exists():
     with open(usage_log_path, encoding='utf-8') as f:

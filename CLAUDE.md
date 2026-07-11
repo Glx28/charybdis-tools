@@ -21,8 +21,8 @@ AHK automation, PowerShell scripts, trackball benchmarks, and runtime state for 
   - `run_benchmark.ps1 -ProfileName <name>` — run a benchmark
 - `runtime/` — live state files (mostly gitignored)
   - `charybdis_state.json` — current layer/app state (read by coach app)
-  - `shortcut_usage.jsonl` — usage log (read by optimizer pipeline)
-  - `charybdis_events.jsonl` — state heartbeats
+  - `shortcut_usage.jsonl` — usage log; AHK's nominal write target, but check the repo root first (see Shortcut Usage Tracker below)
+  - `charybdis_events.jsonl` — state heartbeats; same root-first caveat applies
 
 ## Mouse Settings
 
@@ -30,7 +30,9 @@ Windows pointer speed must be 1:1 (`MouseSensitivity=10`), acceleration OFF. Use
 
 ## Shortcut Usage Tracker
 
-The AHK helper logs Ctrl/Alt/Win combos + F-keys to `runtime/shortcut_usage.jsonl` (never bare letters). Sequence tracking records previous shortcut + gap within 5s. The optimizer's `aggregate_usage.js` reads this file.
+The AHK helper logs Ctrl/Alt/Win combos + F-keys to `runtime/shortcut_usage.jsonl` (never bare letters). Sequence tracking records previous shortcut + gap within 5s.
+
+**Known path drift:** the substantial, real accumulated usage log has been observed living at the repo root (`shortcut_usage.jsonl`, `charybdis_events.jsonl`) rather than under `runtime/` — the `runtime/` copies can be much smaller/staler snapshots. Anything reading these logs should check the repo root first, then fall back to `runtime/` — this is the order `../charybdis-optimizer-v2/pipeline/aggregate_usage.js` already uses (`USAGE_CANDIDATES`), and `runtime/evolved_v2_export/export_and_analyze.py` and `runtime/evolved_v2_export/usage_mismatch_report.py` follow the same order. Which process actually writes the root-level copy on the live Windows host has not been confirmed — treat this as a known open question, not settled behavior.
 
 ## Optimizer Rules — MANDATORY
 

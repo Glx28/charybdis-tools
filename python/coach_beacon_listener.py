@@ -23,35 +23,6 @@ BEACON_LOG = TOOLS_ROOT / "runtime" / "charybdis_beacon.log"
 LAYOUT_CSV = TOOLS_ROOT.parent / "charybdis-zmk-config" / "layout" / "keybindings_explained.csv"
 LAYOUT_ROWS: list[dict[str, str]] = []
 
-# Maps beacon events to the physical key that triggers them (for coach highlight).
-LAYER_KEY_HINTS: dict[tuple[str, str], dict[str, str]] = {
-    ("hold", "1"): {"layer": "0", "x": "3", "y": "4", "label": "Layer 1"},
-    ("hold", "2"): {"layer": "0", "x": "5", "y": "5", "label": "Layer 2"},
-    ("hold", "3"): {"layer": "0", "x": "8", "y": "4", "label": "Layer 3"},
-    ("hold", "4"): {"layer": "0", "x": "7", "y": "4", "label": "Layer 4"},
-    ("hold", "5"): {"layer": "3", "x": "4", "y": "5", "label": "Layer 5"},
-    ("hold", "6"): {"layer": "0", "x": "5", "y": "4", "label": "Layer 6"},
-    ("hold", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Layer 7"},
-    ("hold", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Layer 8"},
-    ("hold", "9"): {"layer": "0", "x": "4", "y": "5", "label": "Layer 9"},
-    ("hold", "10"): {"layer": "6", "x": "7", "y": "4", "label": "Layer 10"},
-    ("lock", "2"): {"layer": "3", "x": "10", "y": "2", "label": "Layer 2 Lock"},
-    ("lock", "7"): {"layer": "1", "x": "0", "y": "1", "label": "Layer 7 Lock"},
-    ("toggle", "1"): {"layer": "0", "x": "3", "y": "4", "label": "Layer 1"},
-    ("toggle", "2"): {"layer": "0", "x": "5", "y": "5", "label": "Layer 2"},
-    ("toggle", "3"): {"layer": "0", "x": "8", "y": "4", "label": "Layer 3"},
-    ("toggle", "4"): {"layer": "0", "x": "7", "y": "4", "label": "Layer 4"},
-    ("toggle", "5"): {"layer": "3", "x": "4", "y": "5", "label": "Layer 5"},
-    ("toggle", "6"): {"layer": "2", "x": "12", "y": "2", "label": "Layer 6"},
-    ("toggle", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Layer 7"},
-    ("toggle", "8"): {"layer": "3", "x": "11", "y": "2", "label": "Layer 8"},
-    ("toggle", "9"): {"layer": "0", "x": "4", "y": "5", "label": "Layer 9"},
-    ("toggle", "10"): {"layer": "6", "x": "7", "y": "4", "label": "Layer 10"},
-    ("base", "0"): {"layer": "2", "x": "7", "y": "4", "label": "Base"},
-    ("exit", "7"): {"layer": "7", "x": "7", "y": "4", "label": "Exit Base"},
-    ("exit", "8"): {"layer": "8", "x": "7", "y": "4", "label": "Exit Travel"},
-}
-
 
 def load_layout_rows() -> list[dict[str, str]]:
     if not LAYOUT_CSV.exists():
@@ -121,7 +92,7 @@ def layout_key_hint(kind: str, layer: str) -> dict[str, str]:
                     "y": row.get("y", ""),
                     "label": row.get("visual_label") or behavior,
                 }
-    return dict(LAYER_KEY_HINTS.get((kind, layer), {}))
+    return {}
 
 
 class CoachState:
