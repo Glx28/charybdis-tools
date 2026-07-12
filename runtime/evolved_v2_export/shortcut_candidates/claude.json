@@ -1,0 +1,150 @@
+{
+  "app_exe": "claude.exe",
+  "display_name": "Claude Code",
+  "discovered_at": "2026-07-12T12:54:34Z",
+  "usage_count": 68,
+  "status": "needs_review",
+  "sources_tried": [
+    "https://code.claude.com/docs/en/interactive-mode"
+  ],
+  "shortcuts": [
+    {
+      "keys": "Alt+B",
+      "action": "Move cursor back one word",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Alt+F",
+      "action": "Move cursor forward one word",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+A",
+      "action": "Move cursor to start of current line",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+B",
+      "action": "Background running tasks",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+C",
+      "action": "Interrupt, or clear input",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+D",
+      "action": "Exit Claude Code session",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+E",
+      "action": "Move cursor to end of current line",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+J",
+      "action": "Control sequence",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+K",
+      "action": "Delete to end of line",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+L",
+      "action": "Redraw screen",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+O",
+      "action": "Toggle transcript viewer",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+R",
+      "action": "Reverse search command history",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+T",
+      "action": "Toggle Claude\u2019s task checklist",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+U",
+      "action": "Delete from cursor to line start",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+W",
+      "action": "Delete previous word",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+X Ctrl+K",
+      "action": "Stop all running background subagents in this session. Press twice within 3 seconds to confirm",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Ctrl+Y",
+      "action": "Paste deleted text",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Esc",
+      "action": "Interrupt Claude, or close a dialog",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Esc + Esc",
+      "action": "Clear input draft, or rewind",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Option+Enter",
+      "action": "Option key",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Shift+Enter",
+      "action": "Shift+Enter",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Space",
+      "action": "Move right",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    },
+    {
+      "keys": "Space, Enter, Escape",
+      "action": "Dismiss the answer and return to the prompt",
+      "extracted_from": "table",
+      "source_url": "https://code.claude.com/docs/en/interactive-mode"
+    }
+  ]
+}

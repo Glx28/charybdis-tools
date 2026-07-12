@@ -34,6 +34,14 @@ The AHK helper logs Ctrl/Alt/Win combos + F-keys to `runtime/shortcut_usage.json
 
 **Known path drift:** the substantial, real accumulated usage log has been observed living at the repo root (`shortcut_usage.jsonl`, `charybdis_events.jsonl`) rather than under `runtime/` — the `runtime/` copies can be much smaller/staler snapshots. Anything reading these logs should check the repo root first, then fall back to `runtime/` — this is the order `../charybdis-optimizer-v2/pipeline/aggregate_usage.js` already uses (`USAGE_CANDIDATES`), and `runtime/evolved_v2_export/export_and_analyze.py` and `runtime/evolved_v2_export/usage_mismatch_report.py` follow the same order. Which process actually writes the root-level copy on the live Windows host has not been confirmed — treat this as a known open question, not settled behavior.
 
+### Automatic shortcut-gap discovery
+
+`runtime/evolved_v2_export/shortcut_discovery.py` runs automatically from `promote.py` on every promotion. It finds apps with real, regular usage (from the log above) that have zero representation in `charybdis_apps.json`/`coach/workflows/`/`app_shortcut_reference.json` (same detection `usage_mismatch_report.py` already reports), then searches the open web (DuckDuckGo HTML, no API key) for each one's shortcut docs and generically extracts key-combo/description pairs from whatever HTML tables or definition lists it finds — no per-app hardcoding, works the same for an app never seen before. Results land in `runtime/evolved_v2_export/shortcut_candidates/<exe>.json` with `status: "needs_review"`. It never writes `app_shortcut_reference.json` directly.
+
+Caveats, found the hard way: the search backend rate-limits/anomaly-blocks aggressively on repeated queries from the same IP (`status: "search_blocked"` in the candidate file means "retry later," not "no shortcuts exist" — the script backs off `INTER_APP_DELAY_SECONDS` between apps and just skips writing garbage rather than guessing). Extraction is regex/HTML-structure heuristics, not an LLM read — spot-check a candidate's `shortcuts` against its `source_url` before trusting it.
+
+`runtime/evolved_v2_export/merge_shortcut_candidate.py <exe> --apply` folds an approved candidate into both `app_shortcut_reference.json` copies (`coach/data/` and `../charybdis-coach/data/`) and marks it `approved` so future discovery runs don't re-draft it. This merge step is deliberately not automatic — a bad shortcut entry here eventually feeds `app_shortcut_scores.json` in `../charybdis-optimizer-v2`, which drives real fitness scoring (see Optimizer Rules below: fix data via verified sources, never guesses).
+
 ## Optimizer Rules — MANDATORY
 
 1. **NEVER freeze or protect layer access key positions.** Layer keys (coach_*, Toggle Layer, Momentary Layer) must be movable by the optimizer. The algorithm must learn to place them correctly through fitness scoring, not through freezing.

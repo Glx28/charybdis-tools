@@ -34,6 +34,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+import shortcut_discovery
 import usage_mismatch_report
 
 OPTIMIZER_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2")
@@ -341,6 +342,16 @@ def main():
         usage_mismatch_report.report(validated["csv_path"])
     except Exception as exc:  # advisory only - never let this block a promotion
         print(f"\n(usage_mismatch_report failed, skipping: {exc})")
+
+    try:
+        written = shortcut_discovery.run_discovery_for_gaps()
+        if written:
+            print("\nShortcut discovery: drafted/updated candidate(s) for regularly-used, "
+                  "unrepresented apps (review before merging into the evaluation pool):")
+            for path in written:
+                print(f"  {path.relative_to(TOOLS_DIR)}")
+    except Exception as exc:  # advisory only - never let this block a promotion
+        print(f"\n(shortcut_discovery failed, skipping: {exc})")
 
     archive_apply, archive_verify = propagate(
         validated, args.label, stats["generation"], stats["best_generation"], stats["gap"],
