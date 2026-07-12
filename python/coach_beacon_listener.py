@@ -194,13 +194,48 @@ class CoachState:
             fh.write(line)
 
     def heartbeat(self) -> None:
-        # Refresh updatedAt so the coach knows the listener is alive (do not clear held/locked state).
-        self.write(False)
+        """Refresh liveness metadata only. Does NOT write layer/action state:
+        this listener's own CoachState can go stale relative to AHK (e.g. AHK
+        is the one actually seeing physical layer events on this host), and a
+        full write() here every 5s would periodically stomp AHK's live,
+        correct layer state with Python's stale internal fields - producing
+        a ~150ms flash back to Python's last-known layer on every heartbeat.
+        Only merge the fields this listener actually owns; leave everything
+        else in the file exactly as the other writer left it."""
+        current = read_current_state()
+        if not current:
+            self.write(False)
+            return
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        current["beaconAlive"] = True
+        current["beaconSource"] = "python"
+        current["beaconPid"] = self.beacon_pid
+        current["beaconHeartbeatAt"] = now
+        current["transport"] = self.transport
+        current["updatedAt"] = now
+        self._atomic_write(current)
 
-    def write(self, log_event: bool = True) -> None:
+    def _atomic_write(self, payload: dict, log_event: bool = False) -> None:
         STATE_FILE.parent.mkdir(exist_ok=True)
         import os
 
+        text = json.dumps(payload, ensure_ascii=False)
+        tmp = STATE_FILE.with_suffix(STATE_FILE.suffix + ".tmp")
+        for attempt in range(8):
+            try:
+                tmp.write_text(text, encoding="utf-8")
+                os.replace(tmp, STATE_FILE)
+                break
+            except OSError:
+                if attempt == 7:
+                    raise
+                time.sleep(0.025)
+        if log_event:
+            with EVENT_LOG.open("a", encoding="utf-8") as fh:
+                fh.write(text + "\n")
+            self.log(self.last_action)
+
+    def write(self, log_event: bool = True) -> None:
         now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         action_fields = (
             {
@@ -227,21 +262,7 @@ class CoachState:
             "updatedAt": now,
         }
         payload.update(foreground_fields_from_current_state())
-        text = json.dumps(payload, ensure_ascii=False)
-        tmp = STATE_FILE.with_suffix(STATE_FILE.suffix + ".tmp")
-        for attempt in range(8):
-            try:
-                tmp.write_text(text, encoding="utf-8")
-                os.replace(tmp, STATE_FILE)
-                break
-            except OSError:
-                if attempt == 7:
-                    raise
-                time.sleep(0.025)
-        if log_event:
-            with EVENT_LOG.open("a", encoding="utf-8") as fh:
-                fh.write(text + "\n")
-            self.log(self.last_action)
+        self._atomic_write(payload, log_event=log_event)
 
 
 def register_beacons(state: CoachState) -> None:
@@ -348,7 +369,12 @@ def main() -> int:
         return 1
 
     state = CoachState()
-    state.write(False)
+    if read_current_state():
+        # Another writer (e.g. AHK) may already own live layer state on this
+        # host - don't stomp it with this listener's fresh layer=0 default.
+        state.heartbeat()
+    else:
+        state.write(False)
     state.log("Python beacon listener started")
     register_beacons(state)
     print("Charybdis beacon listener active. Press coach layer keys on the keyboard.", file=sys.stderr)
