@@ -3,10 +3,9 @@
     Pull the latest charybdis-zmk-config layout and stage it for applying in ZMK Studio.
 
 .DESCRIPTION
-    Updates the sibling charybdis-zmk-config repo (fast-forward only, and only if
-    it has no local changes), then copies the current apply_every_key.js content
-    to the clipboard so it can be pasted straight into the ZMK Studio devtools
-    console. Prints the matching verify script path for the follow-up check.
+    Runs the unified cross-repo update/release gate, then copies the current
+    apply_every_key.js content to the clipboard so it can be pasted straight
+    into the ZMK Studio devtools console. Prints the matching verify script path.
 
 .PARAMETER RepoRoot
     Path to charybdis-tools. Defaults to the parent of this script's folder.
@@ -41,20 +40,13 @@ $applyPath = Join-Path $zmkRepo "scripts\zmk-studio\apply_every_key.js"
 $verifyPath = Join-Path $zmkRepo "scripts\zmk-studio\verify_every_key.js"
 
 if (-not $SkipPull) {
-    Write-Host "Repo: $zmkRepo" -ForegroundColor Cyan
-    Push-Location $zmkRepo
-    try {
-        Write-Host "Fetching latest changes..." -ForegroundColor Cyan
-        git fetch --all --prune
-        $dirty = git status --porcelain
-        if ([string]::IsNullOrWhiteSpace($dirty)) {
-            git pull --ff-only
-        } else {
-            Write-Host "[KEEP] Local changes present; fetched only, not pulling." -ForegroundColor Yellow
-            git status -sb
-        }
-    } finally {
-        Pop-Location
+    & (Join-Path $RepoRoot "charybdis.ps1") update -NoBrowser
+} else {
+    . (Join-Path $RepoRoot "powershell\lib\Charybdis.Common.ps1")
+    $paths = Get-CharybdisPaths -RepoRoot $RepoRoot
+    $release = Test-ReleaseManifest -Paths $paths
+    if (-not $release.AllPass) {
+        throw "Current layout does not match release_manifest.json; refusing to stage a mixed layout."
     }
 }
 

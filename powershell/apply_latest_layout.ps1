@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Uses the promoted default layout from the sibling charybdis-zmk-config repo.
-    It validates that the ZMK CSV, in-repo coach CSV, and sibling coach CSV match,
+    It validates that the ZMK CSV and authoritative sibling coach CSV match,
     copies apply_every_key.js to the Windows clipboard, and optionally restarts
     the local coach server and AutoHotkey logger/helper so they reload the layout.
 
@@ -46,10 +46,9 @@ $applyPath = Join-Path $zmkRepo "scripts\zmk-studio\apply_every_key.js"
 $verifyPath = Join-Path $zmkRepo "scripts\zmk-studio\verify_every_key.js"
 $layoutMetaPath = Join-Path $zmkRepo "layout\final_user_layout_v2.json"
 $zmkCsv = Join-Path $zmkRepo "layout\keybindings_explained.csv"
-$toolsCoachCsv = Join-Path $RepoRoot "coach\data\keybindings_explained.csv"
 $siblingCoachCsv = Join-Path $siblingCoachRepo "data\keybindings_explained.csv"
 
-foreach ($path in @($applyPath, $verifyPath, $layoutMetaPath, $zmkCsv, $toolsCoachCsv, $siblingCoachCsv)) {
+foreach ($path in @($applyPath, $verifyPath, $layoutMetaPath, $zmkCsv, $siblingCoachCsv)) {
     if (-not (Test-Path -LiteralPath $path)) {
         throw "Required layout file missing: $path"
     }
@@ -61,12 +60,8 @@ function Get-FileSha256 {
 }
 
 $zmkHash = Get-FileSha256 $zmkCsv
-$toolsCoachHash = Get-FileSha256 $toolsCoachCsv
 $siblingCoachHash = Get-FileSha256 $siblingCoachCsv
 
-if ($zmkHash -ne $toolsCoachHash) {
-    throw "In-repo coach CSV is not synced with zmk-config layout CSV."
-}
 if ($zmkHash -ne $siblingCoachHash) {
     throw "Sibling coach CSV is not synced with zmk-config layout CSV."
 }
@@ -93,12 +88,8 @@ if (-not $SkipClipboard) {
 }
 Write-Host ""
 
-if ($RestartCoach) {
-    & (Join-Path $RepoRoot "powershell\start_charybdis_coach.ps1") -RepoRoot $RepoRoot
-}
-
-if ($RestartLogger) {
-    & (Join-Path $RepoRoot "powershell\start_charybdis_helpers.ps1") -RepoRoot $RepoRoot
+if ($RestartCoach -or $RestartLogger) {
+    & (Join-Path $RepoRoot "charybdis.ps1") restart
 }
 
 Write-Host "Next:" -ForegroundColor Cyan
