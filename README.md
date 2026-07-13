@@ -87,7 +87,7 @@ Set-Location $Tools
 .\charybdis.ps1 install-startup   # run once: creates the Scheduled Task for reboot recovery
 ```
 
-`bootstrap` clones the sibling repos (`charybdis-zmk-config`, `charybdis-coach`; pass `-IncludeOptimizer` for `charybdis-optimizer` too), creates a `.venv` with `requirements-runtime.txt` installed, applies mouse settings, and starts the full stack. `install-startup` replaces the old manually-added Startup shortcut with a single Scheduled Task that starts AHK + beacon + coach together, ~10s after logon, with no network required.
+`bootstrap` clones the sibling repos (`charybdis-zmk-config`, `charybdis-coach`; pass `-IncludeOptimizer` for `charybdis-optimizer` too), creates a `.venv` with `requirements-runtime.txt` installed, applies mouse settings, and starts the full stack. `install-startup` replaces old manually-added Startup shortcuts with a single Scheduled Task that starts AHK + beacon + coach together, ~10s after logon, with no network required. Run it from an elevated PowerShell for Scheduled Task retry/delay support; if registration is denied, it installs one current-user Startup shortcut instead so reboot recovery still works.
 
 ---
 

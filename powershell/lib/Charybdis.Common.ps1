@@ -275,6 +275,30 @@ function Get-LastFailedComponentLog {
         Select-Object -First 1 -ExpandProperty FullName
 }
 
+function Get-UnresolvedRuntimeErrorLog {
+    <#
+    Return a runtime component log only when its newest ERROR occurs after its
+    newest successful start marker. Historical update/validation failures are
+    not runtime health failures, and a component that later restarted cleanly
+    must not remain unhealthy forever because an old ERROR is still on disk.
+    #>
+    param([Parameter(Mandatory)][string]$LogsDir)
+
+    foreach ($component in @("helper", "beacon", "coach-server")) {
+        $path = Join-Path $LogsDir "$component.log"
+        if (-not (Test-Path -LiteralPath $path)) { continue }
+        $lines = @(Get-Content -LiteralPath $path -Tail 200 -ErrorAction SilentlyContinue)
+        $lastError = -1
+        $lastStart = -1
+        for ($i = 0; $i -lt $lines.Count; $i++) {
+            if ($lines[$i] -match "\| ERROR \|") { $lastError = $i }
+            if ($lines[$i] -match "\| INFO \|" -and $lines[$i] -match "started") { $lastStart = $i }
+        }
+        if ($lastError -gt $lastStart) { return $path }
+    }
+    return $null
+}
+
 # ---------------------------------------------------------------------------
 # PID records: identity-checked process tracking
 # ---------------------------------------------------------------------------
@@ -469,7 +493,7 @@ function Test-ComponentHealth {
     $checks["http_release_matches"] = @{ pass = ($httpOk -and $releaseMatches) }
 
     # No error written to logs since last start
-    $lastFailedLog = Get-LastFailedComponentLog -LogsDir $Paths.LogsDir
+    $lastFailedLog = Get-UnresolvedRuntimeErrorLog -LogsDir $Paths.LogsDir
     $checks["no_recent_log_errors"] = @{ pass = (-not $lastFailedLog); lastFailedLog = $lastFailedLog }
 
     $allPass = -not ($checks.Values | Where-Object { -not $_.pass })

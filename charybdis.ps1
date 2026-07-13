@@ -252,15 +252,6 @@ function Invoke-InstallStartup {
         throw "Register-ScheduledTask is not available (requires Windows PowerShell with the ScheduledTasks module)."
     }
 
-    # Superseded by the Scheduled Task below - remove the old AHK-only
-    # Startup-folder shortcut if start_charybdis_helpers.ps1 created one
-    # previously, so the helper doesn't launch twice on login.
-    $oldShortcut = Join-Path ([Environment]::GetFolderPath("Startup")) "Charybdis Helpers.lnk"
-    if (Test-Path -LiteralPath $oldShortcut) {
-        Remove-Item -LiteralPath $oldShortcut -Force
-        Write-Host "Removed superseded Startup shortcut: $oldShortcut" -ForegroundColor DarkGray
-    }
-
     $scriptPath = Join-Path $RepoRoot "charybdis.ps1"
     $action = New-ScheduledTaskAction -Execute "powershell.exe" `
         -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`" start -NoBrowser" `
@@ -278,11 +269,44 @@ function Invoke-InstallStartup {
         -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 1) `
         -ExecutionTimeLimit ([TimeSpan]::Zero)
 
-    Register-ScheduledTask -TaskName "CharybdisStack" -Action $action -Trigger $trigger `
-        -Principal $principal -Settings $settings -Force | Out-Null
+    $startup = [Environment]::GetFolderPath("Startup")
+    $legacyShortcuts = @(
+        (Join-Path $startup "Charybdis Helpers.lnk"),
+        (Join-Path $startup "Charybdis Coach.lnk")
+    )
+    $fallbackShortcut = Join-Path $startup "Charybdis Stack.lnk"
+    $scheduledTaskInstalled = $false
+    try {
+        Register-ScheduledTask -TaskName "CharybdisStack" -Action $action -Trigger $trigger `
+            -Principal $principal -Settings $settings -Force -ErrorAction Stop | Out-Null
+        $scheduledTaskInstalled = $true
+    } catch {
+        # Managed and non-admin Windows sessions may deny task registration.
+        # Preserve reboot recovery with one unified per-user Startup entry.
+        $shell = New-Object -ComObject WScript.Shell
+        $shortcut = $shell.CreateShortcut($fallbackShortcut)
+        $shortcut.TargetPath = (Get-Command powershell.exe).Source
+        $shortcut.Arguments = "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$scriptPath`" start -NoBrowser"
+        $shortcut.WorkingDirectory = $RepoRoot
+        $shortcut.Description = "Starts the complete Charybdis stack at user logon."
+        $shortcut.WindowStyle = 7
+        $shortcut.Save()
+        Write-Warning "Scheduled Task registration was denied; installed Startup fallback instead. Run install-startup from an elevated PowerShell to enable delayed start and automatic retries."
+    }
 
-    Write-Host "Scheduled Task 'CharybdisStack' installed: runs 'charybdis.ps1 start' ~10s after logon." -ForegroundColor Green
-    Write-Host "It never runs 'update' at startup - keyboard/coach must come up even with no network." -ForegroundColor DarkGray
+    foreach ($oldShortcut in $legacyShortcuts) {
+        if (Test-Path -LiteralPath $oldShortcut) {
+            Remove-Item -LiteralPath $oldShortcut -Force
+            Write-Host "Removed superseded Startup shortcut: $oldShortcut" -ForegroundColor DarkGray
+        }
+    }
+    if ($scheduledTaskInstalled) {
+        Remove-Item -LiteralPath $fallbackShortcut -Force -ErrorAction SilentlyContinue
+        Write-Host "Scheduled Task 'CharybdisStack' installed: runs 'charybdis.ps1 start' ~10s after logon." -ForegroundColor Green
+        Write-Host "It never runs 'update' at startup - keyboard/coach must come up even with no network." -ForegroundColor DarkGray
+    } else {
+        Write-Host "Startup fallback installed: $fallbackShortcut" -ForegroundColor Green
+    }
 }
 
 # ---------------------------------------------------------------------------

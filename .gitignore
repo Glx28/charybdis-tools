@@ -5,6 +5,10 @@ runtime/charybdis_beacon.log
 runtime/coach_beacon_stderr.log
 runtime/*.log
 runtime/*.pid
+runtime/*.out
+runtime/*.err
+runtime/*probe*.jsonl
+runtime/*.summary.json
 runtime/shortcut_first_seen.json
 runtime/logs/
 runtime/status.json
