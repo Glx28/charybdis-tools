@@ -275,6 +275,19 @@ function Get-LastFailedComponentLog {
         Select-Object -First 1 -ExpandProperty FullName
 }
 
+function ConvertTo-UtcDateTime {
+    <# Accept both Windows PowerShell strings and PowerShell 7's automatic
+       DateTime conversion from ConvertFrom-Json, independent of locale. #>
+    param([Parameter(Mandatory)]$Value)
+
+    if ($Value -is [datetime]) { return ([datetime]$Value).ToUniversalTime() }
+    return [datetimeoffset]::Parse(
+        [string]$Value,
+        [Globalization.CultureInfo]::InvariantCulture,
+        [Globalization.DateTimeStyles]::AssumeUniversal
+    ).UtcDateTime
+}
+
 function Get-UnresolvedRuntimeErrorLog {
     <#
     Return a runtime component log only when its newest ERROR occurs after its
@@ -518,7 +531,7 @@ function Test-ComponentHealth {
             $state = Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
             $stateParses = $true
             if ($state.updatedAt) {
-                $age = ((Get-Date).ToUniversalTime() - [datetime]::Parse($state.updatedAt).ToUniversalTime()).TotalSeconds
+                $age = ((Get-Date).ToUniversalTime() - (ConvertTo-UtcDateTime $state.updatedAt)).TotalSeconds
                 $heartbeatOk = $age -lt 10
             }
         } catch { }

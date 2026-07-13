@@ -1,0 +1,33 @@
+name: Security
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "23 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install audit tools
+        run: python -m pip install pip-audit bandit
+      - name: Repository privacy and secret guard
+        shell: pwsh
+        run: .\powershell\audit_repository_security.ps1
+      - name: HTTP server regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Dependency audit
+        run: python -m pip_audit -r requirements-runtime.txt
+      - name: Active Python security scan
+        run: python -m bandit -r python

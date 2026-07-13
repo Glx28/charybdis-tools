@@ -951,7 +951,7 @@ def generate_verify_js(merged_bindings):
         csv_lines.append(f'"{b["layer"]}","{b["x"]}","{b["y"]}","{b.get("label", "")}","{b.get("behavior", "")}","{b.get("parameter", "")}","{mods}"')
     expected_csv = escape_template_literal("\n".join(csv_lines))
 
-    return f"""// ZMK Studio verify script for evolved V2 layout
+    verify_script = f"""// ZMK Studio verify script for evolved V2 layout
 window.CHARYBDIS_VERSION = "evolved-v2";
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -1227,7 +1227,8 @@ async function runVerify() {{
 }}
 
 runVerify();
-"""
+"""  # nosec B608
+    return verify_script
 
 
 def generate_csv(merged_bindings, out_path: Path):

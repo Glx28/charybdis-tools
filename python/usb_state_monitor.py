@@ -16,9 +16,9 @@ from datetime import datetime, timezone
 import serial
 import serial.tools.list_ports
 
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-STATE_FILE = REPO_ROOT / "runtime" / "charybdis_state.json"
-RUNTIME_DIR = REPO_ROOT / "runtime"
+TOOLS_ROOT = Path(__file__).resolve().parent.parent
+STATE_FILE = TOOLS_ROOT / "runtime" / "charybdis_state.json"
+RUNTIME_DIR = TOOLS_ROOT / "runtime"
 
 # ZMK USB identifiers for Nice!Nano / ZMK devices
 ZMK_VID = 0x1D50  # OpenMoko
@@ -42,7 +42,7 @@ def get_current_state():
                 if content.startswith('\ufeff'):
                     content = content[1:]
                 return json.loads(content)
-    except:
+    except (OSError, UnicodeError, json.JSONDecodeError):
         pass
 
     return {

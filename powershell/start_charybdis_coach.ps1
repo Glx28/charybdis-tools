@@ -3,10 +3,9 @@
     Start the Charybdis coach server and Python beacon listener.
 
 .DESCRIPTION
-    Serves the parent directory containing charybdis-tools and
-    charybdis-coach, so the coach repo is the sole UI source and its relative
-    runtime state URL resolves to charybdis-tools/runtime. Processes are
-    tracked with identity-checked JSON PID records.
+    Serves only the coach UI and its live state file through a restricted
+    loopback HTTP server. Processes are tracked with identity-checked JSON
+    PID records.
 #>
 
 [CmdletBinding()]
@@ -85,7 +84,7 @@ function Test-BeaconHeartbeat {
         $state = Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
         $stamp = if ($state.beaconHeartbeatAt) { $state.beaconHeartbeatAt } else { $state.updatedAt }
         if (-not $stamp) { return $false }
-        return ([datetime]::Parse($stamp).ToUniversalTime() -ge $NotBeforeUtc)
+        return ((ConvertTo-UtcDateTime $stamp) -ge $NotBeforeUtc)
     } catch { return $false }
 }
 
@@ -144,12 +143,9 @@ if (-not $serverAlive) {
     }
     $serverStdout = Join-Path $paths.LogsDir "coach-server.stdout.log"
     $serverStderr = Join-Path $paths.LogsDir "coach-server.stderr.log"
-    $serverArgs = if ((Split-Path -Leaf $python) -ieq "py.exe") {
-        @("-3", $serverScript, "$Port", "--bind", "127.0.0.1", "--dir", $paths.ParentDir)
-    } else {
-        @($serverScript, "$Port", "--bind", "127.0.0.1", "--dir", $paths.ParentDir)
-    }
-    $server = Start-Process -FilePath $python -ArgumentList $serverArgs -WorkingDirectory $paths.ParentDir `
+    $serverArgs = @($serverScript, "$Port", "--bind", "127.0.0.1", "--coach-dir", $paths.CoachDir, "--state-file", $statePath)
+    if ((Split-Path -Leaf $python) -ieq "py.exe") { $serverArgs = @("-3") + $serverArgs }
+    $server = Start-Process -FilePath $python -ArgumentList $serverArgs -WorkingDirectory $RepoRoot `
         -WindowStyle Hidden -RedirectStandardOutput $serverStdout -RedirectStandardError $serverStderr -PassThru
     Write-PidRecord -Path $serverPidPath -Process $server -Release $Release
     $deadline = (Get-Date).AddSeconds(8)

@@ -21,7 +21,9 @@ standalone: shortcut_discovery.py [min_usage_count]
 from __future__ import annotations
 
 import json
+import ipaddress
 import re
+import socket
 import sys
 import time
 import urllib.error
@@ -42,9 +44,37 @@ MAX_SOURCES_PER_APP = 4
 MAX_SHORTCUTS_PER_APP = 40
 INTER_APP_DELAY_SECONDS = 4  # DuckDuckGo's HTML endpoint rate-limits bursts
 REQUEST_TIMEOUT = 10
+MAX_PAGE_BYTES = 2 * 1024 * 1024
 CANDIDATE_STALE_DAYS = 14  # re-attempt discovery this often even if a file exists
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+
+
+def _is_public_http_url(url: str) -> bool:
+    """Reject credentials, non-HTTP schemes, and local/private destinations."""
+    try:
+        parsed = urllib.parse.urlsplit(url)
+        if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+            return False
+        if parsed.username is not None or parsed.password is not None:
+            return False
+        port = parsed.port or (443 if parsed.scheme == "https" else 80)
+        addresses = socket.getaddrinfo(parsed.hostname, port, type=socket.SOCK_STREAM)
+        return bool(addresses) and all(
+            ipaddress.ip_address(item[4][0]).is_global for item in addresses
+        )
+    except (OSError, ValueError):
+        return False
+
+
+class _PublicRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if not _is_public_http_url(newurl):
+            raise urllib.error.HTTPError(newurl, code, "unsafe redirect", headers, fp)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+PUBLIC_OPENER = urllib.request.build_opener(_PublicRedirectHandler())
 
 SPECIAL_KEYS = {
     "esc", "escape", "tab", "enter", "return", "space", "spacebar",
@@ -57,6 +87,12 @@ KEY_TOKEN_RE = re.compile(r"^[A-Za-z0-9`\-=\[\]\\;',./]+$")
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _candidate_filename(exe: str) -> str:
+    stem = re.sub(r"\.exe$", "", exe, flags=re.I).lower()
+    stem = re.sub(r"[^a-z0-9._-]+", "_", stem).strip("._-")
+    return f"{stem or 'unknown_app'}.json"
 
 
 def _looks_like_shortcut(text: str) -> bool:
@@ -183,8 +219,11 @@ def search_web(query: str, max_results: int = MAX_SOURCES_PER_APP) -> list[str] 
     url = "https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(query)
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
-            html = resp.read().decode("utf-8", errors="replace")
+        with PUBLIC_OPENER.open(req, timeout=REQUEST_TIMEOUT) as resp:
+            raw = resp.read(MAX_PAGE_BYTES + 1)
+            if len(raw) > MAX_PAGE_BYTES:
+                return None
+            html = raw.decode("utf-8", errors="replace")
     except (urllib.error.URLError, TimeoutError, OSError):
         return None
 
@@ -207,10 +246,14 @@ def search_web(query: str, max_results: int = MAX_SOURCES_PER_APP) -> list[str] 
 
 
 def fetch_page(url: str) -> str | None:
+    if not _is_public_http_url(url):
+        return None
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
-        with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
-            raw = resp.read()
+        with PUBLIC_OPENER.open(req, timeout=REQUEST_TIMEOUT) as resp:
+            raw = resp.read(MAX_PAGE_BYTES + 1)
+            if len(raw) > MAX_PAGE_BYTES:
+                return None
             charset = resp.headers.get_content_charset() or "utf-8"
     except (urllib.error.URLError, TimeoutError, OSError, ValueError):
         return None
@@ -328,8 +371,7 @@ def run_discovery_for_gaps(min_count: int = DEFAULT_MIN_USAGE) -> list[Path]:
     CANDIDATES_DIR.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
     for i, (exe, count) in enumerate(gaps):
-        exe_stem = re.sub(r"\.exe$", "", exe, flags=re.I).lower()
-        out_path = CANDIDATES_DIR / f"{exe_stem}.json"
+        out_path = CANDIDATES_DIR / _candidate_filename(exe)
         if _existing_candidate_is_fresh(out_path):
             continue
         if i > 0:

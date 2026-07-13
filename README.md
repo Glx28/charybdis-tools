@@ -2,6 +2,10 @@
 
 > Windows host-side helpers for the Charybdis split keyboard: AHK automation, beacon layer tracking, shortcut usage logging, trackball benchmarks, and launcher scripts.
 
+> **Privacy:** the logger records shortcut, application, layer, timing, and
+> mouse workflow metadata. Runtime data stays local and is excluded from Git;
+> read [PRIVACY.md](PRIVACY.md) before sharing logs or repository snapshots.
+
 ---
 
 ## AI Agent Quick Reference
@@ -114,6 +118,7 @@ With `install-startup` run once, you normally don't need to run anything after a
 | `charybdis.ps1 doctor` | Diagnose venv/deps/git-state/release-manifest issues; `-Repair` fixes venv/deps | Something looks wrong |
 | `charybdis.ps1 install-startup` | Create the Scheduled Task for reboot recovery | Once, after `bootstrap` |
 | `charybdis.ps1 bootstrap` | Fresh-machine clone + first-time setup | Once, on a new machine |
+| `powershell/audit_repository_security.ps1` | Check tracked files for private runtime data, credential files, and high-confidence secret patterns without printing matched values | Before publishing or sharing the repo |
 | `powershell/apply_latest_layout.ps1` | Checks promoted layout CSV sync, copies ZMK Studio apply script to clipboard, optionally restarts coach/logger | When applying the current default layout |
 | `powershell/setup_rawaccel.ps1` | Installs Raw Accel for trackball acceleration curves | Optional, once |
 

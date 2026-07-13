@@ -4,5 +4,5 @@
 # .venv pattern already used in the sibling charybdis-optimizer-v2 repo
 # (.venv\Scripts\python.exe invoked directly, no "activate"). Normal startup
 # only verifies these are importable - it never installs on every run.
-keyboard
-pyserial
+keyboard==0.13.5
+pyserial==3.5
