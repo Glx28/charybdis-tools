@@ -450,6 +450,15 @@ function Test-ComponentHealth {
 
     $checks = [ordered]@{}
 
+    # A locally reachable stack is still invalid if its promoted repos/CSV do
+    # not match the release manifest (the common fresh-clone failure mode is
+    # ZMK's default main branch instead of the promoted layout branch).
+    $releaseState = Test-ReleaseManifest -Paths $Paths
+    $checks["release_manifest_valid"] = @{
+        pass = $releaseState.AllPass
+        detail = if ($releaseState.AllPass) { "matched" } else { "repo commit or CSV hash mismatch" }
+    }
+
     # AHK helper: process identity, not just "some AutoHotkey.exe is running"
     $ahkProcs = Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
         Where-Object { $_.CommandLine -match [regex]::Escape("charybdis_helpers.ahk") }

@@ -71,7 +71,7 @@ C:\Users\<user>\charybdis\            # parent directory used by the copy-paste 
 
 Use this on a new Windows machine, or on an existing machine when you want to repair/update all Charybdis host-side tooling.
 
-Prerequisites (install manually first, `charybdis.ps1 bootstrap` checks for these but does not install them): [Git for Windows](https://git-scm.com/download/win), [Python 3.10+](https://www.python.org/downloads/), [AutoHotkey v2](https://www.autohotkey.com/). Node.js is only needed if you also work on the coach/keymap JS directly.
+Prerequisites (install manually first, `charybdis.ps1 bootstrap` checks for these but does not install them): [Git for Windows](https://git-scm.com/download/win), [Python 3.10+](https://www.python.org/downloads/), [AutoHotkey v2](https://www.autohotkey.com/). Node.js is optional and only needed for coach/keymap JavaScript development.
 
 ```powershell
 # === CHARYBDIS FULL WINDOWS INSTALL / UPDATE / START ===

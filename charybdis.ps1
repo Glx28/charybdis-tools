@@ -89,6 +89,11 @@ function Print-Result {
 function Invoke-Start {
     param([switch]$ForceRestart)
     $release = Get-CurrentRelease
+    $releaseState = Test-ReleaseManifest -Paths $paths
+    if (-not $releaseState.AllPass) {
+        $failed = @($releaseState.Checks.GetEnumerator() | Where-Object { -not $_.Value.pass } | ForEach-Object { $_.Key })
+        throw "Local release is inconsistent ($($failed -join ', ')); refusing to start a mixed keyboard/coach layout. Run '.\charybdis.ps1 update' or repair the checked-out branches."
+    }
     & (Join-Path $RepoRoot "powershell\start_charybdis_helpers.ps1") -RepoRoot $RepoRoot -Release $release
     $coachArgs = @{ RepoRoot = $RepoRoot; Release = $release }
     if ($Port -gt 0) { $coachArgs['Port'] = $Port }
@@ -318,7 +323,6 @@ function Invoke-Bootstrap {
 
     $missing = @()
     if (-not (Get-Command git -ErrorAction SilentlyContinue)) { $missing += "Git (https://git-scm.com/download/win)" }
-    if (-not (Get-Command node -ErrorAction SilentlyContinue)) { $missing += "Node.js LTS (https://nodejs.org/)" }
     if (-not (Get-Command python -ErrorAction SilentlyContinue)) { $missing += "Python 3.10+ (https://www.python.org/downloads/)" }
     $ahkPath = @(
         "${env:ProgramFiles}\AutoHotkey\v2\AutoHotkey.exe",
@@ -335,31 +339,47 @@ function Invoke-Bootstrap {
     if (-not $SkipClone) {
         Write-Host "`n--- Cloning repositories ---" -ForegroundColor Cyan
         $repos = @{
-            "charybdis-zmk-config" = "https://github.com/Glx28/zmk-config-charybdis-beacons.git"
-            "charybdis-coach"      = "https://github.com/Glx28/charybdis-coach.git"
+            "charybdis-zmk-config" = @{
+                url = "https://github.com/Glx28/zmk-config-charybdis-beacons.git"
+                branch = "codex/build-coach-layers-cpi750"
+            }
+            "charybdis-coach" = @{
+                url = "https://github.com/Glx28/charybdis-coach.git"
+                branch = "master"
+            }
         }
         if ($IncludeOptimizer) {
-            $repos["charybdis-optimizer"] = "https://github.com/Glx28/charybdis-optimizer.git"
+            $repos["charybdis-optimizer"] = @{
+                url = "https://github.com/Glx28/charybdis-optimizer.git"
+                branch = "master"
+            }
         }
         foreach ($name in $repos.Keys) {
             $dest = Join-Path $paths.ParentDir $name
             if (Test-Path $dest) {
                 Write-Host "[SKIP] $name already exists" -ForegroundColor Yellow
             } else {
-                Invoke-NativeChecked -FilePath "git" -ArgumentList @("clone", $repos[$name], $dest) | Out-Null
+                Invoke-NativeChecked -FilePath "git" -ArgumentList @("clone", $repos[$name].url, $dest) | Out-Null
                 Write-Host "[OK] $name" -ForegroundColor Green
             }
+            Invoke-GitUpdate -Path $dest -RequiredBranch $repos[$name].branch | Out-Null
         }
     }
 
     Write-Host "`n--- Python venv + runtime deps ---" -ForegroundColor Cyan
     $sysPython = (Get-Command python).Source
     if (-not (Test-Path -LiteralPath $paths.VenvDir)) {
-        & $sysPython -m venv $paths.VenvDir
+        Invoke-NativeChecked -FilePath $sysPython -ArgumentList @("-m", "venv", $paths.VenvDir) | Out-Null
     }
     $venvPython = Get-VenvPython -Paths $paths
-    & $venvPython -m pip install -r (Join-Path $RepoRoot "requirements-runtime.txt")
+    Invoke-NativeChecked -FilePath $venvPython -ArgumentList @("-m", "pip", "install", "-r", (Join-Path $RepoRoot "requirements-runtime.txt")) | Out-Null
     Write-Host "[OK] .venv ready" -ForegroundColor Green
+
+    Write-Host "`n--- Release consistency ---" -ForegroundColor Cyan
+    $checkScript = Join-Path $RepoRoot "runtime\evolved_v2_export\release_check.py"
+    $releaseCheck = Invoke-NativeChecked -FilePath $venvPython -ArgumentList @($checkScript) -WorkingDirectory $RepoRoot
+    Write-Host $releaseCheck.Output
+    Write-Host "[OK] promoted commits, CSV, and apply/verify layout agree" -ForegroundColor Green
 
     Write-Host "`n--- Mouse settings (1:1 pointer, no acceleration) ---" -ForegroundColor Cyan
     $mouseScript = Join-Path $RepoRoot "powershell\apply_mouse_settings.ps1"
