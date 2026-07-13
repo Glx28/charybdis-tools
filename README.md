@@ -100,7 +100,7 @@ With `install-startup` run once, you normally don't need to run anything after a
 .\charybdis.ps1 update    # pull latest, validate the release, restart everything
 ```
 
-`update` stops the running AHK helper before pulling (Windows locks `ahk\charybdis_helpers.ahk` while it runs), fails loudly instead of silently continuing on stale code if any repo has dirty tracked files, and refuses to restart onto a mixed/invalid release if `release_check.py` fails.
+`update` pulls all three repositories with checked Git exit codes, validates the complete release while the current stack remains available, then restarts only after validation succeeds. It fails loudly instead of silently continuing on stale code if any repo has dirty tracked files, and refuses to restart onto a mixed/invalid release if `release_check.py` fails.
 
 ---
 

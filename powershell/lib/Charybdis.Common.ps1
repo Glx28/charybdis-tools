@@ -459,10 +459,18 @@ function Test-ComponentHealth {
         detail = if ($releaseState.AllPass) { "matched" } else { "repo commit or CSV hash mismatch" }
     }
 
-    # AHK helper: process identity, not just "some AutoHotkey.exe is running"
-    $ahkProcs = Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
-        Where-Object { $_.CommandLine -match [regex]::Escape("charybdis_helpers.ahk") }
-    $checks["ahk_helper_running"] = @{ pass = [bool]$ahkProcs; detail = if ($ahkProcs) { "PID $($ahkProcs[0].ProcessId)" } else { "not found" } }
+    # AHK helper and coach server must belong to this checkout, not merely be
+    # similarly named processes from another clone or an unrelated web server.
+    $helperRecord = Read-PidRecord -Path (Join-Path $Paths.RuntimeDir "charybdis_helper.pid")
+    $helperAlive = Test-PidRecordAlive -Record $helperRecord
+    $checks["ahk_helper_running"] = @{
+        pass = $helperAlive
+        detail = if ($helperAlive) { "PID $($helperRecord.pid)" } else { "identity record not alive" }
+    }
+
+    $serverRecord = Read-PidRecord -Path (Join-Path $Paths.RuntimeDir "charybdis_coach_server.pid")
+    $serverAlive = Test-PidRecordAlive -Record $serverRecord
+    $checks["coach_server_alive"] = @{ pass = $serverAlive }
 
     # Python beacon listener: PID record identity match
     $beaconPidPath = Join-Path $Paths.RuntimeDir "coach_beacon_listener.pid"

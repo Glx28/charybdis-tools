@@ -200,13 +200,13 @@ function Invoke-Doctor {
     $venvPython = Get-VenvPython -Paths $paths
     if ($venvPython) {
         Write-Host "  .venv      OK ($venvPython)" -ForegroundColor Green
-        $importCheck = & $venvPython -c "import keyboard, serial" 2>&1
-        if ($LASTEXITCODE -eq 0) {
+        $importCheck = Invoke-NativeChecked -FilePath $venvPython -ArgumentList @("-c", "import keyboard, serial") -AllowFailure
+        if ($importCheck.Success) {
             Write-Host "  deps       OK (keyboard, pyserial importable)" -ForegroundColor Green
         } else {
-            Write-Host "  deps       MISSING/broken: $importCheck" -ForegroundColor Red
+            Write-Host "  deps       MISSING/broken: $($importCheck.Output)" -ForegroundColor Red
             if ($Repair) {
-                & $venvPython -m pip install -r (Join-Path $RepoRoot "requirements-runtime.txt")
+                Invoke-NativeChecked -FilePath $venvPython -ArgumentList @("-m", "pip", "install", "-r", (Join-Path $RepoRoot "requirements-runtime.txt")) | Out-Null
             }
         }
     } else {
@@ -214,9 +214,9 @@ function Invoke-Doctor {
         if ($Repair) {
             $sysPython = $prereqs.python.Source
             if (-not $sysPython) { throw "Cannot create .venv: no system python found." }
-            & $sysPython -m venv $paths.VenvDir
+            Invoke-NativeChecked -FilePath $sysPython -ArgumentList @("-m", "venv", $paths.VenvDir) | Out-Null
             $venvPython = Get-VenvPython -Paths $paths
-            & $venvPython -m pip install -r (Join-Path $RepoRoot "requirements-runtime.txt")
+            Invoke-NativeChecked -FilePath $venvPython -ArgumentList @("-m", "pip", "install", "-r", (Join-Path $RepoRoot "requirements-runtime.txt")) | Out-Null
             Write-Host "  .venv      created + requirements-runtime.txt installed" -ForegroundColor Green
         } else {
             Write-Host "             re-run with -Repair to create it" -ForegroundColor Yellow
