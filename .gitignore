@@ -6,6 +6,10 @@ runtime/coach_beacon_stderr.log
 runtime/*.log
 runtime/*.pid
 runtime/shortcut_first_seen.json
+runtime/logs/
+runtime/status.json
+.venv/
+__pycache__/
 trackball_benchmarks/results/
 AGENTS.md
 .claude/

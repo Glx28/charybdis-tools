@@ -36,27 +36,30 @@ Then one command does everything — clones all repos, installs deps, applies mo
 
 ```powershell
 git clone https://github.com/Glx28/charybdis-tools.git charybdis-tools
-powershell -ExecutionPolicy Bypass -File charybdis-tools\bootstrap.ps1
+powershell -ExecutionPolicy Bypass -File charybdis-tools\charybdis.ps1 bootstrap
 ```
 
 For the main dev machine (adds Python deps for evolutionary optimizer):
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File charybdis-tools\bootstrap.ps1 -IncludeOptimizer
+powershell -ExecutionPolicy Bypass -File charybdis-tools\charybdis.ps1 bootstrap -IncludeOptimizer
 ```
+
+Then run `charybdis.ps1 install-startup` once to install a Scheduled Task for reboot recovery.
 
 ## Start Everything After Reboot
 
-The AHK helper auto-starts via Windows Startup shortcut. For the coach + beacon:
+With `install-startup` run once, a Scheduled Task starts everything automatically ~10s after logon - no manual step needed. To do it manually, or to pull the latest promoted layout first:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File charybdis-tools\powershell\start_charybdis_coach.ps1
+powershell -ExecutionPolicy Bypass -File charybdis-tools\charybdis.ps1 update
 ```
 
-This starts:
+This pulls all repos, validates the release, and (re)starts:
+- The AHK helper (shortcut logger + beacon)
 - Python HTTP server on port 8765 (serves the coach app)
 - Beacon listener (tracks which keyboard layer is active)
-- Opens the coach in your browser at http://127.0.0.1:8765/
+- Opens the coach in your browser at http://127.0.0.1:8765/charybdis-coach/
 
 ## How Data Flows Between Repos
 
@@ -140,9 +143,9 @@ charybdis-coach/               # Interactive keyboard coach
   workflows/                   #   Per-app shortcut guides
 
 charybdis-tools/               # Windows host helpers
+  charybdis.ps1                #   Unified launcher: start/stop/update/doctor/bootstrap/install-startup
   ahk/charybdis_helpers.ahk   #   Beacon + shortcut logger (auto-starts)
-  powershell/                  #   Launchers, mouse settings, benchmarks
-  python/                      #   Beacon listener, USB monitor
-  bootstrap.ps1                #   One-command setup for all repos
-  runtime/                     #   Live state files (gitignored)
+  powershell/                  #   Scripts charybdis.ps1 calls
+  python/                      #   Beacon listener, USB monitor, coach HTTP server
+  runtime/                     #   Live state files (mostly gitignored)
 ```

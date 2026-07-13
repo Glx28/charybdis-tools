@@ -30,13 +30,13 @@ Do not reverse-engineer checkpoint schemas or hand-edit generated layout artifac
 
 ### One-Command Runtime Refresh
 
-After a layout/default update, future agents should use the single refresh script instead of manually pulling repos, editing cache-busters, and restarting processes:
+After a layout/default update, future agents should use `charybdis.ps1 update` instead of manually pulling repos, editing cache-busters, and restarting processes:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\nos\charybdis-tools\powershell\update_and_start_charybdis.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\nos\charybdis-tools\charybdis.ps1 update
 ```
 
-It pulls `charybdis-tools`, `../charybdis-coach`, and `../charybdis-zmk-config`, ensures the ZMK repo is on `codex/build-coach-layers-cpi750`, refreshes the coach app cache-buster from the current tools commit, validates JavaScript, restarts the helper/logger, beacon listener, and coach server, then prints only commit hashes, PIDs, and the coach URL.
+It pulls `charybdis-tools`, `../charybdis-coach`, and `../charybdis-zmk-config` (ensuring the ZMK repo is on `codex/build-coach-layers-cpi750`), fails loudly instead of silently skipping the pull if any repo has dirty tracked files (pass `-UseCurrent` to proceed anyway), validates the release via `runtime/evolved_v2_export/release_check.py` against `release_manifest.json`, then restarts the helper/logger, beacon listener, and coach server and prints `{ok, release, tools, coach, zmk, url}` (add `-Json` for machine-readable output). There is no cache-buster step anymore — `python/coach_http_server.py` sends `Cache-Control: no-cache` headers instead, so the tools repo never dirties itself just from starting.
 
 ### Prerequisites
 
@@ -69,163 +69,53 @@ C:\Users\<user>\charybdis\            # parent directory used by the copy-paste 
 
 ## Copy-Paste Install / Repair / Start Everything
 
-Use this on a new Windows machine, or on an existing machine when you want to repair/update all Charybdis host-side tooling. It is intentionally large: the goal is copy-paste and done, not small clean commands.
+Use this on a new Windows machine, or on an existing machine when you want to repair/update all Charybdis host-side tooling.
 
-Copy-paste the whole block into **PowerShell as Administrator**. It installs missing prerequisites, clones or updates sibling repos, applies mouse settings, validates/starts the AHK logger, creates the Windows Startup shortcut, starts the beacon listener, starts the coach website, and opens the browser.
+Prerequisites (install manually first, `charybdis.ps1 bootstrap` checks for these but does not install them): [Git for Windows](https://git-scm.com/download/win), [Python 3.10+](https://www.python.org/downloads/), [AutoHotkey v2](https://www.autohotkey.com/). Node.js is only needed if you also work on the coach/keymap JS directly.
 
 ```powershell
 # === CHARYBDIS FULL WINDOWS INSTALL / UPDATE / START ===
-# Run in elevated PowerShell: right-click PowerShell -> Run as Administrator.
 # Safe to rerun. Existing repos are updated; missing repos are cloned.
-$ErrorActionPreference = "Stop"
-
 $Parent = Join-Path $env:USERPROFILE "charybdis"
 $Tools = Join-Path $Parent "charybdis-tools"
-$Runtime = Join-Path $Tools "runtime"
-$Port = 8765
-
-function Write-Step($Text) {
-    Write-Host ""
-    Write-Host "=== $Text ===" -ForegroundColor Cyan
+if (-not (Test-Path (Join-Path $Tools ".git"))) {
+    New-Item -ItemType Directory -Force -Path $Parent | Out-Null
+    git clone https://github.com/Glx28/charybdis-tools.git $Tools
 }
-
-function Refresh-Path {
-    $MachinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
-    $UserPath = [Environment]::GetEnvironmentVariable("Path", "User")
-    $env:Path = "$MachinePath;$UserPath"
-}
-
-function Ensure-Command($Name, $WingetId, $FriendlyName) {
-    if (Get-Command $Name -ErrorAction SilentlyContinue) {
-        Write-Host "[OK] $FriendlyName already available" -ForegroundColor Green
-        return
-    }
-    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-        throw "$FriendlyName is missing and winget is not available. Install $FriendlyName manually, then rerun this block."
-    }
-    Write-Host "[INSTALL] $FriendlyName via winget" -ForegroundColor Yellow
-    winget install --id $WingetId --exact --accept-source-agreements --accept-package-agreements
-    Refresh-Path
-    if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) {
-        throw "$FriendlyName was installed but is not visible in this PowerShell session. Close PowerShell, reopen as Administrator, and rerun this block."
-    }
-}
-
-function Ensure-GitRepo($Url, $Path, $Branch = "master") {
-    $Name = Split-Path -Leaf $Path
-    if (Test-Path (Join-Path $Path ".git")) {
-        Write-Host "[UPDATE] $Name" -ForegroundColor Cyan
-        Push-Location $Path
-        try {
-            git fetch --all --prune
-            $LocalChanges = git status --porcelain
-            if ([string]::IsNullOrWhiteSpace($LocalChanges)) {
-                git checkout $Branch 2>$null
-                git pull --ff-only
-            } else {
-                Write-Host "[KEEP] $Name has local changes; fetched only, no pull/rebase attempted." -ForegroundColor Yellow
-                git status -sb
-            }
-        } finally {
-            Pop-Location
-        }
-        return
-    }
-    if (Test-Path $Path) {
-        Write-Host "[SKIP] $Path exists but is not a git repo. Move it aside or clone manually." -ForegroundColor Yellow
-        return
-    }
-    Write-Host "[CLONE] $Name" -ForegroundColor Cyan
-    git clone $Url $Path
-}
-
-Write-Step "Install prerequisites if missing"
-Ensure-Command git Git.Git "Git for Windows"
-Ensure-Command python Python.Python.3.12 "Python"
-
-if (-not (
-    (Test-Path "$env:LOCALAPPDATA\Programs\AutoHotkey\v2\AutoHotkey64.exe") -or
-    (Test-Path "$env:LOCALAPPDATA\Programs\AutoHotkey\v2\AutoHotkey.exe") -or
-    (Test-Path "$env:LOCALAPPDATA\Programs\AutoHotkey\UX\AutoHotkeyUX.exe") -or
-    (Test-Path "$env:ProgramFiles\AutoHotkey\v2\AutoHotkey64.exe") -or
-    (Test-Path "$env:ProgramFiles\AutoHotkey\v2\AutoHotkey.exe") -or
-    (Test-Path "$env:ProgramFiles\AutoHotkey\UX\AutoHotkeyUX.exe")
-)) {
-    if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-        throw "AutoHotkey v2 is missing and winget is not available. Install AutoHotkey v2 manually, then rerun this block."
-    }
-    Write-Host "[INSTALL] AutoHotkey v2 via winget" -ForegroundColor Yellow
-    winget install --id AutoHotkey.AutoHotkey --exact --accept-source-agreements --accept-package-agreements
-    Refresh-Path
-} else {
-    Write-Host "[OK] AutoHotkey already installed" -ForegroundColor Green
-}
-
-Write-Step "Clone or update repos"
-New-Item -ItemType Directory -Force -Path $Parent | Out-Null
-Ensure-GitRepo "https://github.com/Glx28/charybdis-tools.git" "$Parent\charybdis-tools" "master"
-Ensure-GitRepo "https://github.com/Glx28/zmk-config-charybdis-beacons.git" "$Parent\charybdis-zmk-config" "master"
-Ensure-GitRepo "https://github.com/Glx28/charybdis-coach.git" "$Parent\charybdis-coach" "master"
-Ensure-GitRepo "https://github.com/Glx28/charybdis-optimizer.git" "$Parent\charybdis-optimizer" "master"
-Ensure-GitRepo "https://github.com/Glx28/charybdis-optimizer-v2.git" "$Parent\charybdis-optimizer-v2" "master"
-
-Write-Step "Install Python packages used by tools"
-python -m pip install --upgrade pip
-python -m pip install --upgrade keyboard numpy pandas scipy deap pyyaml
-
-Write-Step "Create runtime folder and apply mouse settings"
-New-Item -ItemType Directory -Force -Path $Runtime | Out-Null
 Set-Location $Tools
-PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\apply_mouse_settings.ps1"
-
-Write-Step "Start AHK helper: logger + BLE beacon receiver + startup shortcut"
-PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_helpers.ps1" -RepoRoot $Tools
-
-Write-Step "Start coach website + beacon listener fallback"
-PowerShell -NoProfile -ExecutionPolicy Bypass -File ".\powershell\start_charybdis_coach.ps1" -RepoRoot $Tools -Port $Port
-
-Write-Step "Verify generated runtime files"
-$StateFile = Join-Path $Runtime "charybdis_state.json"
-$UsageLog = Join-Path $Runtime "shortcut_usage.jsonl"
-$EventLog = Join-Path $Runtime "charybdis_events.jsonl"
-Write-Host "Coach:      http://127.0.0.1:$Port/charybdis-coach/" -ForegroundColor Green
-Write-Host "Tools repo: $Tools" -ForegroundColor Green
-Write-Host "State:      $StateFile"
-Write-Host "Usage log:  $UsageLog"
-Write-Host "Event log:  $EventLog"
-if (Test-Path $StateFile) { Write-Host "[OK] State file exists" -ForegroundColor Green } else { Write-Host "[WAIT] State file will appear after helper/beacon heartbeat" -ForegroundColor Yellow }
-if (Test-Path $UsageLog) { Write-Host "[OK] Usage log exists" -ForegroundColor Green } else { Write-Host "[WAIT] Usage log appears after first logged shortcut or flush interval" -ForegroundColor Yellow }
-
-Write-Host ""
-Write-Host "DONE. The helper is installed in Startup and should run after reboot." -ForegroundColor Green
+.\charybdis.ps1 bootstrap
+.\charybdis.ps1 install-startup   # run once: creates the Scheduled Task for reboot recovery
 ```
+
+`bootstrap` clones the sibling repos (`charybdis-zmk-config`, `charybdis-coach`; pass `-IncludeOptimizer` for `charybdis-optimizer` too), creates a `.venv` with `requirements-runtime.txt` installed, applies mouse settings, and starts the full stack. `install-startup` replaces the old manually-added Startup shortcut with a single Scheduled Task that starts AHK + beacon + coach together, ~10s after logon, with no network required.
 
 ---
 
 ## Copy-Paste Daily Start / Update
 
-Use this after reboot or when you want to update the tools without reinstalling prerequisites. Normal PowerShell is enough.
-
-If you are already inside `charybdis-tools`, run:
+With `install-startup` run once, you normally don't need to run anything after a reboot - the Scheduled Task starts everything. Use these when you want to check on or update the running stack:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\powershell\update_and_start_charybdis.ps1
+.\charybdis.ps1 status    # health report
+.\charybdis.ps1 update    # pull latest, validate the release, restart everything
 ```
 
-This script stops the running AHK helper first, then pulls, then restarts the helper and coach. Stopping AHK first matters because Windows locks `ahk\charybdis_helpers.ahk` while it is running.
+`update` stops the running AHK helper before pulling (Windows locks `ahk\charybdis_helpers.ahk` while it runs), fails loudly instead of silently continuing on stale code if any repo has dirty tracked files, and refuses to restart onto a mixed/invalid release if `release_check.py` fails.
 
 ---
 
-## What Each Script Does
+## What Each Command/Script Does
 
-| Script | Purpose | When to run |
+| Command/Script | Purpose | When to run |
 |--------|---------|-------------|
-| `powershell/start_charybdis_helpers.ps1` | Starts `ahk/charybdis_helpers.ahk`, creates Windows Startup shortcut | After install + after every reboot |
-| `powershell/start_charybdis_coach.ps1` | Starts Python HTTP server (port 8765) + beacon listener + opens browser | After install + after every reboot |
+| `charybdis.ps1 start` / `stop` / `restart` | Start/stop/restart the AHK helper, beacon listener, and coach server together | Ad hoc, or via the Scheduled Task from `install-startup` |
+| `charybdis.ps1 status` | Health report (process identity, heartbeat recency, served release) | Check on the running stack |
+| `charybdis.ps1 update` | Pull all 3 repos, validate the release, restart | After a new layout is promoted |
+| `charybdis.ps1 doctor` | Diagnose venv/deps/git-state/release-manifest issues; `-Repair` fixes venv/deps | Something looks wrong |
+| `charybdis.ps1 install-startup` | Create the Scheduled Task for reboot recovery | Once, after `bootstrap` |
+| `charybdis.ps1 bootstrap` | Fresh-machine clone + first-time setup | Once, on a new machine |
 | `powershell/apply_latest_layout.ps1` | Checks promoted layout CSV sync, copies ZMK Studio apply script to clipboard, optionally restarts coach/logger | When applying the current default layout |
-| `powershell/apply_mouse_settings.ps1` | Sets Windows pointer speed to 1:1, disables acceleration | Once after install |
 | `powershell/setup_rawaccel.ps1` | Installs Raw Accel for trackball acceleration curves | Optional, once |
-| `powershell/validate_layout_bundle.ps1` | Validates layout CSV consistency across all repos | After layout changes |
 
 ---
 
@@ -242,29 +132,39 @@ This script stops the running AHK helper first, then pulls, then restarts the he
 ## Files
 
 ```
+charybdis.ps1                  # Unified launcher - run this, not the scripts below directly
+
 ahk/
   charybdis_helpers.ahk       # Main helper — beacon detection, shortcut logging, layer tracking
   coach_beacon_only.ahk       # Minimal beacon listener (fallback)
 
 powershell/
+  lib/Charybdis.Common.ps1    # Shared functions dot-sourced by everything else
   start_charybdis_coach.ps1   # Start coach server + beacon listener + open browser
-  start_charybdis_helpers.ps1  # Start AHK helper + create Startup shortcut
+  start_charybdis_helpers.ps1  # Start AHK helper
   apply_mouse_settings.ps1     # Set 1:1 pointer speed, disable acceleration
   setup_rawaccel.ps1           # Raw Accel integration for acceleration curves
-  validate_layout_bundle.ps1     # Validate layout data consistency across repos
+  apply_latest_layout.ps1      # Stage promoted layout for manual ZMK Studio paste
+  pull_and_apply_layout.ps1    # Same, without the full CSV-hash sync check
 
 python/
   coach_beacon_listener.py     # HID beacon listener (alternative to AHK)
+  coach_http_server.py         # Static server with no-cache headers (used by start_charybdis_coach.ps1)
   usb_state_monitor.py         # USB connection monitor
+
+requirements-runtime.txt       # keyboard, pyserial - installed into .venv by bootstrap/doctor -Repair
+release_manifest.json          # Cross-repo commit + CSV hashes for the last promotion
 
 trackball_benchmarks/
   start_benchmark_session.ps1  # Benchmark trackball tuning profiles
   run_benchmark.ps1
 
-runtime/                       # Live state (gitignored, created at runtime)
+runtime/                       # Live state (mostly gitignored, created at runtime)
   charybdis_state.json         # Current layer/app (read by coach for live display)
   shortcut_usage.jsonl         # Every shortcut logged (consumed by optimizer)
   charybdis_events.jsonl       # State heartbeats
+  logs/                        # Rotated per-component logs
+  status.json                  # Last-known launcher status snapshot
 ```
 
 ---

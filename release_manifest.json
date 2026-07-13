@@ -1,0 +1,12 @@
+{
+  "release": "run26_nuclear_fixed2_gen22500_gen22500_bestgen1259",
+  "generation": 22500,
+  "gap": -180.75,
+  "commits": {
+    "tools": "0e17c67",
+    "zmk": "bbf5818",
+    "coach": "b8a96af"
+  },
+  "csv_sha256": "131bc627d53ddbd8f2a9e1e5164700adf246286483fc25766ba57302b0467a7a",
+  "created_at": "2026-07-13T12:28:14Z"
+}

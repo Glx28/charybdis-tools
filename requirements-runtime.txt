@@ -1,0 +1,8 @@
+# Runtime dependencies for python/coach_beacon_listener.py and
+# python/usb_state_monitor.py. Installed into .venv by
+# `charybdis.ps1 bootstrap` / `charybdis.ps1 doctor -Repair`, mirroring the
+# .venv pattern already used in the sibling charybdis-optimizer-v2 repo
+# (.venv\Scripts\python.exe invoked directly, no "activate"). Normal startup
+# only verifies these are importable - it never installs on every run.
+keyboard
+pyserial

@@ -3,6 +3,15 @@
 Date: 2026-07-09
 Repo root: `/home/nos/charybdis/charybdis-tools`
 
+> **2026-07-13 update:** the launcher was overhauled since this was written.
+> `charybdis-tools/coach/` (the "coach monorepo copy... kept in sync with
+> tools/coach" described below) was deleted — `charybdis-coach` is now the
+> sole coach source, and `powershell/update_and_start_charybdis.ps1` /
+> `bootstrap.ps1` / `Start-Charybdis.ps1` were replaced by `charybdis.ps1`.
+> See `CLAUDE.md`'s "Launcher" and "Coach source" sections for the current
+> state; treat the rest of this file as a historical snapshot, not current
+> architecture.
+
 This file is the current tactical handoff for continuing the recent Codex work.
 It does not replace the durable repo rules in `AGENTS.md`, `CLAUDE.md`, or
 `runtime/evolved_v2_export/HANDOFF_LAYOUT_OPTIMIZATION.md`; read those first.
