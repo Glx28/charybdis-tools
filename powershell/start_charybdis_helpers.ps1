@@ -56,7 +56,7 @@ if ($validate.ExitCode -ne 0) {
 }
 Write-Host "AutoHotkey validation passed." -ForegroundColor Green
 
-Stop-ByPidRecord -Path $pidPath
+Stop-ByPidRecord -Path $pidPath -ExpectedCommandLineToken $helperPath
 
 $started = Start-Process -FilePath $ahkPath -ArgumentList @("`"$helperPath`"") `
     -WorkingDirectory (Split-Path -Parent $helperPath) -PassThru

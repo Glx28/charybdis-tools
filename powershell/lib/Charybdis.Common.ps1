@@ -329,7 +329,11 @@ function Read-PidRecord {
     param([Parameter(Mandatory)][string]$Path)
     if (-not (Test-Path -LiteralPath $Path)) { return $null }
     try {
-        return Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json
+        $parsed = Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json
+        if ($parsed -and $parsed.PSObject.Properties.Name -contains "pid") {
+            return $parsed
+        }
+        return $null
     } catch {
         return $null
     }
@@ -361,12 +365,39 @@ function Stop-ByPidRecord {
     its live command line still matches the record -- never kills a reused
     PID or an unrelated process. Removes the record file either way.
     #>
-    param([Parameter(Mandatory)][string]$Path)
+    param(
+        [Parameter(Mandatory)][string]$Path,
+        [string]$ExpectedCommandLineToken = ""
+    )
 
     $record = Read-PidRecord -Path $Path
     if ($record -and (Test-PidRecordAlive -Record $record)) {
-        Stop-Process -Id $record.pid -Force -ErrorAction SilentlyContinue
+        # Windows venv python.exe is a launcher parent for the base interpreter.
+        # Killing only the recorded parent can leave the child holding the HTTP
+        # port or keyboard hook, so terminate the already-validated tree.
+        Invoke-NativeChecked -FilePath "taskkill.exe" `
+            -ArgumentList @("/PID", [string]$record.pid, "/T", "/F") -AllowFailure | Out-Null
         Start-Sleep -Milliseconds 200
+    } elseif (-not $record -and $ExpectedCommandLineToken -and (Test-Path -LiteralPath $Path)) {
+        # One-time migration from the old bare-PID format. A PID alone is not
+        # safe because Windows can reuse it, so require both the expected exact
+        # command-line token and a process start time close to the PID file's
+        # write time before stopping anything.
+        $raw = (Get-Content -Raw -LiteralPath $Path -ErrorAction SilentlyContinue).Trim()
+        $legacyPid = 0
+        if ([int]::TryParse($raw, [ref]$legacyPid)) {
+            $proc = Get-Process -Id $legacyPid -ErrorAction SilentlyContinue
+            $cim = Get-CimInstance Win32_Process -Filter "ProcessId = $legacyPid" -ErrorAction SilentlyContinue
+            if ($proc -and $cim -and $cim.CommandLine -and $cim.CommandLine.Contains($ExpectedCommandLineToken)) {
+                $pidFileTime = (Get-Item -LiteralPath $Path).LastWriteTimeUtc
+                $startDelta = [math]::Abs(($pidFileTime - $proc.StartTime.ToUniversalTime()).TotalSeconds)
+                if ($startDelta -le 60) {
+                    Invoke-NativeChecked -FilePath "taskkill.exe" `
+                        -ArgumentList @("/PID", [string]$legacyPid, "/T", "/F") -AllowFailure | Out-Null
+                    Start-Sleep -Milliseconds 200
+                }
+            }
+        }
     }
     Remove-Item -LiteralPath $Path -Force -ErrorAction SilentlyContinue
 }

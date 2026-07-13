@@ -113,10 +113,14 @@ function Invoke-Start {
 
 function Invoke-Stop {
     Write-Host "Stopping Charybdis stack..." -ForegroundColor Cyan
-    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "charybdis_helper.pid")
-    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "coach_beacon_listener.pid")
-    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "coach_beacon_only.pid")
-    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "charybdis_coach_server.pid")
+    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "charybdis_helper.pid") `
+        -ExpectedCommandLineToken (Join-Path $RepoRoot "ahk\charybdis_helpers.ahk")
+    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "coach_beacon_listener.pid") `
+        -ExpectedCommandLineToken (Join-Path $RepoRoot "python\coach_beacon_listener.py")
+    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "coach_beacon_only.pid") `
+        -ExpectedCommandLineToken (Join-Path $RepoRoot "ahk\coach_beacon_only.ahk")
+    Stop-ByPidRecord -Path (Join-Path $paths.RuntimeDir "charybdis_coach_server.pid") `
+        -ExpectedCommandLineToken "coach_http_server.py"
     Write-ComponentLog -LogsDir $paths.LogsDir -Component "supervisor" -Message "Stopped by 'charybdis.ps1 stop'"
     Write-Host "Stopped." -ForegroundColor Green
 }

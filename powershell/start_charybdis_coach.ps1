@@ -99,8 +99,17 @@ if (-not $importResult.Success) {
 }
 
 if ($ForceRestart) {
-    Stop-ByPidRecord -Path $beaconPidPath
-    Stop-ByPidRecord -Path $serverPidPath
+    Stop-ByPidRecord -Path $beaconPidPath -ExpectedCommandLineToken $beaconScript
+    Stop-ByPidRecord -Path $serverPidPath -ExpectedCommandLineToken "coach_http_server.py"
+}
+
+# Upgrade legacy bare-PID records even on a normal start. Without this, an old
+# server from the pre-unified launcher can keep the port occupied forever.
+if ((Test-Path -LiteralPath $beaconPidPath) -and -not (Read-PidRecord -Path $beaconPidPath)) {
+    Stop-ByPidRecord -Path $beaconPidPath -ExpectedCommandLineToken $beaconScript
+}
+if ((Test-Path -LiteralPath $serverPidPath) -and -not (Read-PidRecord -Path $serverPidPath)) {
+    Stop-ByPidRecord -Path $serverPidPath -ExpectedCommandLineToken "coach_http_server.py"
 }
 
 $beaconRecord = Read-PidRecord -Path $beaconPidPath
