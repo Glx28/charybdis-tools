@@ -89,10 +89,16 @@ function Invoke-NativeChecked {
         $prevDir = Get-Location
         Set-Location -LiteralPath $WorkingDirectory
     }
+    $previousErrorActionPreference = $ErrorActionPreference
     try {
+        # Windows PowerShell 5.1 wraps native stderr as ErrorRecord objects.
+        # With the launcher's global preference set to Stop, that would throw
+        # before we can inspect LASTEXITCODE, even for -AllowFailure probes.
+        $ErrorActionPreference = "Continue"
         $output = & $FilePath @ArgumentList 2>&1 | Out-String
         $exitCode = $LASTEXITCODE
     } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
         if ($prevDir) { Set-Location -LiteralPath $prevDir.Path }
     }
 
@@ -311,7 +317,7 @@ function Test-PidRecordAlive {
     current command line still matches what we recorded -- protects against
     a reused PID belonging to a completely different, unrelated process.
     #>
-    param([Parameter(Mandatory)]$Record)
+    param($Record)
     if (-not $Record -or -not $Record.pid) { return $false }
     $proc = Get-Process -Id $Record.pid -ErrorAction SilentlyContinue
     if (-not $proc) { return $false }

@@ -102,7 +102,7 @@ function Invoke-Start {
     $coachCommit = Get-ShortCommit -Path $paths.CoachDir
     $zmkCommit = Get-ShortCommit -Path $paths.ZmkDir
     $url = "http://127.0.0.1:$effectivePort/charybdis-coach/"
-    Write-StatusFile -Paths $paths -Ok $health.AllPass -Release $release `
+    $null = Write-StatusFile -Paths $paths -Ok $health.AllPass -Release $release `
         -ToolsCommit $toolsCommit -CoachCommit $coachCommit -ZmkCommit $zmkCommit -Url $url -HealthChecks $health.Checks
 }
 
@@ -387,7 +387,12 @@ try {
             Invoke-Status
         }
         "doctor" {
-            Invoke-Doctor
+            if ($Json) {
+                Invoke-Doctor 6>$null
+                Invoke-Status
+            } else {
+                Invoke-Doctor
+            }
         }
         "install-startup" {
             Invoke-InstallStartup

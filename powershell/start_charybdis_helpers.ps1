@@ -7,14 +7,14 @@ Run from the repo root:
 This script:
 - Finds AutoHotkey v2 even when it is not in PATH (supports classic and UX variants).
 - Validates charybdis_helpers.ahk with AutoHotkey's /Validate mode.
-- Creates/refreshes the Windows Startup shortcut.
-- Starts the helper. The AHK file uses #SingleInstance Force, so this reloads
-  the existing helper instance safely.
+- Starts the helper and writes an identity-checked JSON PID record.
+- Startup registration is owned by `charybdis.ps1 install-startup`.
 #>
 
 [CmdletBinding()]
 param(
-    [string]$RepoRoot = ""
+    [string]$RepoRoot = "",
+    [string]$Release = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -22,6 +22,10 @@ $ErrorActionPreference = "Stop"
 if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
     $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 }
+
+. (Join-Path $RepoRoot "powershell\lib\Charybdis.Common.ps1")
+$paths = Get-CharybdisPaths -RepoRoot $RepoRoot
+$pidPath = Join-Path $paths.RuntimeDir "charybdis_helper.pid"
 
 $helperPath = Join-Path $RepoRoot "ahk\charybdis_helpers.ahk"
 if (-not (Test-Path -LiteralPath $helperPath)) {
@@ -52,27 +56,25 @@ if ($validate.ExitCode -ne 0) {
 }
 Write-Host "AutoHotkey validation passed." -ForegroundColor Green
 
-$startup = [Environment]::GetFolderPath("Startup")
-$shortcutPath = Join-Path $startup "Charybdis Helpers.lnk"
-$shell = New-Object -ComObject WScript.Shell
-$shortcut = $shell.CreateShortcut($shortcutPath)
-$shortcut.TargetPath = $ahkPath
-$shortcut.Arguments = '"' + $helperPath + '"'
-$shortcut.WorkingDirectory = Split-Path -Parent $helperPath
-$shortcut.Description = "Starts the Charybdis AutoHotkey v2 helper layer at login."
-$shortcut.Save()
-Write-Host "Startup shortcut refreshed: $shortcutPath" -ForegroundColor Green
+Stop-ByPidRecord -Path $pidPath
 
-Start-Process -FilePath $ahkPath -ArgumentList @($helperPath) -WorkingDirectory (Split-Path -Parent $helperPath)
+$started = Start-Process -FilePath $ahkPath -ArgumentList @("`"$helperPath`"") `
+    -WorkingDirectory (Split-Path -Parent $helperPath) -PassThru
 Start-Sleep -Milliseconds 600
 
-$running = Get-Process | Where-Object {
-    $_.ProcessName -like "AutoHotkey*" -and $_.Path -eq $ahkPath
-}
+$running = Get-CimInstance Win32_Process -ErrorAction SilentlyContinue |
+    Where-Object { $_.ProcessId -eq $started.Id -or ($_.CommandLine -and $_.CommandLine.Contains($helperPath)) } |
+    Select-Object -First 1
 
 if ($running) {
+    $proc = Get-Process -Id $running.ProcessId -ErrorAction Stop
+    Write-PidRecord -Path $pidPath -Process $proc -Release $Release
+    Write-ComponentLog -LogsDir $paths.LogsDir -Component "helper" `
+        -Message "AutoHotkey helper started" -Release $Release -ProcessId $proc.Id
     Write-Host "Charybdis AutoHotkey helper is running." -ForegroundColor Green
-    $running | Select-Object Id, ProcessName, Path | Format-Table -AutoSize
+    $proc | Select-Object Id, ProcessName, Path | Format-Table -AutoSize
 } else {
-    Write-Host "WARNING: AutoHotkey launch command completed, but no matching process was found." -ForegroundColor Yellow
+    Write-ComponentLog -LogsDir $paths.LogsDir -Component "helper" `
+        -Message "AutoHotkey launch completed but helper process was not found" -Severity "ERROR" -Release $Release
+    throw "AutoHotkey launch completed, but no process matching $helperPath was found."
 }
