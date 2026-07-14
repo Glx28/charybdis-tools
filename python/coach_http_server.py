@@ -33,9 +33,10 @@ class CoachRequestHandler(http.server.BaseHTTPRequestHandler):
     server_version = "CharybdisCoach"
     sys_version = ""
 
-    def __init__(self, *args, coach_dir: Path, state_file: Path, **kwargs):
+    def __init__(self, *args, coach_dir: Path, state_file: Path, release: str = "", **kwargs):
         self.coach_dir = coach_dir.resolve()
         self.state_file = state_file.resolve()
+        self.release = release
         super().__init__(*args, **kwargs)
 
     def _send_security_headers(self) -> None:
@@ -48,6 +49,8 @@ class CoachRequestHandler(http.server.BaseHTTPRequestHandler):
         self.send_header("Referrer-Policy", "no-referrer")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("X-Frame-Options", "DENY")
+        if self.release:
+            self.send_header("X-Charybdis-Release", self.release)
 
     def end_headers(self) -> None:
         self._send_security_headers()
@@ -134,10 +137,20 @@ class CoachHTTPServer(http.server.ThreadingHTTPServer):
     allow_reuse_address = True
 
 
-def create_server(bind: str, port: int, coach_dir: Path, state_file: Path) -> CoachHTTPServer:
+def create_server(
+    bind: str,
+    port: int,
+    coach_dir: Path,
+    state_file: Path,
+    release: str = "",
+) -> CoachHTTPServer:
     def handler(*args, **kwargs):
         return CoachRequestHandler(
-            *args, coach_dir=coach_dir, state_file=state_file, **kwargs
+            *args,
+            coach_dir=coach_dir,
+            state_file=state_file,
+            release=release,
+            **kwargs,
         )
 
     return CoachHTTPServer((bind, port), handler)
@@ -149,6 +162,7 @@ def main() -> int:
     ap.add_argument("--bind", default="127.0.0.1")
     ap.add_argument("--coach-dir", type=Path, required=True)
     ap.add_argument("--state-file", type=Path, required=True)
+    ap.add_argument("--release", default="")
     args = ap.parse_args()
 
     if args.bind not in {"127.0.0.1", "::1", "localhost"}:
@@ -159,7 +173,7 @@ def main() -> int:
         ap.error(f"coach directory does not exist: {coach_dir}")
     state_file.parent.mkdir(parents=True, exist_ok=True)
 
-    with create_server(args.bind, args.port, coach_dir, state_file) as httpd:
+    with create_server(args.bind, args.port, coach_dir, state_file, args.release) as httpd:
         print(
             f"Serving {coach_dir} at http://{args.bind}:{args.port}{COACH_PREFIX}",
             file=sys.stderr,

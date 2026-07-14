@@ -22,7 +22,9 @@ class CoachHTTPServerTests(unittest.TestCase):
         self.state.write_text('{"activeLayer":"0"}', encoding="utf-8")
         self.private = root / "private.txt"
         self.private.write_text("must not be served", encoding="utf-8")
-        self.server = create_server("127.0.0.1", 0, self.coach, self.state)
+        self.server = create_server(
+            "127.0.0.1", 0, self.coach, self.state, "test-release"
+        )
         self.port = self.server.server_address[1]
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
@@ -69,6 +71,7 @@ class CoachHTTPServerTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(headers["X-Content-Type-Options"], "nosniff")
         self.assertEqual(headers["X-Frame-Options"], "DENY")
+        self.assertEqual(headers["X-Charybdis-Release"], "test-release")
         self.assertIn("frame-ancestors 'none'", headers["Content-Security-Policy"])
         self.assertEqual(self.request("/charybdis-coach/", method="POST")[0], 405)
 

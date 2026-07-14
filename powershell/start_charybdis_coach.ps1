@@ -72,7 +72,7 @@ function Test-CoachHttp {
         $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/charybdis-coach/index.html" `
             -UseBasicParsing -TimeoutSec 3
         if ($response.StatusCode -ne 200) { return $false }
-        if ($Release -and $response.Content -notmatch [regex]::Escape($Release)) { return $false }
+        if ($Release -and $response.Headers["X-Charybdis-Release"] -ne $Release) { return $false }
         return $true
     } catch { return $false }
 }
@@ -144,6 +144,7 @@ if (-not $serverAlive) {
     $serverStdout = Join-Path $paths.LogsDir "coach-server.stdout.log"
     $serverStderr = Join-Path $paths.LogsDir "coach-server.stderr.log"
     $serverArgs = @($serverScript, "$Port", "--bind", "127.0.0.1", "--coach-dir", $paths.CoachDir, "--state-file", $statePath)
+    if ($Release) { $serverArgs += @("--release", $Release) }
     if ((Split-Path -Leaf $python) -ieq "py.exe") { $serverArgs = @("-3") + $serverArgs }
     $server = Start-Process -FilePath $python -ArgumentList $serverArgs -WorkingDirectory $RepoRoot `
         -WindowStyle Hidden -RedirectStandardOutput $serverStdout -RedirectStandardError $serverStderr -PassThru

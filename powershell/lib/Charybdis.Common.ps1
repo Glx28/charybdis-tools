@@ -547,7 +547,7 @@ function Test-ComponentHealth {
         $resp = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 5
         $httpOk = $resp.StatusCode -eq 200
         if ($httpOk -and $Release) {
-            $releaseMatches = $resp.Content -match [regex]::Escape($Release)
+            $releaseMatches = $resp.Headers["X-Charybdis-Release"] -eq $Release
         }
     } catch { }
     $checks["http_reachable"] = @{ pass = $httpOk; url = $url }
