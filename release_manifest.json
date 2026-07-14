@@ -1,12 +1,12 @@
 {
-  "release": "run26_nuclear_fixed2_gen22500_gen22500_bestgen1259",
-  "generation": 22500,
-  "gap": -180.75,
+  "release": "run27_v2_recalibrated3_gen9500_gen9500_bestgen4051",
+  "generation": 9500,
+  "gap": -302.43,
   "commits": {
-    "tools": "7a0c8fe",
-    "zmk": "bbf5818",
-    "coach": "73e2f64"
+    "tools": "8ef388d",
+    "zmk": "0b9564d",
+    "coach": "c773682"
   },
-  "csv_sha256": "131bc627d53ddbd8f2a9e1e5164700adf246286483fc25766ba57302b0467a7a",
-  "created_at": "2026-07-13T12:45:53Z"
+  "csv_sha256": "ed108da379917de82f394fe1e7f009aab557e1f50d37480940c08b45c9c70b24",
+  "created_at": "2026-07-14T14:10:00Z"
 }
