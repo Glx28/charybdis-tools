@@ -1,12 +1,12 @@
 {
-  "release": "run27_v2_recalibrated3_gen9500_gen9500_bestgen4051",
-  "generation": 9500,
-  "gap": -302.43,
+  "release": "run29_auto_gen56500_bestgen55875",
+  "generation": 56500,
+  "gap": -20.947,
   "commits": {
-    "tools": "8ef388d",
-    "zmk": "0b9564d",
-    "coach": "c773682"
+    "tools": "18b1ef0",
+    "zmk": "5808d25",
+    "coach": "25862eb"
   },
-  "csv_sha256": "ed108da379917de82f394fe1e7f009aab557e1f50d37480940c08b45c9c70b24",
-  "created_at": "2026-07-14T14:10:00Z"
+  "csv_sha256": "cf70e54d0d817a624d9b0784bcef010e282ebbacec3db73118f9e8abc8d1d196",
+  "created_at": "2026-07-15T23:11:35Z"
 }
