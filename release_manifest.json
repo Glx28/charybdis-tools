@@ -1,12 +1,12 @@
 {
-  "release": "run29_auto_gen56500_bestgen55875",
-  "generation": 56500,
-  "gap": -20.947,
+  "release": "aug_latest_gen30000",
+  "generation": 30000,
+  "gap": -19.696,
   "commits": {
-    "tools": "18b1ef0",
-    "zmk": "5808d25",
-    "coach": "25862eb"
+    "tools": "de2152e",
+    "zmk": "0551f6a",
+    "coach": "3865775"
   },
-  "csv_sha256": "cf70e54d0d817a624d9b0784bcef010e282ebbacec3db73118f9e8abc8d1d196",
-  "created_at": "2026-07-15T23:11:35Z"
+  "csv_sha256": "61b26bbef28bfce12149a480fcd3b445b9076b89ee0a0f6c8c82936828d608ad",
+  "created_at": "2026-08-06T00:00:00Z"
 }
