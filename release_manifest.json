@@ -1,12 +1,12 @@
 {
-  "release": "aug7_gen23000",
-  "generation": 23000,
-  "gap": -17.543,
+  "release": "aug8_gen38000",
+  "generation": 38000,
+  "gap": -21.222,
   "commits": {
-    "tools": "3b3342a",
-    "zmk": "8cfa727",
-    "coach": "1675126"
+    "tools": "95f3ee4",
+    "zmk": "9dd5457",
+    "coach": "98e1a88"
   },
-  "csv_sha256": "e35aa9d155a0196b1ded2e345ca501e977c7abeee8eaf8f0858338eeb2a8071e",
-  "created_at": "2026-08-07T00:00:00Z"
+  "csv_sha256": "9601d7ccecbf14cc817b393e92a35cd1ffea1f415e685066ae7adf71b4904e9f",
+  "created_at": "2026-08-08T00:00:00Z"
 }
