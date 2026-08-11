@@ -1,0 +1,10 @@
+{
+  "app_exe": "codex.exe",
+  "display_name": "Codex",
+  "discovered_at": "2026-08-06T09:34:46Z",
+  "usage_count": 132,
+  "status": "search_blocked",
+  "note": "Web search was rate-limited/blocked - will retry on a later run.",
+  "sources_tried": [],
+  "shortcuts": []
+}

@@ -1,0 +1,10 @@
+{
+  "app_exe": "kimi.exe",
+  "display_name": "Kimi",
+  "discovered_at": "2026-08-06T09:34:38Z",
+  "usage_count": 241,
+  "status": "search_blocked",
+  "note": "Web search was rate-limited/blocked - will retry on a later run.",
+  "sources_tried": [],
+  "shortcuts": []
+}

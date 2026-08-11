@@ -1,0 +1,10 @@
+{
+  "app_exe": "code.exe",
+  "display_name": "Code",
+  "discovered_at": "2026-08-06T09:34:42Z",
+  "usage_count": 151,
+  "status": "search_blocked",
+  "note": "Web search was rate-limited/blocked - will retry on a later run.",
+  "sources_tried": [],
+  "shortcuts": []
+}
