@@ -33,11 +33,11 @@ if (-not (Test-Path -LiteralPath $helperPath)) {
 }
 
 # Never allow a copy of the helper to run without the hotkey-rate guard:
-# without #MaxHotkeysPerInterval raised, burst typing pops the modal
+# without A_MaxHotkeysPerInterval raised, burst typing pops the modal
 # "N hotkeys received ... do you want to continue" dialog.
 $helperSource = Get-Content -LiteralPath $helperPath -Raw
-if ($helperSource -notmatch '(?m)^#MaxHotkeysPerInterval\s+2000') {
-    throw "charybdis_helpers.ahk is missing '#MaxHotkeysPerInterval 2000'. Update the repo before launching."
+if ($helperSource -notmatch '(?m)^A_MaxHotkeysPerInterval\s*:=\s*2000') {
+    throw "charybdis_helpers.ahk is missing 'A_MaxHotkeysPerInterval := 2000'. Update the repo before launching."
 }
 
 $candidateAhk = @(

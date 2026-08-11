@@ -4,8 +4,10 @@
 ; bursts easily exceed AutoHotkey's default 70-hotkeys-per-interval guard,
 ; which shows the "N hotkeys received ... do you want to continue" popup.
 ; Raise the limit so the guard can only trip on a genuine runaway loop.
-#HotkeyInterval 2000
-#MaxHotkeysPerInterval 2000
+; (AHK v2 has no #HotkeyInterval/#MaxHotkeysPerInterval directives; these
+; writable built-ins replace them and must be set before hooks register.)
+A_HotkeyInterval := 2000
+A_MaxHotkeysPerInterval := 2000
 ; Charybdis desktop coach, launcher, and contextual helper keys.
 ;
 ; Windows only sees emitted HID keys, not the raw ZMK layer/coordinate state.
