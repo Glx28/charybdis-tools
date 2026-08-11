@@ -32,6 +32,14 @@ if (-not (Test-Path -LiteralPath $helperPath)) {
     throw "Helper script not found: $helperPath"
 }
 
+# Never allow a copy of the helper to run without the hotkey-rate guard:
+# without #MaxHotkeysPerInterval raised, burst typing pops the modal
+# "N hotkeys received ... do you want to continue" dialog.
+$helperSource = Get-Content -LiteralPath $helperPath -Raw
+if ($helperSource -notmatch '(?m)^#MaxHotkeysPerInterval\s+2000') {
+    throw "charybdis_helpers.ahk is missing '#MaxHotkeysPerInterval 2000'. Update the repo before launching."
+}
+
 $candidateAhk = @(
     (Join-Path $env:LOCALAPPDATA "Programs\AutoHotkey\v2\AutoHotkey64.exe"),
     (Join-Path $env:LOCALAPPDATA "Programs\AutoHotkey\v2\AutoHotkey.exe"),

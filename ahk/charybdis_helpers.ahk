@@ -1,5 +1,11 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
+; This script registers 500+ logging hotkeys, so fast typing or key-repeat
+; bursts easily exceed AutoHotkey's default 70-hotkeys-per-interval guard,
+; which shows the "N hotkeys received ... do you want to continue" popup.
+; Raise the limit so the guard can only trip on a genuine runaway loop.
+#HotkeyInterval 2000
+#MaxHotkeysPerInterval 2000
 ; Charybdis desktop coach, launcher, and contextual helper keys.
 ;
 ; Windows only sees emitted HID keys, not the raw ZMK layer/coordinate state.
@@ -23,7 +29,7 @@ global LastShortcutApp := ""
 global EventBuffer := []
 global FLUSH_INTERVAL := 5000
 global MAX_LOG_SIZE := 50 * 1024 * 1024
-global LOG_RETENTION_DAYS := 7
+global LOG_RETENTION_DAYS := 90
 global LastMouseButton := ""
 global LastMouseTime := 0
 global LastMouseCount := 0

@@ -145,6 +145,15 @@ POINTER_MODE_BEHAVIORS = {
     "@ptr:fast_mode": "Fast Mode",
 }
 
+# Shortcut keys -> dedicated firmware launcher macros (config/
+# coach_beacon_macros.keymap.dtsi in charybdis-zmk-config). Exported as the
+# behavior alone (no parameter, no modifiers) instead of a generic Key Press
+# chord, following the coach_*_click precedent. Values: (behavior, label).
+LAUNCHER_BEHAVIORS = {
+    "Alt+Space": ("launcher_powertoys", "PowerToys Run"),
+    "Win+S": ("launcher_win_search", "Windows Search"),
+}
+
 COACH_STUDIO_BEHAVIORS = [
     "coach_l1_hold", "coach_l2_hold", "coach_l3_hold", "coach_l4_hold", "coach_l5_hold",
     "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold",
@@ -153,6 +162,7 @@ COACH_STUDIO_BEHAVIORS = [
     "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
     "coach_travel_off", "coach_recover_base",
     "coach_ctrl_click", "coach_shift_click", "coach_alt_click",
+    "launcher_powertoys", "launcher_win_search",
     "coach_l1_scroll_hold", "coach_l2_scroll_hold", "coach_l3_scroll_hold", "coach_l4_scroll_hold",
     "coach_l5_scroll_hold", "coach_l6_scroll_hold", "coach_l7_scroll_hold", "coach_l8_scroll_hold",
     "coach_l9_scroll_hold", "coach_l10_scroll_hold",
@@ -635,6 +645,18 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                             "parameter": "",
                             "modifiers": [],
                             "purpose": sc["action"] or f"Evolved: {sc['keys']}",
+                            "usage_notes": f"App: {sc['app']}, importance={sc['importance']}",
+                        }
+                        source = "evolved"
+                    elif sc["keys"] in LAUNCHER_BEHAVIORS:
+                        launcher_behavior, launcher_label = LAUNCHER_BEHAVIORS[sc["keys"]]
+                        effective = {
+                            "x": pos["x"], "y": pos["y"],
+                            "label": sc["keys"],
+                            "behavior": launcher_behavior,
+                            "parameter": "",
+                            "modifiers": [],
+                            "purpose": launcher_label,
                             "usage_notes": f"App: {sc['app']}, importance={sc['importance']}",
                         }
                         source = "evolved"
