@@ -337,6 +337,37 @@ $templates = @{
 }
 
 # ---------------------------------------------------------------------------
+# 3b. Windows 11 / OS shortcuts — authoritative static list.
+# ---------------------------------------------------------------------------
+function Get-WindowsShortcuts {
+    return @(
+        (New-Shortcut -Keys 'Win+S'       -Action 'Windows Search'                  -Category 'System Shortcuts' -Frequency 'constant' -Importance 10.0),
+        (New-Shortcut -Keys 'Win+E'       -Action 'Open File Explorer'              -Category 'System Shortcuts' -Frequency 'high'     -Importance 8.0),
+        (New-Shortcut -Keys 'Win+R'       -Action 'Run dialog'                      -Category 'System Shortcuts' -Frequency 'medium'   -Importance 6.0),
+        (New-Shortcut -Keys 'Win+I'       -Action 'Open Settings'                   -Category 'System Shortcuts' -Frequency 'medium'   -Importance 6.0),
+        (New-Shortcut -Keys 'Win+L'       -Action 'Lock PC'                         -Category 'System Shortcuts' -Frequency 'medium'   -Importance 6.0),
+        (New-Shortcut -Keys 'Win+D'       -Action 'Show desktop'                    -Category 'System Shortcuts' -Frequency 'high'     -Importance 7.0),
+        (New-Shortcut -Keys 'Win+V'       -Action 'Clipboard history'               -Category 'System Shortcuts' -Frequency 'high'     -Importance 7.0),
+        (New-Shortcut -Keys 'Win+Shift+S' -Action 'Screenshot (Snipping Tool)'      -Category 'System Shortcuts' -Frequency 'high'     -Importance 8.0),
+        (New-Shortcut -Keys 'Win+Tab'      -Action 'Task View / virtual desktops'    -Category 'Window Management' -Frequency 'medium'  -Importance 6.0),
+        (New-Shortcut -Keys 'Alt+Tab'      -Action 'Switch apps'                     -Category 'Window Management' -Frequency 'constant' -Importance 9.0),
+        (New-Shortcut -Keys 'Alt+F4'       -Action 'Close window'                    -Category 'Window Management' -Frequency 'high'     -Importance 7.0),
+        (New-Shortcut -Keys 'Ctrl+Shift+Esc' -Action 'Task Manager'                  -Category 'System Shortcuts' -Frequency 'medium'   -Importance 6.0),
+        (New-Shortcut -Keys 'Win+.'        -Action 'Emoji picker'                    -Category 'System Shortcuts' -Frequency 'medium'   -Importance 5.0),
+        (New-Shortcut -Keys 'Win+;'        -Action 'Emoji picker (alt)'              -Category 'System Shortcuts' -Frequency 'medium'   -Importance 5.0),
+        (New-Shortcut -Keys 'Win+Left'     -Action 'Snap window left'                -Category 'Window Management' -Frequency 'medium'  -Importance 5.0),
+        (New-Shortcut -Keys 'Win+Right'    -Action 'Snap window right'               -Category 'Window Management' -Frequency 'medium'  -Importance 5.0),
+        (New-Shortcut -Keys 'Win+Up'       -Action 'Maximize window'                 -Category 'Window Management' -Frequency 'medium'  -Importance 5.0),
+        (New-Shortcut -Keys 'Win+Down'     -Action 'Minimize / restore window'       -Category 'Window Management' -Frequency 'medium'  -Importance 5.0),
+        (New-Shortcut -Keys 'Win+Ctrl+D'   -Action 'New virtual desktop'             -Category 'Window Management' -Frequency 'low'     -Importance 4.0),
+        (New-Shortcut -Keys 'Win+Ctrl+Left' -Action 'Previous virtual desktop'       -Category 'Window Management' -Frequency 'low'     -Importance 4.0),
+        (New-Shortcut -Keys 'Win+Ctrl+Right' -Action 'Next virtual desktop'          -Category 'Window Management' -Frequency 'low'     -Importance 4.0),
+        (New-Shortcut -Keys 'Win+Shift+Left' -Action 'Move window to left monitor'    -Category 'Window Management' -Frequency 'low'     -Importance 4.0),
+        (New-Shortcut -Keys 'Win+Shift+Right' -Action 'Move window to right monitor'  -Category 'Window Management' -Frequency 'low'     -Importance 4.0)
+    )
+}
+
+# ---------------------------------------------------------------------------
 # 4. Build export.
 # ---------------------------------------------------------------------------
 $usageWeights = Get-UsageWeights

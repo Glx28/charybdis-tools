@@ -1,4 +1,4 @@
-﻿{
+{
     "installedApps":  [
                           {
                               "publisher":  "Microsoft Corporation",
@@ -844,7 +844,7 @@
                               "publisher":  "Mozilla",
                               "installLocation":  "C:\\Program Files\\Mozilla Firefox",
                               "name":  "Mozilla Firefox (x64 en-GB)",
-                              "version":  "153.0.3"
+                              "version":  "153.0.4"
                           },
                           {
                               "publisher":  "Microsoft Corporation",
@@ -1201,118 +1201,9 @@
                               "version":  "151.0.7922.109"
                           }
                       ],
-    "generatedAt":  "2026-08-12T12:05:51.9763259+02:00",
+    "generatedAt":  "2026-08-12T12:41:28.8794676+02:00",
     "installedAppCount":  217,
     "discoveredApps":  [
-                           {
-                               "id":  "powertoys",
-                               "name":  "PowerToys",
-                               "source":  "discovered",
-                               "shortcuts":  [
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Alt+Space",
-                                                     "action":  "PowerToys Run launcher"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Alt+Space",
-                                                     "action":  "PowerToys Command Palette (CmdPal)"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+C",
-                                                     "action":  "Color Picker"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+T",
-                                                     "action":  "Text Extractor (OCR)"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+V",
-                                                     "action":  "Advanced Paste"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Ctrl+Space",
-                                                     "action":  "Peek (quick file preview)"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+`",
-                                                     "action":  "FancyZones editor"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+O",
-                                                     "action":  "Mouse Pointer Crosshairs"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+D",
-                                                     "action":  "Mouse Highlighter"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+M",
-                                                     "action":  "Find My Mouse"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+N",
-                                                     "action":  "New+ (create from template)"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+Q",
-                                                     "action":  "Video Conference Mute"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Ctrl+`",
-                                                     "action":  "Workspaces (save/restore window sets)"
-                                                 },
-                                                 {
-                                                     "frequency":  "medium",
-                                                     "importance":  5,
-                                                     "category":  "System Shortcuts",
-                                                     "keys":  "Win+Shift+R",
-                                                     "action":  "Screen Ruler"
-                                                 }
-                                             ],
-                               "shortcutCount":  14,
-                               "exeNames":  [
-                                                "powertoys.exe"
-                                            ]
-                           },
                            {
                                "id":  "windows",
                                "name":  "Windows 11",
@@ -1484,7 +1375,671 @@
                                "exeNames":  [
                                                 "explorer.exe",
                                                 "searchhost.exe",
-                                                "startmenuexperiencehost.exe"
+                                                "startmenuexperiencehost.exe",
+                                                "shellexperiencehost.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "kimi_cli",
+                               "name":  "Kimi CLI",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  9,
+                                                     "category":  "Input",
+                                                     "keys":  "Enter",
+                                                     "action":  "Submit prompt"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Input",
+                                                     "keys":  "Shift+Enter",
+                                                     "action":  "Insert newline"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  8,
+                                                     "category":  "Mode",
+                                                     "keys":  "Shift+Tab",
+                                                     "action":  "Toggle plan mode"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "Mode",
+                                                     "keys":  "Ctrl+X",
+                                                     "action":  "Switch agent/shell mode"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "View",
+                                                     "keys":  "Ctrl+E",
+                                                     "action":  "Expand plan/prompt fullscreen"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Session",
+                                                     "keys":  "Ctrl+S",
+                                                     "action":  "Inject message into turn"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  8,
+                                                     "category":  "Session",
+                                                     "keys":  "Ctrl+C",
+                                                     "action":  "Cancel / exit"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "History",
+                                                     "keys":  "Ctrl+R",
+                                                     "action":  "Reverse search history"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Input",
+                                                     "keys":  "/",
+                                                     "action":  "Slash commands"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Input",
+                                                     "keys":  "@",
+                                                     "action":  "Mention file/context"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Input",
+                                                     "keys":  "!",
+                                                     "action":  "Run shell command inline"
+                                                 }
+                                             ],
+                               "shortcutCount":  11,
+                               "exeNames":  [
+                                                "kimi.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "discord",
+                               "name":  "Discord",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+K",
+                                                     "action":  "Quick switcher"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  8,
+                                                     "category":  "Voice",
+                                                     "keys":  "Ctrl+Shift+M",
+                                                     "action":  "Toggle mute"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Voice",
+                                                     "keys":  "Ctrl+Shift+D",
+                                                     "action":  "Toggle deafen"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Alt+Up",
+                                                     "action":  "Previous channel"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Alt+Down",
+                                                     "action":  "Next channel"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+E",
+                                                     "action":  "Search"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Messaging",
+                                                     "keys":  "Shift+Enter",
+                                                     "action":  "New line"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Messaging",
+                                                     "keys":  "Ctrl+R",
+                                                     "action":  "Reply to message"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Messaging",
+                                                     "keys":  "Ctrl+F",
+                                                     "action":  "Search in channel"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+U",
+                                                     "action":  "Toggle member list"
+                                                 }
+                                             ],
+                               "shortcutCount":  10,
+                               "exeNames":  [
+                                                "discord.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "codex_cli",
+                               "name":  "Codex CLI",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  9,
+                                                     "category":  "Input",
+                                                     "keys":  "Enter",
+                                                     "action":  "Submit prompt"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Input",
+                                                     "keys":  "Shift+Enter",
+                                                     "action":  "Insert newline"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  9,
+                                                     "category":  "Session",
+                                                     "keys":  "Escape",
+                                                     "action":  "Interrupt active task"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  8,
+                                                     "category":  "Session",
+                                                     "keys":  "Ctrl+C",
+                                                     "action":  "Cancel current turn"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "History",
+                                                     "keys":  "Ctrl+R",
+                                                     "action":  "Search prompt history"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Output",
+                                                     "keys":  "Ctrl+O",
+                                                     "action":  "Copy latest output"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Input",
+                                                     "keys":  "Tab",
+                                                     "action":  "Queue follow-up"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Input",
+                                                     "keys":  "/",
+                                                     "action":  "Slash commands"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Input",
+                                                     "keys":  "@",
+                                                     "action":  "Add files to prompt"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Input",
+                                                     "keys":  "!",
+                                                     "action":  "Run shell command"
+                                                 }
+                                             ],
+                               "shortcutCount":  10,
+                               "exeNames":  [
+                                                "codex.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "browser",
+                               "name":  "Browser (Chrome/Edge)",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  9,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+T",
+                                                     "action":  "New tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Shift+T",
+                                                     "action":  "Reopen closed tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  8,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+W",
+                                                     "action":  "Close tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Tab",
+                                                     "action":  "Next tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Shift+Tab",
+                                                     "action":  "Previous tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+L",
+                                                     "action":  "Focus address bar"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+K",
+                                                     "action":  "Focus address bar search"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Bookmarks",
+                                                     "keys":  "Ctrl+D",
+                                                     "action":  "Bookmark page"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "History",
+                                                     "keys":  "Ctrl+H",
+                                                     "action":  "History"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Downloads",
+                                                     "keys":  "Ctrl+J",
+                                                     "action":  "Downloads"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Search",
+                                                     "keys":  "Ctrl+F",
+                                                     "action":  "Find on page"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+R",
+                                                     "action":  "Reload"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+Shift+R",
+                                                     "action":  "Hard reload"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "View",
+                                                     "keys":  "Ctrl++",
+                                                     "action":  "Zoom in"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "View",
+                                                     "keys":  "Ctrl+-",
+                                                     "action":  "Zoom out"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Dev",
+                                                     "keys":  "F12",
+                                                     "action":  "DevTools"
+                                                 }
+                                             ],
+                               "shortcutCount":  16,
+                               "exeNames":  [
+                                                "chrome.exe",
+                                                "msedge.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "vscode",
+                               "name":  "Visual Studio Code",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  8,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+P",
+                                                     "action":  "Quick Open - go to file"
+                                                 },
+                                                 {
+                                                     "action":  "Command Palette",
+                                                     "frequency":  "constant",
+                                                     "aliases":  [
+                                                                     "command palette",
+                                                                     "cmdpal"
+                                                                 ],
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+Shift+P",
+                                                     "importance":  10
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Search",
+                                                     "keys":  "Ctrl+Shift+F",
+                                                     "action":  "Search across files"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Terminal",
+                                                     "keys":  "Ctrl+`",
+                                                     "action":  "Toggle integrated terminal"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "View",
+                                                     "keys":  "Ctrl+B",
+                                                     "action":  "Toggle sidebar"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Editing",
+                                                     "keys":  "Ctrl+/",
+                                                     "action":  "Toggle line comment"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Editing",
+                                                     "keys":  "Ctrl+D",
+                                                     "action":  "Select next occurrence"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Debug",
+                                                     "keys":  "F5",
+                                                     "action":  "Start debugging"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Debug",
+                                                     "keys":  "Shift+F5",
+                                                     "action":  "Stop debugging"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Debug",
+                                                     "keys":  "F9",
+                                                     "action":  "Toggle breakpoint"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Editing",
+                                                     "keys":  "Ctrl+Shift+K",
+                                                     "action":  "Delete line"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Editing",
+                                                     "keys":  "Alt+Up",
+                                                     "action":  "Move line up"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Editing",
+                                                     "keys":  "Alt+Down",
+                                                     "action":  "Move line down"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Editing",
+                                                     "keys":  "Ctrl+Shift+L",
+                                                     "action":  "Select all occurrences"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Navigation",
+                                                     "keys":  "Ctrl+Shift+O",
+                                                     "action":  "Go to symbol in file"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Navigation",
+                                                     "keys":  "F12",
+                                                     "action":  "Go to definition"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  6,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+W",
+                                                     "action":  "Close editor tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Shift+T",
+                                                     "action":  "Reopen closed tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Tab",
+                                                     "action":  "Next editor tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "File",
+                                                     "keys":  "Ctrl+N",
+                                                     "action":  "New file"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  8,
+                                                     "category":  "File",
+                                                     "keys":  "Ctrl+S",
+                                                     "action":  "Save file"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  8,
+                                                     "category":  "Editing",
+                                                     "keys":  "Ctrl+Z",
+                                                     "action":  "Undo"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Editing",
+                                                     "keys":  "Ctrl+Shift+Z",
+                                                     "action":  "Redo"
+                                                 }
+                                             ],
+                               "shortcutCount":  23,
+                               "exeNames":  [
+                                                "code.exe",
+                                                "code - insiders.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "terminal",
+                               "name":  "Windows Terminal / PowerShell",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Shift+T",
+                                                     "action":  "New tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Shift+W",
+                                                     "action":  "Close tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Tab",
+                                                     "action":  "Next tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Tabs",
+                                                     "keys":  "Ctrl+Shift+Tab",
+                                                     "action":  "Previous tab"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  8,
+                                                     "category":  "Terminal",
+                                                     "keys":  "Ctrl+Shift+C",
+                                                     "action":  "Copy"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  8,
+                                                     "category":  "Terminal",
+                                                     "keys":  "Ctrl+Shift+V",
+                                                     "action":  "Paste"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Terminal",
+                                                     "keys":  "Ctrl+Shift+F",
+                                                     "action":  "Find"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Terminal",
+                                                     "keys":  "Ctrl+L",
+                                                     "action":  "Clear screen"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Terminal",
+                                                     "keys":  "Ctrl+R",
+                                                     "action":  "Reverse search history"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Panes",
+                                                     "keys":  "Alt+Shift+D",
+                                                     "action":  "Split pane"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Panes",
+                                                     "keys":  "Alt+Shift+-",
+                                                     "action":  "Split pane horizontal"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Panes",
+                                                     "keys":  "Alt+Shift++",
+                                                     "action":  "Split pane vertical"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  3,
+                                                     "category":  "View",
+                                                     "keys":  "Ctrl++",
+                                                     "action":  "Zoom in"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  3,
+                                                     "category":  "View",
+                                                     "keys":  "Ctrl+-",
+                                                     "action":  "Zoom out"
+                                                 }
+                                             ],
+                               "shortcutCount":  14,
+                               "exeNames":  [
+                                                "windowsterminal.exe",
+                                                "powershell.exe",
+                                                "pwsh.exe",
+                                                "wt.exe"
                                             ]
                            }
                        ],
