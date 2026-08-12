@@ -218,8 +218,8 @@ def check_bad_literals(layout, canonical_data: dict):
         sc = layout.shortcuts[sid]
         if sc.is_layer_access or sc.is_l0_only or sc.keys.startswith("_base_"):
             continue
-        # Skip mouse buttons and special capabilities
-        if sc.keys in {"MB1", "MB2", "MB3", "MB4", "MB5"}:
+        # Skip mouse buttons, pointer speed-mode behaviors, and special capabilities
+        if sc.keys in {"MB1", "MB2", "MB3", "MB4", "MB5"} or sc.keys.startswith("@ptr:"):
             continue
         _, base = parse_shortcut_keys_norwegian(sc.keys)
         if not base:
