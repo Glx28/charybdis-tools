@@ -1,0 +1,1492 @@
+﻿{
+    "installedApps":  [
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Windows 11 Installation Assistant",
+                              "version":  "1.4.19041.6448"
+                          },
+                          {
+                              "publisher":  "Electronic Arts, Inc.",
+                              "installLocation":  "I:\\SteamLibrary\\steamapps\\common\\ItTakesTwo",
+                              "name":  "It Takes Two",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 3.1.32 (x64)",
+                              "version":  "3.1.32.31915"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "vs_CoreEditorFonts",
+                              "version":  "17.7.40001"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Windows SDK AddOn",
+                              "version":  "10.1.0.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft .NET Runtime - 7.0.20 (x64)",
+                              "version":  "7.0.20.33717"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Visual C++ v14 Redistributable (x64) - 14.51.36247",
+                              "version":  "14.51.36247.0"
+                          },
+                          {
+                              "publisher":  "Valve Corporation",
+                              "installLocation":  null,
+                              "name":  "Steam",
+                              "version":  "2.10.91.91"
+                          },
+                          {
+                              "publisher":  "Enterbrain",
+                              "installLocation":  "C:\\Program Files (x86)\\Common Files\\Enterbrain\\RGSS3\\RPGVXAce\\",
+                              "name":  "RPG MAKER VX Ace RTP",
+                              "version":  "1.00"
+                          },
+                          {
+                              "publisher":  "Enterbrain",
+                              "installLocation":  "C:\\Program Files (x86)\\Common Files\\Enterbrain\\RGSS2\\RPGVX\\",
+                              "name":  "RPG Maker VX RTP",
+                              "version":  "1.02"
+                          },
+                          {
+                              "publisher":  "Epic Games, Inc.",
+                              "installLocation":  null,
+                              "name":  "UE4 Prerequisites (x64)",
+                              "version":  "1.0.14.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 6.0.36 (x64)",
+                              "version":  "6.0.36.34217"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664",
+                              "version":  "12.0.40664.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft .NET Runtime - 7.0.20 (x86)",
+                              "version":  "7.0.20.33717"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Runtime - 7.0.20 (x86)",
+                              "version":  "56.80.15184"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2022 X86 Minimum Runtime - 14.51.36247",
+                              "version":  "14.51.36247"
+                          },
+                          {
+                              "publisher":  "Oracle Corporation",
+                              "installLocation":  "",
+                              "name":  "Java Auto Updater",
+                              "version":  "2.8.491.10"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2022 X86 Additional Runtime - 14.51.36247",
+                              "version":  "14.51.36247"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 3.1.32 (x86)",
+                              "version":  "3.1.32.31915"
+                          },
+                          {
+                              "publisher":  "eduVPN",
+                              "installLocation":  null,
+                              "name":  "eduVPN Client 4.5",
+                              "version":  "4.5"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Core Host - 3.1.32 (x86)",
+                              "version":  "24.192.31915"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft ASP.NET Core 7.0.20 Shared Framework (x86)",
+                              "version":  "7.0.20.24269"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 3.1.32 (x86)",
+                              "version":  "24.192.31915"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 5.0.17 (x64)",
+                              "version":  "5.0.17.31219"
+                          },
+                          {
+                              "publisher":  "ASUS",
+                              "installLocation":  "C:\\Program Files (x86)\\ASUS\\PCE-AC68 WLAN Card Utilities",
+                              "name":  "ASUS PCE-AC68 WLAN Card Driver",
+                              "version":  "2.1.4.3"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 7.0.20 (x64)",
+                              "version":  "7.0.20.33720"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Visual C++ 2012 Redistributable (x86) - 11.0.61030",
+                              "version":  "11.0.61030.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host - 5.0.17 (x64)",
+                              "version":  "40.68.31213"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host - 10.0.11 (x64)",
+                              "version":  "80.44.56884"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Standard Library (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host - 7.0.20 (x64)",
+                              "version":  "56.80.15184"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft GameInput",
+                              "version":  "10.1.26100.6879"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files\\Microsoft VS Code\\",
+                              "name":  "Microsoft Visual Studio Code",
+                              "version":  "1.127.0"
+                          },
+                          {
+                              "publisher":  "Epic Games, Inc.",
+                              "installLocation":  "",
+                              "name":  "UE4 Prerequisites (x64)",
+                              "version":  "1.0.14.0"
+                          },
+                          {
+                              "publisher":  "Samsung Electronics Co., Ltd.",
+                              "installLocation":  null,
+                              "name":  "Samsung USB Driver for Mobile Phones",
+                              "version":  "1.9.0.0"
+                          },
+                          {
+                              "publisher":  "Google LLC",
+                              "installLocation":  "",
+                              "name":  "Quick Share",
+                              "version":  "1.0.2600.1"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2012 x64 Minimum Runtime - 11.0.61030",
+                              "version":  "11.0.61030"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host - 6.0.36 (x64)",
+                              "version":  "48.144.23141"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Runtime - 8.0.30 (x64)",
+                              "version":  "64.120.56788"
+                          },
+                          {
+                              "publisher":  "Zoom",
+                              "installLocation":  "",
+                              "name":  "Zoom Workplace (64-bit)",
+                              "version":  "7.1.41345"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Development Libraries (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Nmap Project",
+                              "installLocation":  null,
+                              "name":  "Nmap 7.95",
+                              "version":  "7.95"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application",
+                              "name":  "Microsoft Edge WebView2 Runtime",
+                              "version":  "151.0.4129.78"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application",
+                              "name":  "Microsoft Edge",
+                              "version":  "151.0.4129.78"
+                          },
+                          {
+                              "publisher":  "The qBittorrent project",
+                              "installLocation":  null,
+                              "name":  "qBittorrent",
+                              "version":  "4.6.3"
+                          },
+                          {
+                              "publisher":  "OpenTTD",
+                              "installLocation":  null,
+                              "name":  "OpenTTD",
+                              "version":  "15.3"
+                          },
+                          {
+                              "publisher":  "Nmap Project",
+                              "installLocation":  "C:\\Program Files\\Npcap",
+                              "name":  "Npcap",
+                              "version":  "1.79"
+                          },
+                          {
+                              "publisher":  "Logitech",
+                              "installLocation":  null,
+                              "name":  "Logi Download Assistant",
+                              "version":  "2.0.529"
+                          },
+                          {
+                              "publisher":  "Simon Tatham",
+                              "installLocation":  "",
+                              "name":  "PuTTY release 0.84 (64-bit)",
+                              "version":  "0.84.0.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Windows Subsystem for Linux",
+                              "version":  "2.7.10.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Windows Subsystem for Linux Update",
+                              "version":  "5.10.102.1"
+                          },
+                          {
+                              "publisher":  "LLVM",
+                              "installLocation":  null,
+                              "name":  "LLVM",
+                              "version":  "22.1.8"
+                          },
+                          {
+                              "publisher":  "timschneeb",
+                              "installLocation":  null,
+                              "name":  "Galaxy Buds Manager (Unofficial) 5.2.1-057ba4 (64bit)",
+                              "version":  "5.2.1-057ba4"
+                          },
+                          {
+                              "publisher":  "Tim Kosse",
+                              "installLocation":  "C:\\Program Files\\FileZilla FTP Client",
+                              "name":  "FileZilla 3.65.0",
+                              "version":  "3.65.0"
+                          },
+                          {
+                              "publisher":  "AutoHotkey Foundation LLC",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Programs\\AutoHotkey",
+                              "name":  "AutoHotkey (user)",
+                              "version":  "2.0.26"
+                          },
+                          {
+                              "publisher":  null,
+                              "installLocation":  null,
+                              "name":  "Anki Launcher",
+                              "version":  "25.09"
+                          },
+                          {
+                              "publisher":  "Beangate",
+                              "installLocation":  null,
+                              "name":  "GameSentenceMiner 2026.5.2",
+                              "version":  "2026.5.2"
+                          },
+                          {
+                              "publisher":  "Coder Technologies, Inc.",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Coder.Coder_Microsoft.Winget.Source_8wekyb3d8bbwe",
+                              "name":  "Coder",
+                              "version":  "2.35.2"
+                          },
+                          {
+                              "publisher":  "BurntSushi",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Microsoft\\WinGet\\Packages\\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe",
+                              "name":  "RipGrep MSVC",
+                              "version":  "15.1.0"
+                          },
+                          {
+                              "publisher":  "Brave Software Inc",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\BraveSoftware\\Brave-Browser\\Application",
+                              "name":  "Brave",
+                              "version":  "151.1.93.134"
+                          },
+                          {
+                              "publisher":  null,
+                              "installLocation":  null,
+                              "name":  "Kimi",
+                              "version":  "3.1.6"
+                          },
+                          {
+                              "publisher":  "QUALCOMM Incorporated",
+                              "installLocation":  "C:\\Program Files (x86)\\QUALCOMM Incorporated\\Qualcomm USB Drivers For Windows\\",
+                              "name":  "Qualcomm USB Drivers For Windows",
+                              "version":  "1.00.57"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.40664",
+                              "version":  "12.0.40664"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 8.0.30 (x64)",
+                              "version":  "8.0.30.36323"
+                          },
+                          {
+                              "publisher":  "Moonlight Game Streaming Project",
+                              "installLocation":  null,
+                              "name":  "Moonlight Game Streaming Client",
+                              "version":  "6.1.0.0"
+                          },
+                          {
+                              "publisher":  "Intel Corporation",
+                              "installLocation":  "C:\\Program Files (x86)\\Intel\\Intel(R) Processor Graphics",
+                              "name":  "Intel(R) Processor Graphics",
+                              "version":  "20.19.15.5171"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219",
+                              "version":  "10.0.40219"
+                          },
+                          {
+                              "publisher":  "Discord Inc.",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Discord",
+                              "name":  "Discord",
+                              "version":  "1.0.9250"
+                          },
+                          {
+                              "publisher":  null,
+                              "installLocation":  "C:\\Program Files (x86)\\WinDirStat",
+                              "name":  "WinDirStat 1.1.2",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "JAM Software",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Programs\\JAM Software\\TreeSize Free\\",
+                              "name":  "TreeSize Free V4.8.1",
+                              "version":  "4.8.1"
+                          },
+                          {
+                              "publisher":  "Smart Code Ltd",
+                              "installLocation":  null,
+                              "name":  "Stremio",
+                              "version":  "4.4.181"
+                          },
+                          {
+                              "publisher":  "Smart Code OOD",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Programs\\Stremio\\",
+                              "name":  "Stremio version 5.0.5",
+                              "version":  "5.0.5"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  null,
+                              "name":  "Python 3.12.10 (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "zmk",
+                              "installLocation":  "\"C:\\Users\\nos\\AppData\\Local\\ZMK Studio\"",
+                              "name":  "ZMK Studio",
+                              "version":  "0.3.1"
+                          },
+                          {
+                              "publisher":  "Rclone",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Rclone.Rclone_Microsoft.Winget.Source_8wekyb3d8bbwe",
+                              "name":  "Rclone",
+                              "version":  "1.74.4"
+                          },
+                          {
+                              "publisher":  "OpenAI, Inc.",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Microsoft\\WinGet\\Packages\\OpenAI.Codex_Microsoft.Winget.Source_8wekyb3d8bbwe",
+                              "name":  "Codex CLI",
+                              "version":  "0.143.0"
+                          },
+                          {
+                              "publisher":  "Jan De Dobbeleer",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Programs\\oh-my-posh\\",
+                              "name":  "Oh My Posh version 24.8.0",
+                              "version":  "24.8.0"
+                          },
+                          {
+                              "publisher":  "Gitleaks LLC",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gitleaks.Gitleaks_Microsoft.Winget.Source_8wekyb3d8bbwe",
+                              "name":  "Gitleaks",
+                              "version":  "8.30.1"
+                          },
+                          {
+                              "publisher":  "Proton",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\proton_mail",
+                              "name":  "Proton Mail",
+                              "version":  "1.13.3"
+                          },
+                          {
+                              "publisher":  "Proton AG",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\ProtonPass",
+                              "name":  "Proton Pass",
+                              "version":  "1.37.0"
+                          },
+                          {
+                              "publisher":  "Opera Software",
+                              "installLocation":  "C:\\Users\\nos\\AppData\\Local\\Programs\\Opera GX",
+                              "name":  "Opera GX Stable 134.0.5954.44",
+                              "version":  "134.0.5954.44"
+                          },
+                          {
+                              "publisher":  "Martí Climent",
+                              "installLocation":  "C:\\Program Files\\WingetUI\\",
+                              "name":  "UniGetUI",
+                              "version":  "3.3.1"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Core Runtime - 3.1.32 (x86)",
+                              "version":  "24.192.31915"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.40664",
+                              "version":  "12.0.40664"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Office 16 Click-to-Run Localization Component",
+                              "version":  "16.0.19127.20154"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Office 16 Click-to-Run Localization Component",
+                              "version":  "16.0.12527.22270"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Office 16 Click-to-Run Extensibility Component",
+                              "version":  "16.0.19127.20154"
+                          },
+                          {
+                              "publisher":  "Barrot",
+                              "installLocation":  "C:\\Program Files (x86)\\Barrot Bluetooth Driver\\",
+                              "name":  "Barrot Bluetooth Driver",
+                              "version":  "3.12.56.44"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python Launcher",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Google LLC",
+                              "installLocation":  "",
+                              "name":  "Google Update Helper",
+                              "version":  "1.3.36.51"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host - 7.0.20 (x86)",
+                              "version":  "56.80.15184"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2005 Redistributable",
+                              "version":  "8.0.61001"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft ASP.NET Core 7.0.20 - Shared Framework (x64)",
+                              "version":  "7.0.20.24269"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python Launcher",
+                              "version":  "3.13.5150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime 10.0.11 (x64)",
+                              "version":  "10.0.11.50000"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft ASP.NET Core 7.0.20 - Shared Framework (x86)",
+                              "version":  "7.0.20.24269"
+                          },
+                          {
+                              "publisher":  "Navimatics LLC",
+                              "installLocation":  "",
+                              "name":  "WinFsp 2025",
+                              "version":  "2.1.25156"
+                          },
+                          {
+                              "publisher":  "ClockworkMod",
+                              "installLocation":  "",
+                              "name":  "Universal Adb Driver",
+                              "version":  "1.0.4"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 7.0.20 (x86)",
+                              "version":  "56.80.15245"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Core Host FX Resolver - 3.1.32 (x86)",
+                              "version":  "24.192.31915"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Visual C++ 2012 Redistributable (x64) - 11.0.61030",
+                              "version":  "11.0.61030.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.61030",
+                              "version":  "11.0.61030"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host FX Resolver - 7.0.20 (x86)",
+                              "version":  "56.80.15184"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161",
+                              "version":  "9.0.30729.6161"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Visual C++ v14 Redistributable (x86) - 14.51.36247",
+                              "version":  "14.51.36247.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2012 x86 Additional Runtime - 11.0.61030",
+                              "version":  "11.0.61030"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Windows Desktop Runtime - 7.0.20 (x86)",
+                              "version":  "7.0.20.33720"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664",
+                              "version":  "12.0.40664.0"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 pip Bootstrap (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Runtime - 7.0.20 (x64)",
+                              "version":  "56.80.15184"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host FX Resolver - 10.0.11 (x64)",
+                              "version":  "80.44.56884"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219",
+                              "version":  "10.0.40219"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2012 x64 Additional Runtime - 11.0.61030",
+                              "version":  "11.0.61030"
+                          },
+                          {
+                              "publisher":  "Samsung Electronics Co., Ltd.",
+                              "installLocation":  "",
+                              "name":  "Smart Switch Service",
+                              "version":  "5.0.42.0"
+                          },
+                          {
+                              "publisher":  "Igor Pavlov",
+                              "installLocation":  "",
+                              "name":  "7-Zip 26.02 (x64 edition)",
+                              "version":  "26.02.00.0"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Documentation (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host - 8.0.30 (x64)",
+                              "version":  "64.120.56788"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Test Suite (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Executables (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Azure CLI (64-bit)",
+                              "version":  "2.88.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Runtime - 10.0.11 (x64)",
+                              "version":  "80.44.56884"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 10.0.11 (x64)",
+                              "version":  "80.44.56884"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 5.0.17 (x64)",
+                              "version":  "40.68.31219"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.6161",
+                              "version":  "9.0.30729.6161"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 3.1.32 (x64)",
+                              "version":  "24.192.31915"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Runtime - 5.0.17 (x64)",
+                              "version":  "40.68.31213"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 6.0.36 (x64)",
+                              "version":  "48.144.23186"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual Studio 2010 Tools for Office Runtime (x64)",
+                              "version":  "10.0.60922"
+                          },
+                          {
+                              "publisher":  "Moonlight Game Streaming Project",
+                              "installLocation":  "",
+                              "name":  "Moonlight Game Streaming Client",
+                              "version":  "6.1.0.0"
+                          },
+                          {
+                              "publisher":  "Apple Inc.",
+                              "installLocation":  "C:\\Program Files (x86)\\Bonjour\\",
+                              "name":  "Bonjour",
+                              "version":  "3.1.0.1"
+                          },
+                          {
+                              "publisher":  "Logitech",
+                              "installLocation":  null,
+                              "name":  "Logitech G HUB",
+                              "version":  "2025.5.741244"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Add to Path (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files\\PowerToys\\",
+                              "name":  "PowerToys (Preview)",
+                              "version":  "0.100.2"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host FX Resolver - 8.0.30 (x64)",
+                              "version":  "64.120.56788"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.40664",
+                              "version":  "12.0.40664"
+                          },
+                          {
+                              "publisher":  "Logitech",
+                              "installLocation":  "",
+                              "name":  "Logi Plugin Service",
+                              "version":  "6.1.3.22547"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files (x86)\\Microsoft Office",
+                              "name":  "Microsoft Office Home and Business 2019 - nb-no",
+                              "version":  "16.0.19127.20302"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files (x86)\\Microsoft Office",
+                              "name":  "Microsoft Office Home and Business 2019 - en-us",
+                              "version":  "16.0.19127.20302"
+                          },
+                          {
+                              "publisher":  "JAM Software",
+                              "installLocation":  "C:\\Program Files\\JAM Software\\HeavyLoad\\",
+                              "name":  "HeavyLoad V4.0 (64 bit)",
+                              "version":  "4.0"
+                          },
+                          {
+                              "publisher":  "Mozilla",
+                              "installLocation":  null,
+                              "name":  "Mozilla Maintenance Service",
+                              "version":  "152.0.4"
+                          },
+                          {
+                              "publisher":  "Mozilla",
+                              "installLocation":  "C:\\Program Files\\Mozilla Firefox",
+                              "name":  "Mozilla Firefox (x64 en-GB)",
+                              "version":  "153.0.3"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "C:\\Program Files\\Common Files\\Microsoft Shared\\VSTO\\10.0\\",
+                              "name":  "Microsoft Visual Studio 2010 Tools for Office Runtime (x64)",
+                              "version":  "10.0.60917"
+                          },
+                          {
+                              "publisher":  "The Git Development Community",
+                              "installLocation":  "C:\\Program Files\\Git\\",
+                              "name":  "Git",
+                              "version":  "2.55.0.2"
+                          },
+                          {
+                              "publisher":  "NZXT, Inc.",
+                              "installLocation":  null,
+                              "name":  "NZXT CAM 4.61.7",
+                              "version":  "4.61.7"
+                          },
+                          {
+                              "publisher":  "Igor Pavlov",
+                              "installLocation":  "C:\\Program Files\\7-Zip\\",
+                              "name":  "7-Zip 23.01 (x64)",
+                              "version":  "23.01"
+                          },
+                          {
+                              "publisher":  "EA Elektro-Automatik GmbH \u0026 Co. KG",
+                              "installLocation":  null,
+                              "name":  "Windows Driver Package - EA Elektro-Automatik GmbH \u0026 Co. KG (usbser) Ports  (08/27/2021 2.0.2.5)",
+                              "version":  "08/27/2021 2.0.2.5"
+                          },
+                          {
+                              "publisher":  "Docker Inc.",
+                              "installLocation":  "C:\\Program Files\\Docker\\Docker",
+                              "name":  "Docker Desktop",
+                              "version":  "4.82.0"
+                          },
+                          {
+                              "publisher":  "Coder Technologies, Inc.",
+                              "installLocation":  null,
+                              "name":  "Coder",
+                              "version":  "2.29.12.0"
+                          },
+                          {
+                              "publisher":  "Audacity Team",
+                              "installLocation":  "C:\\Program Files\\Muse\\Audacity\\",
+                              "name":  "Audacity 3.7.8",
+                              "version":  "3.7.8"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "Microsoft OneDrive",
+                              "version":  "26.134.0713.0004"
+                          },
+                          {
+                              "publisher":  "https://github.com/marchaesen",
+                              "installLocation":  null,
+                              "name":  "VcXsrv",
+                              "version":  "21.1.16.1"
+                          },
+                          {
+                              "publisher":  "LizardByte",
+                              "installLocation":  null,
+                              "name":  "Sunshine",
+                              "version":  "2026.516.143833"
+                          },
+                          {
+                              "publisher":  "CAPCOM Co., Ltd.",
+                              "installLocation":  "M:\\steamfolder\\steamapps\\common\\Devil May Cry 5",
+                              "name":  "Devil May Cry 5",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.40664",
+                              "version":  "12.0.40664"
+                          },
+                          {
+                              "publisher":  "win.rar GmbH",
+                              "installLocation":  "C:\\Program Files\\WinRAR",
+                              "name":  "WinRAR 7.23 (64-bit)",
+                              "version":  "7.23.0"
+                          },
+                          {
+                              "publisher":  "VideoLAN",
+                              "installLocation":  "C:\\Program Files\\VideoLAN\\VLC",
+                              "name":  "VLC media player",
+                              "version":  "3.0.23"
+                          },
+                          {
+                              "publisher":  "Wallpaper Engine Team",
+                              "installLocation":  "I:\\SteamLibrary\\steamapps\\common\\wallpaper_engine",
+                              "name":  "Wallpaper Engine",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "RubberBandGames",
+                              "installLocation":  "I:\\SteamLibrary\\steamapps\\common\\Wobbly Life",
+                              "name":  "Wobbly Life",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "ghosthunter",
+                              "installLocation":  "F:\\SteamLibrary\\steamapps\\common\\Grimm\u0027s Hollow",
+                              "name":  "Grimm\u0027s Hollow",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "Proton AG",
+                              "installLocation":  "C:\\Program Files\\Proton\\VPN\\",
+                              "name":  "Proton VPN",
+                              "version":  "5.1.5"
+                          },
+                          {
+                              "publisher":  "",
+                              "installLocation":  "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Steamworks Shared",
+                              "name":  "Steamworks Common Redistributables",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "Hazelight Studios",
+                              "installLocation":  "I:\\SteamLibrary\\steamapps\\common\\Split Fiction",
+                              "name":  "Split Fiction",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "Hazelight Studios",
+                              "installLocation":  "I:\\SteamLibrary\\steamapps\\common\\ItTakesTwo",
+                              "name":  "It Takes Two",
+                              "version":  null
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\FrameViewSDK",
+                              "name":  "NVIDIA FrameView SDK 1.5.11504.36206172",
+                              "version":  "1.5.11504.36206172"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX",
+                              "name":  "NVIDIA PhysX 系统软件 9.23.1019",
+                              "version":  "9.23.1019"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.NvApp.NvCPL.{F9832A7D-8167-4E0D-9CB3-4B976968A4A0}",
+                              "name":  "NvCpl",
+                              "version":  "1.0"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\NvContainer",
+                              "name":  "NVIDIA Container",
+                              "version":  "1.44"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\InstallerCore",
+                              "name":  "NVIDIA Install Application",
+                              "version":  "2.1002.438.0"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\HDAudio.Driver.{A675CB1B-6FD6-43F4-9243-0E82096982DC}",
+                              "name":  "NVIDIA HD 音频驱动程序 1.4.5.0",
+                              "version":  "1.4.5.0"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.NvApp.NvBackend.{06C8DC9F-1806-4319-8CCE-479FC52A5A0D}",
+                              "name":  "NVIDIA Backend",
+                              "version":  "11.0.5.420"
+                          },
+                          {
+                              "publisher":  "GitHub, Inc.",
+                              "installLocation":  "",
+                              "name":  "GitHub CLI",
+                              "version":  "2.96.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Host FX Resolver - 7.0.20 (x64)",
+                              "version":  "56.80.15184"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Windows PC Health Check",
+                              "version":  "4.0.2410.23001"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.NvApp.MessageBus.{5004D9D0-3FE4-48EB-ACC0-6EFF2F415E86}",
+                              "name":  "NVIDIA MessageBus 3 for NvApp",
+                              "version":  "3.16"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.NvApp.{FE5FD5F3-A9E6-4798-8823-D05E20F83BD0}",
+                              "name":  "NVIDIA App 11.0.5.420",
+                              "version":  "11.0.5.420"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.Driver.{82DA269F-1111-4C27-B9DD-611BA9EA0139}",
+                              "name":  "NVIDIA Graphics Driver 581.08",
+                              "version":  "581.08"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.AIUser.{1DDBCE48-DFF3-4BE5-ACD3-7110CD26937D}",
+                              "name":  "NVIDIA AIUser Container",
+                              "version":  "1.44"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.6",
+                              "name":  "NVIDIA CUDA Visual Studio Integration 12.6",
+                              "version":  "12.6"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.5",
+                              "name":  "NVIDIA CUDA Visual Studio Integration 12.5",
+                              "version":  "12.5"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\VirtualAudio.Driver.{85779EF0-9397-44A4-B99E-0CA3CD10CF36}",
+                              "name":  "NVIDIA Virtual Audio 4.65.0.3",
+                              "version":  "4.65.0.3"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft .NET Runtime - 6.0.36 (x64)",
+                              "version":  "48.144.23141"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Update Health Tools",
+                              "version":  "5.72.0.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft ASP.NET Core 7.0.20 Shared Framework (x64)",
+                              "version":  "7.0.20.24269"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\ShadowPlay",
+                              "name":  "NVIDIA ShadowPlay 11.0.5.400",
+                              "version":  "11.0.5.400"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.User.{043CD65E-A2F8-4427-B3D3-49724E91DB65}",
+                              "name":  "NVIDIA User Container",
+                              "version":  "1.44"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.Session.{AA29FE68-F1D2-461A-B1DD-3150F8773325}",
+                              "name":  "NVIDIA Session Container",
+                              "version":  "1.44"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.LocalSystem.{D8149AEB-A501-411D-8892-A0B7226EBB1A}",
+                              "name":  "NVIDIA LocalSystem Container",
+                              "version":  "1.44"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\NvTelemetry",
+                              "name":  "NVIDIA Telemetry Client",
+                              "version":  "19.4.29.0"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvPlugin.Watchdog.{5CE69BB0-4D49-4CEB-97DD-03F13E151C3B}",
+                              "name":  "NVIDIA Watchdog Plugin for NvContainer",
+                              "version":  "1.44"
+                          },
+                          {
+                              "publisher":  "NVIDIA Corporation",
+                              "installLocation":  "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvDLISR.{7CCD7FC2-6FBA-4A29-A5CD-9DF812126480}",
+                              "name":  "NVIDIA NvDLISR",
+                              "version":  "1.0"
+                          },
+                          {
+                              "publisher":  "hoppscotch",
+                              "installLocation":  "C:\\Program Files\\Hoppscotch\\",
+                              "name":  "Hoppscotch",
+                              "version":  "26.6.0"
+                          },
+                          {
+                              "publisher":  "Python Software Foundation",
+                              "installLocation":  "",
+                              "name":  "Python 3.12.10 Tcl/Tk Support (64-bit)",
+                              "version":  "3.12.10150.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 7.0.20 (x64)",
+                              "version":  "56.80.15245"
+                          },
+                          {
+                              "publisher":  "Ugreen",
+                              "installLocation":  "C:\\Program Files\\Ugreen\\",
+                              "name":  "无线网卡",
+                              "version":  "1.0.0.6"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  null,
+                              "name":  "PowerToys (Preview) x64",
+                              "version":  "0.100.2"
+                          },
+                          {
+                              "publisher":  "Logitech",
+                              "installLocation":  null,
+                              "name":  "Logi Options+",
+                              "version":  "2.5.926888"
+                          },
+                          {
+                              "publisher":  "Oracle Corporation",
+                              "installLocation":  "C:\\Program Files\\Java\\jre1.8.0_491\\",
+                              "name":  "Java 8 Update 491 (64-bit)",
+                              "version":  "8.0.4910.10"
+                          },
+                          {
+                              "publisher":  "Google LLC",
+                              "installLocation":  "C:\\Program Files\\Google\\Drive File Stream\\129.0.1.0\\GoogleDriveFS.exe",
+                              "name":  "Google Drive",
+                              "version":  "129.0.1.0"
+                          },
+                          {
+                              "publisher":  "Microsoft Corporation",
+                              "installLocation":  "",
+                              "name":  "Microsoft Windows Desktop Runtime - 8.0.30 (x64)",
+                              "version":  "64.120.56881"
+                          },
+                          {
+                              "publisher":  "Google LLC",
+                              "installLocation":  "",
+                              "name":  "Google Chrome",
+                              "version":  "151.0.7922.109"
+                          }
+                      ],
+    "generatedAt":  "2026-08-12T12:05:51.9763259+02:00",
+    "installedAppCount":  217,
+    "discoveredApps":  [
+                           {
+                               "id":  "powertoys",
+                               "name":  "PowerToys",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Alt+Space",
+                                                     "action":  "PowerToys Run launcher"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Alt+Space",
+                                                     "action":  "PowerToys Command Palette (CmdPal)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+C",
+                                                     "action":  "Color Picker"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+T",
+                                                     "action":  "Text Extractor (OCR)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+V",
+                                                     "action":  "Advanced Paste"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Ctrl+Space",
+                                                     "action":  "Peek (quick file preview)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+`",
+                                                     "action":  "FancyZones editor"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+O",
+                                                     "action":  "Mouse Pointer Crosshairs"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+D",
+                                                     "action":  "Mouse Highlighter"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+M",
+                                                     "action":  "Find My Mouse"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+N",
+                                                     "action":  "New+ (create from template)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+Q",
+                                                     "action":  "Video Conference Mute"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Ctrl+`",
+                                                     "action":  "Workspaces (save/restore window sets)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+R",
+                                                     "action":  "Screen Ruler"
+                                                 }
+                                             ],
+                               "shortcutCount":  14,
+                               "exeNames":  [
+                                                "powertoys.exe"
+                                            ]
+                           },
+                           {
+                               "id":  "windows",
+                               "name":  "Windows 11",
+                               "source":  "discovered",
+                               "shortcuts":  [
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  10,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+S",
+                                                     "action":  "Windows Search"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  8,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+E",
+                                                     "action":  "Open File Explorer"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+R",
+                                                     "action":  "Run dialog"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+I",
+                                                     "action":  "Open Settings"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+L",
+                                                     "action":  "Lock PC"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+D",
+                                                     "action":  "Show desktop"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+V",
+                                                     "action":  "Clipboard history"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  8,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+Shift+S",
+                                                     "action":  "Screenshot (Snipping Tool)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Tab",
+                                                     "action":  "Task View / virtual desktops"
+                                                 },
+                                                 {
+                                                     "frequency":  "constant",
+                                                     "importance":  9,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Alt+Tab",
+                                                     "action":  "Switch apps"
+                                                 },
+                                                 {
+                                                     "frequency":  "high",
+                                                     "importance":  7,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Alt+F4",
+                                                     "action":  "Close window"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  6,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Ctrl+Shift+Esc",
+                                                     "action":  "Task Manager"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+.",
+                                                     "action":  "Emoji picker"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "System Shortcuts",
+                                                     "keys":  "Win+;",
+                                                     "action":  "Emoji picker (alt)"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Left",
+                                                     "action":  "Snap window left"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Right",
+                                                     "action":  "Snap window right"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Up",
+                                                     "action":  "Maximize window"
+                                                 },
+                                                 {
+                                                     "frequency":  "medium",
+                                                     "importance":  5,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Down",
+                                                     "action":  "Minimize / restore window"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Ctrl+D",
+                                                     "action":  "New virtual desktop"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Ctrl+Left",
+                                                     "action":  "Previous virtual desktop"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Ctrl+Right",
+                                                     "action":  "Next virtual desktop"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Shift+Left",
+                                                     "action":  "Move window to left monitor"
+                                                 },
+                                                 {
+                                                     "frequency":  "low",
+                                                     "importance":  4,
+                                                     "category":  "Window Management",
+                                                     "keys":  "Win+Shift+Right",
+                                                     "action":  "Move window to right monitor"
+                                                 }
+                                             ],
+                               "shortcutCount":  23,
+                               "exeNames":  [
+                                                "explorer.exe",
+                                                "searchhost.exe",
+                                                "startmenuexperiencehost.exe"
+                                            ]
+                           }
+                       ],
+    "machine":  null
+}

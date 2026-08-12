@@ -85,7 +85,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    with open(args.export, "r", encoding="utf-8") as f:
+    with open(args.export, "r", encoding="utf-8-sig") as f:
         export = json.load(f)
 
     apps = {a.id: a for a in load_all_apps(args.sources)}

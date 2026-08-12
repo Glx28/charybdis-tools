@@ -64,7 +64,7 @@ function Get-PowerToysShortcuts {
     # Helper to read a module's settings and extract the activation shortcut.
     function Read-ModuleShortcut {
         param($Module, $SettingPath, $Property = 'activation_shortcut')
-        $path = Join-Path $ptLocal $Module $SettingPath
+        $path = Join-Path (Join-Path $ptLocal $Module) $SettingPath
         if (Test-Path $path) {
             try {
                 $json = Get-Content $path -Raw -Encoding UTF8 | ConvertFrom-Json
