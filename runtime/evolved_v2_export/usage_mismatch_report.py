@@ -20,9 +20,10 @@ from collections import Counter
 from pathlib import Path
 
 TOOLS_DIR = Path(__file__).resolve().parent.parent.parent
-APP_REFERENCE_PATH = TOOLS_DIR / "coach" / "data" / "app_shortcut_reference.json"
-WORKFLOWS_DIR = TOOLS_DIR / "coach" / "workflows"
-APPS_JSON_PATH = TOOLS_DIR / "coach" / "data" / "charybdis_apps.json"
+COACH_DIR = TOOLS_DIR.parent / "charybdis-coach"
+APP_REFERENCE_PATH = COACH_DIR / "data" / "app_shortcut_reference.json"
+WORKFLOWS_DIR = COACH_DIR / "workflows"
+APPS_JSON_PATH = COACH_DIR / "data" / "charybdis_apps.json"
 
 TOP_N = 10
 MISMATCH_MIN_COUNT = 10  # ignore noise below this many real occurrences
@@ -47,6 +48,8 @@ def load_exe_to_app_map() -> dict[str, str]:
     data = json.loads(APP_REFERENCE_PATH.read_text(encoding="utf-8"))
     exe_to_app: dict[str, str] = {}
     for app_name, app_data in data.get("apps", {}).items():
+        if not isinstance(app_data, dict):
+            continue
         for exe in app_data.get("exeNames", []):
             exe_to_app[exe.lower()] = app_name
     return exe_to_app

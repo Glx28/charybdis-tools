@@ -112,8 +112,15 @@ def main() -> None:
             )
             apps[app_id] = app
 
+        # Propagate exe names from discovery so usage-log process names map to apps.
+        before_exes = set(app.exe_names)
+        for exe in app_data.get("exeNames", []):
+            if exe not in before_exes:
+                app.exe_names.append(exe)
+
         before = len(app.shortcuts)
-        if merge_app(app, shortcuts):
+        shortcut_changed = merge_app(app, shortcuts)
+        if shortcut_changed or set(app.exe_names) != before_exes:
             changes.append((app.name, len(app.shortcuts) - before))
 
     if not changes:
