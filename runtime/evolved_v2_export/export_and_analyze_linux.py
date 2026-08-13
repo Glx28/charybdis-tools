@@ -25,6 +25,7 @@ DEFAULT_OUT_DIR = Path("/home/nos/charybdis/charybdis-tools/runtime/evolved_v2_e
 DEFAULT_APPLY_TEMPLATE = Path("/home/nos/charybdis/charybdis-zmk-config/scripts/zmk-studio/apply_every_key.js")
 DEFAULT_OPTIMIZER_ROOT = Path("/home/nos/charybdis/charybdis-optimizer-v2")
 DEFAULT_OPTIMIZER_PYTHON = DEFAULT_OPTIMIZER_ROOT / ".venv" / "bin" / "python"
+DEFAULT_HOST_KEYBOARD = Path(__file__).resolve().parents[3] / "charybdis-coach" / "data" / "windows_norwegian_host.json"
 
 # ---------------------------------------------------------------------------
 # Modifier mapping for ZMK Studio
@@ -35,6 +36,34 @@ MOD_MAP = {
     "Alt": "L Alt",
     "Win": "L GUI",
 }
+
+# Loaded lazily; maps ZMK Studio parameter (e.g. "2 and At") to host output entry.
+_HOST_KEYBOARD_CACHE = None
+
+def load_host_keyboard(path=DEFAULT_HOST_KEYBOARD):
+    global _HOST_KEYBOARD_CACHE
+    if _HOST_KEYBOARD_CACHE is not None:
+        return _HOST_KEYBOARD_CACHE
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+        _HOST_KEYBOARD_CACHE = data.get("zmk_to_host_output", {})
+    except Exception:
+        _HOST_KEYBOARD_CACHE = {}
+    return _HOST_KEYBOARD_CACHE
+
+
+def is_altgr_output(parameter):
+    """Return True if the parameter's host output is an AltGr-only glyph."""
+    host_map = load_host_keyboard()
+    key = str(parameter or "").replace("Keyboard ", "").strip()
+    entry = host_map.get(key)
+    if not entry:
+        return False
+    altgr = entry.get("altgr", "")
+    normal = entry.get("normal", "")
+    shift = entry.get("shift", "")
+    return bool(altgr) and altgr not in (normal, shift)
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -675,10 +704,18 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                         is_mouse_button = (base.startswith("MB") and base[2:].isdigit()) or base in MOUSE_CLICK_BASE_KEYS
                         behavior = click_macro or ("Mouse Key Press" if is_mouse_button else "Key Press")
                         param = "" if click_macro else base_to_zmk_parameter(base, param_mapping)
+                        # On the Norwegian Windows layout, Ctrl+Alt is the same as AltGr.
+                        # Emit a single R Alt modifier so the physical key actually types
+                        # the AltGr glyph (@, £, $, etc.) instead of sending LCtrl+LAlt.
+                        if not click_macro and set(zmk_mods) == {"L Ctrl", "L Alt"} and is_altgr_output(param):
+                            zmk_mods = ["R Alt"]
                         export_mods = [] if click_macro else zmk_mods
+                        label = sc["keys"]
+                        if export_mods == ["R Alt"] and label.startswith("Ctrl+Alt+"):
+                            label = "AltGr+" + label[len("Ctrl+Alt+"):]
                         effective = {
                             "x": pos["x"], "y": pos["y"],
-                            "label": sc["keys"],
+                            "label": label,
                             "behavior": behavior,
                             "parameter": param,
                             "modifiers": export_mods,

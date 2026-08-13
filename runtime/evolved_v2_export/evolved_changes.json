@@ -2612,12 +2612,11 @@
     "hand": "right",
     "effort": 1.75,
     "from_label": "transparent",
-    "to_label": "Ctrl+Alt+2",
+    "to_label": "AltGr+2",
     "to_behavior": "Key Press",
     "to_parameter": "2 and At",
     "to_modifiers": [
-      "L Ctrl",
-      "L Alt"
+      "R Alt"
     ]
   },
   {

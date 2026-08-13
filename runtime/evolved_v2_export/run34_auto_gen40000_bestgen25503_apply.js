@@ -3313,10 +3313,9 @@ window.CHARYBDIS_FINAL_LAYOUT = {
       "behavior": "Key Press",
       "parameter": "Keyboard 2 and At",
       "modifiers": [
-        "L Ctrl",
-        "L Alt"
+        "R Alt"
       ],
-      "label": "Ctrl+Alt+2",
+      "label": "AltGr+2",
       "rationale": "evolved: Type @ symbol",
       "optimizer_changed": true,
       "apply_batch": true

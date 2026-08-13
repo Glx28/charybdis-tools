@@ -188,7 +188,7 @@ Generation: 40000
   (8,1) [right] transparent -> Win+X  [L GUI]  effort=1.0
   (9,1) [right] transparent -> Win+V  [L GUI]  effort=1.0
   (10,1) [right] transparent -> Shift+Tab  [L Shift]  effort=1.0
-  (12,1) [right] transparent -> Ctrl+Alt+2  [L Ctrl + L Alt]  effort=1.8
+  (12,1) [right] transparent -> AltGr+2  [R Alt]  effort=1.8
   (0,2) [left] transparent -> Ctrl+Shift+Esc  [L Ctrl + L Shift]  effort=1.2
   (1,2) [left] transparent -> Ctrl+Shift+P  [L Ctrl + L Shift]  effort=0.0
   (2,2) [left] transparent -> L9  effort=0.0
