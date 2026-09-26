@@ -195,6 +195,7 @@ COACH_STUDIO_BEHAVIORS = [
     "coach_l1_scroll_hold", "coach_l2_scroll_hold", "coach_l3_scroll_hold", "coach_l4_scroll_hold",
     "coach_l5_scroll_hold", "coach_l6_scroll_hold", "coach_l7_scroll_hold", "coach_l8_scroll_hold",
     "coach_l9_scroll_hold", "coach_l10_scroll_hold",
+    "coach_current_scroll_hold",
     "Snipe Hold", "Fast Hold", "Snipe Mode", "Normal Mode", "Fast Mode",
 ]
 
@@ -608,6 +609,8 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                     target = int(sc.get("access_target_layer", -1))
                     if str(behavior or "").strip().lower().startswith("scroll mode layer"):
                         scroll_behavior = COACH_LAYER_ACCESS.get(("scroll_hold", target))
+                        if int(pos["layer"]) == target:
+                            scroll_behavior = "coach_current_scroll_hold"
                         if scroll_behavior:
                             behavior = scroll_behavior
                             parameter = ""

@@ -4815,7 +4815,7 @@
     "effort": 0.0,
     "from_label": "transparent",
     "to_label": "Scroll_L10",
-    "to_behavior": "coach_l10_scroll_hold",
+    "to_behavior": "coach_current_scroll_hold",
     "to_parameter": "",
     "to_modifiers": []
   },
