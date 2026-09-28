@@ -42,6 +42,7 @@ if (Test-Path -LiteralPath $configPath) {
         Write-Warning "Could not parse $configPath; using launcher defaults."
     }
 }
+$portWasExplicit = $Port -gt 0
 if ($Port -le 0) { $Port = $config.coach_server_port }
 
 $coachIndex = Join-Path $paths.CoachDir "index.html"
@@ -50,6 +51,14 @@ $serverScript = Join-Path $RepoRoot "python\coach_http_server.py"
 $statePath = Join-Path $paths.RuntimeDir "charybdis_state.json"
 $beaconPidPath = Join-Path $paths.RuntimeDir "coach_beacon_listener.pid"
 $serverPidPath = Join-Path $paths.RuntimeDir "charybdis_coach_server.pid"
+$portStatePath = Join-Path $paths.RuntimeDir "coach_server_port.txt"
+
+if (-not $portWasExplicit -and (Test-Path -LiteralPath $portStatePath)) {
+    try {
+        $savedPort = [int](Get-Content -Raw -LiteralPath $portStatePath)
+        if ($savedPort -ge 1 -and $savedPort -le 65535) { $Port = $savedPort }
+    } catch { }
+}
 
 foreach ($required in @($coachIndex, $beaconScript, $serverScript)) {
     if (-not (Test-Path -LiteralPath $required)) { throw "Required coach runtime file missing: $required" }
@@ -75,6 +84,42 @@ function Test-CoachHttp {
         if ($Release -and $response.Headers["X-Charybdis-Release"] -ne $Release) { return $false }
         return $true
     } catch { return $false }
+}
+
+function Test-CoachPortAvailable {
+    param([Parameter(Mandatory)][int]$Candidate)
+    if ($Candidate -lt 1 -or $Candidate -gt 65535) { return $false }
+    $listener = Get-NetTCPConnection -LocalPort $Candidate -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($listener) { return $false }
+
+    $probe = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $Candidate)
+    try {
+        $probe.Start()
+        return $true
+    } catch [System.Net.Sockets.SocketException] {
+        return $false
+    } finally {
+        $probe.Stop()
+    }
+}
+
+function Find-AvailableCoachPort {
+    param([Parameter(Mandatory)][int]$PreferredPort)
+    if ($PreferredPort -lt 1 -or $PreferredPort -gt 65535) {
+        throw "Coach port must be between 1 and 65535; received $PreferredPort."
+    }
+    $lastPort = [Math]::Min(65535, $PreferredPort + 99)
+    for ($candidate = $PreferredPort; $candidate -le $lastPort; $candidate++) {
+        if (Test-CoachPortAvailable -Candidate $candidate) { return $candidate }
+    }
+    throw "No available coach port found from $PreferredPort through $lastPort."
+}
+
+function Save-CoachPortState {
+    param([Parameter(Mandatory)][int]$ActivePort)
+    $temporaryPath = "$portStatePath.$([Guid]::NewGuid().ToString('N')).tmp"
+    [System.IO.File]::WriteAllText($temporaryPath, [string]$ActivePort, [System.Text.Encoding]::ASCII)
+    Move-Item -LiteralPath $temporaryPath -Destination $portStatePath -Force
 }
 
 function Test-BeaconHeartbeat {
@@ -137,9 +182,12 @@ $serverRecord = Read-PidRecord -Path $serverPidPath
 $serverAlive = Test-PidRecordAlive -Record $serverRecord
 if (-not $serverAlive) {
     Remove-Item -LiteralPath $serverPidPath -Force -ErrorAction SilentlyContinue
-    $listener = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
-    if ($listener) {
-        throw "Port $Port is already owned by PID $($listener.OwningProcess), but it is not the identity-checked Charybdis coach server. Refusing to kill an unrelated process."
+    $preferredPort = $Port
+    $Port = Find-AvailableCoachPort -PreferredPort $preferredPort
+    if ($Port -ne $preferredPort) {
+        $message = "Preferred coach port $preferredPort is busy; using $Port instead."
+        Write-Host $message -ForegroundColor Yellow
+        Write-ComponentLog -LogsDir $paths.LogsDir -Component "coach-server" -Message $message -Release $Release
     }
     $serverStdout = Join-Path $paths.LogsDir "coach-server.stdout.log"
     $serverStderr = Join-Path $paths.LogsDir "coach-server.stderr.log"
@@ -161,6 +209,7 @@ if (-not $serverAlive) {
     throw "The recorded coach server is running but does not serve the expected release. Run restart."
 }
 
+Save-CoachPortState -ActivePort $Port
 $url = "http://127.0.0.1:$Port/charybdis-coach/"
 if (-not $NoBrowser -and $config.coach_open_browser_on_start) { Start-Process $url }
 Write-Host "Coach server and beacon listener are healthy: $url" -ForegroundColor Green

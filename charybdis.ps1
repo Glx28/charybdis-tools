@@ -63,6 +63,33 @@ function Get-CurrentRelease {
     return ""
 }
 
+function Get-CoachServerPort {
+    param([switch]$UseActive)
+    $portStatePath = Join-Path $paths.RuntimeDir "coach_server_port.txt"
+    if ($UseActive -and (Test-Path -LiteralPath $portStatePath)) {
+        try {
+            $active = [int](Get-Content -Raw -LiteralPath $portStatePath)
+            if ($active -ge 1 -and $active -le 65535) { return $active }
+        } catch { }
+    }
+    if ($Port -gt 0) { return $Port }
+    if (Test-Path -LiteralPath $portStatePath) {
+        try {
+            $active = [int](Get-Content -Raw -LiteralPath $portStatePath)
+            if ($active -ge 1 -and $active -le 65535) { return $active }
+        } catch { }
+    }
+    $helperConfigPath = Join-Path $paths.ZmkDir "config\charybdis_helper.json"
+    if (Test-Path -LiteralPath $helperConfigPath) {
+        try {
+            $helperConfig = Get-Content -Raw -LiteralPath $helperConfigPath | ConvertFrom-Json
+            $configured = [int]$helperConfig.coach_server_port
+            if ($configured -ge 1 -and $configured -le 65535) { return $configured }
+        } catch { }
+    }
+    return 8765
+}
+
 function Print-Result {
     param($Result)
     if ($Json) {
@@ -101,7 +128,7 @@ function Invoke-Start {
     if ($ForceRestart) { $coachArgs['ForceRestart'] = $true }
     & (Join-Path $RepoRoot "powershell\start_charybdis_coach.ps1") @coachArgs
 
-    $effectivePort = if ($Port -gt 0) { $Port } else { 8765 }
+    $effectivePort = Get-CoachServerPort -UseActive
     $health = Test-ComponentHealth -Paths $paths -Port $effectivePort -Release $release
     $toolsCommit = Get-ShortCommit -Path $paths.ToolsDir
     $coachCommit = Get-ShortCommit -Path $paths.CoachDir
@@ -169,7 +196,7 @@ function Invoke-Update {
 
 function Invoke-Status {
     $release = Get-CurrentRelease
-    $effectivePort = if ($Port -gt 0) { $Port } else { 8765 }
+    $effectivePort = Get-CoachServerPort
     $health = Test-ComponentHealth -Paths $paths -Port $effectivePort -Release $release
     $toolsCommit = Get-ShortCommit -Path $paths.ToolsDir
     $coachCommit = Get-ShortCommit -Path $paths.CoachDir

@@ -197,9 +197,17 @@ BuildTrayMenu() {
 }
 
 OpenCoachApp() {
-    global HelperConfig
+    global HelperConfig, RuntimeDir
     port := HelperConfig.Has("coach_server_port") ? HelperConfig["coach_server_port"] : 8765
-    Run("http://127.0.0.1:" port "/apps/charybdis-coach/")
+    portStatePath := RuntimeDir "\coach_server_port.txt"
+    if FileExist(portStatePath) {
+        try {
+            activePort := Trim(FileRead(portStatePath, "UTF-8"))
+            if RegExMatch(activePort, "^\d{1,5}$") && activePort >= 1 && activePort <= 65535
+                port := activePort
+        }
+    }
+    Run("http://127.0.0.1:" port "/charybdis-coach/")
     TouchAction("Open web coach")
 }
 
