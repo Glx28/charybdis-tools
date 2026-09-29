@@ -3,7 +3,7 @@
 ; Minimal layer-beacon listener for the web coach. No GUI, no launcher — stays resident.
 
 global ToolsRoot := RegExReplace(A_ScriptDir, "\\[^\\]+$")
-global ZmkConfigRoot := ToolsRoot "\..\charybdis-zmk-config"
+global ZmkConfigRoot := ToolsRoot "\keyboard-data"
 global RuntimeDir := ToolsRoot "\runtime"
 global StatePath := RuntimeDir "\charybdis_state.json"
 global EventLogPath := RuntimeDir "\charybdis_events.jsonl"

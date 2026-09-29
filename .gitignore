@@ -5,6 +5,7 @@ runtime/charybdis_beacon.log
 runtime/coach_beacon_stderr.log
 runtime/*.log
 runtime/*.pid
+runtime/coach_server_port.txt
 runtime/*.out
 runtime/*.err
 runtime/*probe*.jsonl

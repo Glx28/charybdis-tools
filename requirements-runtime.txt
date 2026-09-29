@@ -1,4 +1,5 @@
-# Runtime dependencies for python/coach_beacon_listener.py and
+# Optional Python beacon/USB utilities. The normal runtime uses AHK beacon capture.
+# Dependencies for python/coach_beacon_listener.py and
 # python/usb_state_monitor.py. Installed into .venv by
 # `charybdis.ps1 bootstrap` / `charybdis.ps1 doctor -Repair`, mirroring the
 # .venv pattern already used in the sibling charybdis-optimizer-v2 repo

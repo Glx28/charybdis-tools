@@ -146,7 +146,7 @@ def main() -> None:
     opt_path = args.sources.parent / "app_shortcut_scores.json"
     coach_path = (
         args.sources.parent.parent.parent
-        / "charybdis-coach"
+        / "coach"
         / "data"
         / "app_shortcut_reference.json"
     )

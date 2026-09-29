@@ -1,6 +1,6 @@
 # Charybdis Keyboard System
 
-Complete software stack for a Charybdis split keyboard with PMW3610 thumb trackball: firmware, layout optimization, interactive coach, and Windows automation — split across 4 repos that work together.
+Charybdis split keyboard with PMW3610 thumb trackball. The Windows runtime (coach, logger, beacon handler) is self-contained in `charybdis-tools`; firmware and layout optimization remain separate development projects.
 
 ## Hardware
 
@@ -13,53 +13,47 @@ Complete software stack for a Charybdis split keyboard with PMW3610 thumb trackb
 | Host OS | Windows 11, Norwegian keyboard layout |
 | Layout | 11 layers, 616 total key bindings |
 
-## Repos
+## Repositories
 
-All 4 repos must be cloned into the same parent directory.
+Only `charybdis-tools` is needed to run the Windows coach, shortcut logger, and beacon handler. It bundles the coach UI and host-side layout/config data. Firmware and layout optimization repos are optional and only needed for those development workflows.
 
 | Repo | What it does |
 |------|-------------|
-| [charybdis-zmk-config](https://github.com/Glx28/zmk-config-charybdis-beacons) | ZMK firmware config, layout CSV (source of truth), ZMK Studio apply/verify scripts. Firmware builds via GitHub Actions. |
-| [charybdis-optimizer](https://github.com/Glx28/charybdis-optimizer) | 13-module Node.js analysis pipeline + Python DEAP evolutionary optimizer. Evolves shortcut placement using a 12-factor fitness function. |
-| [charybdis-coach](https://github.com/Glx28/charybdis-coach) | Browser-based interactive keyboard visualizer. Shows all 11 layers, live layer tracking, per-app workflow guides, practice mode. Zero build — static HTML + JS. |
-| [charybdis-tools](https://github.com/Glx28/charybdis-tools) | Windows host helpers: AHK shortcut logger, beacon layer tracker, trackball benchmarks, mouse settings, launcher scripts, and the bootstrap installer. |
+| [charybdis-tools](https://github.com/Glx28/charybdis-tools) | Self-contained Windows runtime: bundled coach, AHK shortcut logger/beacon handler, launcher, trackball utilities. |
+| [charybdis-zmk-config](https://github.com/Glx28/zmk-config-charybdis-beacons) | Optional ZMK firmware and layout development; firmware builds via GitHub Actions. |
+| [charybdis-coach](https://github.com/Glx28/charybdis-coach) | Optional coach UI source repository; published runtime snapshot is bundled in `charybdis-tools/coach/`. |
+| [charybdis-optimizer](https://github.com/Glx28/charybdis-optimizer) | Optional Node.js/Python layout analysis and optimization. |
 
 ## Fresh Windows Setup
 
 Install prerequisites first:
 - [Git](https://git-scm.com/download/win)
-- [Node.js LTS](https://nodejs.org/)
 - [Python 3.10+](https://www.python.org/downloads/)
 - [AutoHotkey v2](https://www.autohotkey.com/)
 
-Then one command does everything — clones all repos, installs deps, applies mouse settings, starts coach + beacon:
+Clone the runtime once, then start the complete stack:
 
 ```powershell
 git clone https://github.com/Glx28/charybdis-tools.git charybdis-tools
-powershell -ExecutionPolicy Bypass -File charybdis-tools\charybdis.ps1 bootstrap
+cd charybdis-tools
+pwsh -NoProfile -ExecutionPolicy Bypass -File .\start_charybdis.ps1
 ```
 
-For the main dev machine (adds Python deps for evolutionary optimizer):
-
-```powershell
-powershell -ExecutionPolicy Bypass -File charybdis-tools\charybdis.ps1 bootstrap -IncludeOptimizer
-```
-
-Then run `charybdis.ps1 install-startup` once to install a Scheduled Task for reboot recovery.
+Run `pwsh -NoProfile -ExecutionPolicy Bypass -File .\charybdis.ps1 install-startup` once to start automatically at logon.
 
 ## Start Everything After Reboot
 
-With `install-startup` run once, a Scheduled Task starts everything automatically ~10s after logon - no manual step needed. To do it manually, or to pull the latest promoted layout first:
+With `install-startup` run once, the Scheduled Task starts everything automatically after logon. Update the runtime with `git pull`, then restart:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File charybdis-tools\charybdis.ps1 update
+git pull
+pwsh -NoProfile -ExecutionPolicy Bypass -File .\start_charybdis.ps1 -Restart
 ```
 
-This pulls all repos, validates the release, and (re)starts:
+The launcher starts:
 - The AHK helper (shortcut logger + beacon)
-- Python HTTP server on port 8765 (serves the coach app)
-- Beacon listener (tracks which keyboard layer is active)
-- Opens the coach in your browser at http://127.0.0.1:8765/charybdis-coach/
+- Python HTTP server (uses port 8765 when available; otherwise selects and reports a free port)
+- Coach UI at `http://127.0.0.1:<selected-port>/charybdis-coach/`
 
 ## How Data Flows Between Repos
 
@@ -79,7 +73,7 @@ charybdis_apps.json ────────────────────
                            usage_stats.json <──────────────────────── shortcut_usage.jsonl
 ```
 
-**zmk-config** is the source of truth. The optimizer reads from it, evolves better layouts, and generates apply/verify scripts. After applying in ZMK Studio, `sync_repos.ps1` pushes updated data to coach and optimizer. The tools repo logs usage at runtime, which feeds back into the optimizer for the next evolution cycle.
+For layout development, **zmk-config** is the source of truth. The optimizer reads from it and generates apply/verify scripts. Runtime uses the versioned coach/layout snapshot bundled in `charybdis-tools`; the tools repo logs usage locally.
 
 ## Sync After Layout Changes
 
@@ -95,7 +89,7 @@ cd charybdis-optimizer
 powershell -ExecutionPolicy Bypass -File sync_repos.ps1 -CommitMessage "feat: apply evolved layout" -Push
 ```
 
-This copies canonical.json, keybindings CSV, layout_spec, apps config, and Norwegian host config to the repos that need them, then commits and pushes all 4 repos.
+This updates the separate firmware/optimizer development repositories. The Windows runtime consumes the files bundled in `charybdis-tools`; publish those runtime snapshot updates from this repository separately.
 
 ## Evolving a New Layout (Dev Machine Only)
 
@@ -114,7 +108,7 @@ cd evolve && python export_zmk.py ../build
 #    Paste build/evolved_apply.js in console
 #    Paste build/evolved_verify.js to confirm
 
-# 5. Sync all repos
+# 5. Sync development repos (runtime bundle is updated separately)
 cd ..
 powershell -ExecutionPolicy Bypass -File sync_repos.ps1 -CommitMessage "feat: apply evolved layout" -Push
 ```

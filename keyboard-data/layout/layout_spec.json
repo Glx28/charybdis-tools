@@ -1,0 +1,51 @@
+{
+  "project": "Charybdis Ultimate Keyboard Experience",
+  "device": "V&Z-Charydbis",
+  "firmware": "ZMK with ZMK Studio",
+  "trackball_side": "right thumb",
+  "host_keyboard": {
+    "primary": "Windows Norwegian (nb-NO)",
+    "config": "layout/windows_norwegian_host.json",
+    "firmware_note": "US HID scancodes from ZMK; Windows NO renders øæå at SemiColon/Quote/LeftBrace on L0. Layer 1 bracket keys use same scancodes — switch to US English (Win+Space or F16) for programming punctuation."
+  },
+  "profiles": {
+    "BT0": "desktop",
+    "BT1": "Windows laptop",
+    "BT2": "future Mac",
+    "BT3": "phone/tablet/spare",
+    "BT4": "emergency/spare"
+  },
+  "layers": {
+    "0": "Base typing/thumb access",
+    "7": "Frozen fallback/game/system-safe layer",
+    "dynamic_policy": "L1-L6 and L8-L10 are assigned by each generated layout. Do not infer mouse, scroll, travel, app, system, code, Excel, DMS, or navigation roles from layer numbers."
+  },
+  "host_triggers": {
+    "F13": "Spare macro/app trigger (æ now direct on base 12,2 via Norwegian layout)",
+    "F14": "Spare macro/app trigger (ø now direct on base 11,2 via Norwegian layout)",
+    "F15": "Spare macro/app trigger (å now direct on base 12,1 via Norwegian layout)",
+    "F16": "English input helper",
+    "F17": "Chinese/Pinyin helper",
+    "F18": "Japanese IME helper",
+    "F19": "VS Code helper",
+    "F20": "VS Code command palette/helper",
+    "F21": "Outlook helper",
+    "F22": "Teams helper",
+    "F23": "Edge/Proton Pass helper",
+    "F24": "M-Files helper"
+  },
+  "design_defaults": {
+    "drag_select": "hold-to-drag",
+    "scroll": "trackball scroll-mode capability is tied to the firmware target layer; generated layouts decide how it is accessed",
+    "excel_horizontal_scroll": true,
+    "one_key_editing": true,
+    "app_keys": true,
+    "window_management": true,
+    "fancyzones": true,
+    "virtual_desktops": true,
+    "vimium": "defaults/mainly defaults",
+    "proton_pass": "dedicated autofill/helper key",
+    "mac_mode": "generated shortcut/access overlay, not a fixed layer number",
+    "philosophy": "simple/reliable first"
+  }
+}

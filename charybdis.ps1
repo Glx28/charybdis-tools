@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
-    Unified Charybdis launcher: start, stop, restart, status, update, doctor,
-    install-startup, bootstrap.
+    Self-contained runtime launcher: start, stop, restart, status, update,
+    doctor, install-startup, bootstrap.
 
 .DESCRIPTION
     Replaces the previous overlapping bootstrap.ps1 / Start-Charybdis.ps1 /
@@ -12,9 +12,6 @@
 
 .PARAMETER Command
     start | stop | restart | status | update | doctor | install-startup | bootstrap
-
-.PARAMETER UseCurrent
-    For `update`: proceed on a dirty tracked tools tree instead of failing.
 
 .PARAMETER Json
     Print machine-readable {ok, release, tools, coach, zmk, url} instead of
@@ -38,11 +35,8 @@ param(
     [string]$RepoRoot = "",
     [int]$Port = 0,
     [switch]$NoBrowser,
-    [switch]$UseCurrent,
     [switch]$Json,
-    [switch]$Repair,
-    [switch]$SkipClone,
-    [switch]$IncludeOptimizer
+    [switch]$Repair
 )
 
 $ErrorActionPreference = "Stop"
@@ -131,8 +125,8 @@ function Invoke-Start {
     $effectivePort = Get-CoachServerPort -UseActive
     $health = Test-ComponentHealth -Paths $paths -Port $effectivePort -Release $release
     $toolsCommit = Get-ShortCommit -Path $paths.ToolsDir
-    $coachCommit = Get-ShortCommit -Path $paths.CoachDir
-    $zmkCommit = Get-ShortCommit -Path $paths.ZmkDir
+    $coachCommit = "bundled"
+    $zmkCommit = "bundled"
     $url = "http://127.0.0.1:$effectivePort/charybdis-coach/"
     $null = Write-StatusFile -Paths $paths -Ok $health.AllPass -Release $release `
         -ToolsCommit $toolsCommit -CoachCommit $coachCommit -ZmkCommit $zmkCommit -Url $url -HealthChecks $health.Checks
@@ -157,37 +151,15 @@ function Invoke-Stop {
 # ---------------------------------------------------------------------------
 
 function Invoke-Update {
-    Write-Host "=== Updating repos ===" -ForegroundColor Cyan
-    $toolsCommit = Invoke-GitUpdate -Path $paths.ToolsDir -UseCurrent:$UseCurrent
-    $coachCommit = Invoke-GitUpdate -Path $paths.CoachDir -UseCurrent:$UseCurrent
-    $zmkCommit = Invoke-GitUpdate -Path $paths.ZmkDir -RequiredBranch "codex/build-coach-layers-cpi750" -UseCurrent:$UseCurrent
-    Write-Host "  tools: $toolsCommit"
-    Write-Host "  coach: $coachCommit"
-    Write-Host "  zmk:   $zmkCommit"
-
-    Write-Host "`n=== Validating release ===" -ForegroundColor Cyan
-    $python = Get-VenvPython -Paths $paths
-    if (-not $python) {
-        $cmd = Get-Command python -ErrorAction SilentlyContinue
-        if ($cmd) { $python = $cmd.Source }
-    }
-    if ($python) {
-        $checkScript = Join-Path $RepoRoot "runtime\evolved_v2_export\release_check.py"
-        $output = & $python $checkScript 2>&1
-        Write-Host $output
-        if ($LASTEXITCODE -ne 0) {
-            Write-ComponentLog -LogsDir $paths.LogsDir -Component "update" -Message "release_check.py failed (exit $LASTEXITCODE)" -Severity "ERROR" -Release (Get-CurrentRelease)
-            throw "Release validation failed - refusing to restart onto a mixed/invalid release. See output above."
-        }
-    } else {
-        Write-Warning "No Python found; skipping release_check.py validation."
-    }
-
+    Write-Host "=== Updating the unified runtime repo ===" -ForegroundColor Cyan
+    Invoke-NativeChecked -FilePath "git" -ArgumentList @("pull", "--ff-only") -WorkingDirectory $RepoRoot | Out-Null
+    $bundle = Test-ReleaseManifest -Paths $paths
+    if (-not $bundle.AllPass) { throw "Bundled coach/layout data failed validation. Check the checkout before restarting." }
     Write-Host "`n=== Restarting ===" -ForegroundColor Cyan
     Invoke-Stop
     Start-Sleep -Milliseconds 500
     Invoke-Start -ForceRestart
-    Write-ComponentLog -LogsDir $paths.LogsDir -Component "update" -Message "Update complete" -Release (Get-CurrentRelease)
+    Write-ComponentLog -LogsDir $paths.LogsDir -Component "update" -Message "Unified runtime repo updated" -Release (Get-CurrentRelease)
 }
 
 # ---------------------------------------------------------------------------
@@ -199,8 +171,8 @@ function Invoke-Status {
     $effectivePort = Get-CoachServerPort
     $health = Test-ComponentHealth -Paths $paths -Port $effectivePort -Release $release
     $toolsCommit = Get-ShortCommit -Path $paths.ToolsDir
-    $coachCommit = Get-ShortCommit -Path $paths.CoachDir
-    $zmkCommit = Get-ShortCommit -Path $paths.ZmkDir
+    $coachCommit = "bundled"
+    $zmkCommit = "bundled"
     $url = "http://127.0.0.1:$effectivePort/charybdis-coach/"
     $result = Write-StatusFile -Paths $paths -Ok $health.AllPass -Release $release `
         -ToolsCommit $toolsCommit -CoachCommit $coachCommit -ZmkCommit $zmkCommit -Url $url -HealthChecks $health.Checks
@@ -220,7 +192,6 @@ function Invoke-Doctor {
 
     $prereqs = @{
         git = Get-Command git -ErrorAction SilentlyContinue
-        node = Get-Command node -ErrorAction SilentlyContinue
         python = Get-Command python -ErrorAction SilentlyContinue
     }
     foreach ($name in $prereqs.Keys) {
@@ -254,12 +225,11 @@ function Invoke-Doctor {
         }
     }
 
-    Write-Host "`n--- Git state ---" -ForegroundColor Cyan
-    foreach ($pair in @(@("tools", $paths.ToolsDir), @("coach", $paths.CoachDir), @("zmk", $paths.ZmkDir))) {
-        $dirty = Get-RepoDirtyState -Path $pair[1]
-        $state = if ($dirty.IsTrackedDirty) { "DIRTY ($($dirty.TrackedFiles.Count) tracked file(s))" } else { "clean" }
-        Write-Host ("  {0,-8} {1}" -f $pair[0], $state)
-    }
+    Write-Host "`n--- Unified runtime repo ---" -ForegroundColor Cyan
+    $dirty = Get-RepoDirtyState -Path $paths.ToolsDir
+    $state = if ($dirty.IsTrackedDirty) { "DIRTY ($($dirty.TrackedFiles.Count) tracked file(s))" } else { "clean" }
+    Write-Host ("  {0,-8} {1}" -f "runtime", $state)
+    Write-Host "  Coach UI and keyboard data are bundled in this repo."
 
     Write-Host "`n--- Release manifest ---" -ForegroundColor Cyan
     $manifestResult = Test-ReleaseManifest -Paths $paths
@@ -367,35 +337,10 @@ function Invoke-Bootstrap {
         throw "Install prerequisites above, then re-run 'charybdis.ps1 bootstrap'."
     }
 
-    if (-not $SkipClone) {
-        Write-Host "`n--- Cloning repositories ---" -ForegroundColor Cyan
-        $repos = @{
-            "charybdis-zmk-config" = @{
-                url = "https://github.com/Glx28/zmk-config-charybdis-beacons.git"
-                branch = "codex/build-coach-layers-cpi750"
-            }
-            "charybdis-coach" = @{
-                url = "https://github.com/Glx28/charybdis-coach.git"
-                branch = "master"
-            }
-        }
-        if ($IncludeOptimizer) {
-            $repos["charybdis-optimizer"] = @{
-                url = "https://github.com/Glx28/charybdis-optimizer.git"
-                branch = "master"
-            }
-        }
-        foreach ($name in $repos.Keys) {
-            $dest = Join-Path $paths.ParentDir $name
-            if (Test-Path $dest) {
-                Write-Host "[SKIP] $name already exists" -ForegroundColor Yellow
-            } else {
-                Invoke-NativeChecked -FilePath "git" -ArgumentList @("clone", $repos[$name].url, $dest) | Out-Null
-                Write-Host "[OK] $name" -ForegroundColor Green
-            }
-            Invoke-GitUpdate -Path $dest -RequiredBranch $repos[$name].branch | Out-Null
-        }
-    }
+    Write-Host "`n--- Coach UI and keyboard runtime data ---" -ForegroundColor Cyan
+    $bundle = Test-ReleaseManifest -Paths $paths
+    if (-not $bundle.AllPass) { throw "Bundled coach/layout data is incomplete or inconsistent." }
+    Write-Host "[OK] Coach UI, beacon layout, and host config are bundled" -ForegroundColor Green
 
     Write-Host "`n--- Python venv + runtime deps ---" -ForegroundColor Cyan
     $sysPython = (Get-Command python).Source
@@ -405,19 +350,6 @@ function Invoke-Bootstrap {
     $venvPython = Get-VenvPython -Paths $paths
     Invoke-NativeChecked -FilePath $venvPython -ArgumentList @("-m", "pip", "install", "-r", (Join-Path $RepoRoot "requirements-runtime.txt")) | Out-Null
     Write-Host "[OK] .venv ready" -ForegroundColor Green
-
-    Write-Host "`n--- Release consistency ---" -ForegroundColor Cyan
-    $checkScript = Join-Path $RepoRoot "runtime\evolved_v2_export\release_check.py"
-    $releaseCheck = Invoke-NativeChecked -FilePath $venvPython -ArgumentList @($checkScript) -WorkingDirectory $RepoRoot
-    Write-Host $releaseCheck.Output
-    Write-Host "[OK] promoted commits, CSV, and apply/verify layout agree" -ForegroundColor Green
-
-    Write-Host "`n--- Mouse settings (1:1 pointer, no acceleration) ---" -ForegroundColor Cyan
-    $mouseScript = Join-Path $RepoRoot "powershell\apply_mouse_settings.ps1"
-    if (Test-Path $mouseScript) {
-        & $mouseScript
-        Write-Host "[OK] Mouse settings applied" -ForegroundColor Green
-    }
 
     Write-Host "`n--- Starting stack ---" -ForegroundColor Cyan
     Invoke-Start

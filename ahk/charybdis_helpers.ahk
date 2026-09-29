@@ -15,7 +15,7 @@ A_MaxHotkeysPerInterval := 2000
 ; windows, and F13-F24 helper keys.
 
 global ToolsRoot := ResolveToolsRoot()
-global ZmkConfigRoot := ResolveToolsRoot() "\..\charybdis-zmk-config"
+global ZmkConfigRoot := ResolveToolsRoot() "\keyboard-data"
 global LayoutCsvPath := ZmkConfigRoot "\layout\keybindings_explained.csv"
 global AppsConfigPath := ZmkConfigRoot "\config\charybdis_apps.json"
 global HelperConfigPath := ZmkConfigRoot "\config\charybdis_helper.json"

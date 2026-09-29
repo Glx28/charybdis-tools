@@ -35,9 +35,7 @@
 
 function Get-CharybdisPaths {
     <#
-    Resolves the standard set of paths from a charybdis-tools RepoRoot.
-    Assumes charybdis-tools, charybdis-coach, and charybdis-zmk-config are
-    cloned as siblings (see CLAUDE.md's "Sibling Repos" section).
+    Resolves paths from the self-contained runtime repository.
     #>
     param([Parameter(Mandatory)][string]$RepoRoot)
 
@@ -49,8 +47,8 @@ function Get-CharybdisPaths {
     [pscustomobject]@{
         ToolsDir   = $repoRoot
         ParentDir  = $parentDir
-        CoachDir   = Join-Path $parentDir "charybdis-coach"
-        ZmkDir     = Join-Path $parentDir "charybdis-zmk-config"
+        CoachDir   = Join-Path $repoRoot "coach"
+        ZmkDir     = Join-Path $repoRoot "keyboard-data"
         RuntimeDir = $runtimeDir
         LogsDir    = $logsDir
         VenvDir    = Join-Path $repoRoot ".venv"
@@ -64,6 +62,35 @@ function Get-VenvPython {
     $exe = Join-Path $Paths.VenvDir "Scripts\python.exe"
     if (Test-Path -LiteralPath $exe) { return $exe }
     return $null
+}
+
+function Test-CoachPortAvailable {
+    param([Parameter(Mandatory)][int]$Candidate)
+    if ($Candidate -lt 1 -or $Candidate -gt 65535) { return $false }
+    $listener = Get-NetTCPConnection -LocalPort $Candidate -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($listener) { return $false }
+
+    $probe = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $Candidate)
+    try {
+        $probe.Start()
+        return $true
+    } catch [System.Net.Sockets.SocketException] {
+        return $false
+    } finally {
+        $probe.Stop()
+    }
+}
+
+function Find-AvailableCoachPort {
+    param([Parameter(Mandatory)][int]$PreferredPort)
+    if ($PreferredPort -lt 1 -or $PreferredPort -gt 65535) {
+        throw "Coach port must be between 1 and 65535; received $PreferredPort."
+    }
+    $lastPort = [Math]::Min(65535, $PreferredPort + 99)
+    for ($candidate = $PreferredPort; $candidate -le $lastPort; $candidate++) {
+        if (Test-CoachPortAvailable -Candidate $candidate) { return $candidate }
+    }
+    throw "No available coach port found from $PreferredPort through $lastPort."
 }
 
 # ---------------------------------------------------------------------------
@@ -426,10 +453,8 @@ function Get-FileSha256 {
 
 function Test-ReleaseManifest {
     <#
-    Loads release_manifest.json (written by promote.py at promotion time)
-    and checks it against the actual current state of all 3 repos: commit
-    hashes match HEAD, and the 3 keybindings_explained.csv copies still
-    hash-match each other and the manifest. Returns a named-checks object
+    Checks that the bundled coach, host config, and keyboard CSV agree with
+    release_manifest.json. Returns a named-checks object
     with the same "each check has a .pass, aggregate with all()" shape as
     acceptance_check.py, so callers can gate on .AllPass.
     #>
@@ -445,18 +470,9 @@ function Test-ReleaseManifest {
 
     $manifest = Get-Content -Raw -LiteralPath $Paths.ManifestPath | ConvertFrom-Json
 
-    $toolsHead = Get-ShortCommit -Path $Paths.ToolsDir
-    $zmkHead = Get-ShortCommit -Path $Paths.ZmkDir
-    $coachHead = Get-ShortCommit -Path $Paths.CoachDir
-
-    # charybdis-tools' HEAD is informational only, not a gate: this repo also
-    # carries dev tooling/launcher/AHK work unrelated to any promotion, so its
-    # commit naturally drifts between promotions without indicating a mixed
-    # install. Only zmk-config + charybdis-coach actually serve promoted
-    # content and must agree with each other and the CSV hash below.
-    $checks["tools_commit_informational"] = @{ pass = $true; expected = $manifest.commits.tools; actual = $toolsHead }
-    $checks["zmk_commit_matches"]   = @{ pass = ($zmkHead -eq $manifest.commits.zmk); expected = $manifest.commits.zmk; actual = $zmkHead }
-    $checks["coach_commit_matches"] = @{ pass = ($coachHead -eq $manifest.commits.coach); expected = $manifest.commits.coach; actual = $coachHead }
+    $checks["bundled_coach_present"] = @{ pass = (Test-Path -LiteralPath (Join-Path $Paths.CoachDir "index.html")) }
+    $checks["bundled_helper_config_present"] = @{ pass = (Test-Path -LiteralPath (Join-Path $Paths.ZmkDir "config\charybdis_helper.json")) }
+    $checks["bundled_app_config_present"] = @{ pass = (Test-Path -LiteralPath (Join-Path $Paths.ZmkDir "config\charybdis_apps.json")) }
 
     $zmkCsv = Join-Path $Paths.ZmkDir "layout\keybindings_explained.csv"
     $coachCsv = Join-Path $Paths.CoachDir "data\keybindings_explained.csv"
@@ -494,9 +510,7 @@ function Test-ComponentHealth {
 
     $checks = [ordered]@{}
 
-    # A locally reachable stack is still invalid if its promoted repos/CSV do
-    # not match the release manifest (the common fresh-clone failure mode is
-    # ZMK's default main branch instead of the promoted layout branch).
+    # Ensure the bundled coach and layout data belong to the same release.
     $releaseState = Test-ReleaseManifest -Paths $Paths
     $checks["release_manifest_valid"] = @{
         pass = $releaseState.AllPass
@@ -516,11 +530,8 @@ function Test-ComponentHealth {
     $serverAlive = Test-PidRecordAlive -Record $serverRecord
     $checks["coach_server_alive"] = @{ pass = $serverAlive }
 
-    # Python beacon listener: PID record identity match
-    $beaconPidPath = Join-Path $Paths.RuntimeDir "coach_beacon_listener.pid"
-    $beaconRecord = Read-PidRecord -Path $beaconPidPath
-    $beaconAlive = Test-PidRecordAlive -Record $beaconRecord
-    $checks["beacon_listener_alive"] = @{ pass = $beaconAlive }
+    # Beacon capture runs inside the AHK helper so HID chords are suppressed.
+    $checks["beacon_listener_alive"] = @{ pass = $helperAlive; detail = "AHK helper owns beacon capture" }
 
     # Beacon heartbeat recency
     $statePath = Join-Path $Paths.RuntimeDir "charybdis_state.json"

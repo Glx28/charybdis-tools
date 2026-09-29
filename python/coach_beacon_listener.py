@@ -1,10 +1,11 @@
 """
 Charybdis coach beacon listener (Python / USB+BLE).
 
-Swallows rare HID beacon chords (Ctrl+Alt+Shift/Win + F13-F24) emitted by
+Observes rare HID beacon chords (Ctrl+Alt+Shift/Win + F13-F24) emitted by
 coach_* ZMK macros and writes runtime/charybdis_state.json for the web coach.
 
-Use when AutoHotkey v2 is not installed. Requires admin on Windows for global hooks.
+Optional observer for diagnostics. It does not suppress HID beacon chords; the
+normal launcher uses the AHK helper for beacon capture and input suppression.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ TOOLS_ROOT = Path(__file__).resolve().parent.parent
 STATE_FILE = TOOLS_ROOT / "runtime" / "charybdis_state.json"
 EVENT_LOG = TOOLS_ROOT / "runtime" / "charybdis_events.jsonl"
 BEACON_LOG = TOOLS_ROOT / "runtime" / "charybdis_beacon.log"
-LAYOUT_CSV = TOOLS_ROOT.parent / "charybdis-zmk-config" / "layout" / "keybindings_explained.csv"
+LAYOUT_CSV = TOOLS_ROOT / "keyboard-data" / "layout" / "keybindings_explained.csv"
 LAYOUT_ROWS: list[dict[str, str]] = []
 
 
