@@ -98,13 +98,14 @@ LITERAL_TO_HID_PARAMETER = {
     "[": "Left Brace", "]": "Right Brace", "\\": "Backslash and Pipe", "|": "Backslash and Pipe",
     ";": "SemiColon and Colon", ":": "SemiColon and Colon",
     "'": "Left Apos and Double", '"': "Left Apos and Double",
-    ",": "Comma and LessThan", "<": "Comma and LessThan",
-    ".": "Period and GreaterThan", ">": "Period and GreaterThan",
+    ",": "Comma and LessThan", "<": "Non-US Backslash and Pipe",
+    ".": "Period and GreaterThan", ">": "Non-US Backslash and Pipe",
     "/": "ForwardSlash and QuestionMark", "?": "ForwardSlash and QuestionMark",
 }
 KEY_TOKEN_ALIASES = {
     "Del": "Delete", "Backspace": "Delete", "BkSp": "Delete",
     "Enter": "Return Enter", "Return": "Return Enter", "Space": "Spacebar", "Esc": "Escape",
+    "IntlBackslash": "Non-US Backslash and Pipe",
     "Page Up": "PageUp", "PgUp": "PageUp", "Page Down": "PageDown", "PgDn": "PageDown",
 }
 MULTIWORD_BASE_KEYS = (
@@ -843,12 +844,14 @@ def studio_apply_parameter(binding):
         ";": "Keyboard SemiColon and Colon",
         "Left Apos and Double": "Keyboard Left Apos and Double",
         "'": "Keyboard Left Apos and Double",
+        "Non-US Backslash and Pipe": "Keyboard Non-US Backslash and Pipe",
+        "IntlBackslash": "Keyboard Non-US Backslash and Pipe",
         "Comma and LessThan": "Keyboard Comma and LessThan",
         ",": "Keyboard Comma and LessThan",
-        "<": "Keyboard Comma and LessThan",
+        "<": "Keyboard Non-US Backslash and Pipe",
         "Period and GreaterThan": "Keyboard Period and GreaterThan",
         ".": "Keyboard Period and GreaterThan",
-        ">": "Keyboard Period and GreaterThan",
+        ">": "Keyboard Non-US Backslash and Pipe",
         "ForwardSlash and QuestionMark": "Keyboard ForwardSlash and QuestionMark",
         "/": "Keyboard ForwardSlash and QuestionMark",
         "?": "Keyboard ForwardSlash and QuestionMark",

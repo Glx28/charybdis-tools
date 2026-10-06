@@ -82,10 +82,15 @@ def coach_behavior_for_access(kind: str, layer: str) -> str:
     return ""
 
 
-def layout_key_hint(kind: str, layer: str) -> dict[str, str]:
+def layout_key_hint(
+    kind: str, layer: str, source_layer: str | None = None
+) -> dict[str, str]:
     behavior = coach_behavior_for_access(kind, layer)
     if behavior:
-        for row in LAYOUT_ROWS:
+        matches = [row for row in LAYOUT_ROWS if row.get("behavior") == behavior]
+        if source_layer is not None:
+            matches.sort(key=lambda row: row.get("layer") != str(source_layer))
+        for row in matches:
             if row.get("behavior") == behavior:
                 return {
                     "layer": row.get("layer", ""),
@@ -146,9 +151,12 @@ class CoachState:
     def on_hold(self, layer: str, direction: str) -> None:
         layer = str(layer)
         if direction == "down":
+            source_layer = self.active_layer()
             self.add_unique(self.held_layers, layer)
             self.set_last_action(f"Layer {layer} held")
-            self.set_key_hint("hold", layer)
+            hint = layout_key_hint("hold", layer, source_layer)
+            if hint:
+                self.last_key = hint
             self.displayed_layer = layer
         else:
             self.remove_value(self.held_layers, layer)
@@ -165,14 +173,17 @@ class CoachState:
             self.toggled_layers = []
             self.displayed_layer = "0"
             self.set_last_action("Base layer")
-            hint = layout_key_hint("exit", exiting) or layout_key_hint("base", "0")
+            hint = layout_key_hint("exit", exiting, exiting) or layout_key_hint("base", "0", exiting)
             self.last_key = dict(hint) if hint else {"layer": "", "x": "", "y": "", "label": ""}
         else:
+            source_layer = self.active_layer()
             self.held_layers = []
             self.locked_layer = layer
             self.displayed_layer = layer
             self.set_last_action(f"Layer {layer} locked")
-            self.set_key_hint("lock", layer)
+            hint = layout_key_hint("lock", layer, source_layer)
+            if hint:
+                self.last_key = hint
 
     def on_toggle(self, layer: str, direction: str) -> None:
         layer = str(layer)
@@ -183,10 +194,13 @@ class CoachState:
             hint = layout_key_hint("exit", layer) if direction == "off" else None
             self.last_key = dict(hint) if hint else {"layer": "", "x": "", "y": "", "label": ""}
         else:
+            source_layer = self.active_layer()
             self.add_unique(self.toggled_layers, layer)
             self.displayed_layer = layer
             self.set_last_action(f"Layer {layer} toggled on")
-            self.set_key_hint("toggle", layer)
+            hint = layout_key_hint("toggle", layer, source_layer)
+            if hint:
+                self.last_key = hint
 
     def log(self, message: str) -> None:
         STATE_FILE.parent.mkdir(exist_ok=True)

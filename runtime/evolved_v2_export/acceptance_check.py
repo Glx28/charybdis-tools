@@ -141,14 +141,17 @@ def check_mouse_and_scroll(layout):
 
 
 def check_arrows(layout):
+    """Report mutable raw arrows for review; they are not an acceptance rule.
+
+    Raw arrows remain available on frozen L7, so the optimizer does not need
+    to preserve a duplicate mutable arrow cluster. Complex arrow shortcuts
+    have their own relative-layout contracts in the optimizer audit.
+    """
     report = analyze_arrows(layout)
     return {
         "non_frozen_arrows": report["placements"],
         "layers": report["layers"],
-        "is_complete_cluster": report["is_complete_cluster"],
-        "allowed_cluster_shape": report["allowed_cluster_shape"],
-        "allowed_shapes": report["allowed_shapes"],
-        "pass": report["acceptance_pass"],
+        "review_only": True,
     }
 
 

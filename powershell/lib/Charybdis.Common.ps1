@@ -39,8 +39,8 @@ function Get-CharybdisPaths {
     #>
     param([Parameter(Mandatory)][string]$RepoRoot)
 
-    $repoRoot = (Resolve-Path -LiteralPath $RepoRoot).Path
-    $parentDir = (Resolve-Path -LiteralPath (Join-Path $repoRoot "..")).Path
+    $repoRoot = (Resolve-Path -LiteralPath $RepoRoot).ProviderPath
+    $parentDir = (Resolve-Path -LiteralPath (Join-Path $repoRoot "..")).ProviderPath
     $runtimeDir = Join-Path $repoRoot "runtime"
     $logsDir = Join-Path $runtimeDir "logs"
 

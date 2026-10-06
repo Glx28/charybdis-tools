@@ -150,21 +150,28 @@ RemoveLayer(list, layer) {
     }
 }
 
-LayerKeyHint(kind, layer) {
+LayerKeyHint(kind, layer, sourceLayer := "") {
     global LayoutRows
     layer := String(layer)
     behavior := CoachBehaviorForAccess(kind, layer)
     if behavior {
+        fallback := Map()
         for row in LayoutRows {
             if row.Has("behavior") && row["behavior"] = behavior {
-                return Map(
+                hint := Map(
                     "layer", row.Has("layer") ? row["layer"] : "",
                     "x", row.Has("x") ? row["x"] : "",
                     "y", row.Has("y") ? row["y"] : "",
                     "label", row.Has("visual_label") && row["visual_label"] ? row["visual_label"] : behavior
                 )
+                if !fallback.Count
+                    fallback := hint
+                if sourceLayer != "" && row.Has("layer") && String(row["layer"]) = String(sourceLayer)
+                    return hint
             }
         }
+        if fallback.Count
+            return fallback
     }
     return Map()
 }
@@ -322,8 +329,9 @@ CoachBeacon(kind, layer, direction) {
     switch kind {
         case "hold":
             if direction = "down" {
+                sourceLayer := CoachActiveLayer()
                 AddUniqueLayer(HeldLayers, layer)
-                hint := LayerKeyHint("hold", layer)
+                hint := LayerKeyHint("hold", layer, sourceLayer)
                 LastKey := hint.Count ? hint : Map("layer", "", "x", "", "y", "", "label", "")
                 CurrentCoachLayer := layer
                 LastAction := "BLE layer " layer " held"
@@ -335,17 +343,19 @@ CoachBeacon(kind, layer, direction) {
             }
         case "lock":
             if layer = "0" || direction = "exit" {
+                exiting := LockedLayer != "" ? LockedLayer : CoachActiveLayer()
                 LockedLayer := ""
                 HeldLayers := []
                 ToggledLayers := []
                 CurrentCoachLayer := "0"
-                hint := LayerKeyHint("base", "0")
+                hint := LayerKeyHint("base", "0", exiting)
                 LastKey := hint.Count ? hint : Map("layer", "", "x", "", "y", "", "label", "")
                 LastAction := "BLE base layer"
             } else {
+                sourceLayer := CoachActiveLayer()
                 HeldLayers := []
                 LockedLayer := layer
-                hint := LayerKeyHint("lock", layer)
+                hint := LayerKeyHint("lock", layer, sourceLayer)
                 LastKey := hint.Count ? hint : Map("layer", "", "x", "", "y", "", "label", "")
                 CurrentCoachLayer := layer
                 LastAction := "BLE layer " layer " locked"

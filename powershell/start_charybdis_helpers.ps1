@@ -20,7 +20,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 if ([string]::IsNullOrWhiteSpace($RepoRoot)) {
-    $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+    $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).ProviderPath
 }
 
 . (Join-Path $RepoRoot "powershell\lib\Charybdis.Common.ps1")
