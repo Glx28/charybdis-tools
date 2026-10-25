@@ -399,7 +399,7 @@ def analyze_checkpoint(cp_path, shortcuts, positions):
 
     # Find placements
     arrow = {}
-    mouse = {}
+    mouse = defaultdict(list)
     scroll_mode = {}
     for layer, bs in bindings.items():
         for b in bs:
@@ -412,9 +412,9 @@ def analyze_checkpoint(cp_path, shortcuts, positions):
                     break
             if arrow_key and arrow_key not in arrow:
                 arrow[arrow_key] = (layer, b["x"], b["y"], b["hand"])
-            if lab in MOUSE_KEYS and lab not in mouse:
-                mouse[lab] = (layer, b["x"], b["y"], b["hand"])
-            if ("Scroll" in lab or "scroll" in b["purpose"].lower() or lab.startswith("@access:")) and "Scroll" in lab:
+            if lab in MOUSE_KEYS:
+                mouse[lab].append((layer, b["x"], b["y"], b["hand"]))
+            if "scroll" in lab.casefold() or "scroll" in b["purpose"].casefold():
                 scroll_mode[lab] = (layer, b["x"], b["y"], b["hand"])
 
     return {
@@ -520,12 +520,18 @@ def main():
     print("=== Mouse Buttons ===")
     right_count = 0
     for k in MOUSE_KEYS:
-        if k in result["mouse"]:
-            layer, x, y, hand = result["mouse"][k]
-            ok = "OK" if hand == "right" else "FAIL"
-            if hand == "right":
+        placements = result["mouse"].get(k, [])
+        if placements:
+            if any(hand == "right" for _layer, _x, _y, hand in placements):
                 right_count += 1
-            print(f"  {k}: L{layer} ({x},{y}) [{hand}] {ok}")
+                ok = "OK"
+            else:
+                ok = "FAIL"
+            rendered = "; ".join(
+                f"L{layer} ({x},{y}) [{hand}]"
+                for layer, x, y, hand in placements
+            )
+            print(f"  {k}: {rendered} {ok}")
         else:
             print(f"  {k}: NOT FOUND")
     print(f"Right-hand mouse buttons: {right_count}/{len(MOUSE_KEYS)} ({100*right_count/len(MOUSE_KEYS):.0f}%)")

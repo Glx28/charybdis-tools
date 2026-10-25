@@ -1,7 +1,7 @@
 {
   "mode": "feasible",
-  "source": "owner_feedback_repair_gen500.json",
-  "generation": 500,
-  "change_count": 352,
-  "timestamp": "2026-10-25T07:27:52.222350Z"
+  "source": "owner_feedback_mouse_low_effort_recheck_gen12000.json",
+  "generation": 12000,
+  "change_count": 375,
+  "timestamp": "2026-10-25T11:58:54.234610Z"
 }
