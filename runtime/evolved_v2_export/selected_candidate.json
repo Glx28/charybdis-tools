@@ -1,7 +1,7 @@
 {
   "mode": "feasible",
-  "source": "v2_checkpoint_gen500.json",
+  "source": "owner_feedback_repair_gen500.json",
   "generation": 500,
-  "change_count": 347,
-  "timestamp": "2026-10-06T12:23:01.336390Z"
+  "change_count": 352,
+  "timestamp": "2026-10-25T07:27:52.222350Z"
 }
