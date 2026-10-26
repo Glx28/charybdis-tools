@@ -30,8 +30,14 @@ from core.norwegian_keys import (
     parse_shortcut_keys_norwegian,
 )
 from evolution.arrow_cluster import analyze_arrows
-from evolution.acceptance import _dynamic_mouse_layer_report
+from evolution.acceptance import (
+    _dynamic_mouse_layer_report,
+    _l5_hold_to_self_toggle_report,
+    _momentary_hold_target_position_report,
+    _owner_shortcut_layer_report,
+)
 from evolution.completion_cluster import analyze_completion_cluster
+from run_evolution import analyze_duplicates
 
 
 OPTIMIZER_DATA_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2/data")
@@ -99,8 +105,10 @@ def check_completion_cluster(layout):
     }
 
 
-def check_duplicates(cp):
-    dr = cp.get("duplicate_report", {})
+def check_duplicates(layout):
+    # Recompute against the frozen shortcut corpus. Checkpoint reports can be
+    # stale when acceptance rules or shortcut importance change after a run.
+    dr = analyze_duplicates(layout)
     unsupported = dr.get("unsupported_duplicates", [])
     return {
         "unsupported_duplicates": len(unsupported),
@@ -246,13 +254,28 @@ def main():
         "generation": cp.get("generation"),
         "total_score": cp.get("best_exact", {}).get("total_score"),
         "completion_cluster": check_completion_cluster(layout),
-        "duplicates": check_duplicates(cp),
+        "duplicates": check_duplicates(layout),
         "mouse_scroll": check_mouse_and_scroll(layout),
+        "owner_shortcuts": {
+            **_owner_shortcut_layer_report(
+                layout, _dynamic_mouse_layer_report(layout).get("mouse_layer")
+            ),
+        },
+        "momentary_hold_target_positions": _momentary_hold_target_position_report(layout),
+        "l5_hold_to_self_toggle_path": _l5_hold_to_self_toggle_report(layout),
         "arrows": check_arrows(layout),
         "win_s": check_win_s(layout),
         "l7_frozen": check_l7_frozen(layout, canonical_data),
         "bad_literals": check_bad_literals(layout, canonical_data),
     }
+    results["owner_shortcuts"]["pass"] = (
+        results["owner_shortcuts"]["cmdpal_on_mouse_layer"]
+        and results["owner_shortcuts"]["zoom_controls_present_together"]
+        and results["owner_shortcuts"]["monitor_move_pair_together"]
+    )
+    results["momentary_hold_target_positions"]["pass"] = (
+        results["momentary_hold_target_positions"]["acceptance_pass"]
+    )
 
     all_pass = all(r["pass"] for r in results.values() if isinstance(r, dict) and "pass" in r)
     results["ALL_ACCEPTANCE_CHECKS_PASS"] = all_pass

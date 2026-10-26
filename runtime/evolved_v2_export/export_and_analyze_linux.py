@@ -163,6 +163,9 @@ COACH_LAYER_ACCESS = {
     ("scroll_hold", 9): "coach_l9_scroll_hold",
     ("scroll_hold", 10): "coach_l10_scroll_hold",
 }
+# Self-layer toggles must set the layer on; a flip would cancel its momentary hold.
+for _lock_layer in range(1, 11):
+    COACH_LAYER_ACCESS[("lock", _lock_layer)] = f"coach_l{_lock_layer}_lock"
 
 # Optimizer pool keys (@ptr:...) -> ZMK Studio behavior display-names of the
 # firmware pointer speed-mode behaviors (config/charybdis.keymap in
@@ -189,6 +192,7 @@ COACH_STUDIO_BEHAVIORS = [
     "coach_l6_hold", "coach_l7_hold", "coach_l8_hold", "coach_l9_hold", "coach_l10_hold",
     "coach_l1_toggle", "coach_l2_toggle", "coach_l3_toggle", "coach_l4_toggle", "coach_l5_toggle",
     "coach_l6_toggle", "coach_l7_toggle", "coach_l8_toggle", "coach_l9_toggle", "coach_l10_toggle",
+    *[f"coach_l{layer}_lock" for layer in range(1, 11)],
     "coach_mouse_lock", "coach_game_lock", "coach_base", "coach_travel_toggle",
     "coach_travel_off", "coach_recover_base",
     "coach_ctrl_click", "coach_shift_click", "coach_alt_click",
@@ -212,7 +216,7 @@ def canonical_hid_parameter(token):
     return value
 
 
-def coach_behavior_for_layer_access(action, target):
+def coach_behavior_for_layer_access(action, target, source_layer=None):
     # v2 optimizer emits full strings like "Momentary Layer 4" / "Toggle Layer 3"
     action_key = str(action or "").strip().lower()
     if action_key.startswith("scroll mode layer"):
@@ -238,6 +242,13 @@ def coach_behavior_for_layer_access(action, target):
         target_int = int(target)
     except (TypeError, ValueError):
         return None
+    # On the target layer, a flip would cancel an active momentary hold; latch on instead.
+    if mode == "toggle" and source_layer is not None:
+        try:
+            if int(source_layer) == target_int:
+                return COACH_LAYER_ACCESS.get(("lock", target_int))
+        except (TypeError, ValueError):
+            pass
     return COACH_LAYER_ACCESS.get((mode, target_int))
 
 
@@ -621,7 +632,7 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
                             behavior = "Momentary Layer"
                             parameter = "Layer::11"
                     else:
-                        coach_behavior = coach_behavior_for_layer_access(behavior, target)
+                        coach_behavior = coach_behavior_for_layer_access(behavior, target, pos["layer"])
                         if coach_behavior:
                             behavior = coach_behavior
                             parameter = ""
@@ -737,12 +748,27 @@ def build_merged_layout(checkpoint_path: Path, positions, shortcuts, canonical_d
 
         effective = fix_effective_binding(effective)
 
+        # Frozen canonical bindings bypass the evolved shortcut mapper. Normalize
+        # their self-layer toggles too (notably owner-authorized L7 access).
+        self_toggle = re.fullmatch(r"coach_l(\d+)_toggle", effective.get("behavior", ""))
+        if self_toggle and int(self_toggle.group(1)) == int(pos["layer"]):
+            effective["behavior"] = f"coach_l{pos['layer']}_lock"
+
         # Detect changes from canonical
         can_label = can_binding.get("label", "") if can_binding else "transparent"
+        can_behavior = can_binding.get("behavior", "Transparent") if can_binding else "Transparent"
+        can_parameter = can_binding.get("parameter", "") if can_binding else ""
+        can_modifiers = can_binding.get("modifiers", []) if can_binding else []
         evolved_label = effective.get("label", "")
         if effective.get("behavior", "").lower() == "transparent":
             evolved_label = "transparent"
-        if evolved_label.lower() != can_label.lower() and evolved_label != can_label:
+        label_changed = evolved_label.lower() != can_label.lower() and evolved_label != can_label
+        behavior_changed = (
+            effective.get("behavior", "") != can_behavior
+            or effective.get("parameter", "") != can_parameter
+            or effective.get("modifiers", []) != can_modifiers
+        )
+        if label_changed or behavior_changed:
             changes.append({
                 "layer": pos["layer"],
                 "x": int(pos["x"]),

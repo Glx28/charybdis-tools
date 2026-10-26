@@ -137,10 +137,30 @@ def validate_export(prefix):
 
     layer_counts = Counter()
     behavior_counts = Counter()
+    self_layer_toggle_rows = []
     with open(csv_path) as f:
         for row in csvmod.DictReader(f):
             layer_counts[row["layer"]] += 1
             behavior_counts[row["behavior"]] += 1
+            target_match = re.search(r"@access:L(\d+):toggle", row.get("purpose", ""))
+            if target_match is None:
+                target_match = re.fullmatch(r"coach_l(\d+)_(?:toggle|lock)", row["behavior"])
+            if target_match and row["layer"] == target_match.group(1):
+                self_layer_toggle_rows.append((row, target_match.group(1)))
+
+    unsafe_self_toggles = [
+        (row, target) for row, target in self_layer_toggle_rows
+        if row["behavior"] != f"coach_l{target}_lock"
+    ]
+    if unsafe_self_toggles:
+        locations = ", ".join(
+            f"L{target} ({row['x']},{row['y']})={row['behavior']}"
+            for row, target in unsafe_self_toggles
+        )
+        sys.exit(
+            "Unsafe self-layer toggle export: these keys can cancel a momentary layer hold "
+            f"instead of locking the layer on: {locations}. Expected target-specific lock-on behavior."
+        )
 
     total_keys = sum(layer_counts.values())
     layers_uniform = total_keys == EXPECTED_KEYS and set(layer_counts.values()) == {EXPECTED_PER_LAYER}
@@ -148,6 +168,8 @@ def validate_export(prefix):
     mouse = behavior_counts.get("Mouse Key Press", 0)
 
     print(f"  Syntax: OK  |  Keys: {total_keys}/{EXPECTED_KEYS}  |  layers uniform: {layers_uniform}")
+    if self_layer_toggle_rows:
+        print(f"  Self-layer toggles: {len(self_layer_toggle_rows)} lock-on binding(s)")
     print(f"  Transparent: {transparent}  |  Mouse Key Press: {mouse}")
     print(f"  Behaviors: {dict(behavior_counts)}")
     if not layers_uniform:
