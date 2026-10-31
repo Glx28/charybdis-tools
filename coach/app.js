@@ -27,6 +27,7 @@
     beaconBannerTitle: document.getElementById("beaconBannerTitle"),
     beaconBannerDetail: document.getElementById("beaconBannerDetail"),
     beaconBannerClose: document.getElementById("beaconBannerClose"),
+    mouseContractStatus: document.getElementById("mouseContractStatus"),
     deviceLabel: document.getElementById("deviceLabel"),
     layerTabs: document.getElementById("layerTabs"),
     keyboardMap: document.getElementById("keyboardMap"),
@@ -1254,6 +1255,7 @@
         row.layer_kind = profile.kind;
       }
     }
+    renderMouseContractStatus();
   }
 
   // Labels layers by distinctiveness instead of raw popularity. Most
@@ -1389,30 +1391,98 @@
     return match ? match[1] : null;
   }
 
-  // The keyboard has a dedicated dynamic mouse layer (held via a thumb key), but
-  // which layer index hosts it varies per evolved genome. A layer only qualifies
-  // as "the" mouse layer if it has ALL FIVE mouse buttons (MB1-5) and every one
-  // of them sits on the right hand (x>=7) - matching the optimizer's own
-  // dynamic-mouse-layer acceptance rule. This is a completeness/placement check,
-  // not a "most mouse buttons" popularity contest: a layer with 4 right-hand
-  // buttons plus 1 stray does not qualify, and neither does a layer with 5
-  // buttons if any of them landed on the left hand.
-  function detectDominantTagLayer() {
-    for (const layer of LAYERS) {
-      if (layer === "0" || layer === "7") continue;
-      const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
-      const buttonsFound = new Map();
-      let allRight = true;
-      for (const row of activeRows) {
-        const btn = rowMouseButton(row);
-        if (!btn) continue;
-        buttonsFound.set(btn, row);
-        if (!isRightHandX(row.x)) allRight = false;
-      }
-      const hasAllButtons = MOUSE_BUTTON_IDS.every((id) => buttonsFound.has(id));
-      if (hasAllButtons && allRight) return layer;
+  const THUMB_COORDINATES = new Set(["3:4", "4:4", "4:5", "5:4", "5:5", "7:4", "7:5", "8:4"]);
+
+  function rowAt(rows, layer, x, y) {
+    return rows.find((row) => row.layer === String(layer)
+      && Number(row.x) === x && Number(row.y) === y);
+  }
+
+  function auditMouseContract() {
+    const contract = state.layoutSpec?.owner_contract || {};
+    const layer = String(contract.mouse_layer ?? 1);
+    const rows = state.rows;
+    const mouseRows = rows.filter((row) => rowMouseButton(row));
+    const onMouseLayer = mouseRows.filter((row) => row.layer === layer);
+    const buttons = new Map();
+    for (const row of onMouseLayer) {
+      const id = rowMouseButton(row);
+      if (!buttons.has(id)) buttons.set(id, []);
+      buttons.get(id).push(row);
     }
-    return "";
+    const scrollRows = rows.filter((row) => /@scroll:L\d+:hold/.test(row.purpose));
+    const fixedScroll = scrollRows.find((row) => /@scroll:L1:hold/.test(row.purpose)
+      && row.layer === layer && Number(row.x) === 10 && Number(row.y) === 2
+      && row.behavior === "coach_current_scroll_hold");
+    const extraScrollRows = scrollRows.filter((row) => row !== fixedScroll);
+    const extraLayers = extraScrollRows.map((row) => {
+      const match = /@scroll:L(\d+):hold/.exec(row.purpose);
+      return { row, target: match ? match[1] : "" };
+    });
+    const l0Entry = rowAt(rows, 0, 3, 4);
+    const l1Lock = rows.some((row) => row.layer === layer
+      && row.behavior === "coach_l1_lock"
+      && /@access:L1:toggle/.test(row.purpose));
+    const positions = (id) => buttons.get(id) || [];
+    const mb4 = positions("4").filter((row) => Number(row.x) >= 7
+      && !THUMB_COORDINATES.has(`${row.x}:${row.y}`));
+    const mb5 = positions("5").filter((row) => Number(row.x) >= 7
+      && !THUMB_COORDINATES.has(`${row.x}:${row.y}`));
+    const mb45Together = mb4.some((left) => mb5.some((right) =>
+      Number(left.y) === Number(right.y) && Number(right.x) - Number(left.x) === 1));
+    const checks = {
+      allFiveButtonsOnL1: ["1", "2", "3", "4", "5"].every((id) => positions(id).length > 0),
+      fixedMb1: positions("1").some((row) => Number(row.x) === 8 && Number(row.y) === 2),
+      fixedMb2: positions("2").some((row) => Number(row.x) === 9 && Number(row.y) === 2),
+      mb3RightNonThumb: positions("3").some((row) => Number(row.x) >= 7
+        && !THUMB_COORDINATES.has(`${row.x}:${row.y}`)),
+      mb4Mb5Adjacent: mb45Together,
+      fixedCurrentLayerScroll: Boolean(fixedScroll),
+      exactlyThreeMomentaryScrolls: scrollRows.length === 3
+        && scrollRows.every((row) => /scroll_hold/.test(row.behavior)),
+      twoDistinctExtraCurrentLayerScrolls: extraLayers.length === 2
+        && extraLayers.every(({ row, target }) => target && target === row.layer
+          && !["0", "1", "7"].includes(row.layer)
+          && !THUMB_COORDINATES.has(`${row.x}:${row.y}`))
+        && new Set(extraLayers.map(({ row }) => row.layer)).size === 2,
+      essentialL0Hold: Boolean(l0Entry && l0Entry.behavior === "coach_l1_hold"
+        && /@access:L1:hold/.test(l0Entry.purpose)),
+      reachableL1Lock: l1Lock,
+    };
+    return { layer, checks, failed: Object.keys(checks).filter((key) => !checks[key]) };
+  }
+
+  function renderMouseContractStatus() {
+    if (!els.mouseContractStatus) return;
+    const audit = auditMouseContract();
+    const status = els.mouseContractStatus;
+    status.hidden = false;
+    status.dataset.valid = audit.failed.length === 0 ? "true" : "false";
+    status.className = `mouse-contract-banner mouse-contract-banner--${audit.failed.length ? "error" : "ok"}`;
+    if (!audit.failed.length) {
+      status.textContent = `L${audit.layer} mouse contract verified from current bindings.`;
+      return;
+    }
+    const labels = {
+      allFiveButtonsOnL1: "all five mouse buttons on L1",
+      fixedMb1: "MB1 at x8,y2",
+      fixedMb2: "MB2 at x9,y2",
+      mb3RightNonThumb: "MB3 on a right-hand non-thumb key",
+      mb4Mb5Adjacent: "adjacent ordered MB4/MB5 pair",
+      fixedCurrentLayerScroll: "current-layer Scroll at x10,y2",
+      exactlyThreeMomentaryScrolls: "exactly three momentary Scroll bindings",
+      twoDistinctExtraCurrentLayerScrolls: "two extra current-layer Scroll bindings on distinct eligible layers",
+      essentialL0Hold: "ordinary L0 x3,y4 hold to L1",
+      reachableL1Lock: "reachable L1 lock",
+    };
+    status.textContent = `L${audit.layer} mouse contract broken: ${audit.failed.map((key) => labels[key]).join("; ")}.`;
+  }
+
+  // L1 owns the mouse role. The contract banner independently audits actual
+  // exported bindings, so a broken layer remains visibly identified as L1.
+  function detectDominantTagLayer() {
+    const layer = String(state.layoutSpec?.owner_contract?.mouse_layer ?? 1);
+    return LAYERS.includes(layer) ? layer : "";
   }
 
   function layerRole(layer) {

@@ -4,11 +4,13 @@ Reads a v2 checkpoint JSON and reports pass/fail for the goal acceptance
 criteria.  Does not require the checkpoint to match the current optimizer
 shortcut list exactly; it rebuilds the layout from the current data files.
 """
+import argparse
 import json
 import sys
 from pathlib import Path
 
 import numpy as np
+import yaml
 
 
 class NumpyEncoder(json.JSONEncoder):
@@ -31,11 +33,10 @@ from core.norwegian_keys import (
 )
 from evolution.arrow_cluster import analyze_arrows
 from evolution.acceptance import (
-    _dynamic_mouse_layer_report,
-    _l5_hold_to_self_toggle_report,
     _momentary_hold_target_position_report,
     _owner_shortcut_layer_report,
 )
+from evolution.layout_contract import audit_layout_contract
 from evolution.completion_cluster import analyze_completion_cluster
 from run_evolution import analyze_duplicates
 
@@ -43,19 +44,21 @@ from run_evolution import analyze_duplicates
 OPTIMIZER_DATA_DIR = Path("/home/nos/charybdis/charybdis-optimizer-v2/data")
 
 
-def load_checkpoint(path: str):
+def load_checkpoint(path: str, data_dir: Path, config_path: Path):
     cp = json.loads(Path(path).read_text(encoding="utf-8"))
-    layout = build_layout(str(OPTIMIZER_DATA_DIR)).clone_with(
+    with Path(config_path).open("r", encoding="utf-8") as f:
+        config = yaml.safe_load(f) or {}
+    layout = build_layout(str(data_dir), config=config.get("fitness", {})).clone_with(
         genome=np.array(cp["best_genome"], dtype=np.int32)
     )
     return cp, layout
 
 
-def load_canonical_layout_data():
-    canonical = OPTIMIZER_DATA_DIR / "canonical.json"
+def load_canonical_layout_data(data_dir: Path):
+    canonical = data_dir / "canonical.json"
     if canonical.exists():
         return json.loads(canonical.read_text(encoding="utf-8"))
-    layout_json = OPTIMIZER_DATA_DIR / "layout.json"
+    layout_json = data_dir / "layout.json"
     if layout_json.exists():
         return json.loads(layout_json.read_text(encoding="utf-8"))
     raise FileNotFoundError(f"No canonical layout data found in {OPTIMIZER_DATA_DIR}")
@@ -120,7 +123,7 @@ def check_mouse_and_scroll(layout):
     fake_scroll = {"ScrollUp", "ScrollDown"}
     fake = []
     scroll_access = []
-    dynamic_report = _dynamic_mouse_layer_report(layout)
+    owner_contract = audit_layout_contract(layout)
     for i, sid in enumerate(layout.genome):
         if sid < 0:
             continue
@@ -132,18 +135,22 @@ def check_mouse_and_scroll(layout):
             scroll_access.append((sc.keys, int(pos.layer), float(pos.x), float(pos.y), pos.hand, float(pos.effort)))
 
     avg_scroll_effort = sum(a[5] for a in scroll_access) / len(scroll_access) if scroll_access else 999.0
-    best = dynamic_report.get("best_candidate") or {}
-    buttons = best.get("button_keys_present", [])
-    passes = len(fake) == 0 and bool(dynamic_report.get("acceptance_pass"))
+    mouse_checks = {name: passed for name, passed in owner_contract["checks"].items()
+                    if name.startswith(("fixed_l1", "all_mouse", "mb3_", "mb4_", "exactly_three", "two_current"))}
+    buttons = [key for key in ("MB1", "MB2", "MB3", "MB4", "MB5")
+               if any(sc.keys.upper() == key and int(pos.layer) == 1
+                      for pos, sid in zip(layout.positions, layout.genome)
+                      if int(sid) >= 0 for sc in [layout.shortcuts[int(sid)]])]
+    passes = len(fake) == 0 and all(mouse_checks.values())
     return {
-        "mouse_layer": dynamic_report.get("mouse_layer"),
+        "mouse_layer": 1,
         "mouse_buttons_found_on_mouse_layer": len(buttons),
         "mouse_buttons_on_mouse_layer": buttons,
-        "dynamic_mouse_layer_acceptance": dynamic_report.get("acceptance_pass"),
+        "owner_contract_checks": mouse_checks,
         "avg_scroll_effort": round(avg_scroll_effort, 3),
         "fake_scroll_keypresses": fake,
         "scroll_mode_access": scroll_access,
-        "best_candidate": best,
+        "owner_contract": owner_contract,
         "pass": passes,
     }
 
@@ -242,12 +249,17 @@ def check_bad_literals(layout, canonical_data: dict):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: acceptance_check.py <checkpoint.json>")
-        sys.exit(1)
-    cp_path = sys.argv[1]
-    cp, layout = load_checkpoint(cp_path)
-    canonical_data = load_canonical_layout_data()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("checkpoint", help="V2 checkpoint JSON")
+    parser.add_argument("--data-dir", type=Path, default=OPTIMIZER_DATA_DIR,
+                        help="Optimizer data snapshot used for the run")
+    parser.add_argument("--config", type=Path,
+                        default=OPTIMIZER_DATA_DIR.parent / "config_v2.yaml",
+                        help="Optimizer configuration used for the run")
+    args = parser.parse_args()
+    cp_path = args.checkpoint
+    cp, layout = load_checkpoint(cp_path, args.data_dir, args.config)
+    canonical_data = load_canonical_layout_data(args.data_dir)
 
     results = {
         "checkpoint": Path(cp_path).name,
@@ -257,12 +269,10 @@ def main():
         "duplicates": check_duplicates(layout),
         "mouse_scroll": check_mouse_and_scroll(layout),
         "owner_shortcuts": {
-            **_owner_shortcut_layer_report(
-                layout, _dynamic_mouse_layer_report(layout).get("mouse_layer")
-            ),
+            **_owner_shortcut_layer_report(layout, 1),
         },
         "momentary_hold_target_positions": _momentary_hold_target_position_report(layout),
-        "l5_hold_to_self_toggle_path": _l5_hold_to_self_toggle_report(layout),
+        "owner_layout_contract_v1": audit_layout_contract(layout),
         "arrows": check_arrows(layout),
         "win_s": check_win_s(layout),
         "l7_frozen": check_l7_frozen(layout, canonical_data),
@@ -275,6 +285,9 @@ def main():
     )
     results["momentary_hold_target_positions"]["pass"] = (
         results["momentary_hold_target_positions"]["acceptance_pass"]
+    )
+    results["owner_layout_contract_v1"]["pass"] = (
+        results["owner_layout_contract_v1"]["acceptance_pass"]
     )
 
     all_pass = all(r["pass"] for r in results.values() if isinstance(r, dict) and "pass" in r)

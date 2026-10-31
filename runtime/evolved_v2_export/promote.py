@@ -27,6 +27,7 @@ here to match tools/best.py.
 """
 import argparse
 import csv as csvmod
+import hashlib
 import json
 import re
 import subprocess
@@ -81,8 +82,31 @@ def checkpoint_stats(path):
     }
 
 
+def audit_checkpoint_contract(path):
+    """Reject checkpoints unless the optimizer's complete CPU audit passes."""
+    result = subprocess.run(
+        [sys.executable, str(OPTIMIZER_DIR / "tools/run_contract_audit.py"),
+         "--cpu", str(path)], cwd=OPTIMIZER_DIR, capture_output=True, text=True,
+    )
+    try:
+        report = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        return False, {"error": result.stderr or result.stdout or "audit produced no JSON"}
+    return result.returncode == 0 and bool(report.get("run_contract_pass")), report
+
+
 def find_best_checkpoint():
     stats = [checkpoint_stats(f) for f in all_checkpoints()]
+    valid = []
+    for row in stats:
+        passed, report = audit_checkpoint_contract(row["path"])
+        if passed:
+            valid.append(row)
+        else:
+            print(f"  rejected {row['path'].name}: {report.get('checks', report.get('error'))}")
+    if not valid:
+        sys.exit("No checkpoint passes the versioned layout and run contracts")
+    stats = valid
     stats.sort(key=lambda s: s["gap"])
     return stats[0]
 
@@ -116,6 +140,26 @@ def run_export(checkpoint_path, prefix):
     if result.returncode != 0:
         print(result.stderr)
         sys.exit("Export failed")
+    optimizer_python = OPTIMIZER_DIR / ".venv/bin/python"
+    audit_path = EXPORT_DIR / f"{prefix}_contract_audit.json"
+    audit = subprocess.run(
+        [str(optimizer_python), str(OPTIMIZER_DIR / "tools/run_contract_audit.py"),
+         "--cpu", str(checkpoint_path)], cwd=OPTIMIZER_DIR, capture_output=True, text=True,
+    )
+    audit_path.write_text(audit.stdout, encoding="utf-8")
+    if audit.returncode != 0:
+        sys.exit(f"Checkpoint contract audit failed; refusing export validation: {audit.stderr}")
+    binding_path = EXPORT_DIR / f"{prefix}_binding_audit.json"
+    binding = subprocess.run(
+        [str(optimizer_python), str(OPTIMIZER_DIR / "tools/export_binding_audit.py"),
+         str(checkpoint_path), str(EXPORT_DIR / f"{prefix}_keybindings_explained.csv"),
+         str(EXPORT_DIR / f"{prefix}_apply.js"), str(audit_path), "--output", str(binding_path)],
+        cwd=OPTIMIZER_DIR, capture_output=True, text=True,
+    )
+    print(binding.stdout.strip())
+    if binding.returncode != 0:
+        print(binding.stderr)
+        sys.exit("Checkpoint, audit, and exported binding hashes do not agree")
 
 
 def node_check(path):
@@ -123,10 +167,69 @@ def node_check(path):
     return r.returncode == 0, r.stderr
 
 
-def validate_export(prefix):
+def validate_l1_mouse_contract(csv_rows, apply_js):
+    """Require the canonical L0 hold -> L1 mouse access and self-lock."""
+    l0_holds = [row for row in csv_rows
+                if row["layer"] == "0" and row["x"] == "3" and row["y"] == "4"
+                and row["behavior"] == "coach_l1_hold"]
+    l1_locks = [row for row in csv_rows
+                if row["layer"] == "1" and row["behavior"] == "coach_l1_lock"
+                and "@access:L1:toggle" in row.get("purpose", "")]
+    required = {"MB1": ("8", "2"), "MB2": ("9", "2"), "Scroll_L1": ("10", "2")}
+    fixed_ok = all(any(row["layer"] == "1" and row["visual_label"] == key
+                       and (row["x"], row["y"]) == coord for row in csv_rows)
+                   for key, coord in required.items())
+    buttons_ok = all(any(row["layer"] == "1" and row["visual_label"] == key
+                         for row in csv_rows) for key in ("MB1", "MB2", "MB3", "MB4", "MB5"))
+    if not l0_holds or not l1_locks or not fixed_ok or not buttons_ok:
+        sys.exit("L1 mouse contract failed: require L0 (3,4) coach_l1_hold, L1 self-lock, all mouse buttons, and fixed MB1/MB2/scroll positions.")
+
+    marker = "window.CHARYBDIS_FINAL_LAYOUT = "
+    script = apply_js.read_text(encoding="utf-8")
+    start = script.find(marker)
+    end = script.find("\n};", start)
+    if start < 0 or end < 0:
+        sys.exit("Cannot inspect exported Studio layout payload for L1 mouse validation.")
+    try:
+        layout = json.loads(script[start + len(marker):end + 2])
+    except json.JSONDecodeError as exc:
+        sys.exit(f"Invalid exported Studio layout payload: {exc}")
+
+    exported = {
+        (str(item.get("layer")), str(item.get("x")), str(item.get("y"))): item
+        for item in layout.get("keys", [])
+    }
+    fixed_rows = [row for row in csv_rows if row["layer"] == "1" and
+                  ((row["visual_label"], row["x"], row["y"]) in {
+                      ("MB1", "8", "2"), ("MB2", "9", "2"), ("Scroll_L1", "10", "2")})]
+    for row in [*l0_holds, *l1_locks, *fixed_rows,
+                *(r for r, _ in self_layer_toggle_rows_from_csv(csv_rows))]:
+        key = (row["layer"], row["x"], row["y"])
+        item = exported.get(key)
+        if item is None or item.get("behavior") != row["behavior"]:
+            sys.exit(
+                "Studio apply script disagrees with acceptance CSV at "
+                f"L{row['layer']} ({row['x']},{row['y']}): "
+                f"CSV={row['behavior']}, apply={item.get('behavior') if item else 'missing'}"
+            )
+
+
+def self_layer_toggle_rows_from_csv(csv_rows):
+    """Return every access toggle whose source layer equals its target layer."""
+    rows = []
+    for row in csv_rows:
+        match = re.search(r"@access:L(\d+):toggle", row.get("purpose", ""))
+        if match and row["layer"] == match.group(1):
+            rows.append((row, match.group(1)))
+    return rows
+
+
+def validate_export(prefix, checkpoint_path):
     apply_js = EXPORT_DIR / f"{prefix}_apply.js"
     verify_js = EXPORT_DIR / f"{prefix}_verify.js"
     csv_path = EXPORT_DIR / f"{prefix}_keybindings_explained.csv"
+    audit_path = EXPORT_DIR / f"{prefix}_contract_audit.json"
+    binding_path = EXPORT_DIR / f"{prefix}_binding_audit.json"
 
     ok, err = node_check(apply_js)
     if not ok:
@@ -138,8 +241,10 @@ def validate_export(prefix):
     layer_counts = Counter()
     behavior_counts = Counter()
     self_layer_toggle_rows = []
+    csv_rows = []
     with open(csv_path) as f:
         for row in csvmod.DictReader(f):
+            csv_rows.append(row)
             layer_counts[row["layer"]] += 1
             behavior_counts[row["behavior"]] += 1
             target_match = re.search(r"@access:L(\d+):toggle", row.get("purpose", ""))
@@ -162,6 +267,19 @@ def validate_export(prefix):
             f"instead of locking the layer on: {locations}. Expected target-specific lock-on behavior."
         )
 
+    validate_l1_mouse_contract(csv_rows, apply_js)
+
+    binding = json.loads(binding_path.read_text(encoding="utf-8"))
+    hashes_match = (
+        binding.get("acceptance_pass") is True
+        and binding.get("checkpoint_sha256") == hashlib.sha256(Path(checkpoint_path).read_bytes()).hexdigest()
+        and binding.get("audit_sha256") == hashlib.sha256(audit_path.read_bytes()).hexdigest()
+        and binding.get("csv_sha256") == hashlib.sha256(csv_path.read_bytes()).hexdigest()
+        and binding.get("studio_apply_sha256") == hashlib.sha256(apply_js.read_bytes()).hexdigest()
+    )
+    if not hashes_match:
+        sys.exit("Checkpoint/contract/audit/exported-binding hash gate failed; refusing promotion.")
+
     total_keys = sum(layer_counts.values())
     layers_uniform = total_keys == EXPECTED_KEYS and set(layer_counts.values()) == {EXPECTED_PER_LAYER}
     transparent = behavior_counts.get("Transparent", 0)
@@ -170,6 +288,7 @@ def validate_export(prefix):
     print(f"  Syntax: OK  |  Keys: {total_keys}/{EXPECTED_KEYS}  |  layers uniform: {layers_uniform}")
     if self_layer_toggle_rows:
         print(f"  Self-layer toggles: {len(self_layer_toggle_rows)} lock-on binding(s)")
+    print("  L1 mouse contract: verified in CSV and Studio apply payload")
     print(f"  Transparent: {transparent}  |  Mouse Key Press: {mouse}")
     print(f"  Behaviors: {dict(behavior_counts)}")
     if not layers_uniform:
@@ -345,8 +464,12 @@ def main():
 
     if stats["genome_len"] != EXPECTED_KEYS:
         sys.exit(f"genome length {stats['genome_len']} != expected {EXPECTED_KEYS}, refusing to proceed")
-    if any(c != 0 for c in stats["constraints"]):
-        print("WARNING: hard constraints not all satisfied (G != all-zero) - review before applying")
+    contract_pass, contract_report = audit_checkpoint_contract(stats["path"])
+    if not contract_pass:
+        sys.exit(f"Checkpoint fails layout/run contract; refusing export or promotion: "
+                 f"{contract_report.get('checks', contract_report.get('error'))}")
+    if any(c > 0 for c in stats["constraints"]):
+        sys.exit("Checkpoint has positive hard constraints; refusing export or promotion")
 
     if not args.apply:
         print("\nDry run only (no --apply). Re-run with --apply to export and propagate.")
@@ -358,7 +481,7 @@ def main():
     run_export(stats["path"], prefix)
 
     print("\nValidating export:")
-    validated = validate_export(prefix)
+    validated = validate_export(prefix, stats["path"])
 
     try:
         usage_mismatch_report.report(validated["csv_path"])

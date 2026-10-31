@@ -3,6 +3,14 @@
   "device": "V&Z-Charydbis",
   "firmware": "ZMK with ZMK Studio",
   "trackball_side": "right thumb",
+  "owner_contract": {
+    "version": "1.0.0",
+    "mouse_layer": 1,
+    "mouse_buttons": ["MB1", "MB2", "MB3", "MB4", "MB5"],
+    "fixed_positions": {"MB1": [8, 2], "MB2": [9, 2], "Scroll": [10, 2]},
+    "extra_scroll_count": 2,
+    "l0_mouse_hold": [3, 4]
+  },
   "host_keyboard": {
     "primary": "Windows Norwegian (nb-NO)",
     "config": "layout/windows_norwegian_host.json",
@@ -17,16 +25,16 @@
   },
   "layers": {
     "0": "Base QWERTY",
-    "1": "Navigation and function",
-    "2": "Mouse and trackball support",
-    "3": "Window and monitor management",
-    "4": "Language, host, system",
-    "5": "App helpers",
-    "6": "Mac overlay",
-    "7": "spare",
-    "8": "spare",
-    "9": "experimental",
-    "10": "emergency/recovery"
+    "1": "Mouse and trackball support (required role; audited from bindings)",
+    "2": "Layer 2 (role inferred from bindings)",
+    "3": "Layer 3 (role inferred from bindings)",
+    "4": "Layer 4 (role inferred from bindings)",
+    "5": "Layer 5 (role inferred from bindings)",
+    "6": "Layer 6 (role inferred from bindings)",
+    "7": "Frozen RPG and navigation layer",
+    "8": "Layer 8 (role inferred from bindings)",
+    "9": "Layer 9 (role inferred from bindings)",
+    "10": "Layer 10 (role inferred from bindings)"
   },
   "host_triggers": {
     "F13": "Spare macro/app trigger (æ now direct on base 12,2 via Norwegian layout)",

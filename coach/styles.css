@@ -178,6 +178,23 @@ svg {
   background: rgba(232, 93, 93, 0.14);
 }
 
+.mouse-contract-banner {
+  margin: 0 16px 10px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(62, 207, 142, 0.12);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+.mouse-contract-banner--ok { border-color: #2d6a4f; }
+.mouse-contract-banner--error {
+  border-color: #8b2f2f;
+  background: rgba(232, 93, 93, 0.14);
+  color: #ffb4b4;
+}
+.mouse-contract-banner--hidden { display: none; }
+
 .beacon-banner__icon {
   flex: 0 0 auto;
   width: 1.4rem;
